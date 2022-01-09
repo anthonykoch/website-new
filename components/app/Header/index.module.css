@@ -1,0 +1,87 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+  min-height: var(--nav-height-mobile);
+  position: relative;
+  transition: all 300ms;
+  width: 100%;
+  z-index: var(--layer-site-nav);
+
+  @media screen(md) {
+    min-height: var(--nav-height);
+  }
+
+  @media screen(2xl) {
+    min-height: var(--nav-height);
+  }
+
+  @media (min-width: 1600px) {
+    min-height: var(--nav-height);
+  }
+}
+
+.rootIsCollapsed {
+  min-height: 0;
+}
+
+.rootIsFullHeight {
+  min-height: 100vh;
+}
+
+.rootIsFloating {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.background {
+  background-color: theme('colors.nav-bg');
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.BackgroundImage {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 70% 50px;
+  background-image: url('./background-1+c.jpg');
+  height: 100%;
+  left: 0;
+  opacity: 0.4;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+@media screen(md) {
+  .BackgroundImage {
+    background-attachment: none;
+    background-position: 90% -260px;
+  }
+}
+
+@media screen(2xl) {
+  .BackgroundImage {
+    background-position: 85% -300px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .BackgroundImage {
+    background-position: 85% -420px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+}
