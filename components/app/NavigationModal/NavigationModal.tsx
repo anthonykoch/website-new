@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Portal } from '@radix-ui/react-portal'
 import cx from 'classnames'
 
-import { easing } from '@/styles'
+import { easing } from '@/styles/index'
 
 interface NavPopupProps {
   isOpen: boolean
