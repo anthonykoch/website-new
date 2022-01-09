@@ -1,16 +1,7 @@
 .Logo {
-  align-items: center;
-  background-color: theme('colors.primary.500');
-  display: flex;
-  justify-content: center;
-  height: theme('spacing.nav-height');
   width: 220px;
 }
 
 .LogoText {
   letter-spacing: 4px;
-  /* position: absolute; */
-  /* top: 50%; */
-  /* left: 50%; */
-  /* transform: translate(-50%, -50%); */
 }

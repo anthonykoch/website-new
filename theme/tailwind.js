@@ -14,7 +14,7 @@ exports.fontFamily = fontFamily
 //   macbook16: em(1600),
 // }
 exports.spacing = {
-  'nav-height': '54px',
+  'nav-height': '60px',
   'nav-icon-width': '54px',
   'py-nav-link': '16px',
   'px-nav-link': '48px',

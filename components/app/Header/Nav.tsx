@@ -16,78 +16,61 @@ import {
 } from '../NavigationModal'
 
 import styles from './Nav.module.css'
+import { navLinkClasses } from './styles.common'
+import { useRouter } from 'next/router'
 
 export const NavText: React.FC = ({ children }) => (
   <div className={styles.NavText}>{children}</div>
 )
 
-export const Nav = () => {
-  // const [refesetReferenceElement
+export const NavLink: React.FC<
+  { activeClassName?: string } & React.HTMLProps<HTMLAnchorElement>
+> = ({ children, activeClassName, ...props }) => {
   const awd = useActiveLink({})
 
   console.log(awd)
+
+  return (
+    <a
+      {...props}
+      className={cx(
+        'h-nav-height px-px-nav-link flex items-center justify-center',
+        navLinkClasses.text,
+        navLinkClasses.hover,
+        // styles.NavLink,
+        styles.NavLinkShadow,
+        // styles['NavLink-is-text'],
+      )}
+    >
+      {children}
+    </a>
+  )
+}
+
+export const Nav = () => {
   const [isNavigationModalOpen, setOpen] = useState(false)
-  const hasLightLinks = true
+  const router = useRouter()
 
   return (
     <div className={cx(styles.Nav)} role="navigation">
       <div className={styles.NavList}>
-        <li className="hidden lg:block">
-          <div>
-            <Link href="/#work" passHref>
-              <a
-                className={cx(
-                  styles.NavLink,
-                  styles.NavLinkShadow,
-                  styles['NavLink-is-text'],
-                )}
-                onClick={(e) => {
-                  return
-                  if (window.location.pathname === '/') {
-                    e.preventDefault()
-                    // this.$scrollTo('#work')
-                  }
-                }}
-              >
-                <NavText>Work</NavText>
-              </a>
+        {desktopLinks.map(({ href, children, onClick }) => (
+          <li className="hidden xl:block" key={href}>
+            <Link href={href} passHref>
+              <NavLink onClick={onClick?.(router.pathname)}>
+                <NavText>{children}</NavText>
+              </NavLink>
             </Link>
-          </div>
-        </li>
-        <li className="hidden lg:block">
-          <Link href="/blog" passHref>
-            <a
-              active-className="/blog"
-              className={cx(
-                styles.NavLink,
-                styles.NavLinkShadow,
-                styles['NavLink-is-text'],
-              )}
-            >
-              <NavText>Blog</NavText>
-            </a>
-          </Link>
-        </li>
-        <li className="hidden lg:block">
-          <Link active-className="/contact" href="/contact" passHref>
-            <a
-              className={cx(
-                styles.NavLink,
-                styles['NavLink-is-text'],
-                styles.NavLinkShadow,
-              )}
-            >
-              <NavText>Contact</NavText>
-            </a>
-          </Link>
-        </li>
+          </li>
+        ))}
+
         <li>
           <IconTrigger
             href="https://github.com/anthonykoch?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
             className={cx(
-              ' leading-none',
+              'leading-none',
               styles['NavIconTrigger-is-github'],
               styles.NavLinkShadow,
             )}
@@ -98,7 +81,7 @@ export const Nav = () => {
             />
           </IconTrigger>
         </li>
-        <li className={cx('lg:hidden')}>
+        <li className={cx('xl:hidden')}>
           <div className={cx(styles.Menu)}>
             <div>
               <NavigationModalRoot isOpen={isNavigationModalOpen}>
@@ -214,6 +197,33 @@ const links = [
   {
     href: '/#work',
     children: 'Work',
+  },
+  {
+    href: '/contact',
+    children: 'Contact',
+  },
+  {
+    href: '/mentoring',
+    children: 'Mentoring',
+  },
+]
+
+const desktopLinks = [
+  {
+    href: '/#work',
+    children: 'Work',
+    onClick: (pathname: string) => (e: React.MouseEvent) => {
+      if (pathname === '/') {
+        e.preventDefault()
+        document.querySelector('#work')?.scrollIntoView({
+          behavior: 'smooth',
+        })
+      }
+    },
+  },
+  {
+    href: '/blog',
+    children: 'Blog',
   },
   {
     href: '/contact',

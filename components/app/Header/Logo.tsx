@@ -5,7 +5,14 @@ import { NavText } from './Nav'
 
 export const Logo: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <div className={cx(styles.Logo, className)}>
+    <div
+      className={cx(
+        styles.Logo,
+        // navLinkClasses,
+        'flex items-center justify-center h-nav-height ',
+        className,
+      )}
+    >
       <LogoText />
     </div>
   )

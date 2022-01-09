@@ -8,7 +8,7 @@
 .NavLinkShadow {
   filter: drop-shadow(3px 4px 7px rgba(black, 0.2));
 }
-
+/* 
 .NavLink-is-text {
   --padding-h: theme('spacing.px-nav-link');
   color: #ddd;
@@ -33,7 +33,7 @@
     color: #333333;
     background: theme('colors.primary.500');
   }
-}
+} */
 
 .NavLinkCommon-is-active {
   color: #333333;

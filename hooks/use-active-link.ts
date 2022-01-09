@@ -7,7 +7,9 @@ export function useActiveLink(
 export function useActiveLink(classes: any): any {
   const router = useRouter()
 
-  if (typeof classes === 'string') return router.pathname === classes
+  if (typeof classes === 'string') {
+    return router.pathname === classes
+  }
 
   const result: Record<string, boolean> = {}
 
