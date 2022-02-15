@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const {
+  maxWidth,
   zIndex,
   colors,
   fontFamily,
@@ -23,6 +24,7 @@ module.exports = {
       height,
       colors,
       zIndex,
+      maxWidth,
     },
     fontFamily,
     screens: screens,

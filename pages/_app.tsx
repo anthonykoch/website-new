@@ -6,6 +6,7 @@ import '../styles/main.css'
 
 import { Header } from '../components/app/Header'
 import Head from 'next/head'
+import { ThemeProvider } from 'contexts/Theme'
 
 const HeadMeta = () => {
   return (
@@ -65,7 +66,9 @@ setTimeout(function () {
 </script> */}
 
       <Header />
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </div>
   )
 }

@@ -1,0 +1,88 @@
+.Hero {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.HeroContainer {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  padding-top: 180px;
+}
+
+.HeroTitle {
+  color: #e8b92c;
+  font-family: theme('fontFamily.heading');
+  font-size: 64px;
+  font-size: 96px;
+  font-weight: 700;
+}
+
+.HeroLead {
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.Intro {
+  background-color: #c4c4c4;
+  width: 100%;
+
+  @media screen(xl) {
+    align-items: center;
+    display: flex;
+    height: 415px;
+  }
+}
+
+.IntroContainer {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.IntroTitle {
+  color: #949494;
+  font-family: theme('fontFamily.heading');
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 1.2;
+}
+
+.IntroLead {
+  color: #111111;
+  font-family: theme('fontFamily.heading');
+  font-size: 27.9px;
+  font-weight: 500;
+}
+
+.Ribbon {
+  border-radius: 2px;
+  height: 38px;
+  position: absolute;
+  transform: translate(0, -50%);
+  top: 50%;
+  z-index: -1;
+}
+
+.MFRibbon {
+  background-color: #f8cc4b;
+  left: -22px;
+  width: 270px;
+}
+
+.OpalRibbon {
+  background-color: #828282;
+  left: -23px;
+  width: 280px;
+}
+
+.PlaidRibbon {
+  background-color: #f1f1f1;
+  left: -33px;
+  width: 325px;
+}
+
+/* 0 20px 36px -8px #a9a9a9c7 */

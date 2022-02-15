@@ -14,10 +14,16 @@ exports.fontFamily = fontFamily
 //   macbook16: em(1600),
 // }
 exports.spacing = {
+  gutter: '16px',
   'nav-height': '60px',
   'nav-icon-width': '54px',
   'py-nav-link': '16px',
   'px-nav-link': '48px',
+}
+
+exports.maxWidth = {
+  site: '1440px',
+  common: '1232px',
 }
 
 exports.height = {}

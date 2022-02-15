@@ -1,5 +1,5 @@
 .NavText {
-  font-family: theme('fontFamily.heading');
+  font-family: theme('fontFamily.link');
   font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;

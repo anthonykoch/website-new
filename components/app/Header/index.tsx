@@ -3,11 +3,9 @@ import cx from 'classnames'
 import Link from 'next/link'
 import { Nav } from './Nav'
 import { Logo } from './Logo'
-// import mobileHeaderImage from 'images/mobile-header.png'
-// import backgroundImage from '@/images/background-1+c.jpg'
 import styles from './index.module.css'
 import { navLinkClasses } from './styles.common'
-import { useActiveLink } from '@/hooks/use-active-link'
+
 
 export const Header: React.FC = () => {
   return (
