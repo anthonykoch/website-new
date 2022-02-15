@@ -7,6 +7,7 @@ const config = {
   webpack(config, { dev, isServer }) {
     Object.assign(config.resolve.alias, {
       '@/components': path.join(__dirname, 'components'),
+      '@/contexts': path.join(__dirname, 'contexts'),
       '@/images': path.join(__dirname, 'images'),
       '@/hooks': path.join(__dirname, 'hooks'),
       '@/pages': path.join(__dirname, 'pages'),

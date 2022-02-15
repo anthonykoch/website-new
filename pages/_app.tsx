@@ -6,7 +6,7 @@ import '../styles/main.css'
 
 import { Header } from '../components/app/Header'
 import Head from 'next/head'
-import { ThemeProvider } from 'contexts/Theme'
+import { ThemeProvider } from '@/contexts/theme'
 
 const HeadMeta = () => {
   return (
