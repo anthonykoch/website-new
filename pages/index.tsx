@@ -168,44 +168,40 @@ const WorkSection: React.FC = () => {
 
           <div className="pb-10 xl:pb-32 max-w-md mx-auto xl:max-w-full px-gutter">
             <ThreePiece>
-              <div>
-                <ThreePieceItem
-                  term="Web development"
-                  def={
-                    <>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Accusantium ad pariatur maiores soluta ipsa, nesciunt
-                      beatae deleniti saepe dolor. Distinctio.
-                    </>
-                  }
-                />
-              </div>
-              <div>
-                <ThreePieceItem
-                  term="Memes"
-                  def={
-                    <>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Hic, non. Lorem ipsum dolor sit amet consectetur.
-                    </>
-                  }
-                />
-              </div>
-              <div>
-                <ThreePieceItem
-                  term="Mentoring"
-                  def={
-                    <>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fugit aperiam unde sapiente aspernatur et neque!
-                    </>
-                  }
-                />
-              </div>
+              <ThreePieceItem
+                term="Web development"
+                def={
+                  <>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Accusantium ad pariatur maiores soluta ipsa, nesciunt beatae
+                    deleniti saepe dolor. Distinctio.
+                  </>
+                }
+              />
+              <ThreePieceItem
+                term="Memes"
+                def={
+                  <>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Hic, non. Lorem ipsum dolor sit amet consectetur.
+                  </>
+                }
+              />
+              <ThreePieceItem
+                term="Mentoring"
+                def={
+                  <>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Fugit aperiam unde sapiente aspernatur et neque!
+                  </>
+                }
+              />
             </ThreePiece>
 
             <a href="mailto:hello@anthonykoch.com">
-              <div className="text-center xl:text-left  text-4xl xl:text-8xl">hello@anthonykoch.com</div>
+              <div className="text-center xl:text-left  text-4xl xl:text-8xl xl:py-10">
+                hello@anthonykoch.com
+              </div>
             </a>
           </div>
         </Container>
@@ -229,7 +225,7 @@ const ThreePieceItem: React.FC<{
   term: React.ReactNode
   def: React.ReactNode
 }> = ({ term, def }) => (
-  <div className="px-8 pb-20 flex-1">
+  <div className="px-8 pb-20 w-1/3">
     <dt className="pb-3 font-display font-semibold tracking-widest  text-[22px]">
       {term}
     </dt>
