@@ -1,8 +1,6 @@
 import * as React from 'react'
 import type { NextPage } from 'next'
 import cx from 'classnames'
-// import Head from 'next/head'
-// import Image from 'next/image'
 // import cx from 'classnames'
 import styles from './index.module.css'
 import Phone from './phone-hormone-reports.jpg'
