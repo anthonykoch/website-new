@@ -17,15 +17,16 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["./components/*"],
-      "@/hooks/*": ["./hooks/*"],
-      "@/contexts/*": ["./contexts/*"],
-      "@/pages/*": ["./pages/*"],
-      "@/images/*": ["./images/*"],
-      "@/styles/*": ["./styles/*"]
+      "@/*": ["./*"]
     },
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
-  "include": ["next.custom.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", "emotion.d.ts"],
+  "include": [
+    "next.custom.d.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "emotion.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

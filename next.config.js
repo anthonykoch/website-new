@@ -6,11 +6,7 @@ const config = {
   reactStrictMode: true,
   webpack(config, { dev, isServer }) {
     Object.assign(config.resolve.alias, {
-      '@/components': path.join(__dirname, 'components'),
-      '@/contexts': path.join(__dirname, 'contexts'),
-      '@/images': path.join(__dirname, 'images'),
-      '@/hooks': path.join(__dirname, 'hooks'),
-      '@/pages': path.join(__dirname, 'pages'),
+      '@/': __dirname,
     })
 
     config.module.rules.push({
@@ -52,6 +48,16 @@ const config = {
     return config
   },
 }
+
+// const rehypePrism = require('@mapbox/rehype-prism')
+
+// const withMDX = require('@next/mdx')({
+//   extension: /\.mdx?$/,
+//   options: {
+//     rehypePlugins: [rehypePrism],
+//     providerImportSource: '@mdx-js/react',
+//   },
+// })
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',

@@ -1,7 +1,6 @@
 import * as React from 'react'
 import type { NextPage } from 'next'
 import cx from 'classnames'
-// import cx from 'classnames'
 import styles from './index.module.css'
 import Phone from './phone-hormone-reports.jpg'
 import OpalCamera from './opal-camera-black.jpg'
@@ -10,12 +9,15 @@ import { Exposition } from '@/components/home/Exposition'
 import PhoneTablet from './phone-hormone-reports-[t].jpg'
 import { Footer } from '@/components/app/footer/Footer'
 import { ExternalLink } from '@/components/action/Link'
-console.log(IconPlaid)
+import { SiteHeader, SiteHeaderPlaceholder } from '@/components/app/Header'
 
 const Home: NextPage = () => {
   return (
     <div>
-      <Hero />
+      <SiteHeader isAbsolute />
+      <SiteHeaderPlaceholder>
+        <Hero />
+      </SiteHeaderPlaceholder>
       <div className=" pt-6 lg:pt-16 bg-[#f0f0f0]">
         <IntroSection />
         <WorkSection />
@@ -60,7 +62,7 @@ const WorkSection: React.FC = () => {
                   title={
                     <div className="relative z-10">
                       <ExternalLink href="https://modernfertility.com">
-                        Modern Fertility
+                        <span className="text-black">Modern Fertility</span>
                       </ExternalLink>
                       <span
                         className={cx(styles.MFRibbon, styles.Ribbon)}

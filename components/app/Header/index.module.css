@@ -5,17 +5,9 @@
   position: relative;
   transition: all 300ms;
   width: 100%;
-  z-index: var(--layer-site-nav);
+  z-index: 100;
 
   @media screen(md) {
-    min-height: var(--nav-height);
-  }
-
-  @media screen(2xl) {
-    min-height: var(--nav-height);
-  }
-
-  @media (min-width: 1600px) {
     min-height: var(--nav-height);
   }
 }

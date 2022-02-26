@@ -27,6 +27,7 @@ html {
 body {
   background-color: white;
   color: theme('colors.body');
+  font-family: theme('fontFamily.body');
   margin: 0;
   min-height: 100vh;
   padding: 0;
@@ -37,54 +38,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  color: #6196cc;
+}
+
 /* 
-
-h1,h2,h3,h4,h5,h6
-  font-family: var(--font-family)
-  font-weight: 600
-  letter-spacing: 1px
-  padding: 0
-  margin: 0 0 6px 0
-
-h1
-  font-size: rem(54px)
-  line-height: 1.1
-
-h2
-  font-size: rem(44px)
-  line-height: 1.1
-
-h3
-  font-size: rem(36px)
-  font-size: rem(43px)
-  line-height: 1.2
-
-h4
-  font-size: rem(22px)
-  font-family: var(--font-family-2)
-  letter-spacing: 0
-  line-height: 1.4
-
-h5
-  font-size: rem(21px)
-  line-height: 1.6
-
-h6
-  font-size: rem(16px)
-  line-height: 1.6
-
-a
-  text-decoration: none
-  transition: color $app-transition-duration
-
-  &:link,
-  &:visited
-    color: color('link')
-
-  &:hover,
-  &:active
-    color: color('link', 'hover')
-
 code
   color: $color-code-inline
   display: inline

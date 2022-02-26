@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { screens } from '../theme/tailwind'
+import { screens } from '../tailwind.config'
 
 export interface Theme {
   screens: typeof screens

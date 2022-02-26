@@ -1,10 +1,8 @@
 import type { AppProps } from 'next/app'
-import Script from 'next/script'
 
 import 'normalize.css'
 import '../styles/main.css'
 
-import { Header } from '../components/app/Header'
 import Head from 'next/head'
 import { ThemeProvider } from '@/contexts/theme'
 
@@ -65,7 +63,6 @@ setTimeout(function () {
   }
 </script> */}
 
-      <Header />
       <ThemeProvider>
         <Component {...pageProps} />
       </ThemeProvider>

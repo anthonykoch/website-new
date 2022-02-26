@@ -34,7 +34,7 @@ export const NavLink: React.FC<
     <a
       {...props}
       className={cx(
-        'h-nav-height px-px-nav-link flex items-center justify-center',
+        'h-nav-height px-px-nav-link flex items-center justify-center ',
         navLinkClasses.text,
         navLinkClasses.hover,
         // styles.NavLink,
@@ -42,17 +42,17 @@ export const NavLink: React.FC<
         // styles['NavLink-is-text'],
       )}
     >
-      {children}
+      <span className="">{children}</span>
     </a>
   )
 }
 
-export const Nav = () => {
+export const Nav: React.FC<{ className?: string }> = ({ className }) => {
   const [isNavigationModalOpen, setOpen] = useState(false)
   const router = useRouter()
 
   return (
-    <div className={cx(styles.Nav)} role="navigation">
+    <div className={cx(styles.Nav, className)} role="navigation">
       <div className={styles.NavList}>
         {desktopLinks.map(({ href, children, onClick }) => (
           <li className="hidden xl:block" key={href}>
