@@ -1,61 +1,52 @@
-import fs from 'fs'
-import path from 'path'
-import slugify from 'slugify'
 import * as React from 'react'
-import matter from 'gray-matter'
 import superjson from 'superjson'
-import { MDXProvider } from '@mdx-js/react'
 import type { GetStaticProps, NextPage } from 'next'
 import { Footer } from '@/components/app/footer/Footer'
 import { PostMeta } from '@/types/index'
+import { getAllPostMeta } from '@/utils/post'
+import Head from 'next/head'
 import { SiteHeader } from '@/components/app/Header'
-
-const components = {}
 
 interface Props {
   posts: PostMeta[]
 }
 
-const getPostsFilenames = async () => {
-  const files = fs
-    .readdirSync(path.join('posts'))
-    .map((filename) => 'posts/' + filename)
-
-  return files
-}
-
-const getPosts = async (): Promise<PostMeta[]> => {
-  return (await getPostsFilenames()).map((filename) => {
-    const { data: meta } = matter(fs.readFileSync(filename, 'utf-8'))
-
-    return {
-      ...meta,
-      slug: slugify(meta.title).toLowerCase(),
-    } as PostMeta
-  })
-}
-
 const Blog: NextPage<Props> = ({ posts }) => {
   return (
-    <MDXProvider components={components}>
+    <div>
+      <Head>
+        <title>Blog | Anthony Koch</title>
+      </Head>
+      <SiteHeader />
       <main>
-        <ul>
-          {posts.map((post) => {
-            return (
-              <li key={post.id}>
-                <a href={`/blog/${post.slug}`}>{post.title}</a>
-              </li>
-            )
-          })}
-        </ul>
+        <div className="max-w-5xl mx-auto py-24">
+          <ul>
+            {posts.map((post) => {
+              console.log(post)
+              return (
+                <li key={post.id} className="pb-16  ">
+                  <div className="font-display tracking-widest pb-2 font-500 text-[16px]">
+                    {post.humanized.created_at}
+                  </div>
+                  <a
+                    href={`/blog/${post.slug}`}
+                    className="text-blue-900 text-4xl font-heading font-extrabold"
+                  >
+                    {post.title}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
       </main>
       <Footer />
-    </MDXProvider>
+    </div>
   )
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const posts = await getPosts()
+  const posts = await getAllPostMeta()
 
   return {
     props: {

@@ -73,3 +73,23 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
 
   return null
 }
+
+export const getAllPostMeta = async (): Promise<PostMeta[]> => {
+  const promises = (await getPostsFilenames()).map(async (filename) => {
+    const folder = path.basename(path.dirname(filename))
+
+    const { default: meta }: { default: PostMeta } = await import(
+      `../posts/${folder}/meta`
+    )
+
+    return {
+      ...meta,
+      slug: slugify(meta.title).toLowerCase(),
+      humanized: {
+        created_at: datefns.format(new Date(meta.created_at), 'MMMM, d y'),
+      },
+    }
+  })
+
+  return Promise.all(promises)
+}

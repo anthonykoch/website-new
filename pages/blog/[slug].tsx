@@ -85,7 +85,7 @@ const BlogPost: NextPage<Props> = ({ mdxSource, meta }) => {
                     <Link href="/" className="Meme-item is-left" to="next.url">
                       {/* <icon-arrow-round-left className="Meme-arrow is-left"></icon-arrow-round-left> */}
                       <a>
-                        <p>Memers are forever</p>
+                        Hello
                       </a>
                     </Link>
                     <Link
@@ -94,7 +94,7 @@ const BlogPost: NextPage<Props> = ({ mdxSource, meta }) => {
                       to="previous.url"
                     >
                       <a>
-                        <p>Mommas and juicers</p>
+                        World
                       </a>
                       {/* <icon-arrow-round-right className="Meme-arrow is-right"></icon-arrow-round-right> */}
                     </Link>

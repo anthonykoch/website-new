@@ -10,15 +10,18 @@ export const SiteHeaderPlaceholder: React.FC = ({ children }) => (
   <div className="h-site-header-height">{children}</div>
 )
 
-export const SiteHeader: React.FC<{ isAbsolute?: boolean }> = ({
-  isAbsolute,
-}) => {
+export const SiteHeader: React.FC<{
+  className?: string
+  isAbsolute?: boolean
+}> = ({ isAbsolute, className }) => {
   return (
     <div
       className={cx(
-        'h-site-header-height flex items-start justify-between w-full ',
+        className,
+        'h-site-header-height flex items-start justify-between w-full',
         {
-          ['absolute top-0 left-0']: isAbsolute,
+          'absolute top-0 left-0': isAbsolute,
+          relative: !isAbsolute,
         },
       )}
       role="banner"
