@@ -1,18 +1,19 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
+import cx from 'classnames'
 import * as React from 'react'
 import superjson from 'superjson'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
-import { Footer } from '@/components/app/footer/Footer'
-import { getPostBySlug, getPostsPaths } from '@/utils/post'
-import { PostMeta } from '@/types'
 import { useRouter } from 'next/router'
 import rehypePrism from 'rehype-prism-plus'
-import { SiteHeader, SiteHeaderPlaceholder } from '@/components/app/Header'
 import { RehypeCode } from '@/rehype-plugins/code'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
+import { SiteHeader, SiteHeaderPlaceholder } from '@/components/app/Header'
+import { Footer } from '@/components/app/footer/Footer'
+import { getPostBySlug, getPostsPaths } from '@/utils/post'
+import { PostMeta } from '@/types'
 
 type MDXSource = Awaited<ReturnType<typeof serialize>>
 
@@ -40,8 +41,34 @@ const Anchor: React.FC<any> = (props) => {
   return <a className="text-link hover:text-link-hover" {...props} {...p} />
 }
 
+const UnorderedList: React.FC<{ className?: string }> = ({
+  children,
+  className,
+  ...props
+}) => {
+  return (
+    <ul {...props} className={cx('list-bullet', className)}>
+      {children}
+    </ul>
+  )
+}
+
+const OrderedList: React.FC<{ className?: string }> = ({
+  children,
+  className,
+  ...props
+}) => {
+  return (
+    <ol {...props} className={cx('list-number', className)}>
+      {children}
+    </ol>
+  )
+}
+
 const components = {
   a: Anchor,
+  ul: UnorderedList,
+  ol: OrderedList,
 }
 
 const BlogPost: NextPage<Props> = ({ mdxSource, meta }) => {
@@ -84,18 +111,14 @@ const BlogPost: NextPage<Props> = ({ mdxSource, meta }) => {
                   <div className="Meme" v-if="body">
                     <Link href="/" className="Meme-item is-left" to="next.url">
                       {/* <icon-arrow-round-left className="Meme-arrow is-left"></icon-arrow-round-left> */}
-                      <a>
-                        Hello
-                      </a>
+                      <a>Hello</a>
                     </Link>
                     <Link
                       href="/awd"
                       className="Meme-item is-right"
                       to="previous.url"
                     >
-                      <a>
-                        World
-                      </a>
+                      <a>World</a>
                       {/* <icon-arrow-round-right className="Meme-arrow is-right"></icon-arrow-round-right> */}
                     </Link>
                   </div>
@@ -159,7 +182,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
         [
           rehypeAutolinkHeadings,
           {
-            behavior: ['before'],
+            behavior: ['after'],
           },
         ],
       ],

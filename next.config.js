@@ -49,16 +49,6 @@ const config = {
   },
 }
 
-// const rehypePrism = require('@mapbox/rehype-prism')
-
-// const withMDX = require('@next/mdx')({
-//   extension: /\.mdx?$/,
-//   options: {
-//     rehypePlugins: [rehypePrism],
-//     providerImportSource: '@mdx-js/react',
-//   },
-// })
-
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })

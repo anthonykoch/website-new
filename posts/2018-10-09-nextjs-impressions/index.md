@@ -1,6 +1,6 @@
 Server-Side Rendering (SSR) seems to be all the rage nowadays, so I'd thought I'd get in on the action by trying out [NextJS](https://nextjs.org), which is a framework for writing SSR applications in React. Next allows rendering your React application pages to HTML on the server, meaning that users be able to see your application interface before React has even loaded into the browser.
 
-There are pros and cons to using SSR. A great article describing the differences is:<br>
+There are pros and cons to using SSR. A great article describing the differences is:<br />
 ["The Benefits of Server Side Rendering Over Client Side Rendering"](https://medium.com/walmartlabs/the-benefits-of-server-side-rendering-over-client-side-rendering-5d07ff2cefe8)
 
 ### NextJS High level overview
@@ -65,7 +65,7 @@ The [application I built](https://github.com/anthonykoch/emailapp/) to try out N
   <img
     src="https://raw.githubusercontent.com/anthonykoch/emailapp/master/emailapp.gif"
     class="Image has-shadow is-rounded"
-  >
+  />
 </p>
 
 ### Initial impressions

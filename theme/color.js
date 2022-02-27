@@ -31,7 +31,7 @@ exports.colors = {
   'tag-bg': 'hsl(45deg 100% 76%)',
   'code-bg': '#e8debe',
   'tag-bg-dark': '#f2d26f',
-  body: '#333333',
+  body: '#222',
   //  foregroundAlternate: '#bdbdbd'
   //  foregroundMeta: '#989b9e'
   //  foregroundMarkdown: '#292929'

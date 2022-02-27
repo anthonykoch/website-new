@@ -106,14 +106,6 @@ function stringify(data, options) {
   const indent = options.indent
 ```
 
-<!-- This syntax says,  -->
-
-<!--<div style="font-size: 20px; line-height: 1.5; font-family: Georgia; max-width: 800px;" class="u-pb6 u-pt4  u-mxauto md-fullWidth">
-&ldquo;	I expect the second argument to be an object, and I want to you take the indent property of that object and assign it to a variable named indent
-</div>-->
-
-<!-- There is also a shorthand that can be used, which accomplishes the exact same task, but allows us to omit the variable name. -->
-
 This syntax says, `"I expect the second argument to be an object, and I want to assign the indent property of that object to a variable named indent"`. There is also a shorthand for this syntax that allows the omission of the variable name if the variable and property have the same name.
 
 ```js
@@ -131,8 +123,8 @@ Along with destructuring, we can default our `indent` variable with a value of `
     <div class="Aside-content">
       <div class="Aside-tag  [ Tag is-absolute ]">A note on destructuring</div>
         Destructuring isn't limited to being used in function paramaters, but can also be used with normal variable assignments such as:
-        <br>
-        <code>const { indent: indent } = options;</code>
+        <br/>
+        <code>const {'{'} indent: indent {'}'} = options;</code>
     </div>
   </div>
 </div>

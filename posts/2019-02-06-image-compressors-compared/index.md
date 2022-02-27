@@ -285,7 +285,6 @@ At this point, I would say `recompress-medium` and `mozjpeg-medium` had the best
   </table>
 </div>
 
-<!-- TODO: Just make these an iframe -->
 <div class="md-fullWidth md-spacer">
   <div style="max-width: 900px; margin: 0 auto">
     <tabbed-image-compare :tabs="imageCompareWorkHarderTabs"></tabbed-image-compare>
