@@ -7,18 +7,11 @@
   width: 100%;
   z-index: 100;
 
-  @media screen(md) {
+  @media screen(xl) {
     min-height: var(--nav-height);
   }
 }
 
-.rootIsCollapsed {
-  min-height: 0;
-}
-
-.rootIsFullHeight {
-  min-height: 100vh;
-}
 
 .rootIsFloating {
   left: 0;
@@ -34,7 +27,7 @@
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: -1;
+  z-index: 1;
 }
 
 .BackgroundImage {
@@ -48,10 +41,10 @@
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: -1;
 }
 
-@media screen(md) {
+@media screen(lg) {
   .BackgroundImage {
     background-attachment: none;
     background-position: 90% -260px;

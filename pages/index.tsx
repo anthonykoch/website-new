@@ -5,19 +5,29 @@ import styles from './index.module.css'
 import Phone from './phone-hormone-reports.jpg'
 import OpalCamera from './opal-camera-black.jpg'
 import IconPlaid from './plaid.svg'
-import { Exposition } from '@/components/home/Exposition'
+// import OpalMacbook from './opal-macbook.png'
 import PhoneTablet from './phone-hormone-reports-[t].jpg'
+import { Exposition } from '@/components/home/Exposition'
 import { Footer } from '@/components/app/footer/Footer'
 import { ExternalLink } from '@/components/action/Link'
-import { SiteHeader, SiteHeaderPlaceholder } from '@/components/app/Header'
+
+import {
+  SiteHeader,
+  SiteHeaderBackground,
+  SiteHeaderPlaceholder,
+} from '@/components/app/Header'
 
 const Home: NextPage = () => {
   return (
     <div>
       <SiteHeader isAbsolute />
-      <SiteHeaderPlaceholder>
-        <Hero />
+
+      <SiteHeaderPlaceholder className="relative">
+        <SiteHeaderBackground>
+          <Hero />
+        </SiteHeaderBackground>
       </SiteHeaderPlaceholder>
+
       <div className=" pt-6 lg:pt-16 bg-[#f0f0f0]">
         <IntroSection />
         <WorkSection />
@@ -46,7 +56,7 @@ const WorkSection: React.FC = () => {
       <section>
         <div className="xl:h-[783px] py-16 xl:pt-0 flex items-center lg:px-6">
           <Container>
-            <div className="xl:flex items-center xl:px-gutter">
+            <div className="xl:flex flex-row-reverse items-center xl:px-gutter">
               <div className="lg:max-w-3xl lg:pt-8 xl:pt-0 mx-auto  xl:w-[468px]">
                 <picture>
                   <source media="(min-width: 1024px)" srcSet={Phone.src} />
@@ -57,7 +67,7 @@ const WorkSection: React.FC = () => {
                   />
                 </picture>
               </div>
-              <div className="flex-1 flex items-center justify-center pt-10 xl:pt-32 xl:pl-gutter">
+              <div className="flex-1 flex items-center justify-center pt-10 xl:pl-gutter">
                 <Exposition
                   title={
                     <div className="relative z-10">
@@ -164,7 +174,7 @@ const WorkSection: React.FC = () => {
         <Container>
           <h2>
             <Heading2 className="pb-8 xl:pb-20 pt-20 xl:pt-36 text-center xl:text-left">
-              Get in touch with me
+              Hire me
             </Heading2>
           </h2>
 
@@ -201,7 +211,7 @@ const WorkSection: React.FC = () => {
             </ThreePiece>
 
             <a href="mailto:hello@anthonykoch.com">
-              <div className="text-center xl:text-left  text-4xl xl:text-8xl xl:py-10">
+              <div className="text-center 2xl:text-left  text-4xl xl:text-7xl 2xl:text-8xl xl:py-10">
                 hello@anthonykoch.com
               </div>
             </a>
@@ -227,8 +237,8 @@ const ThreePieceItem: React.FC<{
   term: React.ReactNode
   def: React.ReactNode
 }> = ({ term, def }) => (
-  <div className="px-8 pb-20 w-1/3">
-    <dt className="pb-3 font-display font-semibold tracking-widest  text-[22px]">
+  <div className="px-gutter xl:px-8 pb-20 xl:w-1/3">
+    <dt className="pb-3 font-display font-semibold tracking-widest text-[22px]">
       {term}
     </dt>
     <dd className="leading-8 text-[15px]">{def}</dd>
@@ -254,8 +264,8 @@ const IntroSection: React.FC = () => {
   return (
     <div className="bg-[#f0f0f0] px-gutter ">
       <div className={styles.IntroContainer}>
-        <h2 className={styles.IntroTitle}>Some of my work</h2>
-        <p className={styles.IntroLead}>I’ve worked with memers and dreamers</p>
+        <h2 className={styles.IntroTitle}>Portfolio</h2>
+        {/* <p className={styles.IntroLead}>I’ve worked with memers and dreamers</p> */}
       </div>
     </div>
   )

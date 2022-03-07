@@ -14,7 +14,7 @@
   color: #333;
   font-family: 'averta';
   font-size: 16px;
-  line-height: 1.9;
+  line-height: 1.8;
 
   @media screen(xl) {
     font-size: 17.5px;
@@ -62,10 +62,20 @@
   }
 
   & > pre {
+    border-radius: 3px;
+    background-color: #ebebeb;
+    font-size: 12px;
+    line-height: 1.8;
+    padding-top: theme('spacing.8');
+    padding-bottom: theme('spacing.8');
+    margin-right: 0;
     position: relative;
+    overflow: auto;
+    width: 100%;
+    max-width: 100%;
+    max-width: theme('maxWidth.post');
 
     &:before {
-      /* background-color: rgba(255,255,255,0.1); */
       text-align: center;
       color: #f1f1f1;
       font-size: 11px;
@@ -77,22 +87,15 @@
       bottom: 0;
       right: 0;
     }
-  }
 
-  & > pre {
-    border-radius: 3px;
-    background-color: #ebebeb;
-    /* box-shadow: 0 2px 10px -1px inset rgba(0, 0, 0, 0.1); */
-    font-size: 13px;
-    line-height: 1.8;
-    padding-top: theme('spacing.8');
-    padding-bottom: theme('spacing.8');
-    margin-left: theme('spacing.gutter');
-    margin-right: 0;
-    position: relative;
+    > code {
+      display: block;
+      /* margin-left: calc((100% - theme('maxWidth.post')) / 2); */
+    }
 
     > code > * {
       position: relative;
+      max-width: theme('maxWidth.post');
 
       &:before {
         content: attr(line);
@@ -110,6 +113,8 @@
       font-size: 13.5px;
       margin-left: auto;
       margin-right: auto;
+      /* margin-left: theme('spacing.gutter'); */
+      /* margin-right: theme('spacing.gutter'); */
 
       > code {
         > * {
@@ -119,27 +124,6 @@
       }
     }
   }
-
-  > div,
-  > img,
-  > blockquote,
-  > figure,
-  > ul,
-  > ol,
-  > li,
-  > p,
-  > dl,
-  > table {
-    /* font-size: 16.5px; */
-    /* line-height: 1.65; */
-  }
-  /* 
-
-  /* > ol */
-  /* +make-list-number */
-
-  /* > ul */
-  /* +make-list-bullet */
 
   > figure,
   > ul,
@@ -173,6 +157,7 @@
     padding-right: 0;
     width: 100%;
   }
+
   > :last-child {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -240,27 +225,6 @@
 
 .md > h3,
 .md-h3 {
-  /* color: #ea1093; */
-  /* color: #a05883; */
-  /* color: #cd3e8c; */
-  /* color: #9d0055; */
-  /* color: #eb007f; */
-  position: relative;
-  z-index: 1;
-
-  /* &:before {
-    background-color: #ffe083;
-    border-radius: 3px;
-    content: '';
-    height: 120%;
-    position: absolute;
-    left: calc(50% + -30px);
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    z-index: -1;
-  } */
-
   font-family: theme('fontFamily.heading');
   font-weight: 900;
   font-size: 36px;
@@ -269,10 +233,25 @@
   margin-top: theme('spacing.20');
   margin-bottom: theme('spacing.6');
   max-width: 100%;
+  padding-bottom: 16px;
   position: relative;
   z-index: 1;
 
-  a {
+  /* 
+  &:before {
+    content: '';
+    border-left: 12px solid #25cead;
+    border-bottom: 12px solid #25cead;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+  } 
+  */
+
+  /* a {
     display: inline-block;
     background-image: url('../images/icons/link.svg');
     background-repeat: no-repeat;
@@ -294,25 +273,24 @@
 
   &:hover a {
     opacity: 1;
-  }
+  } */
 
+  /* 
   &:after {
+    background-color: theme('colors.link');
+    border-radius: 100%;
     content: '';
-    position: absolute;
     display: inline-block;
-    width: 100%;
-    left: 0;
+    height: 20px;
+    position: absolute;
+    left: -20px;
+    transform: translate(0%, -50%);
     top: 50%;
-    height: 40px;
+    width: 20px;
     z-index: -1;
-  }
+  } */
 
   @media screen(lg) {
-    /* background-color: black; */
-    /* background:linear-gradient(to left, #cd3e8c, #d9d9d9); */
-    /* background-clip: text; */
-    /* -webkit-text-fill-color: transparent; */
-    /* background-color: #d9d9d9; */
     font-size: 50px;
     font-weight: 900;
     letter-spacing: -0.45px;
@@ -359,12 +337,6 @@
   margin-top: theme('spacing.6');
 }
 
-/* .md-listNumber */
-/* +make-list-number */
-
-/* .md-listBullet */
-/* +make-list-bullet */
-
 @media screen(xl) {
   .md {
     > blockquote {
@@ -386,19 +358,19 @@
 
   & > li {
     margin-bottom: 6px;
-    margin-left: 28px;
+    margin-left: 24px;
     padding-left: 10px;
     position: relative;
 
     &:before {
-      content: '';
       border-radius: 50%;
-      background-color: theme('colors.link');
-      height: 0.4em;
+      background-color: theme('colors.body');
+      content: '';
+      height: 0.35em;
       left: -16px;
       position: absolute;
       top: 0.6em;
-      width: 0.4em;
+      width: 0.35em;
     }
   }
 
@@ -406,7 +378,7 @@
     & > li {
       margin-bottom: 8px;
       margin-left: 38px;
-      padding-left: 14px;
+      padding-left: 10px;
     }
   }
 }
@@ -418,7 +390,7 @@
 
   & > li {
     margin-bottom: 6px;
-    margin-left: 28px;
+    margin-left: 24px;
     padding-left: 10px;
   }
 
@@ -427,6 +399,98 @@
       margin-bottom: 8px;
       margin-left: 38px;
       padding-left: 14px;
+    }
+  }
+}
+
+.PostsList {
+  & > li {
+    transition: background-color, 0.1s;
+    user-select: none;
+
+    &:hover {
+      background-color: #e8b92c;
+      box-shadow: 0 24px 60px -9px rgb(0 0 0 / 20%);
+    }
+
+    &.is-active {
+      background-color: #e6e6e6;
+
+      &:hover {
+        background-color: #ebebeb;
+        box-shadow: none;
+        cursor: default;
+
+        span {
+          border-left-color: white;
+        }
+      }
+
+      span {
+        border-left-color: white;
+      }
+    }
+  }
+
+  a {
+    border-radius: 2px;
+    box-shadow: none;
+    align-items: center;
+    display: flex;
+    color: #111;
+    transition: all 0.1s;
+
+    &:hover,
+    &:active {
+      span {
+        border-left-color: white;
+      }
+    }
+
+    time {
+      color: #222;
+    }
+  }
+
+  time,
+  span {
+    padding: 13px 11px;
+    transition: all 200ms;
+  }
+
+  span {
+    border-left: 1px solid #e6e6e6;
+    display: block;
+    font-family: theme('fontFamily.heading');
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.3;
+    width: 100%;
+  }
+
+  time {
+    color: #888;
+    display: block;
+    font-style: italic;
+    font-size: 12.5px;
+    font-family: theme('fontFamily.heading');
+    font-weight: 500;
+    line-height: 1.3;
+    min-width: 150px;
+  }
+
+  @media screen(xl) {
+    time,
+    span {
+      padding: 18px 15px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+
+    time {
+      font-size: 14px;
     }
   }
 }

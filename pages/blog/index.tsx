@@ -1,28 +1,95 @@
 import * as React from 'react'
 import cx from 'classnames'
+import Head from 'next/head'
 import superjson from 'superjson'
 import type { GetStaticProps, NextPage } from 'next'
 import { Footer } from '@/components/app/footer/Footer'
 import { PostMeta } from '@/types/index'
 import { getAllPostMeta } from '@/utils/post'
-import Head from 'next/head'
-import { SiteHeader } from '@/components/app/Header'
+import {
+  SiteHeader,
+  SiteHeaderBackground,
+  SiteHeaderPlaceholder,
+} from '@/components/app/Header'
 import styles from './blog.index.module.css'
+import { TabbedImageCompare } from '@/components/shared/TabbedImageCompare'
+import Memes from '@/images/background-2.jpg'
 
 interface Props {
   posts: PostMeta[]
 }
 
+// const Lifted: React.FC<{ className?: string }> = ({ className, children }) => {
+//   return (
+//     <div className={cx('absolute top-0 left-0 w-full', className)}>
+//       {children}
+//     </div>
+//   )
+// }
+
 const Blog: NextPage<Props> = ({ posts }) => {
-  console.log(posts.length)
   return (
     <div>
       <Head>
         <title>Blog | Anthony Koch</title>
       </Head>
-      <SiteHeader />
+
+      <SiteHeader isAbsolute />
+
       <main>
-        <div className="bg-[#f0f0f0]">
+        <SiteHeaderPlaceholder className="relative">
+          <SiteHeaderBackground>
+            <div className="max-w-lg xl:max-w-4xl mx-auto px-gutter pt-40 xl:pt-52">
+              <h1 className="text-[22px] font-600 font-display text-primary-500 pb-4 tracking-[2.5px]">
+                My Writings
+              </h1>
+              <p className="font-body text-white/90 xl:text-[18px] text-[16px]">
+                These are my various writings, mostly on topics surrounding
+                front-end development.
+              </p>
+            </div>
+          </SiteHeaderBackground>
+        </SiteHeaderPlaceholder>
+
+        <div className="bg-[#f0f0f0] z-10 relative">
+          {/* 
+        text: title.text,
+    id: `image-compare-${image}-${title.text.toLowerCase()}`,
+    width,
+    height,
+    left: {
+      url: `/images/posts/image-compressors-compared/compressed/images/${image}.[original].${ext}`,
+    },
+    right: {
+      url: `/images/posts/image-compressors-compared/compressed/${title.path({ image })}`,
+    } */}
+
+          <div className="max-w-5xl mx-auto my-10">
+            <TabbedImageCompare
+              // id: `image-compare-${image}-${title.text.toLowerCase()}`,
+              tabs={[
+                {
+                  // id: `ic-${image}-${title.text.toLowerCase()}`,
+                  id: '1',
+                  content: 'abraia',
+                  left: Memes.src,
+                  right: Memes.src,
+                  width: 2850,
+                  height: 1900,
+                },
+                {
+                  // id: `ic-${image}-${title.text.toLowerCase()}`,
+                  id: '2',
+                  content: 'tinypng',
+                  left: Memes.src,
+                  right: Memes.src,
+                  width: 2850,
+                  height: 1900,
+                },
+              ]}
+            />
+          </div>
+
           <div className="max-w-screen-macbook16 mx-auto">
             <ul
               className={cx('flex flex-wrap', {
@@ -31,7 +98,7 @@ const Blog: NextPage<Props> = ({ posts }) => {
                 [styles.by3Remainder2]: posts.length % 3 === 2,
               })}
             >
-              {posts.map((post) => {
+              {posts.map((post, index) => {
                 return (
                   <li
                     key={post.id}
@@ -42,12 +109,12 @@ const Blog: NextPage<Props> = ({ posts }) => {
                   >
                     <a
                       href={`/blog/${post.slug}`}
-                      className="py-12 xl:py-20 px-16 block"
+                      className="py-12 xl:py-20 px-16 block relative"
                     >
                       <div className="font-body pb-2 uppercase tracking-widest font-700 text-[13px] text-black/50">
-                        {post.humanized.created_at}
+                        {post.humanized.created_at} - #{posts.length - index}
                       </div>
-                      <div className="text-black/90   text-[24px] leading-[1.4] font-heading font-800">
+                      <div className="text-black/90 text-[24px] leading-[1.2] xl:leading-[1.4] font-heading font-800">
                         <span className="max-w-[200px] ">{post.title}</span>
                       </div>
                     </a>

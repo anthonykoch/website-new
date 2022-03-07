@@ -17,7 +17,7 @@ export const Exposition: React.FC<{
         </h3>
       </div>
       <p className="leading-[38px] w-[534px]  pb-10">{description}</p>
-      <a href={href} rel="noopener noreferrer" target="_blank">
+      <a className="inline-block" href={href} rel="noopener noreferrer" target="_blank">
         <Button>{cta}</Button>
       </a>
     </div>

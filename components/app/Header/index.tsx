@@ -6,9 +6,19 @@ import { Logo } from './Logo'
 import styles from './index.module.css'
 import { navLinkClasses } from './styles.common'
 
-export const SiteHeaderPlaceholder: React.FC = ({ children }) => (
-  <div className="h-site-header-height">{children}</div>
-)
+export const SiteHeaderPlaceholder: React.FC<{ className?: string }> = ({
+  className,
+  children,
+}) => <div className={cx('h-site-header-height', className)}>{children}</div>
+
+export const SiteHeaderBackground: React.FC = ({ children }) => {
+  return (
+    <div className={cx(styles.background)}>
+      <div className={cx(styles.BackgroundImage)} />
+      {children}
+    </div>
+  )
+}
 
 export const SiteHeader: React.FC<{
   className?: string
@@ -18,7 +28,7 @@ export const SiteHeader: React.FC<{
     <div
       className={cx(
         className,
-        'h-site-header-height flex items-start justify-between w-full',
+        'flex items-start justify-between w-full z-header',
         {
           'absolute top-0 left-0': isAbsolute,
           relative: !isAbsolute,
@@ -26,9 +36,6 @@ export const SiteHeader: React.FC<{
       )}
       role="banner"
     >
-      <div className={cx(styles.background)}>
-        <div className={cx(styles.BackgroundImage)} />
-      </div>
       <div className="Logo">
         <Link href="/" passHref>
           <a

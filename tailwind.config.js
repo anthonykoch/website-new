@@ -22,7 +22,7 @@ const fontFamily = {
 }
 
 const maxWidth = {
-  post: '680px',
+  post: '720px',
   postWide: '820px',
   site: '1440px',
   common: '1232px',

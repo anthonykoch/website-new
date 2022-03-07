@@ -10,7 +10,7 @@ export interface PostMetaRaw {
   title: string
   created_at: string
   published_at: string
-  slug?: string
+  slug: string
 }
 
 export interface PostMeta extends PostMetaRaw {

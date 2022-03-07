@@ -1,7 +1,11 @@
 .BlogPostListing__Item {
-  --bg: rgba(0, 0, 0, 0.2);
+  --bg: rgba(0, 0, 0, 0.1);
   transition: background-color 150ms;
   border-color: transparent;
+
+  &:hover {
+    box-shadow: 0 20px 30px -9px rgb(0 0 0 / 20%);
+  }
 
   @media (max-width: theme('screens.lg')) {
     width: 100%;

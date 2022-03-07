@@ -92,6 +92,7 @@ export const getAllPostMeta = async (): Promise<PostMeta[]> => {
   })
 
   return (await Promise.all(promises)).sort((a, b) => {
+    // @ts-ignore
     return new Date(b.created_at) - new Date(a.created_at)
   })
 }
