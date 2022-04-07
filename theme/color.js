@@ -1,5 +1,5 @@
 exports.colors = {
-  transparent: 'rgba(black, 0)',
+  transparent: 'rgba(0,0,0, 0)',
   purple: 'hsl(280, 74%, 72%)',
   // blue: 'hsl(210, 82%, 59%)',
   // green: 'hsl(160, 100%, 37%)',

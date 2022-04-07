@@ -1,5 +1,5 @@
 export interface Post {
-  meta: any
+  meta: PostMeta
   content: string
 }
 
@@ -11,6 +11,7 @@ export interface PostMetaRaw {
   created_at: string
   published_at: string
   slug: string
+  data: any
 }
 
 export interface PostMeta extends PostMetaRaw {

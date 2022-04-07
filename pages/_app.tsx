@@ -18,13 +18,6 @@ const HeadMeta = () => {
       />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="robots" content="index,follow" />
-
-      <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
-      <link rel="stylesheet" href="https://use.typekit.net/nsr0hmh.css" />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"
-      />
     </Head>
   )
 }

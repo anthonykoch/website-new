@@ -3,7 +3,7 @@ const { colors } = require('./theme/color')
 
 const spacing = {
   'site-header-height': '500px',
-  gutter: '16px',
+  gutter: '20px',
   'nav-height': '60px',
   'nav-icon-width': '54px',
   'py-nav-link': '16px',
@@ -16,7 +16,9 @@ const fontFamily = {
   display: `'rift-soft', ${backup}`,
   link: `'rift-soft', ${backup}`,
   heading: `'visby', ${backup}`,
-  body: `'averta', ${backup}`,
+  body: `'DM Sans', ${backup}`,
+  // body: `'averta', ${backup}`,
+
   // body: `'proxima-nova', ${backup}`,
   code: `'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', monospace`,
 }
@@ -55,6 +57,9 @@ module.exports = {
   darkMode: 'media',
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
+    './fragments/**/*.{js,ts,jsx,tsx}',
+    './screens/**/*.{js,ts,jsx,tsx}',
+    './posts/**/*.{md,mdx}',
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {

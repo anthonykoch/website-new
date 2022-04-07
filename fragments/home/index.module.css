@@ -11,16 +11,10 @@
 
 .HeroTitle {
   color: #e8b92c;
-  font-family: theme('fontFamily.heading');
+  font-family: theme('fontFamily.display');
   font-size: 64px;
   font-size: 96px;
-  font-weight: 700;
-}
-
-.HeroLead {
-  color: white;
-  font-weight: 400;
-  font-size: 18px;
+  font-weight: 500;
 }
 
 .Intro {
@@ -44,9 +38,12 @@
 .IntroTitle {
   color: #949494;
   font-family: theme('fontFamily.heading');
-  font-weight: 400;
+  /* font-weight: 400; */
   font-size: 64px;
   line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 42px;
 }
 
 .IntroLead {

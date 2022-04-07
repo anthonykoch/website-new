@@ -28,7 +28,7 @@ export const NavLink: React.FC<
 > = ({ children, activeClassName, ...props }) => {
   const awd = useActiveLink({})
 
-  console.log(awd)
+  // console.log(awd)
 
   return (
     <a
@@ -37,9 +37,7 @@ export const NavLink: React.FC<
         'h-nav-height px-px-nav-link flex items-center justify-center ',
         navLinkClasses.text,
         navLinkClasses.hover,
-        // styles.NavLink,
         styles.NavLinkShadow,
-        // styles['NavLink-is-text'],
       )}
     >
       <span className="">{children}</span>
@@ -209,24 +207,24 @@ const links = [
 ]
 
 const desktopLinks = [
-  {
-    href: '/#work',
-    children: 'Work',
-    onClick: (pathname: string) => (e: React.MouseEvent) => {
-      if (pathname === '/') {
-        e.preventDefault()
-        document.querySelector('#work')?.scrollIntoView({
-          behavior: 'smooth',
-        })
-      }
-    },
-  },
+  // {
+  //   href: '/#work',
+  //   children: 'Work',
+  //   onClick: (pathname: string) => (e: React.MouseEvent) => {
+  //     if (pathname === '/') {
+  //       e.preventDefault()
+  //       document.querySelector('#work')?.scrollIntoView({
+  //         behavior: 'smooth',
+  //       })
+  //     }
+  //   },
+  // },
   {
     href: '/blog',
     children: 'Blog',
   },
   {
-    href: '/contact',
+    href: '/#contact',
     children: 'Contact',
   },
   {

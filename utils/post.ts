@@ -1,10 +1,8 @@
-import fs, { promises as fomise } from 'fs'
+import fs from 'fs'
 import path from 'path'
 import slugify from 'slugify'
-import matter from 'gray-matter'
 import * as datefns from 'date-fns'
 import type { Post, PostMeta } from '../types'
-import { compile } from '@mdx-js/mdx'
 import glob from 'fast-glob'
 
 const pattern = path.join(process.cwd(), 'posts/**/*.{md,mdx}')
@@ -21,11 +19,12 @@ export const getPostsPaths = async (): Promise<Path[]> => {
   const paths = files.map(async (filename) => {
     const folder = path.basename(path.dirname(filename))
 
-    const { default: meta }: { default: any } = await import(
+    const { default: metaImport }: { default: any } = await import(
       `../posts/${folder}/meta`
     )
 
-    console.log(meta)
+    const meta =
+      typeof metaImport === 'function' ? await metaImport() : metaImport
 
     return {
       params: {
@@ -49,9 +48,14 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
     const content = fs.readFileSync(filename, 'utf-8')
     const folder = path.basename(path.dirname(filename))
 
-    const { default: meta }: { default: PostMeta } = await import(
+    const {
+      default: metaImport,
+    }: { default: PostMeta | (() => Promise<PostMeta>) } = await import(
       `../posts/${folder}/meta`
     )
+
+    const meta =
+      typeof metaImport === 'function' ? await metaImport() : metaImport
 
     const post = {
       content,
@@ -78,9 +82,14 @@ export const getAllPostMeta = async (): Promise<PostMeta[]> => {
   const promises = (await getPostsFilenames()).map(async (filename) => {
     const folder = path.basename(path.dirname(filename))
 
-    const { default: meta }: { default: PostMeta } = await import(
+    const {
+      default: metaImport,
+    }: { default: PostMeta | (() => Promise<PostMeta>) } = await import(
       `../posts/${folder}/meta`
     )
+
+    const meta =
+      typeof metaImport === 'function' ? await metaImport() : metaImport
 
     return {
       ...meta,

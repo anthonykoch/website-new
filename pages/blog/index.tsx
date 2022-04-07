@@ -12,20 +12,10 @@ import {
   SiteHeaderPlaceholder,
 } from '@/components/app/Header'
 import styles from './blog.index.module.css'
-import { TabbedImageCompare } from '@/components/shared/TabbedImageCompare'
-import Memes from '@/images/background-2.jpg'
 
 interface Props {
   posts: PostMeta[]
 }
-
-// const Lifted: React.FC<{ className?: string }> = ({ className, children }) => {
-//   return (
-//     <div className={cx('absolute top-0 left-0 w-full', className)}>
-//       {children}
-//     </div>
-//   )
-// }
 
 const Blog: NextPage<Props> = ({ posts }) => {
   return (
@@ -52,44 +42,6 @@ const Blog: NextPage<Props> = ({ posts }) => {
         </SiteHeaderPlaceholder>
 
         <div className="bg-[#f0f0f0] z-10 relative">
-          {/* 
-        text: title.text,
-    id: `image-compare-${image}-${title.text.toLowerCase()}`,
-    width,
-    height,
-    left: {
-      url: `/images/posts/image-compressors-compared/compressed/images/${image}.[original].${ext}`,
-    },
-    right: {
-      url: `/images/posts/image-compressors-compared/compressed/${title.path({ image })}`,
-    } */}
-
-          <div className="max-w-5xl mx-auto my-10">
-            <TabbedImageCompare
-              // id: `image-compare-${image}-${title.text.toLowerCase()}`,
-              tabs={[
-                {
-                  // id: `ic-${image}-${title.text.toLowerCase()}`,
-                  id: '1',
-                  content: 'abraia',
-                  left: Memes.src,
-                  right: Memes.src,
-                  width: 2850,
-                  height: 1900,
-                },
-                {
-                  // id: `ic-${image}-${title.text.toLowerCase()}`,
-                  id: '2',
-                  content: 'tinypng',
-                  left: Memes.src,
-                  right: Memes.src,
-                  width: 2850,
-                  height: 1900,
-                },
-              ]}
-            />
-          </div>
-
           <div className="max-w-screen-macbook16 mx-auto">
             <ul
               className={cx('flex flex-wrap', {

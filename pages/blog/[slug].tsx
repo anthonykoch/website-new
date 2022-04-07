@@ -1,5 +1,4 @@
 import type { GetStaticProps, NextPage } from 'next'
-import Link from 'next/link'
 import cx from 'classnames'
 import * as React from 'react'
 import superjson from 'superjson'
@@ -18,7 +17,7 @@ import {
 import { Footer } from '@/components/app/footer/Footer'
 import { getAllPostMeta, getPostBySlug, getPostsPaths } from '@/utils/post'
 import { PostMeta } from '@/types'
-import styles from './blog.index.module.css'
+import { markdownComponents } from '@/components/markdown-components'
 
 type MDXSource = Awaited<ReturnType<typeof serialize>>
 
@@ -29,55 +28,7 @@ interface Props {
   posts: PostMeta[]
 }
 
-const Anchor: React.FC<any> = (props) => {
-  let p: Record<string, any> = {} as any
-  const router = useRouter()
-
-  if (props.href) {
-    try {
-      const url = new URL(props.href)
-      const HOSTNAME = 'anthonykoch.com'
-
-      if (!url.hostname.endsWith(HOSTNAME)) {
-        p = { ...p, target: '_blank', rel: 'noreferrer noopener ' }
-      }
-    } catch (err) {}
-  }
-
-  return <a className="text-link hover:text-link-hover" {...props} {...p} />
-}
-
-const UnorderedList: React.FC<{ className?: string }> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <ul {...props} className={cx('list-bullet', className)}>
-      {children}
-    </ul>
-  )
-}
-
-const OrderedList: React.FC<{ className?: string }> = ({
-  children,
-  className,
-  ...props
-}) => {
-  return (
-    <ol {...props} className={cx('list-number', className)}>
-      {children}
-    </ol>
-  )
-}
-
-const components = {
-  a: Anchor,
-  ul: UnorderedList,
-  ol: OrderedList,
-}
-
-const BlogPost: NextPage<Props> = ({ mdxSource, post, posts }) => {
+const BlogPost: NextPage<Props> = ({ mdxSource, scope, post, posts }) => {
   const { asPath } = useRouter()
 
   return (
@@ -111,7 +62,7 @@ const BlogPost: NextPage<Props> = ({ mdxSource, post, posts }) => {
               className="Post-body md pt-20 pb-24"
               // style="animation-delay: 0.3s"
             >
-              <MDXRemote {...mdxSource} components={components} />
+              <MDXRemote {...mdxSource} components={markdownComponents} />
               {/* <capture-fullscreen :images="true">
                 </capture-fullscreen> */}
             </div>
@@ -180,10 +131,11 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const { slug } = params as { slug: string }
-  const posts = (await getAllPostMeta()).slice(0, 7)
+  const posts = (await getAllPostMeta()).slice(0)
   const post = (await getPostBySlug(slug))!
 
   const mdxSource = await serialize(post.content, {
+    scope: post.meta.data,
     mdxOptions: {
       rehypePlugins: [
         [RehypeCode, {}],

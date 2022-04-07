@@ -1,5 +1,5 @@
 import React from 'react'
-import { ImageCompare, ImageCompareProps } from './ImageCompare'
+import { ImageCompare } from './ImageCompare'
 import { TabItem, Tabs } from './Tabs'
 
 interface Tab {
@@ -14,17 +14,22 @@ interface Tab {
 
 interface Props {
   tabs: Tab[]
+  name: string
 }
 
-export const TabbedImageCompare: React.FC<Props> = ({ tabs }) => {
+export const TabbedImageCompare: React.FC<Props> = ({ tabs, name }) => {
   const defaultTab = tabs.find((tab) => tab.isDefault) ?? tabs[0]
   const [activeTab, setActiveTab] = React.useState<Tab>(defaultTab)
+
+  if (activeTab == null) {
+    return null
+  }
 
   return (
     <div>
       <div></div>
       <Tabs
-        name="yes"
+        name={name}
         defaultId={defaultTab?.id}
         onChange={(id) => setActiveTab(tabs.find((tab) => tab.id === id)!)}
       >
@@ -42,8 +47,4 @@ export const TabbedImageCompare: React.FC<Props> = ({ tabs }) => {
       />
     </div>
   )
-}
-
-{
-  /* <tabbed-image-compare :tabs="imageCompareWorkHarderTabs"></tabbed-image-compare> */
 }

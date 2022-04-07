@@ -25,7 +25,7 @@ const Tag: React.FC<{ className?: string }> = ({ className, children }) => {
   return (
     <div
       className={cx(
-        'bg-white/70 border-white/10 border absolute text-black/70 text-[13px] py-1 px-2.5 top-1/2 pointer-events-none',
+        'bg-black/30 border-white/10 border absolute text-black/70 text-[13px] py-1 px-2.5 bottom-0 translate-y-full pointer-events-none',
         className,
       )}
     >
@@ -72,7 +72,16 @@ export const ImageCompare: React.FC<ImageCompareProps> = ({
         >
           <div data-left className="absolute top-0 left-0 w-full z-10">
             <Tag className="right-0">After</Tag>
-            <img src={left} alt="" />
+            {size && (
+              <img
+                src={left}
+                alt=""
+                style={{
+                  width: size.width,
+                  height: size.height,
+                }}
+              />
+            )}
           </div>
           {size && (
             <motion.div

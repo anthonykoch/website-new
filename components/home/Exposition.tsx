@@ -2,26 +2,24 @@ import * as React from 'react'
 import styles from './Exposition.module.css'
 
 export const Exposition: React.FC<{
-  title: React.ReactNode
+  title?: React.ReactNode
   description: React.ReactNode
   cta: React.ReactNode
   href: string
 }> = ({ title, description, cta, href }) => {
   return (
-    // flex flex-col items-center justify-center
-    // <div className="">
     <div>
-      <div className="w-full">
-        <h3 className="font-display tracking-[4px] text-[28px] font-semibold relative inline-block mb-7">
-          {title}
-        </h3>
-      </div>
-      <p className="leading-[38px] w-[534px]  pb-10">{description}</p>
-      <a className="inline-block" href={href} rel="noopener noreferrer" target="_blank">
+      <div className="w-full">{title}</div>
+      <p className="leading-[38px] max-w-[734px]  pb-6">{description}</p>
+      <a
+        className="inline-block"
+        href={href}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
         <Button>{cta}</Button>
       </a>
     </div>
-    // </div>
   )
 }
 
