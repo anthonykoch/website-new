@@ -25,8 +25,8 @@ export const ModernFertilityMacbookSection = () => {
         </picture>
       </div>
 
-      <div className="px-gutter max-w-[500px] xl:max-w-[688px] mx-auto">
-        <p className="text-[17px] pt-6 lg:pl-14">
+      <div className="px-gutter max-w-[620px] mx-auto">
+        <p className="text-[17px] pt-6 lg:pl-14 leading-relaxed">
           Modern Fertility approached me to assist them in developing their
           website. At the time, I was the sole front-end developer, working
           alongside Tom Chokel to help Carly and Afton to help give women the
@@ -44,11 +44,11 @@ export const ModernFertilityMacbookSection = () => {
 
 export const ModernFertilityMobileSection = () => {
   return (
-    <Container className="py-32 px-gutter">
+    <Container className="py-32 xl:py-44 px-gutter">
       <h2 className="font-heading font-bold max-w-[400px] xl:max-w-[450px] text-[34px] xl:text-[40px] mb-5 leading-[1.2] mx-auto text-center pb-6 xl:hidden">
         A responsive website, built from scratch.
       </h2>
-      <div className="xl:flex justify-center  xl:space-x-20 xl:px-gutter">
+      <div className="xl:flex justify-center xl:space-x-20 xl:px-gutter">
         <div>
           <img
             src={MFMobileImage.src}
@@ -61,7 +61,7 @@ export const ModernFertilityMobileSection = () => {
             <h2 className="font-heading font-bold max-w-[400px] xl:max-w-[450px] text-[34px] xl:text-[40px] mb-5 leading-[1.2] hidden xl:block">
               A responsive website, built from scratch.
             </h2>
-            <div className="max-w-[577px] mx-auto xl:mx-0 space-y-5 lg:text-[17px]">
+            <div className="max-w-[577px] mx-auto xl:mx-0 space-y-5 lg:text-[17px] leading-relaxed">
               <p>
                 Using simple tools of HTML and CSS, I worked closely with
                 designers to build out the first iteration of Modern Fertility’s

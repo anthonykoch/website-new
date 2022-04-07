@@ -10,10 +10,10 @@ const expand =
 export const Footer: React.FC = () => {
   return (
     <footer>
-      <div className="py-18 flex items-center justify-between max-w-common mx-auto px-gutter">
+      <div className="py-6 xl:py-8 flex flex-col xl:flex-row items-center justify-between max-w-common mx-auto px-gutter">
         <div>
           <div>
-            <div className="py-8">
+            <div className="py-2 xl:py-0 mb-2 xl:mb-0">
               <nav>
                 <div className="flex w-full ">
                   <div className="pr-5">

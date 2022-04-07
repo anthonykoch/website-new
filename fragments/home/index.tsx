@@ -1,10 +1,10 @@
 import cx from 'classnames'
 
 import { Container } from '@/components/container'
-import { Exposition } from '@/components/home/Exposition'
-import { Title } from './common'
+import { SectionTitle, Title } from './common'
 import styles from './index.module.css'
 import IconPlaid from './plaid.svg'
+import { ViewWebsiteButton } from '@/components/button'
 
 export * as F from './common'
 export * from './modern-fertility'
@@ -26,37 +26,70 @@ export const Hero = () => {
   )
 }
 
+const BackgroundRibbon: React.FC<{ className?: string }> = ({
+  className,
+  children,
+}) => {
+  return (
+    <span
+      className={cx(
+        'rounded-sm h-[38px] absolute -translate-y-1/2 top-1/2 -z-10 w-[325px]',
+        className,
+      )}
+    >
+      {children}
+    </span>
+  )
+}
+
 export const PlaidSection = () => {
   return (
-    <div className="bg-seafoam xl:h-[625px] xl:flex items-center py-20 xl:py-0">
-      <Container>
-        <div className="xl:flex flex-row-reverse items-center">
+    <div className="bg-white xl:min-h-[825px] py-20">
+      <Container className="px-gutter">
+        <h2 className="mb-10 xl:mb-20">
+          <Title>I’ve also worked with...</Title>
+        </h2>
+        <div className="xl:flex items-center max-w-xl xl:max-w-full mx-auto">
           <div className="flex-1 xl:flex items-center xl:h-[430px] relative">
             <img
               src={IconPlaid.src}
               alt="camera made by opal camera"
-              className="mb-8 xl:mb-0 xl:pl-8 mx-auto block w-[300px] xl:w-[511px]"
+              className="mb-8 xl:mb-0 xl:pl-8 xl:mx-auto block w-[280px] xl:w-[366px]"
             />
           </div>
           <div className="flex-1 flex items-center justify-center pt-10 xl:pt-0 xl:pl-gutter">
-            <Exposition
-              title={
-                <div className="relative z-10">
-                  Plaid Technologies
-                  <span className={cx(styles.PlaidRibbon, styles.Ribbon)} />
+            <div>
+              <div className="w-full">
+                <div className="relative z-10 mb-4">
+                  <BackgroundRibbon className={cx('bg-[#5BEEBD] left-[-33px]')} />
+                  <h3 className="font-display tracking-[4px] text-[28px] font-semibold relative inline-block">
+                    Plaid Technologies
+                  </h3>
                 </div>
-              }
-              href="https://plaid.com/"
-              description={
-                <>
-                  Modern Fertility approached me to assist them in developing
-                  their website. At the time, I was the sole front-end
-                  developer, working alongside Tom Chokel to help Carly and
-                  Afton to help get their new business concept out to the world.
-                </>
-              }
-              cta="View the website"
-            />
+              </div>
+              <p className="leading-7 max-w-[734px] pb-6 space-y-5 mb-2">
+                <p>
+                  This is where my development journey began. I had the lovely
+                  opportunity to work with the lovely people at Plaid
+                  Technologies, where I maintained their marketing site,
+                  improved site performance, and adding new features to their
+                  documentation.
+                </p>
+                <p>
+                  Plaid’s website has changed drastically since I’ve worked
+                  there (it’s been a while). Feel free to check it out anyway if
+                  you’re curious.
+                </p>
+              </p>
+              <a
+                className="inline-block"
+                href="https://plaid.com/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <ViewWebsiteButton>View the website</ViewWebsiteButton>
+              </a>
+            </div>
           </div>
         </div>
       </Container>

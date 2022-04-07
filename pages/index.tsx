@@ -37,137 +37,132 @@ const Home: NextPage = () => {
       </SiteHeaderPlaceholder>
 
       <div className="bg-[#f0f0f0]">
-        <IntroSection />
-        <WorkSection />
+        <section>
+          <OpalMacbookSection />
+        </section>
+
+        <section>
+          <OpalMobileSection />
+        </section>
+
+        <section>
+          <ModernFertilityMacbookSection />
+        </section>
+
+        <section>
+          <ModernFertilityMobileSection />
+        </section>
+
+        <section>
+          <PlaidSection />
+        </section>
+        <section>
+          <Container className="pb-16 xl:pb-32">
+            <h2 className="px-gutter">
+              <F.Title className="pb-8 xl:pb-20 pt-20 xl:pt-36 xl:text-left">
+                Hire me
+              </F.Title>
+            </h2>
+            <div className=" max-w-md mx-auto xl:max-w-full px-gutter">
+              <ThreePiece>
+                <ThreePieceItem
+                  term={
+                    <RibbonContainer>
+                      Web Development <Ribbon />
+                    </RibbonContainer>
+                  }
+                  def={
+                    <p>
+                      I create responsive websites that work on all devices. I
+                      have experience in React, Vue, Sass, styled-components,
+                      NextJS ad so much more!
+                    </p>
+                  }
+                />
+                <ThreePieceItem
+                  term={
+                    <RibbonContainer>
+                      Tooling Development
+                      <Ribbon />
+                    </RibbonContainer>
+                  }
+                  def={
+                    <p>
+                      Having trouble figuring out complex front-end tooling?
+                      Need a feature developed in your tooling chain such as
+                      Webpack or Node? I’m your guy.
+                    </p>
+                  }
+                />
+                <ThreePieceItem
+                  term={
+                    <RibbonContainer>
+                      Mentoring
+                      <Ribbon width="min-w-[130px]" />
+                    </RibbonContainer>
+                  }
+                  def={
+                    <>
+                      <p className="xl:min-h-[108px]">
+                        Looking to learn web development? I can provide
+                        assistance in helping learn the fundamentals, review
+                        your portfolio, and more!
+                      </p>
+                      <Link href="/mentoring" passHref>
+                        <a className="pt-1.5 block underline underline-offset-3">
+                          <More>Learn more</More>
+                        </a>
+                      </Link>
+                    </>
+                  }
+                />
+              </ThreePiece>
+
+              <p>
+                <a href="mailto:hello@anthonykoch.com">
+                  <div className="text-center font-500 2xl:text-left text-2xl xl:text-7xl 2xl:text-8xl xl:py-10">
+                    <span className="text-lg xl:text-xl font-400 mb-5 block">
+                      Email me at
+                    </span>
+                    hello@anthonykoch.com
+                  </div>
+                </a>
+              </p>
+            </div>
+          </Container>
+        </section>
       </div>
       <Footer />
     </div>
   )
 }
 
-const WorkSection: React.FC = () => {
-  return (
-    <div className="pt-6 lg:pt-10">
-      <section>
-        <OpalMacbookSection />
-      </section>
+const RibbonContainer: React.FC = ({ children }) => (
+  <div className="relative z-20 inline-block">{children}</div>
+)
 
-      <section>
-        <OpalMobileSection />
-      </section>
-
-      <section>
-        <ModernFertilityMacbookSection />
-      </section>
-
-      <section>
-        <ModernFertilityMobileSection />
-      </section>
-
-      <section>
-        <PlaidSection />
-      </section>
-      <section>
-        <Container>
-          <h2>
-            <F.Title className="pb-8 xl:pb-20 pt-20 xl:pt-36 xl:text-left">
-              Hire me
-            </F.Title>
-          </h2>
-
-          <div className="pb-10 xl:pb-32 max-w-md mx-auto xl:max-w-full px-gutter">
-            <ThreePiece>
-              <ThreePieceItem
-                term="Web Development"
-                def={
-                  <>
-                    I create responsive websites that work on all devices. I
-                    have experience in React, Vue, Sass, styled-components,
-                    NextJS ad so much more!
-                  </>
-                }
-              />
-              <ThreePieceItem
-                term="Tooling Development"
-                def={
-                  <>
-                    Having trouble figuring out complex front-end tooling? Need
-                    a feature developed in your tooling chain such as Webpack or
-                    Node? I’m your guy.
-                  </>
-                }
-              />
-              <ThreePieceItem
-                term="Mentoring"
-                def={
-                  <>
-                    <p>
-                      Looking to learn web development? I can provide assistance
-                      in helping learn the fundamentals, review your portfolio,
-                      and more!
-                    </p>
-                    <Link href="/mentoring" passHref>
-                      <a className="pt-1.5 block">
-                        <More>Learn more</More>
-                      </a>
-                    </Link>
-                  </>
-                }
-              />
-            </ThreePiece>
-
-            <p>
-              <a href="mailto:hello@anthonykoch.com">
-                <div className="text-center font-500 2xl:text-left text-2xl xl:text-7xl 2xl:text-8xl xl:py-10">
-                  <span className="text-lg font-400">Email me at</span>
-                  <br />
-                  hello@anthonykoch.com
-                </div>
-              </a>
-            </p>
-          </div>
-        </Container>
-      </section>
-    </div>
-  )
-}
-
-const Heading2: React.FC<{ className?: string }> = ({
-  children,
-  className,
-}) => {
-  return (
-    <span className={cx('block text-6xl font-heading', className)}>
-      {children}
-    </span>
-  )
-}
+const Ribbon: React.FC<{ width?: string }> = ({ width }) => (
+  <span
+    className={`h-2 bg-[#19EAA4] -left-3 absolute bottom-[5px] ${
+      width ?? 'w-[112%]'
+    } -z-10`}
+  />
+)
 
 const ThreePieceItem: React.FC<{
   term: React.ReactNode
   def: React.ReactNode
 }> = ({ term, def }) => (
-  <div className="pb-20 xl:w-1/3">
-    <dt className="pb-3 font-display font-semibold tracking-widest text-[22px]">
+  <div className="pb-20 w-full ml-0 pl-0 xl:w-1/3">
+    <dt className="pb-3 font-display font-600 tracking-widest text-[22px]">
       {term}
     </dt>
-    <dd className="leading-8 text-[15px]">{def}</dd>
+    <dd className="leading-7 text-[15px]">{def}</dd>
   </div>
 )
 
 const ThreePiece: React.FC = ({ children }) => (
-  <dl className="xl:flex space-x-8 px-gutter">{children}</dl>
+  <dl className="xl:flex xl:space-x-8">{children}</dl>
 )
-
-const IntroSection: React.FC = () => {
-  return (
-    <div className="bg-[#f0f0f0] px-gutter ">
-      <div className="max-w-[1000px] mx-auto w-full">
-        {/* <h2 className={styles.IntroTitle}>Portfolio</h2> */}
-        {/* <p className={styles.IntroLead}>I’ve worked with memers and dreamers</p> */}
-      </div>
-    </div>
-  )
-}
 
 export default Home
