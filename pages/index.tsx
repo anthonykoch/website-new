@@ -38,7 +38,7 @@ const Home: NextPage = () => {
       <div className="bg-[#f0f0f0]">
         <section>
           <Container>
-            <div className="px-gutter pb-10 pt-10 xl:pt-12 xl:pb-24">
+            <div className="px-gutter pb-10 xl:pb-24 pt-10 xl:pt-16">
               <F.Title>Work</F.Title>
             </div>
           </Container>

@@ -12,7 +12,7 @@ export const OpalMacbookSection: React.FC = () => {
   return (
     <section>
       <Container>
-        <div className="pb-16 xl:pb-32">
+        <div className="pb-16 xl:pb-0">
           <div className="bg-[#14E595] lg:bg-transparent py-6  md:py-8 lg:py-0 relative">
             <div className="xl:left-1/2 transform xl:-translate-x-1/2 xl:top-16 xl:absolute text-center">
               <SectionTitle>Opal Camera</SectionTitle>
@@ -47,11 +47,11 @@ export const OpalMacbookSection: React.FC = () => {
 export const OpalMobileSection = () => {
   return (
     <section>
-      <Container className="py-32 xl:py-44 px-gutter">
+      <Container className="pb-48 xl:pb-72 pt-32 xl:pt-44 px-gutter">
         <h2 className="font-heading font-bold max-w-[450px] xl:max-w-[450px] text-[34px] xl:text-[40px] mb-5 leading-[1.2] mx-auto text-center pb-6 xl:hidden">
           From front-end to full-stack
         </h2>
-        <div className="xl:flex justify-center xl:space-x-20 xl:px-gutter">
+        <div className="xl:flex justify-center xl:flex-row-reverse xl:space-x-20 xl:space-x-reverse xl:px-gutter">
           <div>
             <img
               src={OpalMobileImage.src}

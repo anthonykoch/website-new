@@ -25,8 +25,8 @@ export const ModernFertilityMacbookSection = () => {
         </picture>
       </div>
 
-      <div className="px-gutter max-w-[620px] mx-auto">
-        <p className="text-[17px] pt-6 lg:pl-14 leading-relaxed">
+      <div className="px-gutter max-w-[640px] mx-auto">
+        <p className="text-[17px] pt-6 lg:ml-12 leading-relaxed">
           Modern Fertility approached me to assist them in developing their
           website. At the time, I was the sole front-end developer, working
           alongside Tom Chokel to help Carly and Afton to help give women the
