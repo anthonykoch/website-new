@@ -66,7 +66,7 @@ const Home: NextPage = () => {
         <section>
           <Container className="pb-16 xl:pb-32">
             <h2 className="px-gutter">
-              <F.Title className="pb-14 xl:pb-20 pt-20 xl:pt-36 xl:text-left">
+              <F.Title className="pb-14 xl:pb-20 pt-10 xl:pt-20 xl:text-left">
                 Hire me
               </F.Title>
             </h2>

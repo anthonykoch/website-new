@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app'
 
-import 'normalize.css'
 import '../styles/main.css'
 
 import Head from 'next/head'

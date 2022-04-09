@@ -17,7 +17,6 @@ const fontFamily = {
   link: `'rift-soft', ${backup}`,
   heading: `'visby', ${backup}`,
   body: `'DM Sans', ${backup}`,
-  // body: `'averta', ${backup}`,
 
   // body: `'proxima-nova', ${backup}`,
   code: `'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', monospace`,
