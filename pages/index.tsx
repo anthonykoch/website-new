@@ -22,7 +22,7 @@ import {
 import Link from 'next/link'
 
 const More: React.FC = ({ children }) => (
-  <a className="text-[13px] font-600">{children}</a>
+  <a className="text-[14px] font-600">{children}</a>
 )
 
 const Home: NextPage = () => {
@@ -38,19 +38,23 @@ const Home: NextPage = () => {
 
       <div className="bg-[#f0f0f0]">
         <section>
-          <OpalMacbookSection />
-        </section>
-
-        <section>
-          <OpalMobileSection />
-        </section>
-
-        <section>
-          <ModernFertilityMacbookSection />
-        </section>
-
-        <section>
-          <ModernFertilityMobileSection />
+          <Container>
+            <div className="px-gutter pb-10 pt-10 xl:pt-12 xl:pb-24">
+              <F.Title>Work</F.Title>
+            </div>
+          </Container>
+          <section>
+            <OpalMacbookSection />
+          </section>
+          <section>
+            <OpalMobileSection />
+          </section>
+          <section>
+            <ModernFertilityMacbookSection />
+          </section>
+          <section>
+            <ModernFertilityMobileSection />
+          </section>
         </section>
 
         <section>
@@ -59,7 +63,7 @@ const Home: NextPage = () => {
         <section>
           <Container className="pb-16 xl:pb-32">
             <h2 className="px-gutter">
-              <F.Title className="pb-8 xl:pb-20 pt-20 xl:pt-36 xl:text-left">
+              <F.Title className="pb-14 xl:pb-20 pt-20 xl:pt-36 xl:text-left">
                 Hire me
               </F.Title>
             </h2>

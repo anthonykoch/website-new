@@ -18,7 +18,7 @@ export const Title: React.FC<{ className?: string }> = ({
   <div
     className={cx(
       className,
-      'text-[42px] xl:text-[48px] font-display font-500 xl:font-600 tracking-[0.085em]',
+      'text-[42px] xl:text-[48px] font-display font-600 tracking-[0.085em] leading-none',
     )}
   >
     {children}

@@ -12,10 +12,6 @@ export const OpalMacbookSection: React.FC = () => {
   return (
     <section>
       <Container>
-        <div className="px-gutter pb-10 xl:pb-24">
-          <Title>Work</Title>
-        </div>
-
         <div className="pb-16 xl:pb-32">
           <div className="bg-[#14E595] lg:bg-transparent py-6  md:py-8 lg:py-0 relative">
             <div className="xl:left-1/2 transform xl:-translate-x-1/2 xl:top-16 xl:absolute text-center">
@@ -51,31 +47,36 @@ export const OpalMacbookSection: React.FC = () => {
 export const OpalMobileSection = () => {
   return (
     <section>
-      <Container className="px-gutter">
-        <div className="xl:flex  justify-center pb-32 xl:pb-48 xl:pt-10 xl:space-x-10 flex-row-reverse xl:space-x-reverse">
-          <div className="pb-20 xl:pt-20">
-            <h2 className="font-heading font-bold text-[34px] xl:text-[40px] mb-4 max-w-[545px] mx-auto xl:mx-0 leading-tight">
-              From front-end to full-stack
-            </h2>
-            <div className="max-w-[545px] mx-auto xl:mx-0 space-y-5 xl:text-[17px] leading-relaxed">
-              <p>
-                Opal Camera had contacted me to help develop the first iteration
-                of their landing page. The project has since turned into
-                full-stack development, where I’ve assisted in building out
-                helpful administrative tools to manage email invites and
-                signups.
-              </p>
-              <p>
-                The tech stack involves React through NextJS and Tailwind CSS.
-              </p>
-            </div>
-          </div>
+      <Container className="py-32 xl:py-44 px-gutter">
+        <h2 className="font-heading font-bold max-w-[450px] xl:max-w-[450px] text-[34px] xl:text-[40px] mb-5 leading-[1.2] mx-auto text-center pb-6 xl:hidden">
+          From front-end to full-stack
+        </h2>
+        <div className="xl:flex justify-center xl:space-x-20 xl:px-gutter">
           <div>
             <img
               src={OpalMobileImage.src}
               alt="opal camera mobile websites"
               className="w-[370px] block mx-auto xl:mx-0"
             />
+          </div>
+          <div className="pt-16">
+            <div className="max-w-[577px] mx-auto">
+              <h2 className="font-heading font-bold max-w-[400px] xl:max-w-full text-[34px] xl:text-[40px] mb-5 leading-[1.2] hidden xl:block">
+                From front-end to full-stack
+              </h2>
+              <div className="max-w-[577px] mx-auto xl:mx-0 space-y-5 lg:text-[17px] leading-relaxed">
+                <p>
+                  Opal Camera had contacted me to help develop the first
+                  iteration of their landing page. The project has since turned
+                  into full-stack development, where I’ve assisted in building
+                  out helpful administrative tools to manage email invites and
+                  signups.{' '}
+                </p>
+                <p>
+                  The tech stack involves React through NextJS and Tailwind CSS.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </Container>
