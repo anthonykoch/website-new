@@ -28,7 +28,7 @@ interface Props {
   posts: PostMeta[]
 }
 
-const BlogPost: NextPage<Props> = ({ mdxSource, scope, post, posts }) => {
+const BlogPost: NextPage<Props> = ({ mdxSource, post, posts }) => {
   const { asPath } = useRouter()
 
   return (
@@ -62,7 +62,10 @@ const BlogPost: NextPage<Props> = ({ mdxSource, scope, post, posts }) => {
               className="Post-body md pt-20 pb-24"
               // style="animation-delay: 0.3s"
             >
-              <MDXRemote {...mdxSource} components={markdownComponents} />
+              <MDXRemote
+                {...mdxSource}
+                components={markdownComponents as any}
+              />
               {/* <capture-fullscreen :images="true">
                 </capture-fullscreen> */}
             </div>

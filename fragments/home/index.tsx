@@ -1,8 +1,7 @@
 import cx from 'classnames'
 
 import { Container } from '@/components/container'
-import { SectionTitle, Title } from './common'
-import styles from './index.module.css'
+import { Title } from './common'
 import IconPlaid from './plaid.svg'
 import { ViewWebsiteButton } from '@/components/button'
 
@@ -61,7 +60,11 @@ export const PlaidSection = () => {
             <div>
               <div className="w-full">
                 <div className="relative z-10 mb-6 xl:b-6">
-                  <BackgroundRibbon className={cx('bg-[#5BEEBD] w-[280px] lg:w-[325px] left-[-10px] lg:left-[-33px]')} />
+                  <BackgroundRibbon
+                    className={cx(
+                      'bg-[#5BEEBD] w-[280px] lg:w-[325px] left-[-10px] lg:left-[-33px]',
+                    )}
+                  />
                   <h3 className="font-display tracking-[4px] text-[28px] font-semibold relative inline-block">
                     Plaid Technologies
                   </h3>

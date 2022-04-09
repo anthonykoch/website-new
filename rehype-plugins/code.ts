@@ -1,4 +1,3 @@
-import { Root, RootContent } from 'hast'
 import { visit } from 'unist-util-visit'
 
 const abbreviations: Record<string, string> = {
@@ -23,7 +22,8 @@ function visitor(node: any, _: number, parent: any) {
 }
 
 export const RehypeCode = () => {
-  return (tree) => {
+  return (tree: any) => {
+    // eslint-disable-next-line
     ;(visit as any)(tree, 'element', visitor)
   }
 }

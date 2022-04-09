@@ -17,7 +17,6 @@ import {
 
 import styles from './Nav.module.css'
 import { navLinkClasses } from './styles.common'
-import { useRouter } from 'next/router'
 
 export const NavText: React.FC = ({ children }) => (
   <div className={styles.NavText}>{children}</div>
@@ -27,8 +26,6 @@ export const NavLink: React.FC<
   { activeClassName?: string } & React.HTMLProps<HTMLAnchorElement>
 > = ({ children, activeClassName, ...props }) => {
   const awd = useActiveLink({})
-
-  // console.log(awd)
 
   return (
     <a
@@ -47,15 +44,14 @@ export const NavLink: React.FC<
 
 export const Nav: React.FC<{ className?: string }> = ({ className }) => {
   const [isNavigationModalOpen, setOpen] = useState(false)
-  const router = useRouter()
 
   return (
     <div className={cx(styles.Nav, className)} role="navigation">
       <div className={styles.NavList}>
-        {desktopLinks.map(({ href, children, onClick }) => (
+        {desktopLinks.map(({ href, children, ...props }) => (
           <li className="hidden xl:block" key={href}>
             <Link href={href} passHref>
-              <NavLink onClick={onClick?.(router.pathname)}>
+              <NavLink {...props}>
                 <NavText>{children}</NavText>
               </NavLink>
             </Link>
@@ -207,18 +203,6 @@ const links = [
 ]
 
 const desktopLinks = [
-  // {
-  //   href: '/#work',
-  //   children: 'Work',
-  //   onClick: (pathname: string) => (e: React.MouseEvent) => {
-  //     if (pathname === '/') {
-  //       e.preventDefault()
-  //       document.querySelector('#work')?.scrollIntoView({
-  //         behavior: 'smooth',
-  //       })
-  //     }
-  //   },
-  // },
   {
     href: '/blog',
     children: 'Blog',

@@ -1,7 +1,8 @@
 import * as React from 'react'
+import Link from 'next/link'
 import type { NextPage } from 'next'
-import cx from 'classnames'
 import { Footer } from '@/components/app/footer/Footer'
+import { Container } from '@/components/container'
 
 import {
   SiteHeader,
@@ -9,7 +10,6 @@ import {
   SiteHeaderPlaceholder,
 } from '@/components/app/Header'
 
-import { Container } from '@/components/container'
 import {
   F,
   Hero,
@@ -19,7 +19,6 @@ import {
   OpalMobileSection,
   PlaidSection,
 } from '@/fragments/home'
-import Link from 'next/link'
 
 const More: React.FC = ({ children }) => (
   <a className="text-[14px] font-600">{children}</a>
@@ -43,15 +42,19 @@ const Home: NextPage = () => {
               <F.Title>Work</F.Title>
             </div>
           </Container>
+
           <section>
             <OpalMacbookSection />
           </section>
+
           <section>
             <OpalMobileSection />
           </section>
+
           <section>
             <ModernFertilityMacbookSection />
           </section>
+
           <section>
             <ModernFertilityMobileSection />
           </section>

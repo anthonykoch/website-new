@@ -31,7 +31,6 @@ export const TabItem: React.FC<{ id: string }> = ({ id, children }) => {
       aria-selected={isActive}
       id={context.generateId(id)}
       onClick={onClick}
-      // onKeyUp={onKey}
       role="tab"
     >
       {children}
@@ -41,9 +40,9 @@ export const TabItem: React.FC<{ id: string }> = ({ id, children }) => {
 
 export const Tabs: React.FC<{
   onChange: (id: string) => void
-  defaultId?: string
+  defaultId: string
   name: string
-}> = ({ group, defaultId, onChange, children }) => {
+}> = ({ name, defaultId, onChange, children }) => {
   const [activeId, setActiveId] = React.useState(defaultId)
 
   const setSelected = useCallback(
@@ -56,9 +55,9 @@ export const Tabs: React.FC<{
 
   const generateId = useCallback(
     (id: string) => {
-      return `${group}-${id}`
+      return `${name}-${id}`
     },
-    [group],
+    [name],
   )
 
   const value = React.useMemo(() => {
