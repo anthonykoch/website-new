@@ -6,6 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "export": "next export",
     "watch:theme": "ts-node ./scripts/watch.ts ",
     "test": "jest"
   },

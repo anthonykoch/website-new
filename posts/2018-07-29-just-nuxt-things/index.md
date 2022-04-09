@@ -122,7 +122,7 @@ When there's an error, it will show an overlay that goes away when you fix the e
   <figcaption>
     The nuxt error page
   </figcaption>
-  <img src="/images/posts/just-nuxt-things/error-page+c.png" alt="nuxt error page">
+  <img src="/images/posts/just-nuxt-things/error-page+c.png" alt="nuxt error page" />
 </figure>
 
 #### Scroll position

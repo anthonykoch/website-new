@@ -23,7 +23,7 @@ We'll use a real life example that I came across while working at Plaid.
     alt="page without normalize"
     width="500px"
     class="Image is-rounded has-shadow"
-  >
+  />
 </figure>
 
 The page above is a screenshot the `/how-it-works` page of [plaid.com](https://plaid.com/how-it-works) using IE11. The page is clearly broken, but looks fine on any browser that isn't IE. So what gives?
@@ -38,7 +38,7 @@ One of _many_ problems with IE browsers is that they don't properly default the 
     alt="page with"
     class="Image is-rounded has-shadow"
     width="500px"
-  >
+  />
   <figcaption>The page with &lt;main&gt; set to <code>display: block</code></figcaption>
 </figure>
 
