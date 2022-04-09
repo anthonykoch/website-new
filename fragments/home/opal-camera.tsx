@@ -2,7 +2,7 @@ import React from 'react'
 import { ExternalLink } from '@/components/action/Link'
 import { ViewWebsiteButton } from '@/components/button'
 import { Container } from '@/components/container'
-import { SectionTitle, Title } from './common'
+import { SectionTitle } from './common'
 
 import OpalMacbook from '@/images/opal-macbook.png'
 import OpalMacbookMobile from '@/images/opal-macbook-m.png'

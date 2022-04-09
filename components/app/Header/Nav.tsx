@@ -6,7 +6,7 @@ import { IoLogoGithub } from 'react-icons/io5'
 import { MenuIcon, XIcon } from '@heroicons/react/solid'
 import { motion } from 'framer-motion'
 import { easing } from '@/styles/index'
-import { useActiveLink } from '@/hooks/use-active-link'
+// import { useActiveLink } from '@/hooks/use-active-link'
 
 import {
   NavigationModalContent,
@@ -24,8 +24,9 @@ export const NavText: React.FC = ({ children }) => (
 
 export const NavLink: React.FC<
   { activeClassName?: string } & React.HTMLProps<HTMLAnchorElement>
-> = ({ children, activeClassName, ...props }) => {
-  const awd = useActiveLink({})
+> = ({ children, ...props }) => {
+  // > = ({ children, activeClassName, ...props }) => {
+  // const awd = useActiveLink({})
 
   return (
     <a

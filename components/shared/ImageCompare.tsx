@@ -1,12 +1,7 @@
 import { applyRefs } from '@/utils/apply-ref'
 import cx from 'classnames'
-import {
-  motion,
-  useDragControls,
-  useMotionTemplate,
-  useMotionValue,
-} from 'framer-motion'
-import React, { useEffect, useRef, useState } from 'react'
+import { motion, useDragControls, useMotionValue } from 'framer-motion'
+import React, { useRef, useState } from 'react'
 import useResizeObserver from 'use-resize-observer'
 
 interface Size {
@@ -126,7 +121,6 @@ export const ImageCompare: React.FC<ImageCompareProps> = ({
           {dragConstraintsRef.current && size != null && (
             <motion.div
               drag="x"
-              onDragStart={(e, { point: { x } }) => {}}
               onDrag={(e, { point: { x } }) => {
                 if (!coverRef.current) return
 
