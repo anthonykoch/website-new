@@ -7,10 +7,17 @@ html {
 
 html {
   --nav-height: 500px;
-  --nav-height-mobile: 500px;
+  --nav-height-mobile: 550px;
   --nav-link-color--active: rgba(black, 0.7);
   --nav-link-border-width: 0;
   --sidebar-width: 300px;
+  --site-header-height: 550px;
+}
+
+@media screen(lg) {
+  html {
+    --site-header-height: 500px;
+  }
 }
 
 body {

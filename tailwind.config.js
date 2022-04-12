@@ -2,8 +2,10 @@
 const { colors } = require('./theme/color')
 
 const spacing = {
-  'site-header-height': '500px',
+  'site-header-height': 'var(--site-header-height)',
   gutter: '20px',
+  'gutter-lg': '24px',
+  'gutter-xl': '32px',
   'nav-height': '60px',
   'nav-icon-width': '54px',
   'py-nav-link': '16px',
@@ -17,8 +19,6 @@ const fontFamily = {
   link: `'rift-soft', ${backup}`,
   heading: `'visby', ${backup}`,
   body: `'DM Sans', ${backup}`,
-
-  // body: `'proxima-nova', ${backup}`,
   code: `'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', monospace`,
 }
 
@@ -40,7 +40,7 @@ const zIndex = {
 const screens = {
   sm: '360px',
   md: '540px',
-  lg: '760px',
+  lg: '720px',
   xl: '1024px',
   '2xl': '1200px',
   '3xl': '1400px',

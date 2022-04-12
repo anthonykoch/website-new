@@ -4,7 +4,6 @@ import '../styles/main.css'
 
 import Head from 'next/head'
 import { ThemeProvider } from '@/contexts/theme'
-import { useCallback, useEffect } from 'react'
 
 const HeadMeta = () => {
   return (
@@ -23,28 +22,6 @@ const HeadMeta = () => {
 }
 
 function App({ Component, pageProps }: AppProps) {
-  const onClick = useCallback((e: MouseEvent): void => {
-    const el = e.target
-
-    if (el == null) return
-
-    const id = (e.target as HTMLElement).getAttribute('data-siv')
-
-    if (typeof id === 'string') {
-      e.preventDefault()
-
-      document.querySelector(id)?.scrollIntoView({
-        behavior: 'smooth',
-      })
-    }
-  }, [])
-
-  useEffect(() => {
-    window.addEventListener('click', onClick)
-
-    return () => window.removeEventListener('click', onClick)
-  }, [onClick])
-
   return (
     <div>
       <HeadMeta />

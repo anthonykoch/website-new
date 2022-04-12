@@ -29,7 +29,7 @@ const Blog: NextPage<Props> = ({ posts }) => {
       <main>
         <SiteHeaderPlaceholder className="relative">
           <SiteHeaderBackground>
-            <div className="max-w-lg xl:max-w-4xl mx-auto px-gutter pt-40 xl:pt-52">
+            <div className="max-w-lg xl:max-w-4xl mx-auto px-gutter-lg pt-40 xl:pt-52">
               <h1 className="text-[22px] font-600 font-display text-primary-500 pb-4 tracking-[2.5px]">
                 My Writings
               </h1>
@@ -61,7 +61,7 @@ const Blog: NextPage<Props> = ({ posts }) => {
                   >
                     <a
                       href={`/blog/${post.slug}`}
-                      className="py-12 xl:py-20 px-16 block relative"
+                      className="py-12 xl:py-20 px-gutter-lg xl:px-16 block relative"
                     >
                       <div className="font-body pb-2 uppercase tracking-widest font-700 text-[13px] text-black/50">
                         {post.humanized.created_at} - #{posts.length - index}

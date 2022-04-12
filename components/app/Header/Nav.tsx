@@ -6,6 +6,7 @@ import { IoLogoGithub } from 'react-icons/io5'
 import { MenuIcon, XIcon } from '@heroicons/react/solid'
 import { motion } from 'framer-motion'
 import { easing } from '@/styles/index'
+// Todo
 // import { useActiveLink } from '@/hooks/use-active-link'
 
 import {
@@ -17,6 +18,8 @@ import {
 
 import styles from './Nav.module.css'
 import { navLinkClasses } from './styles.common'
+import { scrollTo } from '@/hooks/use-scroll-into-view'
+import { NextRouter, useRouter } from 'next/router'
 
 export const NavText: React.FC = ({ children }) => (
   <div className={styles.NavText}>{children}</div>
@@ -45,11 +48,13 @@ export const NavLink: React.FC<
 
 export const Nav: React.FC<{ className?: string }> = ({ className }) => {
   const [isNavigationModalOpen, setOpen] = useState(false)
+  const router = useRouter()
+  const links = createLinks(router)
 
   return (
     <div className={cx(styles.Nav, className)} role="navigation">
       <div className={styles.NavList}>
-        {desktopLinks.map(({ href, children, ...props }) => (
+        {links.map(({ href, children, props }) => (
           <li className="hidden xl:block" key={href}>
             <Link href={href} passHref>
               <NavLink {...props}>
@@ -146,23 +151,28 @@ function IconTrigger<
   )
 }
 
-const MobileNavLinks: React.FC<{ className?: string }> = ({ className }) => (
-  <div
-    className={cx(
-      styles.MobileNavLinks,
-      className,
-      'mx-auto divide-y divide-gray-200/10',
-    )}
-  >
-    {links.map(({ href, children }) => (
-      <Link key={href} href={href} passHref>
-        <a className="hover:bg-gray-400/20 hover:text-gray-200 px-7 py-5 block text-white/90 text-center text-xl">
-          {children}
-        </a>
-      </Link>
-    ))}
-  </div>
-)
+const MobileNavLinks: React.FC<{ className?: string }> = ({ className }) => {
+  const router = useRouter()
+  const links = createLinks(router)
+
+  return (
+    <div
+      className={cx(
+        styles.MobileNavLinks,
+        className,
+        'mx-auto divide-y divide-gray-200/10',
+      )}
+    >
+      {links.map(({ href, children }) => (
+        <Link key={href} href={href} passHref>
+          <a className="hover:bg-gray-400/20 hover:text-gray-200 px-7 py-5 block text-white/90 text-center text-xl">
+            {children}
+          </a>
+        </Link>
+      ))}
+    </div>
+  )
+}
 
 const MenuButton: React.FC<
   { isOpen: boolean } & React.HTMLAttributes<HTMLButtonElement>
@@ -184,26 +194,25 @@ const MenuButton: React.FC<
   </IconTrigger>
 )
 
-const links = [
+const createLinks = (
+  router: NextRouter,
+): Array<{
+  href: string
+  children: React.ReactNode
+  props?: React.HTMLProps<HTMLAnchorElement>
+}> => [
   {
-    href: '/blog',
-    children: 'Blog',
+    href: '/#portfolio',
+    children: 'Portfolio',
+    props: {
+      onClick: (e) => {
+        if (router.pathname === '/') {
+          e.preventDefault()
+          scrollTo('#portfolio')
+        }
+      },
+    },
   },
-  {
-    href: '/#work',
-    children: 'Work',
-  },
-  {
-    href: '/contact',
-    children: 'Contact',
-  },
-  {
-    href: '/mentoring',
-    children: 'Mentoring',
-  },
-]
-
-const desktopLinks = [
   {
     href: '/blog',
     children: 'Blog',
@@ -211,9 +220,17 @@ const desktopLinks = [
   {
     href: '/#contact',
     children: 'Contact',
+    props: {
+      onClick: (e) => {
+        if (router.pathname === '/') {
+          e.preventDefault()
+          scrollTo('#contact')
+        }
+      },
+    },
   },
-  {
-    href: '/mentoring',
-    children: 'Mentoring',
-  },
+  // {
+  //   href: '/mentoring',
+  //   children: 'Mentoring',
+  // },
 ]

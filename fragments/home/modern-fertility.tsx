@@ -9,8 +9,8 @@ import { SectionTitle } from './common'
 
 export const ModernFertilityMacbookSection = () => {
   return (
-    <Container>
-      <div className="bg-[#14E595] lg:bg-transparent py-6 md:py-8 lg:py-0 relative">
+    <Container className="pt-28 xl:pt-36">
+      <div className="bg-seafoam lg:bg-transparent py-6 md:py-8 lg:py-0 relative">
         <div className="xl:left-1/2 transform xl:-translate-x-1/2 xl:top-16 xl:absolute text-center">
           <SectionTitle>Modern Fertility</SectionTitle>
         </div>
@@ -56,12 +56,12 @@ export const ModernFertilityMobileSection = () => {
             className="w-[370px] block mx-auto xl:mx-0"
           />
         </div>
-        <div className="pt-16">
+        <div className="pt-28">
           <div className="max-w-[577px] mx-auto">
             <h2 className="font-heading font-bold max-w-[400px] xl:max-w-[450px] text-[34px] xl:text-[40px] mb-5 leading-[1.2] hidden xl:block">
               A responsive website, built from scratch.
             </h2>
-            <div className="max-w-[577px] mx-auto xl:mx-0 space-y-5 lg:text-[17px] leading-relaxed">
+            <div className="max-w-[577px] mx-auto xl:mx-0 space-y-5 xl:text-[17px] leading-relaxed">
               <p>
                 Using simple tools of HTML and CSS, I worked closely with
                 designers to build out the first iteration of Modern Fertility’s

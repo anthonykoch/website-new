@@ -7,7 +7,13 @@ exports.colors = {
 
   link: '#6196cc',
   'link-hover': 'hsl(225, 34%, 40%)',
-  seafoam: '#5beebd',
+  seafoam: {
+    100: '#e4efeb',
+    // 14E595
+    300: '#1beaa4',
+    500: '#14e595',
+  },
+  // seafoam: '#5beebd',
 
   // Primary colors
   // primary: 'hsl(45, 80%, 54%)',
@@ -63,6 +69,7 @@ exports.colors = {
     500: '#00bd7e',
     600: '#00A27C',
     700: '#008875',
+    // #dbaf00
     800: '#006D69',
     900: '#00555A',
   },

@@ -12,13 +12,6 @@
   }
 }
 
-
-.rootIsFloating {
-  left: 0;
-  position: absolute;
-  top: 0;
-}
-
 .background {
   background-color: theme('colors.nav-bg');
   background-size: cover;
@@ -33,8 +26,8 @@
 .BackgroundImage {
   background-attachment: fixed;
   background-size: cover;
-  background-position: 70% 50px;
-  background-image: url('./background-1+c.jpg');
+  background-position: center;
+  background-image: url(../../../images/mobile-header.jpg);
   height: 100%;
   left: 0;
   opacity: 0.4;
@@ -46,6 +39,7 @@
 
 @media screen(lg) {
   .BackgroundImage {
+    background-image: url('./background-1+c.jpg');
     background-attachment: none;
     background-position: 90% -260px;
   }

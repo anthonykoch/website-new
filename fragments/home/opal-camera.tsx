@@ -13,7 +13,7 @@ export const OpalMacbookSection: React.FC = () => {
     <section>
       <Container>
         <div className="pb-16 xl:pb-0">
-          <div className="bg-[#14E595] lg:bg-transparent py-6  md:py-8 lg:py-0 relative">
+          <div className="bg-seafoam lg:bg-transparent py-6  md:py-8 lg:py-0 relative">
             <div className="xl:left-1/2 transform xl:-translate-x-1/2 xl:top-16 xl:absolute text-center">
               <SectionTitle>Opal Camera</SectionTitle>
             </div>
@@ -47,9 +47,10 @@ export const OpalMacbookSection: React.FC = () => {
 export const OpalMobileSection = () => {
   return (
     <section>
-      <Container className="pb-48 xl:pb-72 pt-32 xl:pt-44 px-gutter">
+      <Container className="pb-28 xl:pb-36 pt-32 xl:pt-44 px-gutter">
         <h2 className="font-heading font-bold max-w-[450px] xl:max-w-[450px] text-[34px] xl:text-[40px] mb-5 leading-[1.2] mx-auto text-center pb-6 xl:hidden">
-          From front-end to full-stack
+          From front-end <br />
+          to full-stack
         </h2>
         <div className="xl:flex justify-center xl:flex-row-reverse xl:space-x-20 xl:space-x-reverse xl:px-gutter">
           <div>
@@ -59,12 +60,12 @@ export const OpalMobileSection = () => {
               className="w-[370px] block mx-auto xl:mx-0"
             />
           </div>
-          <div className="pt-16">
+          <div className="pt-28">
             <div className="max-w-[577px] mx-auto">
               <h2 className="font-heading font-bold max-w-[400px] xl:max-w-full text-[34px] xl:text-[40px] mb-5 leading-[1.2] hidden xl:block">
                 From front-end to full-stack
               </h2>
-              <div className="max-w-[577px] mx-auto xl:mx-0 space-y-5 lg:text-[17px] leading-relaxed">
+              <div className="max-w-[577px] mx-auto xl:mx-0 space-y-5 xl:text-[17px] leading-relaxed">
                 <p>
                   Opal Camera had contacted me to help develop the first
                   iteration of their landing page. The project has since turned
