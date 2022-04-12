@@ -206,6 +206,10 @@ const createLinks = (
   props?: React.HTMLProps<HTMLAnchorElement>
 }> => [
   {
+    href: '/blog',
+    children: 'Blog',
+  },
+  {
     href: '/#portfolio',
     children: 'Portfolio',
     props: {
@@ -216,10 +220,6 @@ const createLinks = (
         }
       },
     },
-  },
-  {
-    href: '/blog',
-    children: 'Blog',
   },
   {
     href: '/#contact',
