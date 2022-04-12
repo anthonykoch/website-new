@@ -6,8 +6,6 @@ import { IoLogoGithub } from 'react-icons/io5'
 import { MenuIcon, XIcon } from '@heroicons/react/solid'
 import { motion } from 'framer-motion'
 import { easing } from '@/styles/index'
-// Todo
-// import { useActiveLink } from '@/hooks/use-active-link'
 
 import {
   NavigationModalContent,
@@ -28,9 +26,6 @@ export const NavText: React.FC = ({ children }) => (
 export const NavLink: React.FC<
   { activeClassName?: string } & React.HTMLProps<HTMLAnchorElement>
 > = ({ children, ...props }) => {
-  // > = ({ children, activeClassName, ...props }) => {
-  // const awd = useActiveLink({})
-
   return (
     <a
       {...props}
@@ -106,7 +101,7 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
                         exit={{ opacity: 0, y: -40 }}
                         transition={{ ease: easing, duration: 0.6 }}
                       >
-                        <MobileNavLinks />
+                        <MobileNavLinks setOpen={setOpen} />
                       </motion.div>
                     </NavigationModalContent>
                   </div>
@@ -151,7 +146,10 @@ function IconTrigger<
   )
 }
 
-const MobileNavLinks: React.FC<{ className?: string }> = ({ className }) => {
+const MobileNavLinks: React.FC<{
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  className?: string
+}> = ({ className, setOpen }) => {
   const router = useRouter()
   const links = createLinks(router)
 
@@ -163,9 +161,15 @@ const MobileNavLinks: React.FC<{ className?: string }> = ({ className }) => {
         'mx-auto divide-y divide-gray-200/10',
       )}
     >
-      {links.map(({ href, children }) => (
+      {links.map(({ href, children, props }) => (
         <Link key={href} href={href} passHref>
-          <a className="hover:bg-gray-400/20 hover:text-gray-200 px-7 py-5 block text-white/90 text-center text-xl">
+          <a
+            className="hover:bg-gray-400/20 hover:text-gray-200 px-7 py-5 block text-white/90 text-center text-xl"
+            onClick={(e) => {
+              setOpen(false)
+              props?.onClick?.(e)
+            }}
+          >
             {children}
           </a>
         </Link>

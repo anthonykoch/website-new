@@ -63,18 +63,21 @@ export const OpalMobileSection = () => {
           <div className="pt-28">
             <div className="max-w-[577px] mx-auto">
               <h2 className="font-heading font-bold max-w-[400px] xl:max-w-full text-[34px] xl:text-[40px] mb-5 leading-[1.2] hidden xl:block">
-                From front-end to full-stack
+                Going past the frontend
               </h2>
               <div className="max-w-[577px] mx-auto xl:mx-0 space-y-5 xl:text-[17px] leading-relaxed">
                 <p>
                   Opal Camera had contacted me to help develop the first
                   iteration of their landing page. The project has since turned
                   into full-stack development, where I’ve assisted in building
-                  out helpful administrative tools to manage email invites and
-                  signups.{' '}
+                  out administrative tools to manage email invites and
+                  signups. 
                 </p>
                 <p>
-                  The tech stack involves React through NextJS and Tailwind CSS.
+                  A part of the challenges 
+                </p>
+                <p>
+                  The tech stack involves Adonis, Tailwind CSS, and React through NextJS. 
                 </p>
               </div>
             </div>

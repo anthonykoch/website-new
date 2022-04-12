@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Link from 'next/link'
 import type { NextPage } from 'next'
 import { Footer } from '@/components/app/footer/Footer'
 import { Container, OuterContainer } from '@/components/container'
@@ -18,11 +17,11 @@ import {
   OpalMacbookSection,
   OpalMobileSection,
   PlaidSection,
+  Ribbon,
+  RibbonContainer,
+  Services,
+  ServicesItem,
 } from '@/fragments/home'
-
-const More: React.FC = ({ children }) => (
-  <a className="text-[14px] font-600">{children}</a>
-)
 
 const Home: NextPage = () => {
   return (
@@ -34,7 +33,7 @@ const Home: NextPage = () => {
           <Hero />
         </SiteHeaderBackground>
       </SiteHeaderPlaceholder>
-      
+
       <div className="bg-[#f0f0f0]">
         <section>
           <div id="portfolio"></div>
@@ -137,19 +136,21 @@ const Home: NextPage = () => {
                     />
                   </Services>
                 </div>
-
-                <div id="contact"></div>
-                <p>
-                  <a href="mailto:hello@anthonykoch.com">
-                    <div className="text-center font-500 2xl:text-left text-2xl xl:text-7xl 2xl:text-8xl xl:py-10">
-                      <span className="text-lg xl:text-xl font-400 mb-5 block">
-                        Email me at
-                      </span>
-                      hello@anthonykoch.com
-                    </div>
-                  </a>
-                </p>
               </div>
+            </Container>
+
+            <Container>
+              <div id="contact"></div>
+              <p>
+                <a href="mailto:hello@anthonykoch.com">
+                  <div className="text-center font-500 2xl:text-left text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl xl:py-10">
+                    <span className="text-lg xl:text-xl font-400 mb-5 block">
+                      Email me at
+                    </span>
+                    hello@anthonykoch.com
+                  </div>
+                </a>
+              </p>
             </Container>
           </div>
         </section>
@@ -158,33 +159,5 @@ const Home: NextPage = () => {
     </div>
   )
 }
-
-const RibbonContainer: React.FC = ({ children }) => (
-  <div className="relative z-20 inline-block">{children}</div>
-)
-
-const Ribbon: React.FC<{ width?: string }> = ({ width }) => (
-  <span
-    className={`h-2 bg-[#19EAA4] -left-3 absolute bottom-[6px] ${
-      width ?? 'w-[112%]'
-    } -z-10`}
-  />
-)
-
-const ServicesItem: React.FC<{
-  term: React.ReactNode
-  def: React.ReactNode
-}> = ({ term, def }) => (
-  <div className="pb-20 w-full ml-0 pl-0 xl:w-1/2">
-    <dt className="pb-3 font-display font-600 tracking-widest text-[24px]">
-      {term}
-    </dt>
-    <dd className="leading-7 text-[16px] xl:text-[17px]">{def}</dd>
-  </div>
-)
-
-const Services: React.FC = ({ children }) => (
-  <dl className="xl:flex xl:space-x-10">{children}</dl>
-)
 
 export default Home

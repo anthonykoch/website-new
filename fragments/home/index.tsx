@@ -9,10 +9,42 @@ export * as F from './common'
 export * from './modern-fertility'
 export * from './opal-camera'
 
+export const RibbonContainer: React.FC = ({ children }) => (
+  <div className="relative z-20 inline-block">{children}</div>
+)
+
+export const Ribbon: React.FC<{ width?: string }> = ({ width }) => (
+  <span
+    className={`h-2 bg-[#19EAA4] -left-3 absolute bottom-[6px] ${
+      width ?? 'w-[112%]'
+    } -z-10`}
+  />
+)
+
+// export const More: React.FC = ({ children }) => (
+//   <a className="text-[14px] font-600">{children}</a>
+// )
+
+export const ServicesItem: React.FC<{
+  term: React.ReactNode
+  def: React.ReactNode
+}> = ({ term, def }) => (
+  <div className="pb-20 w-full ml-0 pl-0 xl:w-1/2">
+    <dt className="pb-3 font-display font-600 tracking-widest text-[24px]">
+      {term}
+    </dt>
+    <dd className="leading-7 text-[16px] xl:text-[17px]">{def}</dd>
+  </div>
+)
+
+export const Services: React.FC = ({ children }) => (
+  <dl className="xl:flex xl:space-x-10">{children}</dl>
+)
+
 export const Hero = () => {
   return (
     <div>
-      <div className="px-gutter-lg pt-48 3xl:pt-72 max-w-common mx-auto">
+      <div className="px-gutter-lg pt-48 xl:pt-52 4xl:pt-72 max-w-[420px] leading-tight xl:max-w-common mx-auto">
         <Title className="text-[#04D357]">Hi, I’m Anthony</Title>
         <div className="text-lg xl:text-[22px] pt-2 xl:pt-5 text-white font-heading font-500 ">
           <p>
@@ -75,7 +107,7 @@ export const PlaidSection = () => {
                 </div>
                 <div className="leading-7 max-w-[734px] pb-6 space-y-6 xl:space-y-8 mb-3 xl:text-[17px]">
                   <p>
-                    This is where my development journey began. I had the lovely
+                    This is where my development journey began. I had the
                     opportunity to work with the lovely people at Plaid
                     Technologies, where I maintained their marketing site,
                     improved site performance, and adding new features to their
