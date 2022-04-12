@@ -24,11 +24,11 @@
 }
 
 .BackgroundImage {
-  background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  background-image: url(../../../images/mobile-header.jpg);
-  height: 100%;
+  background-image: url('../../../images/mobile-header.jpg');
+  background-repeat: no-repeat;
+  height: theme('height.site-header-height');
   left: 0;
   opacity: 0.4;
   position: absolute;
@@ -37,23 +37,53 @@
   z-index: -1;
 }
 
+@media screen(sm) {
+  .BackgroundImage {
+    background-size: cover;
+    background-image: url('./background-1+c.jpg');
+    background-position: 90% 10%;
+  }
+}
+
 @media screen(lg) {
   .BackgroundImage {
-    background-image: url('./background-1+c.jpg');
-    background-attachment: none;
-    background-position: 90% -260px;
+    background-position: 90% 0px;
   }
 }
 
-@media screen(2xl) {
+@media (min-width: 900px) {
   .BackgroundImage {
-    background-position: 85% -300px;
+    background-position: 90% 10%;
   }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 1000px) {
   .BackgroundImage {
-    background-position: 85% -420px;
+    background-position: 90% 35%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .BackgroundImage {
+    background-position: 85% -200px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .BackgroundImage {
+    background-position: 85% -220px;
+  }
+}
+
+@media (min-width: 1750px) {
+  .BackgroundImage {
+    background-position: 85% -18vw;
+  }
+}
+
+@media (min-width: 2200px) {
+  .BackgroundImage {
+    background-position: 85% -22vw;
   }
 }
 

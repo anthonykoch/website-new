@@ -20,6 +20,12 @@ html {
   }
 }
 
+@media screen(4xl) {
+  html {
+    --site-header-height: 650px;
+  }
+}
+
 body {
   background-color: white;
   color: theme('colors.body');

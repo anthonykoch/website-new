@@ -12,7 +12,7 @@ export * from './opal-camera'
 export const Hero = () => {
   return (
     <div>
-      <div className="px-gutter pt-48 max-w-common mx-auto">
+      <div className="px-gutter-lg pt-48 3xl:pt-72 max-w-common mx-auto">
         <Title className="text-[#04D357]">Hi, I’m Anthony</Title>
         <div className="text-lg xl:text-[22px] pt-2 xl:pt-5 text-white font-heading font-500 ">
           <p>

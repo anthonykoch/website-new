@@ -34,7 +34,7 @@ const Home: NextPage = () => {
           <Hero />
         </SiteHeaderBackground>
       </SiteHeaderPlaceholder>
-
+      
       <div className="bg-[#f0f0f0]">
         <section>
           <div id="portfolio"></div>
