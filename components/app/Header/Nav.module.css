@@ -1,0 +1,126 @@
+.NavText {
+  font-family: theme('fontFamily.link');
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.NavLinkShadow {
+  filter: drop-shadow(3px 4px 7px rgba(black, 0.2));
+}
+/* 
+.NavLink-is-text {
+  --padding-h: theme('spacing.px-nav-link');
+  color: #ddd;
+  display: block;
+  height: theme('spacing.nav-height');
+  padding-left: var(--padding-h);
+  padding-right: var(--padding-h);
+  transition: background-color, color;
+  transition-duration: var(--transition-duration);
+
+  &:link,
+  &:visited {
+    color: #dddddd;
+  }
+
+  &:hover {
+    color: #333333;
+    background: theme('colors.primary.500');
+  }
+
+  &:active {
+    color: #333333;
+    background: theme('colors.primary.500');
+  }
+} */
+
+.NavLinkCommon-is-active {
+  color: #333333;
+  background: theme('colors.primary.500');
+}
+
+.Nav {
+  display: flex;
+  height: theme('spacing.nav-height');
+  text-align: right;
+}
+
+.NavList {
+  /* align-items: center; */
+  /* flex: 1; */
+  display: inline-flex;
+  list-style-type: none;
+
+  & > li {
+    position: relative;
+  }
+}
+
+.NavLink {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 2px;
+}
+
+.NavIconTrigger-is-github {
+  /* max-width: 100%; */
+  /* 
+  svg {
+    fill: rgba(255, 255, 255, 0.8);
+    left: 50%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: theme('spacing.nav-icon-width');
+  } */
+  /* 
+  &:hover {
+    svg {
+      fill: var(--color-1);
+    }
+  } */
+}
+
+.Menu {
+  cursor: pointer;
+  height: theme('spacing.nav-height');
+  position: relative;
+  transform: scale(1);
+  transition: background-color 150ms, transform 150ms;
+  width: theme('spacing.nav-icon-width');
+
+  &:active {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(0.9);
+    transform-origin: center;
+  }
+
+  svg {
+    fill: #ddd;
+  }
+}
+
+.MenuIcon {
+  @media (min-width: 1025px) {
+    display: none;
+  }
+}
+
+.NavMenuIcon {
+  line-height: 0;
+  width: 26px;
+  fill: #ddd;
+
+  svg {
+    fill: #ddd;
+    line-height: 0;
+  }
+}
+
+.MobileNavLinks {
+  max-width: 160px;
+  margin-top: 20%;
+}

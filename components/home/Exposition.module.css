@@ -1,0 +1,23 @@
+
+.Exposition {
+  display: flex;
+}
+
+.ExpositionContainer {
+}
+
+.ExpositionTitle {
+  font-family: theme('fontFamily.display');
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+
+.ExpositionDescription {
+  max-width: 534px;
+  line-height: 38px;
+  font-weight: 300;
+}
+
+.ExpositionButton {
+}

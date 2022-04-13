@@ -1,0 +1,13 @@
+.Logo {
+  path {
+    fill: white;
+  }
+
+  &:hover,
+  &:active {
+    path {
+      transition: fill 150ms;
+      fill: theme('colors.primary.500');
+    }
+  }
+}
