@@ -74,9 +74,6 @@ export const OpalMobileSection = () => {
                   signups. 
                 </p>
                 <p>
-                  A part of the challenges 
-                </p>
-                <p>
                   The tech stack involves Adonis, Tailwind CSS, and React through NextJS. 
                 </p>
               </div>
