@@ -22,7 +22,6 @@ export const OpalMacbookSection: React.FC = () => {
               <img
                 src={OpalMacbookMobile.src}
                 className="w-[853px] block mx-auto"
-                // className="w-[753px] block mx-auto"
                 alt="opal website"
               />
             </picture>

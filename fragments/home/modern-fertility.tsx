@@ -19,7 +19,6 @@ export const ModernFertilityMacbookSection = () => {
           <img
             src={MFMacbookMobile.src}
             className="w-[853px] block mx-auto"
-            // className="w-[753px] block mx-auto"
             alt="modern fertility website"
           />
         </picture>
