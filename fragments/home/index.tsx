@@ -81,6 +81,14 @@ export const PlaidSection = () => {
           <h2 className="mb-20 xl:mb-20 text-center">
             <Title>I’ve also worked with...</Title>
           </h2>
+          <button
+            type="button"
+            onClick={() => {
+              throw new Error('Sentry Frontend Error')
+            }}
+          >
+            Throw error
+          </button>
         </OuterContainer>
         <Container>
           <div className="xl:flex items-center max-w-xl xl:max-w-full mx-auto">
