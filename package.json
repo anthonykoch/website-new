@@ -10,9 +10,6 @@
     "watch:theme": "ts-node ./scripts/watch.ts ",
     "test": "jest"
   },
-  "engines": {
-    "node": "14.17.0"
-  },
   "dependencies": {
     "@heroicons/react": "^1.0.5",
     "@mapbox/rehype-prism": "^0.8.0",
