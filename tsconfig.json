@@ -1,8 +1,15 @@
 {
   "compilerOptions": {
-    "types": ["@types/jest", "@types/node"],
+    "types": [
+      "@types/jest",
+      "@types/node"
+    ],
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -13,13 +20,19 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     },
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ]
   },
   "include": [
     "next.custom.d.ts",
@@ -28,5 +41,7 @@
     "**/*.tsx",
     "emotion.d.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

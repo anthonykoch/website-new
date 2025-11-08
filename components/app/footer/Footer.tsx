@@ -1,7 +1,7 @@
 import React from 'react'
-import { ReactComponent as LogoCodepen } from '@/images/logo-codepen.svg'
-import { ReactComponent as LogoGithub } from '@/images/logo-github.svg'
-import { ReactComponent as LogoLinkedIn } from '@/images/logo-linkedin.svg'
+// import { ReactComponent as LogoCodepen } from '@/images/logo-codepen.svg'
+// import { ReactComponent as LogoGithub } from '@/images/logo-github.svg'
+// import { ReactComponent as LogoLinkedIn } from '@/images/logo-linkedin.svg'
 import { ExternalLink } from '@/components/action/Link'
 import styles from './Footer.module.css'
 

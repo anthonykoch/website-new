@@ -1,9 +1,5 @@
+@import "tailwindcss";
 @import './base.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import './post.css';
 @import './syntax.css';
 @import './visby.css';
