@@ -1,5 +1,5 @@
 .NavText {
-  /* font-family: theme('fontFamily.link'); */
+  /* font-family: var(--font-link); */
   font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;
@@ -11,12 +11,12 @@
 
 .NavLinkCommon-is-active {
   color: #333333;
-  /* background: theme('colors.primary.500'); */
+  /* background: var(--color-primary-500); */
 }
 
 .Nav {
   display: flex;
-  /* height: theme('spacing.nav-height'); */
+  /* height: var(--spacing-nav-height); */
   text-align: right;
 }
 
@@ -40,7 +40,7 @@
 
 .NavIconTrigger-is-github {
   &:hover {
-    /* background-color: theme('colors.primary.500'); */
+    /* background-color: var(--color-primary-500); */
 
     svg {
       fill: #333;
@@ -50,11 +50,11 @@
 
 .Menu {
   cursor: pointer;
-  /* height: theme('spacing.nav-height'); */
+  /* height: var(--spacing-nav-height); */
   position: relative;
   transform: scale(1);
   transition: background-color 150ms, transform 150ms;
-  /* width: theme('spacing.nav-icon-width'); */
+  /* width: var(--spacing-nav-icon-width); */
 
   &:active {
     background-color: rgba(255, 255, 255, 0.1);

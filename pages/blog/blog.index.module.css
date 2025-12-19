@@ -7,12 +7,12 @@
     box-shadow: 0 20px 30px -9px rgb(0 0 0 / 20%);
   }
 
-  @media (max-width: theme('screens.lg')) {
+  @media (max-width: theme(--breakpoint-lg)) {
     width: 100%;
     border-bottom: 1px solid var(--bg);
   }
 
-  @media (min-width: theme('screens.lg')) and (max-width: theme('screens.xl')) {
+  @media (min-width: theme(--breakpoint-lg)) and (max-width: theme(--breakpoint-xl)) {
     border-bottom: 1px solid var(--bg);
     width: calc((1 / 2) * 100%);
 
@@ -43,7 +43,7 @@
   }
 }
 
-@media (min-width: theme('screens.lg')) and (max-width: theme('screens.xl')) {
+@media (min-width: theme(--breakpoint-lg)) and (max-width: theme(--breakpoint-xl)) {
   .by2Remainder1 {
     &:nth-last-child(-n + 2) {
       border-bottom: 0;

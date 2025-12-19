@@ -7,7 +7,7 @@
 }
 
 .ExpositionTitle {
-  font-family: theme('fontFamily.display');
+  font-family: var(--font-display);
   font-size: 28px;
   font-weight: 600;
   letter-spacing: 4px;

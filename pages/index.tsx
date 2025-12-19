@@ -39,11 +39,12 @@ const Home: NextPage = () => {
         <SiteNavigation />
       </div>
       
+      <div>
+
+      </div>
 
       <div className="bg-[#f0f0f0]">
         <section>
-
-          <div></div>
           
           <div id="portfolio"></div>
 
