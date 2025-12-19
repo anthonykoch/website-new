@@ -22,26 +22,32 @@ import {
   Services,
   ServicesItem,
 } from '@/fragments/home'
+import { Navigation } from '@/features/navigation/Navigation'
+import { SiteNavigation } from '@/features/navigation/Navigation/Navigation'
 
 const Home: NextPage = () => {
   return (
     <div>
-      <SiteHeader isAbsolute />
+      {/* <SiteHeader isAbsolute />
 
       <SiteHeaderPlaceholder className="relative">
         <SiteHeaderBackground>
           <Hero />
         </SiteHeaderBackground>
-      </SiteHeaderPlaceholder>
+      </SiteHeaderPlaceholder> */}
+      <div className='absolute top-0 left-0 w-full'>
+        <SiteNavigation />
+      </div>
+      
 
       <div className="bg-[#f0f0f0]">
         <section>
+
+          <div></div>
+          
           <div id="portfolio"></div>
 
           <OuterContainer className="text-center xl:text-left">
-            <div className="px-gutter pb-10 xl:pb-24 pt-10 xl:pt-16">
-              <F.Title>Portfolio</F.Title>
-            </div>
           </OuterContainer>
 
           <section>
@@ -143,12 +149,12 @@ const Home: NextPage = () => {
               <div id="contact"></div>
               <p>
                 <a href="mailto:hello@anthonykoch.com">
-                  <div className="text-center font-500 2xl:text-left text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl xl:py-10">
+                  <span className="block text-center font-500 2xl:text-left text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl xl:py-10">
                     <span className="text-lg xl:text-xl font-400 mb-5 block">
                       Email me at
                     </span>
                     hello@anthonykoch.com
-                  </div>
+                  </span>
                 </a>
               </p>
             </Container>

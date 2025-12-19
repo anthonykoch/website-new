@@ -45,7 +45,13 @@ export const Hero = () => {
   return (
     <div>
       <div className="px-gutter-lg pt-48 xl:pt-52 4xl:pt-72 max-w-[420px] leading-tight xl:max-w-common mx-auto">
-        <Title className="text-[#04D357]">Hi, I’m Anthony</Title>
+            {/* font-family: 'rift-soft';
+    letter-spacing: 1px;
+    font-size: 90px; */}
+        
+        <h1 className="text-[#04D357]
+        text-[60px] xl:text-[90px] font-display font-600 tracking-[0.085em] leading-tight xl:leading-[1px]
+        ">Hi, I’m Anthony</h1>
         <div className="text-lg xl:text-[22px] pt-2 xl:pt-5 text-white font-heading font-500 ">
           <p>
             I’m a frontend developer helping companies and startups create a web

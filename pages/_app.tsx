@@ -1,9 +1,8 @@
 import type { AppProps } from 'next/app'
 
-// import '../styles/main.css'
+import '../styles/main.css'
 
 import Head from 'next/head'
-import { ThemeProvider } from '@/contexts/theme'
 
 const HeadMeta = () => {
   return (
@@ -25,9 +24,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <div>
       <HeadMeta />
-      <ThemeProvider>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Component {...pageProps} />
     </div>
   )
 }

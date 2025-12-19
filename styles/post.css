@@ -16,7 +16,7 @@
   font-size: 16px;
   line-height: 1.8;
 
-  @media screen(xl) {
+  @media (min-width: theme(--breakpoint-xl)) {
     font-size: 17.5px;
   }
 
@@ -109,7 +109,7 @@
       }
     }
 
-    @media screen(lg) {
+    @media (min-width: theme(--breakpoint-lg)) {
       font-size: 13.5px;
       margin-left: auto;
       margin-right: auto;
@@ -290,7 +290,7 @@
     z-index: -1;
   } */
 
-  @media screen(lg) {
+  @media (min-width: theme(--breakpoint-lg)) {
     font-size: 50px;
     font-weight: 900;
     letter-spacing: -0.45px;
@@ -315,7 +315,7 @@
   margin-top: theme('spacing.10');
   margin-bottom: theme('spacing.5');
 
-  @media screen(lg) {
+  @media (min-width: theme(--breakpoint-lg)) {
     max-width: calc(theme('maxWidth.postWide') - 50px);
   }
 }
@@ -337,7 +337,7 @@
   margin-top: theme('spacing.6');
 }
 
-@media screen(xl) {
+@media (min-width: theme(--breakpoint-xl)) {
   .md {
     > blockquote {
       > * {
@@ -374,7 +374,7 @@
     }
   }
 
-  @media screen(xl) {
+  @media (min-width: theme(--breakpoint-xl)) {
     & > li {
       margin-bottom: 8px;
       margin-left: 38px;
@@ -394,7 +394,7 @@
     padding-left: 10px;
   }
 
-  @media screen(xl) {
+  @media (min-width: theme(--breakpoint-xl)) {
     & > li {
       margin-bottom: 8px;
       margin-left: 38px;
@@ -479,7 +479,7 @@
     min-width: 150px;
   }
 
-  @media screen(xl) {
+  @media (min-width: theme(--breakpoint-xl)) {
     time,
     span {
       padding: 18px 15px;

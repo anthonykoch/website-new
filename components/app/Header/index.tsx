@@ -37,16 +37,11 @@ export const SiteHeader: React.FC<{
       role="banner"
     >
       <div className="Logo">
-        <Link href="/" passHref>
-          <a
-            className={cx(
-              'block',
-              navLinkClasses.default,
-              navLinkClasses.hover,
-            )}
-          >
-            <Logo />
-          </a>
+        <Link
+          href="/"
+          className={cx('block', navLinkClasses.default, navLinkClasses.hover)}
+        >
+          <Logo />
         </Link>
       </div>
 

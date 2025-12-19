@@ -1,8 +1,32 @@
-@import "tailwindcss";
-@import './base.css';
-@import './post.css';
-@import './syntax.css';
+@import 'tailwindcss';
 @import './visby.css';
+@import './theme.css';
+@import './syntax.css';
+@import './post.css';
+
+@layer base {
+  html {
+    font-size: 100%;
+    line-height: 1.6;
+    width: 100%;
+  }
+
+  body {
+    background-color: white;
+    margin: 0;
+    min-height: 100vh;
+    padding: 0;
+    text-rendering: geometricPrecision;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    color: #6196cc;
+  }
+}
 
 .absolute-center {
   @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;

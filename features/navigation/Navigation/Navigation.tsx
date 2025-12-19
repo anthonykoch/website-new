@@ -7,65 +7,97 @@ import { MenuIcon, XIcon } from '@heroicons/react/solid'
 import { motion } from 'framer-motion'
 import { easing } from '@/styles/index'
 
-import {
-  NavigationModalContent,
-  NavigationModalOverlay,
-  NavigationModalPortal,
-  NavigationModalRoot,
-} from '../NavigationModal'
-
-import styles from './Nav.module.css'
-import { navLinkClasses } from './styles.common'
+// import styles from './Nav.module.css'
 import { scrollTo } from '@/hooks/use-scroll-into-view'
 import { NextRouter, useRouter } from 'next/router'
+import { Logo } from '../Logo'
 
 export const NavText: React.FC = ({ children }) => (
   <div className={styles.NavText}>{children}</div>
 )
 
-export const Nav: React.FC<{ className?: string }> = ({ className }) => {
+// default: 'text-gray-200 transition-colors',
+// active: 'text-gray-700 bg-primary-500',
+// hover: 'hover:text-gray-700 hover:bg-primary-500',
+// text: 'text-[#ddd] tracking-widest',
+
+const createLinks = (
+  router: NextRouter,
+): Array<{
+  href: string
+  children: React.ReactNode
+  props?: React.HTMLProps<HTMLAnchorElement>
+}> => [
+  {
+    href: '/blog',
+    children: 'Blog',
+  },
+  {
+    href: '/#portfolio',
+    children: 'Portfolio',
+    props: {
+      onClick: (e) => {
+        if (router.pathname === '/') {
+          e.preventDefault()
+          scrollTo('#portfolio')
+        }
+      },
+    },
+  },
+  {
+    href: '/#contact',
+    children: 'Contact',
+    props: {
+      onClick: (e) => {
+        if (router.pathname === '/') {
+          e.preventDefault()
+          scrollTo('#contact')
+        }
+      },
+    },
+  },
+]
+
+export const Navigation: React.FC<{ className?: string }> = ({ className }) => {
   const [isNavigationModalOpen, setOpen] = useState(false)
   const router = useRouter()
   const links = createLinks(router)
 
   return (
-    <div className={cx(styles.Nav, className)} role="navigation">
-      <div className={styles.NavList}>
+    <nav>
+      <div className="inline-flex list-none *:relative">
         {links.map(({ href, children, props }) => (
           <li className="hidden xl:block" key={href}>
             <Link
               href={href}
-              className={cx(
-                'h-nav-height px-px-nav-link flex items-center justify-center ',
-                navLinkClasses.text,
-                navLinkClasses.hover,
-                styles.NavLinkShadow,
-              )}
-              // {...props}
+              className="h-[60px] px-12 flex items-center justify-center
+                hover:text-gray-700 hover:bg-primary-500
+                text-[#ddd] tracking-widest text-[15px] font-600 uppercase font-display
+              "
             >
-              <NavText>{children}</NavText>
+              {children}
             </Link>
           </li>
         ))}
 
         <li>
-          <IconTrigger
+          <a
             href="https://github.com/anthonykoch?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
             className={cx(
-              'leading-none',
-              styles['NavIconTrigger-is-github'],
-              styles.NavLinkShadow,
+              'leading-none block w-[54px] h-[60px]',
+              // styles['NavIconTrigger-is-github'],
+              // styles.NavLinkShadow,
             )}
           >
             <IoLogoGithub
-              className={cx(styles.NavMenuIcon, 'absolute-center')}
+              className="absolute-center leading-0 w-[26px] fill-[#ddd]"
               size="22px"
             />
-          </IconTrigger>
+          </a>
         </li>
-        <li className={cx('xl:hidden')}>
+        {/* <li className="xl:hidden">
           <div className={cx(styles.Menu)}>
             <div>
               <NavigationModalRoot isOpen={isNavigationModalOpen}>
@@ -105,8 +137,37 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
               </div>
             </div>
           </div>
-        </li>
+        </li> */}
       </div>
+    </nav>
+  )
+}
+
+export const SiteNavigation = () => {
+  return (
+    <div
+      className={cx('flex items-start justify-between w-full z-header', {
+        // 'absolute top-0 left-0': isAbsolute,
+        // relative: !isAbsolute,
+      })}
+      role="banner"
+    >
+      {/* 
+      export const navLinkClasses = {
+  default: 'text-gray-200 transition-colors',
+  active: 'text-gray-700 bg-primary-500',
+  hover: 'hover:text-gray-700 hover:bg-primary-500',
+  text: 'text-[#ddd] tracking-widest',
+} */}
+
+      <Link
+        href="/"
+        className="text-gray-200 transition-colors blockhover:text-gray-700 hover:bg-primary-500"
+      >
+        <Logo />
+      </Link>
+
+      <Navigation className="z-site-nav" />
     </div>
   )
 }
@@ -186,44 +247,3 @@ const MenuButton: React.FC<
     )}
   </IconTrigger>
 )
-
-const createLinks = (
-  router: NextRouter,
-): Array<{
-  href: string
-  children: React.ReactNode
-  props?: React.HTMLProps<HTMLAnchorElement>
-}> => [
-  {
-    href: '/blog',
-    children: 'Blog',
-  },
-  {
-    href: '/#portfolio',
-    children: 'Portfolio',
-    props: {
-      onClick: (e) => {
-        if (router.pathname === '/') {
-          e.preventDefault()
-          scrollTo('#portfolio')
-        }
-      },
-    },
-  },
-  {
-    href: '/#contact',
-    children: 'Contact',
-    props: {
-      onClick: (e) => {
-        if (router.pathname === '/') {
-          e.preventDefault()
-          scrollTo('#contact')
-        }
-      },
-    },
-  },
-  // {
-  //   href: '/mentoring',
-  //   children: 'Mentoring',
-  // },
-]
