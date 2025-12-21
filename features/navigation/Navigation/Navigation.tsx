@@ -7,19 +7,8 @@ import { MenuIcon, XIcon } from '@heroicons/react/solid'
 import { motion } from 'framer-motion'
 import { easing } from '@/styles/index'
 
-// import styles from './Nav.module.css'
 import { scrollTo } from '@/hooks/use-scroll-into-view'
 import { NextRouter, useRouter } from 'next/router'
-import { Logo } from '../Logo'
-
-export const NavText: React.FC = ({ children }) => (
-  <div className={styles.NavText}>{children}</div>
-)
-
-// default: 'text-gray-200 transition-colors',
-// active: 'text-gray-700 bg-primary-500',
-// hover: 'hover:text-gray-700 hover:bg-primary-500',
-// text: 'text-[#ddd] tracking-widest',
 
 const createLinks = (
   router: NextRouter,
@@ -72,8 +61,10 @@ export const Navigation: React.FC<{ className?: string }> = ({ className }) => {
               href={href}
               className="h-[60px] px-12 flex items-center justify-center
                 hover:text-gray-700 hover:bg-primary-500
-                text-[#ddd] tracking-widest text-[15px] font-600 uppercase font-display
+                tracking-widest text-[15px] font-600 uppercase font-display
+                text-[#5a5a5a]
               "
+              // text-[#ddd] 
             >
               {children}
             </Link>
@@ -140,35 +131,6 @@ export const Navigation: React.FC<{ className?: string }> = ({ className }) => {
         </li> */}
       </div>
     </nav>
-  )
-}
-
-export const SiteNavigation = () => {
-  return (
-    <div
-      className={cx('flex items-start justify-between w-full z-header', {
-        // 'absolute top-0 left-0': isAbsolute,
-        // relative: !isAbsolute,
-      })}
-      role="banner"
-    >
-      {/* 
-      export const navLinkClasses = {
-  default: 'text-gray-200 transition-colors',
-  active: 'text-gray-700 bg-primary-500',
-  hover: 'hover:text-gray-700 hover:bg-primary-500',
-  text: 'text-[#ddd] tracking-widest',
-} */}
-
-      <Link
-        href="/"
-        className="text-gray-200 transition-colors blockhover:text-gray-700 hover:bg-primary-500"
-      >
-        <Logo />
-      </Link>
-
-      <Navigation className="z-site-nav" />
-    </div>
   )
 }
 

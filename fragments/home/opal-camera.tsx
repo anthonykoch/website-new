@@ -61,7 +61,9 @@ export const OpalMobileSection = () => {
           </div>
           <div className="pt-28">
             <div className="max-w-[577px] mx-auto">
-              <h2 className="font-heading font-bold max-w-[400px] xl:max-w-full text-[34px] xl:text-[40px] mb-5 leading-[1.2] hidden xl:block">
+              <h2 className="font-heading font-500 max-w-[400px] xl:max-w-full text-[34px] xl:text-[45px] mb-5 leading-[1.2] hidden xl:block">
+              {/* <h2 className="font-heading font-400 max-w-[400px] xl:max-w-full text-[34px] xl:text-[45px] mb-5 leading-[1.2] hidden xl:block"> */}
+              {/* <h2 className="font-heading font-bold max-w-[400px] xl:max-w-full text-[34px] xl:text-[40px] mb-5 leading-[1.2] hidden xl:block"> */}
                 Going past the frontend
               </h2>
               <div className="max-w-[577px] mx-auto xl:mx-0 space-y-5 xl:text-[17px] leading-relaxed">

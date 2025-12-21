@@ -11,7 +11,6 @@ import {
 
 import {
   F,
-  Hero,
   ModernFertilityMacbookSection,
   ModernFertilityMobileSection,
   OpalMacbookSection,
@@ -22,8 +21,8 @@ import {
   Services,
   ServicesItem,
 } from '@/fragments/home'
-import { Navigation } from '@/features/navigation/Navigation'
-import { SiteNavigation } from '@/features/navigation/Navigation/Navigation'
+
+import { SiteNavigation } from '@/features/navigation/SiteNavigation'
 
 const Home: NextPage = () => {
   return (
@@ -35,21 +34,82 @@ const Home: NextPage = () => {
           <Hero />
         </SiteHeaderBackground>
       </SiteHeaderPlaceholder> */}
-      <div className='absolute top-0 left-0 w-full'>
+      <div className="absolute top-0 left-0 w-full">
         <SiteNavigation />
       </div>
-      
-      <div>
 
-      </div>
+      {/* https://dribbble.com/shots/16146436-Modern-Fertility-marketing-site */}
 
       <div className="bg-[#f0f0f0]">
-        <section>
-          
-          <div id="portfolio"></div>
+ <section className="max-w-[1450px] mx-auto">
+          <div className="max-w-[1120px] mx-auto pb-[200px] pt-[200px]">
+            <p className="text-[76px] font-500 text-black font-heading leading-none">
+              I’m a frontend developer helping brands build their online
+              presence.
+            </p>
+          </div>
+        </section> 
 
-          <OuterContainer className="text-center xl:text-left">
-          </OuterContainer>
+        <div className="max-w-[1240px] mx-auto spacer grid grid-cols-3 gap-x-4">
+          <div
+            data-one
+            className="h-[600px] border-b border-gray-300/0 border-r"
+          >
+            {/* <img
+              src="/opal-black.png"
+              className="w-full h-full object-contain relative z-10"
+            />
+             */}
+
+            {/* <div data-one className="h-[400px] border-gray-300/0 border-r"> */}
+              <video
+                autoPlay
+                muted
+                playsInline
+                loop
+                className="w-full h-full object-cover rounded-2xl"
+              >
+                <source src="/lens-front-blinking-light.mp4" type="video/mp4" />
+              </video>
+            {/* </div> */}
+          </div>
+          <div
+            data-two
+            className="h-[600px] border-b border-gray-300/0 border-r relative"
+          >
+            <div className="rounded-2xl  size-full absolute top-0 left-0"></div>
+              <img
+              src="/mf-hand-box.jpg"
+              // src="/mf-page.png"
+              className="w-full h-full object-cover relative z-10 rounded-2xl"
+            />
+            {/* 
+            <img
+              src="/prenatal_multivitamin_pdp.webp"
+              className="w-full h-full object-contain relative z-10"
+            />  */}
+          </div>
+       
+        </div>
+{/* 
+        <section className="max-w-[1450px] mx-auto">
+          <div className="max-w-[1120px] mx-auto pb-[200px] pt-[50px]">
+            <p className="text-[76px] font-500 text-black font-heading leading-none">
+              I’m a frontend developer helping brands build their online
+              presence.
+            </p>
+          </div>
+        </section> */}
+
+        <section>
+          <div id="portfolio"></div>
+          <div className="max-w-[1120px] mx-auto pb-[200px] pt-[200px]">
+            <div className="text-[42px] font-500 text-black font-heading leading-none">
+              Where have I worked?
+            </div>
+          </div>
+
+          <OuterContainer className="text-center xl:text-left"></OuterContainer>
 
           <section>
             <OpalMacbookSection />
@@ -59,8 +119,8 @@ const Home: NextPage = () => {
             <OpalMobileSection />
           </section>
 
-          <div className="border-t border-t-black/[0.2]"></div>
-          <div className="border-t border-t-black/[0.11]"></div>
+          <div className="border-t border-t-black/20"></div>
+          <div className="border-t border-t-black/11"></div>
 
           <div>
             <section>
@@ -78,14 +138,14 @@ const Home: NextPage = () => {
         </section>
         <section>
           <div className="pb-16 xl:pb-32">
-            <OuterContainer>
+            {/* <OuterContainer>
               <h2 className="px-gutter">
                 <F.Title className="pb-14 xl:pb-20 pt-10 xl:pt-20 text-center xl:text-left">
                   Hire me
                 </F.Title>
               </h2>
-            </OuterContainer>
-
+            </OuterContainer> */}
+            {/* 
             <Container>
               <div className=" max-w-md mx-auto xl:max-w-full px-gutter">
                 <div>
@@ -133,23 +193,18 @@ const Home: NextPage = () => {
                             assistance in helping learn the fundamentals, review
                             your portfolio, and more!
                           </p>
-                          {/* <Link href="/mentoring" passHref>
-                            <a className="pt-4 block underline underline-offset-3">
-                              <More>Learn more</More>
-                            </a>
-                          </Link> */}
                         </>
                       }
                     />
                   </Services>
                 </div>
               </div>
-            </Container>
+            </Container> */}
 
             <Container>
               <div id="contact"></div>
               <p>
-                <a href="mailto:hello@anthonykoch.com">
+                <a href="mailto:hello@anthonykoch.com" className="text-black">
                   <span className="block text-center font-500 2xl:text-left text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl xl:py-10">
                     <span className="text-lg xl:text-xl font-400 mb-5 block">
                       Email me at
