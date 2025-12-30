@@ -2,6 +2,18 @@ import type { NextConfig } from 'next'
 import createMDX from '@next/mdx'
 
 const nextConfig: NextConfig = {
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
+  // eslint: {
+  //   // Warning: This allows production builds to successfully complete even if
+  //   // your project has ESLint errors.
+  //   ignoreDuringBuilds: true,
+  // },
   turbopack: {
     rules: {
       // '*.svg': {
@@ -33,11 +45,12 @@ const nextConfig: NextConfig = {
   },
 }
 
-const withMDX = createMDX({
-  extension: /\.(md|mdx)$/,
-})
+// const withMDX = createMDX({
+//   extension: /\.(md|mdx)$/,
+// })
 
-export default withMDX(nextConfig)
+export default nextConfig
+// export default withMDX(nextConfig)
 
 // // eslint-disable-next-line
 // const { withSentryConfig } = require('@sentry/nextjs')

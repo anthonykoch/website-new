@@ -334,7 +334,7 @@ const Home: NextPage = () => {
               <div className="lg:grid grid-cols-12 pb-8 gap-x-4 pt-[100px] px-4">
                 <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-2">
                   <h2 className="copy-heading-2 pb-6 max-w-[421px] xl:ml-auto lg:text-right">
-                    A responsive website, built from the ground up.{' '}
+                    A responsive website, built from the ground up.
                   </h2>
                 </div>
                 <div className="lg:col-start-6 xl:col-start-7 2xl:col-start-7 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
