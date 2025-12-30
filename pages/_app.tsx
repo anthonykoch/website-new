@@ -16,6 +16,7 @@ const HeadMeta = () => {
       />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="robots" content="index,follow" />
+
     </Head>
   )
 }

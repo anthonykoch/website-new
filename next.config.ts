@@ -1,30 +1,31 @@
 import type { NextConfig } from 'next'
+import createMDX from '@next/mdx'
 
 const nextConfig: NextConfig = {
   turbopack: {
     rules: {
-      '*.svg': {
-        loaders: [
-          {
-            loader: '@svgr/webpack',
-            options: {
-              prettier: false,
-              svgo: true,
-              typescript: true,
-              svgoConfig: {
-                plugins: [
-                  {
-                    name: 'removeViewBox',
-                    active: false,
-                  },
-                ],
-              },
-              titleProp: true,
-            },
-          },
-        ],
-        as: '*.js',
-      },
+      // '*.svg': {
+      //   loaders: [
+      //     {
+      //       loader: '@svgr/webpack',
+      //       options: {
+      //         prettier: false,
+      //         svgo: true,
+      //         typescript: true,
+      //         svgoConfig: {
+      //           plugins: [
+      //             {
+      //               name: 'removeViewBox',
+      //               active: false,
+      //             },
+      //           ],
+      //         },
+      //         titleProp: true,
+      //       },
+      //     },
+      //   ],
+      //   as: '*.js',
+      // },
     },
     resolveAlias: {
       '@': __dirname,
@@ -32,7 +33,11 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default nextConfig
+const withMDX = createMDX({
+  extension: /\.(md|mdx)$/,
+})
+
+export default withMDX(nextConfig)
 
 // // eslint-disable-next-line
 // const { withSentryConfig } = require('@sentry/nextjs')

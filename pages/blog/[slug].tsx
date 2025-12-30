@@ -2,8 +2,6 @@ import type { GetStaticProps, NextPage } from 'next'
 import cx from 'classnames'
 import * as React from 'react'
 import superjson from 'superjson'
-import { MDXRemote } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
 import { useRouter } from 'next/router'
 import rehypePrism from 'rehype-prism-plus'
 import { RehypeCode } from '@/rehype-plugins/code'
@@ -19,16 +17,16 @@ import { getAllPostMeta, getPostBySlug, getPostsPaths } from '@/utils/post'
 import { PostMeta } from '@/types'
 import { markdownComponents } from '@/components/markdown-components'
 
-type MDXSource = Awaited<ReturnType<typeof serialize>>
+// type MDXSource = Awaited<ReturnType<typeof serialize>>
 
 interface Props {
-  mdxSource: MDXSource
+  // mdxSource: MDXSource
   post: PostMeta
   slug: string
   posts: PostMeta[]
 }
 
-const BlogPost: NextPage<Props> = ({ mdxSource, post, posts }) => {
+const BlogPost: NextPage<Props> = ({  post, posts }) => {
   const { asPath } = useRouter()
 
   return (
@@ -36,7 +34,7 @@ const BlogPost: NextPage<Props> = ({ mdxSource, post, posts }) => {
       <SiteHeader isAbsolute />
 
       <main>
-        <SiteHeaderPlaceholder className="relative">
+        {/* <SiteHeaderPlaceholder className="relative">
           <SiteHeaderBackground>
             <div className="Post-headerBackground">
               <header className="Post-header px-gutter top-48 relative">
@@ -51,7 +49,7 @@ const BlogPost: NextPage<Props> = ({ mdxSource, post, posts }) => {
               </header>
             </div>
           </SiteHeaderBackground>
-        </SiteHeaderPlaceholder>
+        </SiteHeaderPlaceholder> */}
 
         {/* <BlogToolbar slot="before" :top="top"></blog-toolbar> */}
 
@@ -62,10 +60,10 @@ const BlogPost: NextPage<Props> = ({ mdxSource, post, posts }) => {
               className="Post-body md pt-20 pb-24"
               // style="animation-delay: 0.3s"
             >
-              <MDXRemote
+              {/* <MDXRemote
                 {...mdxSource}
                 components={markdownComponents as any}
-              />
+              /> */}
               {/* <capture-fullscreen :images="true">
                 </capture-fullscreen> */}
             </div>
@@ -93,7 +91,7 @@ const BlogPost: NextPage<Props> = ({ mdxSource, post, posts }) => {
               More from the blog
             </h2>
             <ul className="PostsList">
-              {posts.map((listing) => (
+              {/* {posts.map((listing) => (
                 <li
                   key={listing.slug}
                   className={cx({
@@ -113,7 +111,7 @@ const BlogPost: NextPage<Props> = ({ mdxSource, post, posts }) => {
                     <span>{listing.title}</span>
                   </a>
                 </li>
-              ))}
+              ))} */}
             </ul>
           </div>
         </div>
@@ -123,45 +121,45 @@ const BlogPost: NextPage<Props> = ({ mdxSource, post, posts }) => {
   )
 }
 
-export const getStaticPaths = async () => {
-  const paths = await getPostsPaths()
+// export const getStaticPaths = async () => {
+//   const paths = await getPostsPaths()
 
-  return {
-    paths,
-    fallback: false,
-  }
-}
+//   return {
+//     paths,
+//     fallback: false,
+//   }
+// }
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const { slug } = params as { slug: string }
-  const posts = (await getAllPostMeta()).slice(0)
-  const post = (await getPostBySlug(slug))!
+// export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+//   const { slug } = params as { slug: string }
+//   const posts = (await getAllPostMeta()).slice(0)
+//   const post = (await getPostBySlug(slug))!
 
-  const mdxSource = await serialize(post.content, {
-    scope: post.meta.data,
-    mdxOptions: {
-      rehypePlugins: [
-        [RehypeCode, {}],
-        [rehypePrism, { showLineNumbers: true }],
-        rehypeSlug,
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: ['after'],
-          },
-        ],
-      ],
-    },
-  })
+//   const mdxSource = await serialize(post.content, {
+//     scope: post.meta.data,
+//     mdxOptions: {
+//       rehypePlugins: [
+//         [RehypeCode, {}],
+//         [rehypePrism, { showLineNumbers: true }],
+//         rehypeSlug,
+//         [
+//           rehypeAutolinkHeadings,
+//           {
+//             behavior: ['after'],
+//           },
+//         ],
+//       ],
+//     },
+//   })
 
-  return {
-    props: {
-      posts: superjson.serialize(posts).json as any,
-      post: superjson.serialize(post.meta).json as any,
-      slug,
-      mdxSource,
-    },
-  }
-}
+//   return {
+//     props: {
+//       posts: superjson.serialize(posts).json as any,
+//       post: superjson.serialize(post.meta).json as any,
+//       slug,
+//       mdxSource,
+//     },
+//   }
+// }
 
 export default BlogPost

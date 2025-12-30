@@ -46,11 +46,12 @@ export const OpalMacbookSection: React.FC = () => {
 export const OpalMobileSection = () => {
   return (
     <section>
-      <Container className="pb-28 xl:pb-36 pt-32 xl:pt-44 px-gutter">
-        <h2 className="font-heading font-bold max-w-[450px] xl:max-w-[450px] text-[34px] xl:text-[40px] mb-5 leading-[1.2] mx-auto text-center pb-6 xl:hidden">
+      <div className="pb-28 xl:pb-36 pt-32 xl:pt-44 px-gutter max-w-[1190px] mx-auto w-full">
+      
+        {/* <h2 className="font-heading font-bold max-w-[450px] xl:max-w-[450px] text-[34px] xl:text-[40px] mb-5 leading-[1.2] mx-auto text-center pb-6 xl:hidden">
           From front-end <br />
           to full-stack
-        </h2>
+        </h2> */}
         <div className="xl:flex justify-center xl:flex-row-reverse xl:space-x-20 xl:space-x-reverse xl:px-gutter">
           <div>
             <img
@@ -61,27 +62,36 @@ export const OpalMobileSection = () => {
           </div>
           <div className="pt-28">
             <div className="max-w-[577px] mx-auto">
-              <h2 className="font-heading font-500 max-w-[400px] xl:max-w-full text-[34px] xl:text-[45px] mb-5 leading-[1.2] hidden xl:block">
-              {/* <h2 className="font-heading font-400 max-w-[400px] xl:max-w-full text-[34px] xl:text-[45px] mb-5 leading-[1.2] hidden xl:block"> */}
-              {/* <h2 className="font-heading font-bold max-w-[400px] xl:max-w-full text-[34px] xl:text-[40px] mb-5 leading-[1.2] hidden xl:block"> */}
+              {/* <h2 className="font-heading font-800 max-w-[400px] xl:max-w-full text-[34px] xl:text-[38px] mb-5 leading-[1.2] hidden xl:block"> */}
+                {/* <h2 className="font-heading font-400 max-w-[400px] xl:max-w-full text-[34px] xl:text-[45px] mb-5 leading-[1.2] hidden xl:block"> */}
+                {/* <h2 className="font-heading font-bold max-w-[400px] xl:max-w-full text-[34px] xl:text-[40px] mb-5 leading-[1.2] hidden xl:block"> */}
+                {/* Going past the frontend */}
+              {/* </h2> */}
+                <h2 className="text-[40px] xl:text-[68px] font-500 text-black font-heading mb-4  leading-[1.3] xl:leading-none max-w-[1000px]">
                 Going past the frontend
-              </h2>
-              <div className="max-w-[577px] mx-auto xl:mx-0 space-y-5 xl:text-[17px] leading-relaxed">
+                  
+          {/* From front-end <br />
+          to full-stack */}
+        </h2>
+              <div className="max-w-[600px] mx-auto xl:mx-0 space-y-5 xl:text-[17px] leading-relaxed">
                 <p>
                   Opal Camera had contacted me to help develop the first
                   iteration of their landing page. The project has since turned
                   into full-stack development, where I’ve assisted in building
-                  out administrative tools to manage email invites and
-                  signups. 
+                  out helpful administrative tools to manage email invites and
+                  signups.
                 </p>
+
                 <p>
-                  The tech stack involves Adonis, Tailwind CSS, and React through NextJS. 
+                  The tech stack involved React, Typescript, Tailwindcss,
+                  NextJS, and Shopify. I even got my hands dirty with a bit of
+                  email development.{' '}
                 </p>
               </div>
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </section>
   )
 }
