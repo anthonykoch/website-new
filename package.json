@@ -38,7 +38,7 @@
     "jest": "^27.4.7",
     "lodash": "^4.17.21",
     "motion": "^12.23.26",
-    "next": "^16.0.1",
+    "next": "^16.0.10",
     "normalize.css": "^8.0.1",
     "postcss": "^8.4.5",
     "postcss-import": "^14.0.2",
