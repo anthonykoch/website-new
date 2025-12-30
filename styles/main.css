@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import './visby.css';
+@import './rift-soft.css';
 @import './theme.css';
 @import './syntax.css';
 @import './post.css';
