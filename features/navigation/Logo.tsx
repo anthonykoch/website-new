@@ -11,8 +11,7 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
       style={{ transition: 'transform 200ms ease-in' }}
     >
       <span
-        className="tracking-[4px]
-    font-display uppercase text-[15px] font-600"
+        className="tracking-[4px] font-display uppercase text-[15px] font-600"
       >
         Anthony Koch
       </span>

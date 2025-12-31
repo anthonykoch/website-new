@@ -30,6 +30,21 @@
   }
 }
 
+@utility setup-line-down {
+  display: block;
+  transform: translateY(110%);
+  will-change: transform, opacity;
+}
+
+@utility setup-overflow {
+  overflow: hidden;
+  display: block;
+}
+
+@utility setup-fade-in {
+  opacity: 0;
+}
+
 .absolute-center {
   @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
 }

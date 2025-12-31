@@ -22,13 +22,13 @@ const createLinks = (
     children: 'Blog',
   },
   {
-    href: '/#portfolio',
-    children: 'Portfolio',
+    href: '/#work',
+    children: 'Work',
     props: {
       onClick: (e) => {
         if (router.pathname === '/') {
           e.preventDefault()
-          scrollTo('#portfolio')
+          scrollTo('#work')
         }
       },
     },
@@ -64,7 +64,7 @@ export const Navigation: React.FC<{ className?: string }> = ({ className }) => {
                 tracking-widest text-[15px] font-600 uppercase font-display
                 text-[#5a5a5a]
               "
-              // text-[#ddd] 
+              // text-[#ddd]
             >
               {children}
             </Link>

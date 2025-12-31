@@ -17,9 +17,14 @@ import {
   useScroll,
   useTransform,
   motion,
+  animate,
+  stagger,
 } from 'motion/react'
 
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
+import { easeOutExpo, fixFontSpacing, staggeredEase } from '@/utils/animation'
+
+import { splitText } from 'motion-plus'
 
 const Home: NextPage = () => {
   const opalLogoRef = useRef(null)
@@ -32,65 +37,233 @@ const Home: NextPage = () => {
   const clipPath1 = useTransform(scrollYProgress, [0, 1], [100, 0])
   const clipPathTransform = useMotionTemplate`inset(0% 0px ${clipPath1}% 0px)`
 
-  // useMotionValueEvent(clipPathTransform, 'change', (t) => {
-  //   console.log(t)
-  // })
+  const introTitleRef = useRef<HTMLSpanElement>(null)
+  const introRef = useRef<HTMLDivElement>(null)
+  const opalCameraDescriptionRef = useRef<HTMLDivElement>(null)
+  const opalViewSiteRef = useRef<HTMLDivElement>(null)
+  const timeout = useRef<any>(null)
+
+  useEffect(() => {
+    if (!introTitleRef.current || !opalCameraDescriptionRef.current) return
+
+    const { lines } = splitText(introTitleRef.current, {
+      lineClass: 'split-line setup-overflow',
+      wordClass: 'split-word setup-line-down',
+    })
+
+    fixFontSpacing(lines)
+
+    const opalCameraSplitText = splitText(opalCameraDescriptionRef.current, {
+      lineClass: 'split-line setup-overflow',
+      wordClass: 'split-word setup-line-down',
+    })
+
+    timeout.current = setTimeout(() => {
+      if (introTitleRef.current) {
+        introTitleRef.current.style.visibility = 'visible'
+      }
+
+      if (opalCameraDescriptionRef.current) {
+        opalCameraDescriptionRef.current.style.visibility = 'visible'
+      }
+
+      let delay = 1.1
+      // const imageStaggerDelay = 0.16
+
+      // animate(
+      //   '.selector-opal-camera-image',
+      //   { y: [20, 0], opacity: [0, 1] },
+      //   {
+      //     delay: stagger(imageStaggerDelay, { startDelay: delay }),
+      //     // duration: 1,
+      //     duration: 1.8,
+      //     ease: easeOutExpo,
+      //     // ease: [0.33, 1, 0.68, 1],
+      //     // y: {
+      //     //   ease: easeOutExpo,
+      //     //   duration: 1.5,
+      //     // },
+      //     // ease: easeOutExpo,
+      //     // opacity: { delay: 0.6 },
+      //     // opacity: { delay: 0.3, duration: 1 }, // opacity starts 0.3s after y
+      //   },
+      // )
+
+      const imageStaggerDelay = 0.8
+
+      animate(
+        '.selector-opal-camera-image',
+        { opacity: [0, 1] },
+        {
+          delay: stagger(imageStaggerDelay, { startDelay: delay }),
+          duration: 1,
+          // duration: 1.8,
+          // ease: easeOutExpo,
+          ease: [0.33, 1, 0.68, 1],
+          // y: {
+          //   ease: easeOutExpo,
+          //   duration: 1.5,
+          // },
+          // ease: easeOutExpo,
+          // opacity: { delay: 0.6 },
+          // opacity: { delay: 0.3, duration: 1 }, // opacity starts 0.3s after y
+        },
+      )
+
+      delay += imageStaggerDelay * 3
+
+      animate(
+        '.selector-opal-camera-title',
+        { y: ['110%', '0%'] },
+        {
+          delay: delay,
+          // delay: 1.9,
+          duration: 1.9,
+          ease: easeOutExpo,
+          // opacity: { delay: 0.3, duration: 1 }, // opacity starts 0.3s after y
+        },
+      )
+
+      // animate(
+      //   '.selector-opal-camera-text',
+      //   { y: ['110%', '0%'] },
+      //   {
+      //     delay: (delay += 0.06),
+      //     duration: 1.9,
+      //     ease: easeOutExpo,
+      //     // opacity: { delay: 0.3, duration: 1 }, // opacity starts 0.3s after y
+      //   },
+      // )
+
+      Array.from(opalCameraSplitText.lines).forEach((line, i) => {
+        animate(
+          line.querySelectorAll('.split-word'),
+          // { opacity: [0, 1] },
+          { y: ['110%', '0%'], opacity: [0, 1] },
+          {
+            delay: (delay += 0.07) + 0.07 * i,
+            duration: 1.9,
+            ease: easeOutExpo,
+            opacity: { delay: 0.03 * i + 0.1, duration: 1 }, // opacity starts 0.3s after y
+          },
+        )
+      })
+
+      if (opalViewSiteRef.current) {
+        animate(
+          opalViewSiteRef.current,
+          { opacity: [0, 1], x: [-18, 0] },
+          {
+            delay: (delay += 0.2),
+            duration: 1.2,
+            ease: easeOutExpo,
+          },
+        )
+      }
+
+      if (introRef.current) {
+        animate(
+          introRef.current,
+          { height: [0, 'auto'] },
+          { duration: 1.3, ease: easeOutExpo, delay: (delay += 1) },
+        )
+      }
+
+      Array.from(lines).forEach((line, i) => {
+        animate(
+          line.querySelectorAll('.split-word'),
+          // { opacity: [0, 1] },
+          { y: ['110%', '0%'] },
+          {
+            delay: delay + 0.07 * i,
+            duration: 1.9,
+            // duration: 1.9,
+            ease: easeOutExpo,
+            // opacity: { delay: 0.07 * i + 0.3, duration: 1 }, // opacity starts 0.3s after y
+          },
+        )
+      })
+    }, 400)
+
+    return () => {
+      clearTimeout(timeout.current)
+    }
+  }, [])
 
   return (
     <div>
-      {/* <SiteHeader isAbsolute />
-
-      <SiteHeaderPlaceholder className="relative">
-        <SiteHeaderBackground>
-          <Hero />
-        </SiteHeaderBackground>
-      </SiteHeaderPlaceholder> */}
-
       <div className="absolute top-0 left-0 w-full">
-        <div className="max-w-[1160px] mx-auto">
-          <SiteNavigation />
+        <div className="max-w-[1600px] mx-auto grid grid-cols-12">
+          <div className="col-span-10 col-start-2">
+            <SiteNavigation />
+          </div>
         </div>
       </div>
 
-      {/* https://dribbble.com/shots/16146436-Modern-Fertility-marketing-site */}
-
       <div className="bg-[#EAEAEA]">
         <section>
-          <div className="max-w-[1120px] mx-auto">
-            {/* I help companies and startups ship pixel-perfect, responsive websites. */}
-            {/* <p className="text-[76px] font-500 text-black font-heading leading-none px-gutter">
-              I’m a frontend developer helping brands build their online
-              presence.
-            </p> */}
-            <div className="pt-[100px] xl:pt-[200px]" />
-            <p className="text-[40px] xl:text-[68px] font-500 text-black font-heading  px-[16px] leading-[1.3] xl:leading-none max-w-[1000px]">
-              I help companies and startups ship <span>pixel-</span>
-              <span>perfect</span>, responsive websites.
-              {/* I help companies and startups ship pixel-perfect, responsive websites. */}
-            </p>
-            <div className="pb-[80px] xl:pb-[80px] " />
+          <div className="pt-[40px] xl:pt-[100px]" />
+          {/* <div className="pt-[80px] xl:pt-[180px]" /> */}
+          <div
+            className="max-w-[1600px] mx-auto grid grid-cols-12 overflow-hidden"
+            style={{ height: 0 }}
+            ref={introRef}
+          >
+            <div className="col-span-12 col-start-2">
+          <div className="pt-[40px] xl:pt-[50px]" />
+              <p
+                className="text-[40px] xl:text-[68px] font-500 text-black font-heading px-[16px] leading-[1.3] xl:leading-[1.3] max-w-[1000px] [.split-word]:will-change-[transform,opacity]"
+                style={{ visibility: 'hidden' }}
+                ref={introTitleRef}
+              >
+                I help companies and startups ship pixel- perfect, responsive
+                websites.
+              </p>
+            </div>
           </div>
+          <div className="pb-18 xl:pb-18 " />
         </section>
 
         <section>
           {/* Desktop version */}
           <div className="xl:max-w-[max(1200px,80%)] px-[16px] 5xl:max-w-[1600px] mx-auto hidden xl:flex gap-x-4   relative">
             <div className="w-[36.533085%]">
-              <img src="/final/girl.png" />
+              <h3 className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[10px]">
+                <span className="setup-overflow">
+                  <span className="setup-line-down selector-opal-camera-title">
+                    Opal Camera
+                  </span>
+                </span>
+              </h3>
+              <img
+                src="/final/girl.png"
+                className="selector-opal-camera-image setup-fade-in"
+              />
             </div>
             <div className="w-[42.870457%] self-end">
-              <p className="xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[364px]">
+              <p
+                className="xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[364px] selector-opal-camera-text"
+                style={{ visibility: 'hidden' }}
+                ref={opalCameraDescriptionRef}
+              >
                 A slick e-commerce site created in conjuction with the ingamana
-                team and Aristide Benoist
+                team and Aristide Benoist.
               </p>
-              <img src="/final/opal-tadpole.png" />
+              <img
+                src="/final/opal-tadpole.png"
+                className="selector-opal-camera-image setup-fade-in"
+              />
             </div>
             <div className="w-[20.503262%]">
               <div className="h-full flex flex-col items-start justify-between">
-                <img src="/final/person.png" />
+                <img
+                  src="/final/person.png"
+                  className="selector-opal-camera-image setup-fade-in"
+                />
                 <a
                   href="https://opalcamera.com/"
-                  className="flex justify-end items-center gap-x-5 w-full font-body uppercase text-[12px] text-black font-500 tracking-wide"
+                  className="flex justify-end items-center gap-x-5 w-full font-body uppercase text-[12px] text-black font-500 tracking-wide  setup-fade-in"
+                  ref={opalViewSiteRef}
                 >
                   View site
                   <img src="/final/arrow-right.svg" className="w-[28px]" />
