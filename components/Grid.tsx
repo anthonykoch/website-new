@@ -12,7 +12,7 @@ export const Grid: FC<{
         {left}
       </div>
 
-      <div className="xl:col-start-6 2xl:col-start-6 md:col-span-10 col-span-12 lg:col-span-6 xl:col-span-6 2xl:col-span-5">
+      <div className="xl:col-start-6 2xl:col-start-6 md:col-span-8 col-span-12 lg:col-span-6 xl:col-span-6 2xl:col-span-5">
         {right}
       </div>
     </div>

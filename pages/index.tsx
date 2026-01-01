@@ -308,14 +308,16 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="mt-[130px] mx-auto max-w-[1600px]">
-            <Grid
-              left={
+          <div className="pt-[130px]" />
+          <div className=" mx-auto max-w-[1600px]">
+            <div className="grid grid-cols-12 gap-x-4 px-4">
+              <div className="col-span-12 lg:col-span-6 xl:col-span-4 xl:col-start-2 2xl:col-start-2">
                 <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
                   Opal Camera is elevating video calls with premium webcams.
                 </h2>
-              }
-              right={
+              </div>
+
+              <div className="xl:col-start-6 2xl:col-start-6 md:col-span-8 col-span-12 lg:col-span-6 xl:col-span-6 2xl:col-span-5">
                 <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
                   Opal Camera creates premium webcams designed to help people
                   look and sound great during video calls. Their main products
@@ -325,8 +327,8 @@ const Home: NextPage = () => {
                   create to market and display the capabilities of the C1,
                   Tadpole, and the accompanying app.
                 </p>
-              }
-            />
+              </div>
+            </div>
           </div>
 
           {/* 
@@ -415,8 +417,7 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <div className="pt-50" />
-        <div className="pt-[40px]" />
+        <div className="pt-22 xl:pt-50" />
         {/* <div className="pt-[130px]" /> */}
 
         <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 px-4 xl:px-0 ">
@@ -497,7 +498,7 @@ const Home: NextPage = () => {
 
             <div className="pb-8" />
 
-            <div className="grid grid-cols-12 gap-x-4 px-4 pt-[200px] pb-24">
+            <div className="grid grid-cols-12 gap-x-4 px-4 pt-[200px] ">
               <div className="col-span-4 col-start-2">
                 <p className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[15px]">
                   Modern Fertility
@@ -520,17 +521,74 @@ const Home: NextPage = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-12 gap-x-4 px-4">
-              <p className="col-span-10 lg:col-start-2 pt-20 pb-60 font-heading font-500 text-[40px] xl:text-[72px] leading-[1.1] z-10 relative max-w-[1200px]">
-                {/* <p className="col-span-10 lg:col-start-2 pt-36 pb-20 font-heading font-500 text-[40px] xl:text-[72px] leading-none z-10 relative"> */}
+            {/* <p className="col-span-10 lg:col-start-2 pt-36 pb-20 font-heading font-500 text-[40px] xl:text-[72px] leading-none z-10 relative"> */}
+            {/* <div className="grid grid-cols-12 gap-x-4 px-4">
+              <p className="col-span-10 lg:col-start-2 pt-20 pb-60 font-heading font-500 text-[40px] xl:text-[72px] leading-[1] z-10 relative max-w-[1200px]">
                 A marketing site featuring a user dashboard allowing women to
                 view their fertility results.
+              </p>
+            </div> */}
+          </div>
+
+          <div className="pb-[160px]" />
+
+          <div className=" pb-[180px] mx-auto max-w-[1600px]">
+            <div className="grid grid-cols-12 gap-x-4 px-4">
+              <div className="col-span-12 lg:col-span-6 xl:col-span-4 xl:col-start-2 2xl:col-start-2">
+                <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
+                  Opal Camera is elevating video calls with premium webcams.
+                </h2>
+              </div>
+
+              <div className="xl:col-start-6 2xl:col-start-6 md:col-span-8 col-span-12 lg:col-span-6 xl:col-span-6 2xl:col-span-5">
+                <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
+                  Opal Camera creates premium webcams designed to help people
+                  look and sound great during video calls. Their main products
+                  are the Opal C1, a high-quality camera ideal for desktop or
+                  home office setups, and the Tadpole, a tiny portable camera
+                  made specifically for laptops. The website was created to
+                  create to market and display the capabilities of the C1,
+                  Tadpole, and the accompanying app.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex gap-x-4 px-4">
+            <div>
+              <div className="sticky top-[100px]">
+                <div className="flex justify-end pb-10 pt-4">
+                  <p className="font-heading font-500 text-[18px] xl:text-[22px] leading-[1.2] z-10 relative max-w-[320px] xl:max-w-[360px]">
+                    A marketing site featuring a user dashboard allowing women
+                    to view their fertility results.
+                  </p>
+                </div>
+
+                <img src="/final/exhibit-mf-plan.png" />
+              </div>
+            </div>
+            <div>
+              <img src="/final/exhibit-mf-dash-home.png" />
+            </div>
+          </div>
+
+          <div className="pt-40" />
+
+          <div >
+          {/* <div className="h-screen flex items-center justify-center"> */}
+            <div className="grid grid-cols-12 gap-x-4 px-4 ">
+              <p className="col-span-10 lg:col-start-2 font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative max-w-[1200px]">
+                A marketing site featuring a user dashboard allowing women to view
+                their fertility results.
               </p>
             </div>
           </div>
 
+          {/* <div className="pb-50" /> */}
+          <div className="pb-40" />
+
           <section>
-            <div className="bg-[#99B3F1] h-[360px] flex flex-col items-center justify-end relative">
+            {/* <div className="bg-[#99B3F1] h-[360px] flex flex-col items-center justify-end relative">
               <div>
                 <img
                   src={ImageMScribble.src}
@@ -552,7 +610,7 @@ const Home: NextPage = () => {
               <div className="h-[52%] w-full absolute left-0 top-1/2 bg-white" />
             </div>
 
-            <div className="pt-[120px]" />
+            <div className="pt-[120px]" /> */}
 
             <Grid
               left={
@@ -563,7 +621,7 @@ const Home: NextPage = () => {
                 </div>
               }
               right={
-                <div className="gap-y-6 copy-body-4-sm lg:copy-body-4 text-[#888787]">
+                <div className="gap-y-6 flex flex-col copy-body-4-sm lg:copy-body-4 text-[#888787]">
                   <p>
                     Modern Fertility approached me to assist them in developing
                     their website. At the time, I was the sole front-end
