@@ -371,7 +371,7 @@ const Home: NextPage = () => {
           <div className="pt-30" />
 
           <div
-            className="relative h-[2700px] bg-[#EAEAEA] pb-4"
+            className="relative h-[1500px] lg:h-[2700px] bg-[#EAEAEA] pb-4"
             ref={opalcameraHomeImageScrollable}
           >
             {/* <img
