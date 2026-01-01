@@ -13,6 +13,7 @@ import { SiteNavigation } from '@/features/navigation/SiteNavigation'
 import {
   animate,
   motion,
+  resize,
   stagger,
   useMotionTemplate,
   useMotionValueEvent,
@@ -24,6 +25,8 @@ import { easeOutExpo, fixFontSpacing } from '@/utils/animation'
 import { useEffect, useRef } from 'react'
 
 import { splitText } from 'motion-plus'
+import { debounce } from 'lodash'
+import { Grid } from '@/components/Grid'
 
 const Home: NextPage = () => {
   const opalLogoRef = useRef(null)
@@ -62,52 +65,62 @@ const Home: NextPage = () => {
   const opalCameraDescriptionRef = useRef<HTMLDivElement>(null)
   const opalViewSiteRef = useRef<HTMLAnchorElement>(null)
   const timeout = useRef<any>(null)
+  const isIntroAnimationFinished = useRef(false)
 
   useEffect(() => {
-    if (!introTitleRef.current || !opalCameraDescriptionRef.current) return
+    if (!introTitleRef.current) return
 
-    const { lines } = splitText(introTitleRef.current, {
-      lineClass: 'split-line setup-overflow',
-      wordClass: 'split-word setup-line-down',
-    })
+    // if (!introTitleRef.current) return
+    const splitLines = (
+      el: HTMLElement,
+      {
+        fixFont,
+        classes,
+      }: { fixFont?: boolean; classes?: { line?: string; word?: string } } = {
+        classes: {},
+      },
+    ): ReturnType<typeof splitText> => {
+      const text = splitText(el, {
+        lineClass: `split-line ${classes?.line ?? ''}`,
+        wordClass: `split-word ${classes?.word ?? ''}`,
+      })
 
-    fixFontSpacing(lines)
+      if (fixFont) fixFontSpacing(text.lines)
 
-    const opalCameraSplitText = splitText(opalCameraDescriptionRef.current, {
-      lineClass: 'split-line setup-overflow',
-      wordClass: 'split-word setup-line-down',
-    })
+      return text
+    }
+
+    const stopResize1 = resize(
+      debounce(() => {
+        if (introTitleRef.current) {
+          console.log(isIntroAnimationFinished.current)
+          splitLines(introTitleRef.current, {
+            fixFont: true,
+            classes: isIntroAnimationFinished.current
+              ? {}
+              : { line: 'setup-overflow', word: 'setup-line-down' },
+          })
+        }
+      }, 100),
+    )
+
+    const { lines } = splitLines(introTitleRef.current, { fixFont: true })
+
+    // const opalCameraSplitText = splitText(opalCameraDescriptionRef.current, {
+    //   lineClass: 'split-line setup-overflow',
+    //   wordClass: 'split-word setup-line-down',
+    // })
 
     timeout.current = setTimeout(() => {
       if (introTitleRef.current) {
         introTitleRef.current.style.visibility = 'visible'
       }
 
-      if (opalCameraDescriptionRef.current) {
-        opalCameraDescriptionRef.current.style.visibility = 'visible'
-      }
+      // if (opalCameraDescriptionRef.current) {
+      //   opalCameraDescriptionRef.current.style.visibility = 'visible'
+      // }
 
       let delay = 1.1
-      // const imageStaggerDelay = 0.16
-
-      // animate(
-      //   '.selector-opal-camera-image',
-      //   { y: [20, 0], opacity: [0, 1] },
-      //   {
-      //     delay: stagger(imageStaggerDelay, { startDelay: delay }),
-      //     // duration: 1,
-      //     duration: 1.8,
-      //     ease: easeOutExpo,
-      //     // ease: [0.33, 1, 0.68, 1],
-      //     // y: {
-      //     //   ease: easeOutExpo,
-      //     //   duration: 1.5,
-      //     // },
-      //     // ease: easeOutExpo,
-      //     // opacity: { delay: 0.6 },
-      //     // opacity: { delay: 0.3, duration: 1 }, // opacity starts 0.3s after y
-      //   },
-      // )
 
       const imageStaggerDelay = 0.8
 
@@ -117,16 +130,7 @@ const Home: NextPage = () => {
         {
           delay: stagger(imageStaggerDelay, { startDelay: delay }),
           duration: 1,
-          // duration: 1.8,
-          // ease: easeOutExpo,
           ease: [0.33, 1, 0.68, 1],
-          // y: {
-          //   ease: easeOutExpo,
-          //   duration: 1.5,
-          // },
-          // ease: easeOutExpo,
-          // opacity: { delay: 0.6 },
-          // opacity: { delay: 0.3, duration: 1 }, // opacity starts 0.3s after y
         },
       )
 
@@ -137,34 +141,23 @@ const Home: NextPage = () => {
         { y: ['110%', '0%'] },
         {
           delay: delay,
-          // delay: 1.9,
           duration: 1.9,
           ease: easeOutExpo,
-          // opacity: { delay: 0.3, duration: 1 }, // opacity starts 0.3s after y
         },
       )
 
-      // animate(
-      //   '.selector-opal-camera-text',
-      //   { y: ['110%', '0%'] },
-      //   {
-      //     delay: (delay += 0.06),
-      //     duration: 1.9,
-      //     ease: easeOutExpo,
-      //     // opacity: { delay: 0.3, duration: 1 }, // opacity starts 0.3s after y
-      //   },
-      // )
-
-      Array.from(opalCameraSplitText.lines).forEach((line, i) => {
+      Array.from(
+        document.querySelectorAll('.selector-opal-camera-text .selector-inner'),
+      ).forEach((line, i) => {
+        console.log(line)
         animate(
-          line.querySelectorAll('.split-word'),
-          // { opacity: [0, 1] },
+          line,
           { y: ['110%', '0%'], opacity: [0, 1] },
           {
             delay: (delay += 0.07) + 0.07 * i,
             duration: 1.9,
             ease: easeOutExpo,
-            opacity: { delay: 0.03 * i + 0.1, duration: 1 }, // opacity starts 0.3s after y
+            opacity: { delay: 0.03 * i + 0.1, duration: 1 },
           },
         )
       })
@@ -189,24 +182,28 @@ const Home: NextPage = () => {
         )
       }
 
-      Array.from(lines).forEach((line, i) => {
-        animate(
-          line.querySelectorAll('.split-word'),
-          // { opacity: [0, 1] },
-          { y: ['110%', '0%'] },
-          {
-            delay: delay + 0.07 * i,
-            duration: 1.9,
-            // duration: 1.9,
-            ease: easeOutExpo,
-            // opacity: { delay: 0.07 * i + 0.3, duration: 1 }, // opacity starts 0.3s after y
-          },
-        )
+      Promise.all(
+        Array.from(lines).map((line, i) => {
+          return animate(
+            line.querySelectorAll('.split-word'),
+            { y: ['110%', '0%'] },
+            {
+              // delay: 0 + 0.07 * i,
+              delay: delay + 0.07 * i,
+              duration: 1.9,
+              ease: easeOutExpo,
+            },
+          )
+        }),
+      ).then(() => {
+        isIntroAnimationFinished.current = true
+        console.log('memed')
       })
     }, 400)
 
     return () => {
       clearTimeout(timeout.current)
+      stopResize1()
     }
   }, [])
 
@@ -225,14 +222,16 @@ const Home: NextPage = () => {
           <div className="pt-[40px] xl:pt-[100px]" />
           {/* <div className="pt-[80px] xl:pt-[180px]" /> */}
           <div
-            className="max-w-[1600px] mx-auto grid grid-cols-12 overflow-hidden"
+            className="max-w-[1600px] mx-auto grid grid-cols-12 gap-x-4 px-4 overflow-hidden"
             style={{ height: 0 }}
             ref={introRef}
           >
-            <div className="col-span-12 col-start-2">
+            <div className="col-span-12 xl:col-span-11 xl:col-start-2">
               <div className="pt-[40px] xl:pt-[50px]" />
               <p
-                className="text-[40px] xl:text-[64px] font-500 text-black font-heading px-[16px] leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity]"
+                className="text-[clamp(34px,5vw+1rem,64px)] font-500 text-black font-heading leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity]"
+                // className="text-[40px] xl:text-[64px] font-500 text-black font-heading leading-[1.6] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity]"
+
                 // className="text-[40px] xl:text-[68px] font-500 text-black font-heading px-[16px] leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity]"
                 style={{ visibility: 'hidden' }}
                 ref={introTitleRef}
@@ -249,7 +248,7 @@ const Home: NextPage = () => {
 
         <section>
           {/* Desktop version */}
-          <div className="xl:max-w-[max(1200px,80%)] px-[16px] 5xl:max-w-[1600px] mx-auto hidden xl:flex gap-x-4   relative">
+          <div className="xl:max-w-[max(1200px,80%)] px-[16px] 5xl:max-w-[1600px] mx-auto hidden lg:flex gap-x-4 relative">
             <div className="w-[36.533085%]">
               <h3 className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[10px]">
                 <span className="setup-overflow">
@@ -265,12 +264,24 @@ const Home: NextPage = () => {
             </div>
             <div className="w-[42.870457%] self-end">
               <p
-                className="xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[364px] selector-opal-camera-text"
-                style={{ visibility: 'hidden' }}
-                ref={opalCameraDescriptionRef}
+                // className="text-[clamp(18px,0.6vw,24px)] leading-[1.2] font-heading font-500 pb-[26px] max-w-[364px] selector-opal-camera-text"
+                className="text-[18px] xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[364px] selector-opal-camera-text"
               >
-                A slick e-commerce site created in conjuction with the ingamana
-                team and Aristide Benoist.
+                <span className="setup-overflow selector-line">
+                  <span className="setup-line-down selector-inner">
+                    A slick e-commerce site created
+                  </span>
+                </span>
+                <span className="setup-overflow selector-line">
+                  <span className="setup-line-down selector-inner">
+                    in conjuction with the ingamana
+                  </span>
+                </span>
+                <span className="setup-overflow selector-line">
+                  <span className="setup-line-down selector-inner">
+                    team and Aristide Benoist.
+                  </span>
+                </span>
               </p>
               <img
                 src="/final/opal-tadpole.png"
@@ -297,25 +308,26 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 px-4 mt-[130px] mx-auto max-w-[1600px]">
-            <div className="col-span-4 xl:col-start-2">
-              <h2 className="copy-heading-2 max-w-[412px]">
-                Opal Camera is elevating video calls with premium webcams.
-              </h2>
-            </div>
-            <div className="col-span-6">
-              <p className="copy-body-4 text-[#888787] max-w-[654px]">
-                Opal Camera creates premium webcams designed to help people look
-                and sound great during video calls. Their main products are the
-                Opal C1, a high-quality camera ideal for desktop or home office
-                setups, and the Tadpole, a tiny portable camera made
-                specifically for laptops. The website was created to create to
-                market and display the capabilities of the C1, Tadpole, and the
-                accompanying app.
-              </p>
-            </div>
+          <div className="mt-[130px] mx-auto max-w-[1600px]">
+            <Grid
+              left={
+                <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
+                  Opal Camera is elevating video calls with premium webcams.
+                </h2>
+              }
+              right={
+                <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
+                  Opal Camera creates premium webcams designed to help people
+                  look and sound great during video calls. Their main products
+                  are the Opal C1, a high-quality camera ideal for desktop or
+                  home office setups, and the Tadpole, a tiny portable camera
+                  made specifically for laptops. The website was created to
+                  create to market and display the capabilities of the C1,
+                  Tadpole, and the accompanying app.
+                </p>
+              }
+            />
           </div>
-
           <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 mt-[130px] px-4 xl:px-0">
             <div className="col-span-6 xl:h-[825px]">
               <img
@@ -413,15 +425,15 @@ const Home: NextPage = () => {
 
         <div className="bg-white pt-[100px]">
           <div className="max-w-[1600px] mx-auto">
-            <section className="lg:grid grid-cols-12 pb-8 gap-x-4 px-4">
-              <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
-                <h2 className="copy-heading-2 pb-6 max-w-[310px] xl:ml-auto">
+            <section className="grid grid-cols-12 pb-8 gap-x-4 px-4">
+              <div className="col-span-12 lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
+                <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[310px] xl:ml-auto">
                   An expanding role in an evolving stack
                   {/* <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto"> */}
                   {/* An evolving stack, an expanding role */}
                 </h2>
               </div>
-              <div className="lg:col-start-5 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
+              <div className="xl:col-start-6 2xl:col-start-6 md:col-span-8 col-span-12 lg:col-span-6 xl:col-span-6 2xl:col-span-5 gap-y-6 copy-body-4-sm lg:copy-body-4 text-[#888787] ">
                 <p>
                   The Opal Camera website is a simple Shopify app utilizing the
                   Storefront API through graphQL running inside an AdonisJS
@@ -609,7 +621,7 @@ const Home: NextPage = () => {
                       <span className="text-lg xl:text-[22px] font-400 mb-5 block">
                         Let’s collaborate, or just chat.
                       </span>
-                      <span className="font-400 -tracking-wide font-heading">
+                      <span className="font-500 -tracking-wide font-heading">
                         hello@anthonykoch.com
                       </span>
                     </span>

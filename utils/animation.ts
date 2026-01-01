@@ -24,7 +24,7 @@ export function staggeredEase(
 
 export const fixFontSpacing = (
   lines: HTMLElement[],
-  size: number = 0.4,
+  size: number = 0.2,
   unit: string = 'em',
 ) => {
   lines.forEach((line, i) => {

@@ -87,11 +87,27 @@
     line-height: 45px;
   }
 
+  .copy-heading-2-sm {
+    font-family: theme(--font-heading);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.9px;
+    line-height: 36px;
+  }
+
   .copy-body-4 {
     font-size: 18px;
     font-family: theme(--font-body);
     font-weight: 500;
     line-height: 32px;
+    letter-spacing: -0.9px;
+  }
+
+  .copy-body-4-sm {
+    font-size: 16px;
+    font-family: theme(--font-body);
+    font-weight: 500;
+    line-height: 30px;
     letter-spacing: -0.9px;
   }
 }
