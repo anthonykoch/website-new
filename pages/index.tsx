@@ -1,10 +1,9 @@
 import { Footer } from '@/components/app/footer/Footer'
-import { Container } from '@/components/container'
-import type { NextPage } from 'next'
 import ImageExhibitDownloadsPage from '@/public/final/exhibit-downloads-page.png'
 import ImageExhibitTadpoleShopPage from '@/public/final/exhibit-tadpole-shop.png'
-import ImageMFMacbook from '@/public/final/mf-macbook.png'
 import ImageMScribble from '@/public/final/m-scribble.svg'
+import ImageMFMacbook from '@/public/final/mf-macbook.png'
+import type { NextPage } from 'next'
 // import ImageExhibitDoctorPage from '@/public/final/exhibit-doctor.png'
 // import ImageExhibitMediaPage from '@/public/final/exhibit-media.png'
 
@@ -12,30 +11,52 @@ console.log(ImageMScribble)
 
 import { SiteNavigation } from '@/features/navigation/SiteNavigation'
 import {
+  animate,
+  motion,
+  stagger,
   useMotionTemplate,
   useMotionValueEvent,
   useScroll,
   useTransform,
-  motion,
-  animate,
-  stagger,
 } from 'motion/react'
 
+import { easeOutExpo, fixFontSpacing } from '@/utils/animation'
 import { useEffect, useRef } from 'react'
-import { easeOutExpo, fixFontSpacing, staggeredEase } from '@/utils/animation'
 
 import { splitText } from 'motion-plus'
 
 const Home: NextPage = () => {
   const opalLogoRef = useRef(null)
 
-  const { scrollYProgress } = useScroll({
-    target: opalLogoRef,
-    offset: ['start end', 'end start'],
+  const opalcameraHomeImageRef = useRef<HTMLImageElement>(null)
+  const opalcameraHomeImageScrollable = useRef<HTMLDivElement>(null)
+
+  const meme = useScroll({
+    target: opalcameraHomeImageScrollable,
+    offset: ['80vh end', 'end start'],
   })
 
-  const clipPath1 = useTransform(scrollYProgress, [0, 1], [100, 0])
-  const clipPathTransform = useMotionTemplate`inset(0% 0px ${clipPath1}% 0px)`
+  const homeImageYRemap = useTransform(meme.scrollYProgress, [0, 1], [0, -64])
+  const homeImageY = useMotionTemplate`${homeImageYRemap}%`
+
+  useMotionValueEvent(meme.scrollYProgress, 'change', (progress) => {
+    console.log(progress)
+  })
+
+  useEffect(() => {
+    if (!opalcameraHomeImageRef.current) return
+
+    opalcameraHomeImageRef.current
+  }, [])
+
+
+  // const { scrollYProgress } = useScroll({
+  //   target: opalLogoRef,
+  //   offset: ['start end', 'end start'],
+  // })
+
+  // const clipPath1 = useTransform(scrollYProgress, [0, 1], [100, 0])
+  // const clipPathTransform = useMotionTemplate`inset(0% 0px ${clipPath1}% 0px)`
 
   const introTitleRef = useRef<HTMLSpanElement>(null)
   const introRef = useRef<HTMLDivElement>(null)
@@ -154,7 +175,7 @@ const Home: NextPage = () => {
           opalViewSiteRef.current,
           { opacity: [0, 1], x: [-18, 0] },
           {
-            delay: (delay += 0.2),
+            delay: (delay += 0.5),
             duration: 1.2,
             ease: easeOutExpo,
           },
@@ -212,16 +233,19 @@ const Home: NextPage = () => {
             <div className="col-span-12 col-start-2">
               <div className="pt-[40px] xl:pt-[50px]" />
               <p
-                className="text-[40px] xl:text-[68px] font-500 text-black font-heading px-[16px] leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity]"
+                className="text-[40px] xl:text-[64px] font-500 text-black font-heading px-[16px] leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity]"
+                // className="text-[40px] xl:text-[68px] font-500 text-black font-heading px-[16px] leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity]"
                 style={{ visibility: 'hidden' }}
                 ref={introTitleRef}
               >
-                I help companies and startups ship pixel-perfect, responsive
+                Anthony Koch helps companies and startups ship pixel-perfect,{' '}
+                responsive{' '}
+                {/* I help companies and startups ship pixel-perfect, responsive */}
                 websites.
               </p>
             </div>
           </div>
-          <div className="pb-18 xl:pb-18 " />
+          <div className="pb-18 xl:pb-16 " />
         </section>
 
         <section>
@@ -324,10 +348,10 @@ const Home: NextPage = () => {
             </div>
           </div> */}
 
-          <div className="pt-10 relative">
+          {/*
+          <div className="pt-2 relative">
             <div
               className=" absolute top-0 left-0 h-full w-full"
-              // className="bg-[tomato] absolute top-0 left-0 h-full w-full"
               ref={opalLogoRef}
             />
             <div className="aspect-1609/804 relative">
@@ -343,24 +367,53 @@ const Home: NextPage = () => {
               />
             </div>
           </div>
-          <div className="relative">
-            <img
+           */}
+
+          <div
+            className="relative h-[2400px] bg-white"
+            ref={opalcameraHomeImageScrollable}
+          >
+            {/* <img
               src="/final/opal-macbook.png"
               className="w-full max-w-[1000px] mx-auto -mt-40 relative z-10"
-            />
-            <div className="h-[50%] w-full absolute left-0 top-1/2 bg-white" />
-
-            <p className="pt-36 pb-20 font-heading font-500 text-[40px] xl:text-[72px] leading-none max-w-[1400px] mx-auto z-10 relative">
-              Working at Opal Camera was a huge learning experience.
-            </p>
+            /> */}
+            <div className="sticky top-[15vh] left-0">
+              <div className="relative z-10 ">
+                <img
+                  src="/final/empty-macbook.png"
+                  className="w-full max-w-[1000px] mx-auto absolute z-20 left-1/2 -translate-x-1/2"
+                />
+                <div className="max-w-[1000px] w-full mx-auto">
+                  <div className="aspect-1000/570">
+                    <div className="overflow-hidden max-w-[71.5%]   aspect-640/400 relative left-[14%] top-[10%] z-40 ">
+                      <motion.img
+                        src="/final/opalcamera-home-full.png"
+                        className="absolute top-0 left-0 w-full h-auto  object-top z-10"
+                        ref={opalcameraHomeImageRef}
+                        style={{ y: homeImageY }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="h-[50%] w-full absolute left-0 top-1/2 bg-white" />
+            </div>
           </div>
         </section>
+
+        <div className="bg-white grid grid-cols-12">
+          <p className="col-span-10 lg:col-start-2 pt-36 pb-20 font-heading font-500 text-[40px] xl:text-[72px] leading-none z-10 relative">
+            Working at Opal Camera was a huge learning experience.
+          </p>
+        </div>
 
         <div className="bg-white pt-[100px]">
           <section className="lg:grid grid-cols-12 pb-8 gap-x-4  px-4">
             <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
-              <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto">
-                An evolving stack, an expanding role
+              <h2 className="copy-heading-2 pb-6 max-w-[310px] xl:ml-auto">
+                An expanding role in an evolving stack
+                {/* <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto"> */}
+                {/* An evolving stack, an expanding role */}
               </h2>
             </div>
             <div className="lg:col-start-5 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
@@ -396,7 +449,7 @@ const Home: NextPage = () => {
             </div>
           </section>
 
-          <div className="grid grid-cols-12 gap-x-4 px-4 pb-4 pt-[300px]">
+          <div className="grid grid-cols-12 gap-x-4 px-4 pt-[200px] pb-24">
             <div className="col-span-4 col-start-2">
               <p className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[15px]">
                 Modern Fertility
@@ -419,10 +472,13 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <p className="pt-36 pb-40 font-heading font-500 text-[40px] xl:text-[72px] leading-none max-w-[1400px] mx-auto">
-            An e-commerce site featuring a user dashboard allowing women to view
-            their fertility results.
-          </p>
+          <div className="grid grid-cols-12">
+            <p className="col-span-10 lg:col-start-2 pt-20 pb-60 font-heading font-500 text-[40px] xl:text-[72px] leading-[1.1] z-10 relative max-w-[1200px]">
+              {/* <p className="col-span-10 lg:col-start-2 pt-36 pb-20 font-heading font-500 text-[40px] xl:text-[72px] leading-none z-10 relative"> */}
+              A marketing site featuring a user dashboard allowing women to view
+              their fertility results.
+            </p>
+          </div>
 
           <section>
             <div className="bg-[#99B3F1] h-[360px] flex flex-col items-center justify-end relative">
@@ -473,7 +529,7 @@ const Home: NextPage = () => {
 
             <div className="lg:grid grid-cols-12 pb-8 gap-x-4  px-4">
               <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
-                <h2 className="copy-heading-2 pb-6 max-w-[421px] xl:ml-auto lg:text-right">
+                <h2 className="copy-heading-2 pb-6 max-w-[409px] xl:ml-auto lg:text-right">
                   A responsive website, built from the ground up.{' '}
                 </h2>
               </div>
@@ -535,19 +591,23 @@ const Home: NextPage = () => {
 
         <section>
           <div className="bg-white pb-16 xl:pb-32 pt-[200px]">
-            <Container>
-              <div id="contact"></div>
-              <p>
-                <a href="mailto:hello@anthonykoch.com" className="text-black">
-                  <span className="block text-center font-500 2xl:text-left text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl xl:py-10">
-                    <span className="text-lg xl:text-xl font-400 mb-5 block">
-                      Let’s collaborate, or just chat. Pls, I’m lonely.
+            <div className="grid grid-cols-12">
+              <span className="lg:col-start-2 col-span-12 lg:col-span-10">
+                <div id="contact"></div>
+                <p>
+                  <a href="mailto:hello@anthonykoch.com" className="text-black">
+                    <span className="block text-center font-500 2xl:text-left text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl xl:py-10">
+                      <span className="text-lg xl:text-[22px] font-400 mb-5 block">
+                        Let’s collaborate, or just chat.
+                      </span>
+                      <span className="font-00 -tracking-wide font-heading">
+                        hello@anthonykoch.com
+                      </span>
                     </span>
-                    <span className="font-400">hello@anthonykoch.com</span>
-                  </span>
-                </a>
-              </p>
-            </Container>
+                  </a>
+                </p>
+              </span>
+            </div>
           </div>
         </section>
       </div>
