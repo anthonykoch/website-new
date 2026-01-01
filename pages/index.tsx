@@ -33,7 +33,7 @@ const Home: NextPage = () => {
 
   const meme = useScroll({
     target: opalcameraHomeImageScrollable,
-    offset: ['80vh end', 'end start'],
+    offset: ['100vh end', 'end start'],
   })
 
   const homeImageYRemap = useTransform(meme.scrollYProgress, [0, 1], [0, -64])
@@ -48,7 +48,6 @@ const Home: NextPage = () => {
 
     opalcameraHomeImageRef.current
   }, [])
-
 
   // const { scrollYProgress } = useScroll({
   //   target: opalLogoRef,
@@ -214,7 +213,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <div className="absolute top-0 left-0 w-full">
-        <div className="max-w-[1600px] mx-auto grid grid-cols-12">
+        <div className="max-w-[1600px] mx-auto grid grid-cols-12 gap-x-4">
           <div className="col-span-10 col-start-2">
             <SiteNavigation />
           </div>
@@ -369,8 +368,10 @@ const Home: NextPage = () => {
           </div>
            */}
 
+          <div className="pt-30" />
+
           <div
-            className="relative h-[2400px] bg-white"
+            className="relative h-[2700px] bg-[#EAEAEA] pb-4"
             ref={opalcameraHomeImageScrollable}
           >
             {/* <img
@@ -396,88 +397,96 @@ const Home: NextPage = () => {
                   </div>
                 </div>
               </div>
-              <div className="h-[50%] w-full absolute left-0 top-1/2 bg-white" />
+              {/* <div className="h-[50%] w-full absolute left-0 top-0 bg-[#EAEAEA]" /> */}
             </div>
           </div>
         </section>
-
-        <div className="bg-white grid grid-cols-12">
-          <p className="col-span-10 lg:col-start-2 pt-36 pb-20 font-heading font-500 text-[40px] xl:text-[72px] leading-none z-10 relative">
-            Working at Opal Camera was a huge learning experience.
-          </p>
+        <div className="bg-white">
+          <div className="max-w-[1600px] mx-auto">
+            <div className="grid grid-cols-12 gap-x-4 px-4">
+              <p className="col-span-10 lg:col-start-2 pt-36 pb-20 font-heading font-500 text-[40px] xl:text-[72px] leading-none z-10 relative">
+                Working at Opal Camera was a huge learning experience.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="bg-white pt-[100px]">
-          <section className="lg:grid grid-cols-12 pb-8 gap-x-4  px-4">
-            <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
-              <h2 className="copy-heading-2 pb-6 max-w-[310px] xl:ml-auto">
-                An expanding role in an evolving stack
-                {/* <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto"> */}
-                {/* An evolving stack, an expanding role */}
-              </h2>
-            </div>
-            <div className="lg:col-start-5 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
-              <p>
-                The Opal Camera website is a simple Shopify app utilizing the
-                Storefront API through graphQL running inside an AdonisJS
-                application. In the beginning stages, we were using Docker
-                deployed through Digital Ocean but have since transferred the
-                site to a much simpler stack of NextJS using Vercel. The
-                frontend is written using tools like Tailwind and React.
-              </p>
-              <p>
-                At the start of my time at Opal, I was purely creating the
-                front-end. I’ve since dabbled in many different aspects of the
-                site, ranging from building out administrative tools to manage
-                email signups, and even gotten my hands dirty with custom email
-                development.
-              </p>
-            </div>
-          </section>
-
-          <section className="lg:grid grid-cols-12 pb-8 gap-x-4 px-4">
-            <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
-              <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto">
-                A growing startup
-              </h2>
-            </div>
-            <div className="lg:col-start-5 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
-              <p>
-                Opal Camera has had great success and continues to grow, having
-                gotten several rounds of funding, even by the AI giant OpenAI.{' '}
-              </p>
-            </div>
-          </section>
-
-          <div className="grid grid-cols-12 gap-x-4 px-4 pt-[200px] pb-24">
-            <div className="col-span-4 col-start-2">
-              <p className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[15px]">
-                Modern Fertility
-              </p>
-              <img src="/final/mf-first.svg" />
-            </div>
-            <div className="col-span-4">
-              <div className="h-full flex flex-col justify-end">
-                <p className="xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[380px]">
-                  A website dedicated to supporting and informing women about
-                  their fertility options.
+          <div className="max-w-[1600px] mx-auto">
+            <section className="lg:grid grid-cols-12 pb-8 gap-x-4 px-4">
+              <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
+                <h2 className="copy-heading-2 pb-6 max-w-[310px] xl:ml-auto">
+                  An expanding role in an evolving stack
+                  {/* <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto"> */}
+                  {/* An evolving stack, an expanding role */}
+                </h2>
+              </div>
+              <div className="lg:col-start-5 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
+                <p>
+                  The Opal Camera website is a simple Shopify app utilizing the
+                  Storefront API through graphQL running inside an AdonisJS
+                  application. In the beginning stages, we were using Docker
+                  deployed through Digital Ocean but have since transferred the
+                  site to a much simpler stack of NextJS using Vercel. The
+                  frontend is written using tools like Tailwind and React.
                 </p>
-                <img src="/final/mf-homepage.png" />
+                <p>
+                  At the start of my time at Opal, I was purely creating the
+                  front-end. I’ve since dabbled in many different aspects of the
+                  site, ranging from building out administrative tools to manage
+                  email signups, and even gotten my hands dirty with custom
+                  email development.
+                </p>
               </div>
-            </div>
-            <div className="col-span-2">
-              <div className="h-full flex flex-col justify-end">
-                <img src="/final/mf-recommended.png" />
-              </div>
-            </div>
+            </section>
           </div>
 
-          <div className="grid grid-cols-12">
-            <p className="col-span-10 lg:col-start-2 pt-20 pb-60 font-heading font-500 text-[40px] xl:text-[72px] leading-[1.1] z-10 relative max-w-[1200px]">
-              {/* <p className="col-span-10 lg:col-start-2 pt-36 pb-20 font-heading font-500 text-[40px] xl:text-[72px] leading-none z-10 relative"> */}
-              A marketing site featuring a user dashboard allowing women to view
-              their fertility results.
-            </p>
+          <div className="max-w-[1600px] mx-auto">
+            <section className="lg:grid grid-cols-12 pb-8 gap-x-4 px-4">
+              <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
+                <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto">
+                  A growing startup
+                </h2>
+              </div>
+              <div className="lg:col-start-5 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
+                <p>
+                  Opal Camera has had great success and continues to grow,
+                  having gotten several rounds of funding, even by the AI giant
+                  OpenAI.{' '}
+                </p>
+              </div>
+            </section>
+
+            <div className="grid grid-cols-12 gap-x-4 px-4 pt-[200px] pb-24">
+              <div className="col-span-4 col-start-2">
+                <p className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[15px]">
+                  Modern Fertility
+                </p>
+                <img src="/final/mf-first.svg" />
+              </div>
+              <div className="col-span-4">
+                <div className="h-full flex flex-col justify-end">
+                  <p className="xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[380px]">
+                    A website dedicated to supporting and informing women about
+                    their fertility options.
+                  </p>
+                  <img src="/final/mf-homepage.png" />
+                </div>
+              </div>
+              <div className="col-span-2">
+                <div className="h-full flex flex-col justify-end">
+                  <img src="/final/mf-recommended.png" />
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-12 gap-x-4 px-4">
+              <p className="col-span-10 lg:col-start-2 pt-20 pb-60 font-heading font-500 text-[40px] xl:text-[72px] leading-[1.1] z-10 relative max-w-[1200px]">
+                {/* <p className="col-span-10 lg:col-start-2 pt-36 pb-20 font-heading font-500 text-[40px] xl:text-[72px] leading-none z-10 relative"> */}
+                A marketing site featuring a user dashboard allowing women to
+                view their fertility results.
+              </p>
+            </div>
           </div>
 
           <section>
@@ -500,7 +509,7 @@ const Home: NextPage = () => {
                 src={ImageMFMacbook.src}
                 className="w-full max-w-[1000px] mx-auto  relative z-10 "
               />
-              <div className="h-[50%] w-full absolute left-0 top-1/2 bg-white" />
+              <div className="h-[52%] w-full absolute left-0 top-1/2 bg-white" />
             </div>
 
             <div className="pt-[120px]" />
@@ -527,7 +536,7 @@ const Home: NextPage = () => {
               </div>
             </div>
 
-            <div className="lg:grid grid-cols-12 pb-8 gap-x-4  px-4">
+            <div className="lg:grid grid-cols-12 pb-8 gap-x-4 px-4">
               <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
                 <h2 className="copy-heading-2 pb-6 max-w-[409px] xl:ml-auto lg:text-right">
                   A responsive website, built from the ground up.{' '}
@@ -591,7 +600,7 @@ const Home: NextPage = () => {
 
         <section>
           <div className="bg-white pb-16 xl:pb-32 pt-[200px]">
-            <div className="grid grid-cols-12">
+            <div className="grid grid-cols-12 gap-x-4 px-4">
               <span className="lg:col-start-2 col-span-12 lg:col-span-10">
                 <div id="contact"></div>
                 <p>
@@ -600,7 +609,7 @@ const Home: NextPage = () => {
                       <span className="text-lg xl:text-[22px] font-400 mb-5 block">
                         Let’s collaborate, or just chat.
                       </span>
-                      <span className="font-00 -tracking-wide font-heading">
+                      <span className="font-400 -tracking-wide font-heading">
                         hello@anthonykoch.com
                       </span>
                     </span>
