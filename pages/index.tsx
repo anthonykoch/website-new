@@ -40,7 +40,7 @@ const Home: NextPage = () => {
   const introTitleRef = useRef<HTMLSpanElement>(null)
   const introRef = useRef<HTMLDivElement>(null)
   const opalCameraDescriptionRef = useRef<HTMLDivElement>(null)
-  const opalViewSiteRef = useRef<HTMLDivElement>(null)
+  const opalViewSiteRef = useRef<HTMLAnchorElement>(null)
   const timeout = useRef<any>(null)
 
   useEffect(() => {
@@ -210,13 +210,13 @@ const Home: NextPage = () => {
             ref={introRef}
           >
             <div className="col-span-12 col-start-2">
-          <div className="pt-[40px] xl:pt-[50px]" />
+              <div className="pt-[40px] xl:pt-[50px]" />
               <p
-                className="text-[40px] xl:text-[68px] font-500 text-black font-heading px-[16px] leading-[1.3] xl:leading-[1.3] max-w-[1000px] [.split-word]:will-change-[transform,opacity]"
+                className="text-[40px] xl:text-[68px] font-500 text-black font-heading px-[16px] leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity]"
                 style={{ visibility: 'hidden' }}
                 ref={introTitleRef}
               >
-                I help companies and startups ship pixel- perfect, responsive
+                I help companies and startups ship pixel-perfect, responsive
                 websites.
               </p>
             </div>
@@ -264,6 +264,8 @@ const Home: NextPage = () => {
                   href="https://opalcamera.com/"
                   className="flex justify-end items-center gap-x-5 w-full font-body uppercase text-[12px] text-black font-500 tracking-wide  setup-fade-in"
                   ref={opalViewSiteRef}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   View site
                   <img src="/final/arrow-right.svg" className="w-[28px]" />
@@ -347,17 +349,21 @@ const Home: NextPage = () => {
               className="w-full max-w-[1000px] mx-auto -mt-40 relative z-10"
             />
             <div className="h-[50%] w-full absolute left-0 top-1/2 bg-white" />
+
+            <p className="pt-36 pb-20 font-heading font-500 text-[40px] xl:text-[72px] leading-none max-w-[1400px] mx-auto z-10 relative">
+              Working at Opal Camera was a huge learning experience.
+            </p>
           </div>
         </section>
 
         <div className="bg-white pt-[100px]">
           <section className="lg:grid grid-cols-12 pb-8 gap-x-4  px-4">
-            <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-2">
+            <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
               <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto">
                 An evolving stack, an expanding role
               </h2>
             </div>
-            <div className="lg:col-start-6 xl:col-start-7 2xl:col-start-7 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
+            <div className="lg:col-start-5 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
               <p>
                 The Opal Camera website is a simple Shopify app utilizing the
                 Storefront API through graphQL running inside an AdonisJS
@@ -377,12 +383,12 @@ const Home: NextPage = () => {
           </section>
 
           <section className="lg:grid grid-cols-12 pb-8 gap-x-4 px-4">
-            <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-2">
+            <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
               <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto">
                 A growing startup
               </h2>
             </div>
-            <div className="lg:col-start-6 xl:col-start-7 2xl:col-start-7 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
+            <div className="lg:col-start-5 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
               <p>
                 Opal Camera has had great success and continues to grow, having
                 gotten several rounds of funding, even by the AI giant OpenAI.{' '}
@@ -391,13 +397,13 @@ const Home: NextPage = () => {
           </section>
 
           <div className="grid grid-cols-12 gap-x-4 px-4 pb-4 pt-[300px]">
-            <div className="col-span-4 ">
+            <div className="col-span-4 col-start-2">
               <p className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[15px]">
                 Modern Fertility
               </p>
               <img src="/final/mf-first.svg" />
             </div>
-            <div className="col-span-5">
+            <div className="col-span-4">
               <div className="h-full flex flex-col justify-end">
                 <p className="xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[380px]">
                   A website dedicated to supporting and informing women about
@@ -406,15 +412,19 @@ const Home: NextPage = () => {
                 <img src="/final/mf-homepage.png" />
               </div>
             </div>
-            <div className="col-span-3">
+            <div className="col-span-2">
               <div className="h-full flex flex-col justify-end">
                 <img src="/final/mf-recommended.png" />
               </div>
             </div>
           </div>
 
+          <p className="pt-36 pb-40 font-heading font-500 text-[40px] xl:text-[72px] leading-none max-w-[1400px] mx-auto">
+            An e-commerce site featuring a user dashboard allowing women to view
+            their fertility results.
+          </p>
+
           <section>
-            {/*
             <div className="bg-[#99B3F1] h-[360px] flex flex-col items-center justify-end relative">
               <div>
                 <img
@@ -435,18 +445,17 @@ const Home: NextPage = () => {
                 className="w-full max-w-[1000px] mx-auto  relative z-10 "
               />
               <div className="h-[50%] w-full absolute left-0 top-1/2 bg-white" />
-            </div> 
-            */}
+            </div>
 
             <div className="pt-[120px]" />
 
             <div className="lg:grid grid-cols-12 pb-[100px] gap-x-4  px-4">
-              <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-2">
+              <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
                 <h2 className="copy-heading-2 pb-6 max-w-[300px] xl:ml-auto lg:text-right">
                   The early days of Modern Fertility
                 </h2>
               </div>
-              <div className="lg:col-start-6 xl:col-start-7 2xl:col-start-7 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
+              <div className="lg:col-start-6 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
                 <p>
                   Modern Fertility approached me to assist them in developing
                   their website. At the time, I was the sole front-end
@@ -462,13 +471,13 @@ const Home: NextPage = () => {
               </div>
             </div>
 
-            {/* <div className="lg:grid grid-cols-12 pb-8 gap-x-4  px-4">
-              <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-2">
+            <div className="lg:grid grid-cols-12 pb-8 gap-x-4  px-4">
+              <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
                 <h2 className="copy-heading-2 pb-6 max-w-[421px] xl:ml-auto lg:text-right">
                   A responsive website, built from the ground up.{' '}
                 </h2>
               </div>
-              <div className="lg:col-start-6 xl:col-start-7 2xl:col-start-7 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
+              <div className="lg:col-start-5 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
                 <p>
                   I worked closely with designers to build out the first
                   iteration of Modern Fertility’s website using just simple HTML
@@ -477,11 +486,11 @@ const Home: NextPage = () => {
                   application.
                 </p>
               </div>
-            </div> */}
+            </div>
           </section>
 
           <section>
-            <div className="bg-[#99B3F1] h-[360px] flex flex-col items-center justify-end relative">
+            {/* <div className="bg-[#99B3F1] h-[360px] flex flex-col items-center justify-end relative">
               <div>
                 <img
                   src={ImageMScribble.src}
@@ -501,9 +510,9 @@ const Home: NextPage = () => {
                 className="w-full max-w-[1000px] mx-auto  relative z-10 "
               />
               <div className="h-[50%] w-full absolute left-0 top-1/2 bg-white" />
-            </div>
+            </div> */}
 
-            <section>
+            {/* <section>
               <div className="lg:grid grid-cols-12 pb-8 gap-x-4 pt-[100px] px-4">
                 <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-2">
                   <h2 className="copy-heading-2 pb-6 max-w-[421px] xl:ml-auto lg:text-right">
@@ -520,7 +529,7 @@ const Home: NextPage = () => {
                   </p>
                 </div>
               </div>
-            </section>
+            </section> */}
           </section>
         </div>
 
@@ -532,9 +541,9 @@ const Home: NextPage = () => {
                 <a href="mailto:hello@anthonykoch.com" className="text-black">
                   <span className="block text-center font-500 2xl:text-left text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl xl:py-10">
                     <span className="text-lg xl:text-xl font-400 mb-5 block">
-                      Email me at
+                      Let’s collaborate, or just chat. Pls, I’m lonely.
                     </span>
-                    hello@anthonykoch.com
+                    <span className="font-400">hello@anthonykoch.com</span>
                   </span>
                 </a>
               </p>
