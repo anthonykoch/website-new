@@ -328,20 +328,6 @@ const Home: NextPage = () => {
               }
             />
           </div>
-          <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 mt-[130px] px-4 xl:px-0">
-            <div className="col-span-6 xl:h-[825px]">
-              <img
-                className="size-full xl:object-cover object-right"
-                src={ImageExhibitTadpoleShopPage.src}
-              />
-            </div>
-            <div className="col-span-6 xl:h-[825px]">
-              <img
-                className="size-full xl:object-cover object-left"
-                src={ImageExhibitDownloadsPage.src}
-              />
-            </div>
-          </div>
 
           {/* 
           <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 mt-[20px] px-4 xl:px-0">
@@ -413,61 +399,84 @@ const Home: NextPage = () => {
             </div>
           </div>
         </section>
+
+        <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 mt-[130px] px-4 xl:px-0 ">
+          <div className="col-span-6 xl:h-[825px]">
+            <img
+              className="size-full xl:object-cover object-right"
+              src={ImageExhibitTadpoleShopPage.src}
+            />
+          </div>
+          <div className="col-span-6 xl:h-[825px]">
+            <img
+              className="size-full xl:object-cover object-left"
+              src={ImageExhibitDownloadsPage.src}
+            />
+          </div>
+        </div>
+
+        <div className="pb-4" />
+
         <div className="bg-white">
           <div className="max-w-[1600px] mx-auto">
             <div className="grid grid-cols-12 gap-x-4 px-4">
-              <p className="col-span-10 lg:col-start-2 pt-36 pb-20 font-heading font-500 text-[40px] xl:text-[72px] leading-none z-10 relative">
+              <p className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2 pt-18 xl:pt-36 pb-20 xl:pb-40 font-heading font-500 text-[46px] md:text-[58px] xl:text-[72px] leading-[1.1] xl:leading-none z-10">
                 Working at Opal Camera was a huge learning experience.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white pt-[100px]">
+        <div className="bg-white ">
           <div className="max-w-[1600px] mx-auto">
-            <section className="grid grid-cols-12 pb-8 gap-x-4 px-4">
-              <div className="col-span-12 lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
+            <Grid
+              left={
                 <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[310px] xl:ml-auto">
                   An expanding role in an evolving stack
-                  {/* <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto"> */}
-                  {/* An evolving stack, an expanding role */}
                 </h2>
-              </div>
-              <div className="xl:col-start-6 2xl:col-start-6 md:col-span-8 col-span-12 lg:col-span-6 xl:col-span-6 2xl:col-span-5 gap-y-6 copy-body-4-sm lg:copy-body-4 text-[#888787] ">
-                <p>
-                  The Opal Camera website is a simple Shopify app utilizing the
-                  Storefront API through graphQL running inside an AdonisJS
-                  application. In the beginning stages, we were using Docker
-                  deployed through Digital Ocean but have since transferred the
-                  site to a much simpler stack of NextJS using Vercel. The
-                  frontend is written using tools like Tailwind and React.
-                </p>
-                <p>
-                  At the start of my time at Opal, I was purely creating the
-                  front-end. I’ve since dabbled in many different aspects of the
-                  site, ranging from building out administrative tools to manage
-                  email signups, and even gotten my hands dirty with custom
-                  email development.
-                </p>
-              </div>
-            </section>
-          </div>
+              }
+              right={
+                <div className="flex flex-col gap-y-6 copy-body-4-sm lg:copy-body-4 text-[#888787]">
+                  <p>
+                    The Opal Camera website is a simple Shopify app utilizing
+                    the Storefront API through graphQL running inside an
+                    AdonisJS application. In the beginning stages, we were using
+                    Docker deployed through Digital Ocean but have since
+                    transferred the site to a much simpler stack of NextJS using
+                    Vercel. The frontend is written using tools like Tailwind
+                    and React.
+                  </p>
+                  <p>
+                    At the start of my time at Opal, I was purely creating the
+                    front-end. I’ve since dabbled in many different aspects of
+                    the site, ranging from building out administrative tools to
+                    manage email signups, and even gotten my hands dirty with
+                    custom email development.
+                  </p>
+                </div>
+              }
+            />
 
-          <div className="max-w-[1600px] mx-auto">
-            <section className="lg:grid grid-cols-12 pb-8 gap-x-4 px-4">
-              <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
+            <div className="pb-8" />
+
+            <Grid
+              left={
                 <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto">
                   A growing startup
                 </h2>
-              </div>
-              <div className="lg:col-start-5 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
-                <p>
-                  Opal Camera has had great success and continues to grow,
-                  having gotten several rounds of funding, even by the AI giant
-                  OpenAI.{' '}
-                </p>
-              </div>
-            </section>
+              }
+              right={
+                <div className="*:pb-6 copy-body-4 text-[#888787] ">
+                  <p>
+                    Opal Camera has had great success and continues to grow,
+                    having gotten several rounds of funding, even by the AI
+                    giant OpenAI.
+                  </p>
+                </div>
+              }
+            />
+
+            <div className="pb-8" />
 
             <div className="grid grid-cols-12 gap-x-4 px-4 pt-[200px] pb-24">
               <div className="col-span-4 col-start-2">
@@ -526,44 +535,52 @@ const Home: NextPage = () => {
 
             <div className="pt-[120px]" />
 
-            <div className="lg:grid grid-cols-12 pb-[100px] gap-x-4  px-4">
-              <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
-                <h2 className="copy-heading-2 pb-6 max-w-[300px] xl:ml-auto lg:text-right">
-                  The early days of Modern Fertility
-                </h2>
-              </div>
-              <div className="lg:col-start-6 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
-                <p>
-                  Modern Fertility approached me to assist them in developing
-                  their website. At the time, I was the sole front-end
-                  developer, working alongside Tom Chokel to help Carly and
-                  Afton to help give women the tools to better understand their
-                  fertility.
-                </p>
-                <p>
-                  Shoot forward several years, and not only has the website
-                  grown in scale, but Modern Fertility has grown as a wildly
-                  successful company, being acquired by Ro for 225 million.
-                </p>
-              </div>
-            </div>
+            <Grid
+              left={
+                <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
+                  <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[300px] xl:ml-auto lg:text-right">
+                    The early days of Modern Fertility
+                  </h2>
+                </div>
+              }
+              right={
+                <div className="gap-y-6 copy-body-4-sm lg:copy-body-4 text-[#888787]">
+                  <p>
+                    Modern Fertility approached me to assist them in developing
+                    their website. At the time, I was the sole front-end
+                    developer, working alongside Tom Chokel to help Carly and
+                    Afton to help give women the tools to better understand
+                    their fertility.
+                  </p>
+                  <p>
+                    Shoot forward several years, and not only has the website
+                    grown in scale, but Modern Fertility has grown as a wildly
+                    successful company, being acquired by Ro for 225 million.
+                  </p>
+                </div>
+              }
+            />
 
-            <div className="lg:grid grid-cols-12 pb-8 gap-x-4 px-4">
-              <div className="lg:col-span-6 xl:col-span-4 xl:col-start-1 2xl:col-start-1">
-                <h2 className="copy-heading-2 pb-6 max-w-[409px] xl:ml-auto lg:text-right">
-                  A responsive website, built from the ground up.{' '}
+            <div className="pb-[100px]" />
+
+            <Grid
+              left={
+                <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[409px] xl:ml-auto lg:text-right">
+                  A responsive website, built from the ground up.
                 </h2>
-              </div>
-              <div className="lg:col-start-5 xl:col-start-6 2xl:col-start-6 lg:col-span-6 xl:col-span-6 2xl:col-span-5 *:pb-6 copy-body-4 text-[#888787] ">
-                <p>
-                  I worked closely with designers to build out the first
-                  iteration of Modern Fertility’s website using just simple HTML
-                  and CSS. Over time, the tech stack has evolved from the basics
-                  to React and styled-components running inside of a Django
-                  application.
-                </p>
-              </div>
-            </div>
+              }
+              right={
+                <div className="*:pb-6 copy-body-4-sm lg:copy-body-4 text-[#888787]">
+                  <p>
+                    I worked closely with designers to build out the first
+                    iteration of Modern Fertility’s website using just simple
+                    HTML and CSS. Over time, the tech stack has evolved from the
+                    basics to React and styled-components running inside of a
+                    Django application.
+                  </p>
+                </div>
+              }
+            />
           </section>
 
           <section>
@@ -617,7 +634,7 @@ const Home: NextPage = () => {
                 <div id="contact"></div>
                 <p>
                   <a href="mailto:hello@anthonykoch.com" className="text-black">
-                    <span className="block text-center font-500 2xl:text-left text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl xl:py-10">
+                    <span className="block  font-500 2xl:text-left text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl xl:py-10">
                       <span className="text-lg xl:text-[22px] font-400 mb-5 block">
                         Let’s collaborate, or just chat.
                       </span>
