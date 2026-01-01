@@ -378,6 +378,15 @@ const Home: NextPage = () => {
             /> */}
             <div className="sticky top-[15vh] left-0">
               <div className="relative z-10 ">
+                <div className="max-w-[760px] mx-auto px-4 pt-10">
+                  <p className="text-[14px] uppercase text-center leading-[1.2] font-heading font-700 tracking-wide">
+                    Opal Camera Landing Page
+                  </p>
+                  {/* <p className="text-[36px] leading-[1.2] font-heading font-500 -tracking-wide">
+                    Opal Camera had contacted me to help develop the first
+                    iteration of their landing page.
+                  </p> */}
+                </div>
                 <img
                   src="/final/empty-macbook.png"
                   className="w-full max-w-[1000px] mx-auto absolute z-20 left-1/2 -translate-x-1/2"
@@ -394,13 +403,23 @@ const Home: NextPage = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* <div className="max-w-[760px] mx-auto px-4 ">
+                  <p className="text-[36px] leading-[1.2] font-heading font-500 -tracking-wide">
+                    The project expanded into so much more.
+                  </p>
+                </div> */}
               </div>
               {/* <div className="h-[50%] w-full absolute left-0 top-0 bg-[#EAEAEA]" /> */}
             </div>
           </div>
         </section>
 
-        <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 mt-[130px] px-4 xl:px-0 ">
+        <div className="pt-50" />
+        <div className="pt-[40px]" />
+        {/* <div className="pt-[130px]" /> */}
+
+        <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 px-4 xl:px-0 ">
           <div className="col-span-6 xl:h-[825px]">
             <img
               className="size-full xl:object-cover object-right"
