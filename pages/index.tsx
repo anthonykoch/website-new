@@ -86,41 +86,60 @@ const Home: NextPage = () => {
       })
 
       if (fixFont) fixFontSpacing(text.lines)
+      console.log({ fixFont }, text.lines)
 
       return text
     }
 
     const stopResize1 = resize(
       debounce(() => {
-        if (introTitleRef.current) {
-          console.log(isIntroAnimationFinished.current)
-          splitLines(introTitleRef.current, {
-            fixFont: true,
-            classes: isIntroAnimationFinished.current
-              ? {}
-              : { line: 'setup-overflow', word: 'setup-line-down' },
-          })
-        }
+        // if (introTitleRef.current) {
+        //   console.log(isIntroAnimationFinished.current)
+        //   splitLines(introTitleRef.current, {
+        //     fixFont: true,
+        //     classes: isIntroAnimationFinished.current
+        //       ? {}
+        //       : { line: 'setup-overflow', word: 'setup-line-down' },
+        //   })
+        // }
       }, 100),
     )
 
-    const { lines } = splitLines(introTitleRef.current, { fixFont: true })
-
-    // const opalCameraSplitText = splitText(opalCameraDescriptionRef.current, {
-    //   lineClass: 'split-line setup-overflow',
-    //   wordClass: 'split-word setup-line-down',
+    // const { lines } = splitLines(introTitleRef.current, {
+    //   fixFont: true,
+    //   classes: { line: 'setup-overflow', word: 'setup-line-down' },
     // })
 
     timeout.current = setTimeout(() => {
+      let delay = 1.1
+
       if (introTitleRef.current) {
         introTitleRef.current.style.visibility = 'visible'
       }
 
+      console.log(introTitleRef.current!.querySelectorAll('.selector-line'))
+      Promise.all(
+        Array.from(
+          introTitleRef.current!.querySelectorAll('.selector-line'),
+        ).map((line, i) => {
+          return animate(
+            line,
+            { y: ['110%', '0%'] },
+            {
+              // delay: 0 + 0.07 * i,
+              delay: (delay += 0.3) + 0.07 * i,
+              duration: 1.9,
+              ease: easeOutExpo,
+            },
+          )
+        }),
+      ).then(() => {
+        isIntroAnimationFinished.current = true
+      })
+
       // if (opalCameraDescriptionRef.current) {
       //   opalCameraDescriptionRef.current.style.visibility = 'visible'
       // }
-
-      let delay = 1.1
 
       const imageStaggerDelay = 0.8
 
@@ -128,7 +147,7 @@ const Home: NextPage = () => {
         '.selector-opal-camera-image',
         { opacity: [0, 1] },
         {
-          delay: stagger(imageStaggerDelay, { startDelay: delay }),
+          delay: stagger(imageStaggerDelay, { startDelay: delay += 1 }),
           duration: 1,
           ease: [0.33, 1, 0.68, 1],
         },
@@ -174,30 +193,13 @@ const Home: NextPage = () => {
         )
       }
 
-      if (introRef.current) {
-        animate(
-          introRef.current,
-          { height: [0, 'auto'] },
-          { duration: 1.3, ease: easeOutExpo, delay: (delay += 1) },
-        )
-      }
-
-      Promise.all(
-        Array.from(lines).map((line, i) => {
-          return animate(
-            line.querySelectorAll('.split-word'),
-            { y: ['110%', '0%'] },
-            {
-              // delay: 0 + 0.07 * i,
-              delay: delay + 0.07 * i,
-              duration: 1.9,
-              ease: easeOutExpo,
-            },
-          )
-        }),
-      ).then(() => {
-        isIntroAnimationFinished.current = true
-      })
+      // if (introRef.current) {
+      //   animate(
+      //     introRef.current,
+      //     { height: [0, 'auto'] },
+      //     { duration: 1.3, ease: easeOutExpo, delay: (delay += 1) },
+      //   )
+      // }
     }, 400)
 
     return () => {
@@ -222,7 +224,7 @@ const Home: NextPage = () => {
           {/* <div className="pt-[80px] xl:pt-[180px]" /> */}
           <div
             className="max-w-[1600px] mx-auto grid grid-cols-12 gap-x-4 px-4 overflow-hidden"
-            style={{ height: 0 }}
+            // style={{ height: 0, }}
             ref={introRef}
           >
             <div className="col-span-12 xl:col-span-11 xl:col-start-2">
@@ -230,12 +232,40 @@ const Home: NextPage = () => {
               <div className="inline-block">
                 <span
                   // className="text-[clamp(34px,5vw+1rem,64px)] font-500 text-black font-heading leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity]"
-                  className="text-[clamp(34px,5vw+1rem,74px)] font-500 text-black font-heading leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity]"
-                  style={{ visibility: 'hidden' }}
-                  ref={introTitleRef}
+                  // 100/1648
+                  // className="text-[clamp(34px,5vw+1rem,74px)] font-500 text-black font-heading leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative"
+                  className="text-[min(32px,calc(50vw*(100/1900)))] lg:text-[calc(50vw*(100/1900))] font-500 text-black font-heading leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative"
                 >
-                  Anthony Koch is a front-end developer helping companies and
-                  startups ship pixel-perfect, responsive websites.
+                  <span
+                    ref={introTitleRef}
+                    style={{ visibility: 'hidden' }}
+                    className="block max-w-[1000px]"
+                  >
+                    {/* Anthony Koch is a front-end developer helping companies and
+                    startups ship pixel-perfect, responsive websites. */}
+
+                    <span className="setup-overflow">
+                      <span className="setup-line-down selector-line">
+                        Anthony Koch is a front-end developer helping{' '}
+                      </span>
+                    </span>
+                    <span className="setup-overflow">
+                      <span className="setup-line-down selector-line">
+                        companies and startups ship pixel-perfect,{' '}
+                      </span>
+                    </span>
+                    <span className="setup-overflow">
+                      <span className="setup-line-down selector-line">
+                        responsive websites.
+                      </span>
+                      
+                    </span>
+                  </span>
+                  {/* <span className="pointer-events-none block absolute top-0 w-full left-0 decoration-black text-transparent decoration-2 decoration-solid underline underline-offset-[10px]">
+                    Anthony Koch is a front-end developer helping companies and
+                    startups ship pixel-perfect, responsive websites.
+                  </span> */}
+
                   {/* Anthony Koch helps companies and startups ship pixel-perfect,{' '}
                   responsive */}
                   {/* I help companies and startups ship pixel-perfect, responsive */}
@@ -252,16 +282,22 @@ const Home: NextPage = () => {
           <div className="xl:max-w-[max(1200px,80%)] px-[16px] 5xl:max-w-[1600px] mx-auto hidden lg:flex gap-x-4 relative">
             <div className="w-[36.533085%]">
               <h3 className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[10px]">
-                <span className="setup-overflow">
-                  <span className="setup-line-down selector-opal-camera-title">
-                    Opal Camera
+                <span className="relative">
+                  <span className="setup-overflow">
+                    <span className="setup-line-down selector-opal-camera-title">
+                      Opal Camera
+                    </span>
                   </span>
+                  {/* <span className="block absolute top-1/2 -translate-y-1/2 right-0 h-px bg-black/20 w-[120px]"></span> */}
                 </span>
               </h3>
-              <img
-                src="/final/girl.png"
-                className="selector-opal-camera-image setup-fade-in"
-              />
+              <div className="aspect-784/1190 relative">
+                {/* <div className="striped rounded-md size-full"></div> */}
+                <img
+                  src="/final/girl.png"
+                  className="selector-opal-camera-image setup-fade-in absolute size-full left-0 top-0"
+                />
+              </div>
             </div>
             <div className="w-[42.870457%] self-end">
               <p
@@ -286,10 +322,14 @@ const Home: NextPage = () => {
                   </span>
                 </span>
               </p>
-              <img
-                src="/final/opal-tadpole.png"
-                className="selector-opal-camera-image setup-fade-in"
-              />
+              <div className="aspect-920/608 relative">
+                {/* <div className="striped rounded-md size-full" /> */}
+
+                <img
+                  src="/final/opal-tadpole.png"
+                  className="selector-opal-camera-image setup-fade-in absolute size-full top-0 left-0"
+                />
+              </div>
             </div>
             <div className="w-[20.503262%]">
               <div className="h-full flex flex-col items-start justify-end">
@@ -541,8 +581,9 @@ const Home: NextPage = () => {
                   <p>
                     At the start of my time at Opal, I was purely creating the
                     front-end. I’ve since worked in many different aspects of
-                    development, ranging from building out administrative tools that
-                    manage email signups to custom email development and Shopify management.
+                    development, ranging from building out administrative tools
+                    that manage email signups to custom email development and
+                    Shopify management.
                   </p>
                 </div>
               }
@@ -699,8 +740,8 @@ const Home: NextPage = () => {
                     Modern Fertility approached me to assist them in developing
                     their website. At the time, I was the sole front-end
                     developer, working alongside Tom Chokel to help Carly and
-                    Afton give women the tools to better understand
-                    their fertility.
+                    Afton give women the tools to better understand their
+                    fertility.
                   </p>
                   <p>
                     Fast forward several years, and not only has the website
