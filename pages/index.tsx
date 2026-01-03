@@ -134,7 +134,7 @@ const Home: NextPage = () => {
         },
       )
 
-      delay += imageStaggerDelay * 3
+      delay += imageStaggerDelay * 2
 
       animate(
         '.selector-opal-camera-title',
@@ -234,10 +234,11 @@ const Home: NextPage = () => {
                   style={{ visibility: 'hidden' }}
                   ref={introTitleRef}
                 >
-                  Anthony Koch helps companies and startups ship pixel-perfect,{' '}
-                  responsive{' '}
+                  Anthony Koch is a front-end developer helping companies and
+                  startups ship pixel-perfect, responsive websites.
+                  {/* Anthony Koch helps companies and startups ship pixel-perfect,{' '}
+                  responsive */}
                   {/* I help companies and startups ship pixel-perfect, responsive */}
-                  websites.
                 </span>
                 {/* <div className="mt-4 bg-[#c8c8c8] h-px w-full" /> */}
               </div>
@@ -409,7 +410,7 @@ const Home: NextPage = () => {
               <div className="col-span-12 lg:col-span-7">
                 {/* <div className="col-span-12 lg:col-span-9 lg:col-start-2"> */}
                 <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
-                  DOCTOR OPAL FIRMWARE UPDATOR
+                  DOCTOR OPAL FIRMWARE UPDATER
                 </p>
                 <div className="pb-4" />
 
@@ -539,10 +540,9 @@ const Home: NextPage = () => {
                   </p>
                   <p>
                     At the start of my time at Opal, I was purely creating the
-                    front-end. I’ve since dabbled in many different aspects of
-                    the site, ranging from building out administrative tools to
-                    manage email signups, and even gotten my hands dirty with
-                    custom email development.
+                    front-end. I’ve since worked in many different aspects of
+                    development, ranging from building out administrative tools that
+                    manage email signups to custom email development and Shopify management.
                   </p>
                 </div>
               }
@@ -628,7 +628,7 @@ const Home: NextPage = () => {
             <div className="grid grid-cols-12 gap-x-4 px-4 ">
               <p className="col-span-12 xl:col-span-10 xl:col-start-2 font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative max-w-[1200px]">
                 I developed nearly the entire frontend for both the marketing
-                website and the customer dashboard.
+                website and the dashboard.
                 {/* My role at Modern Fertility was in developing nearly the entire
                 front-end of both the marketing site and the dashboard. */}
               </p>
@@ -699,11 +699,11 @@ const Home: NextPage = () => {
                     Modern Fertility approached me to assist them in developing
                     their website. At the time, I was the sole front-end
                     developer, working alongside Tom Chokel to help Carly and
-                    Afton to help give women the tools to better understand
+                    Afton give women the tools to better understand
                     their fertility.
                   </p>
                   <p>
-                    Shoot forward several years, and not only has the website
+                    Fast forward several years, and not only has the website
                     grown in scale, but Modern Fertility has grown as a wildly
                     successful company, being acquired by Ro for $225 million.
                   </p>
