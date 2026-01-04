@@ -13,7 +13,8 @@ export const MobileImageScroller: FC<{
           {title}
         </p>
 
-        <p className="xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px]">
+        <p className="text-[15px] xl:text-[24px] leading-[28px] font-body text-black/60 font-500 pb-[26px]">
+        {/* <p className="xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px]"> */}
           {description}
         </p>
       </div>

@@ -26,7 +26,8 @@
          </div> */
 }
 
-          {/*           
+{
+  /*           
           <div className="pt-40" />
 
           <div className="bg-[#99B3F1] h-[480px] flex flex-col items-center justify-end relative">
@@ -42,8 +43,8 @@
               />
               <div className="pb-[120px]" />
             </div>
-          </div> */}
-
+          </div> */
+}
 
 {
   /* <div className="bg-[#99B3F1] h-[360px] flex flex-col items-center justify-end relative">
@@ -90,8 +91,8 @@
             </section> */
 }
 
-
- {/*
+{
+  /*
             <div className="relative bg-[#99B3F1]">
               <img
                 src={ImageMFMacbook.src}
@@ -100,12 +101,15 @@
               <div className="h-[52%] w-full absolute left-0 top-1/2 bg-white" />
             </div>
 
-          */}
+          */
+}
 
+{
+  /* <img src="/meme.webp" className="w-full" /> */
+}
 
-            {/* <img src="/meme.webp" className="w-full" /> */}
-
-            {/* <div className="bg-[#99B3F1] h-[480px] flex flex-col items-center justify-end relative">
+{
+  /* <div className="bg-[#99B3F1] h-[480px] flex flex-col items-center justify-end relative">
               <div>
                 <img
                   src={ImageMScribble.src}
@@ -118,49 +122,65 @@
                 />
                 <div className="pb-[120px]" />
               </div>
-            </div> */}
+            </div> */
+}
 
+const stopResize1 = resize(
+  debounce(() => {
+    // if (introTitleRef.current) {
+    //   console.log(isIntroAnimationFinished.current)
+    //   splitLines(introTitleRef.current, {
+    //     fixFont: true,
+    //     classes: isIntroAnimationFinished.current
+    //       ? {}
+    //       : { line: 'setup-overflow', word: 'setup-line-down' },
+    //   })
+    // }
+  }, 100),
+)
 
+// const { lines } = splitLines(introTitleRef.current, {
+//   fixFont: true,
+//   classes: { line: 'setup-overflow', word: 'setup-line-down' },
+// })
 
-    const stopResize1 = resize(
-      debounce(() => {
-        // if (introTitleRef.current) {
-        //   console.log(isIntroAnimationFinished.current)
-        //   splitLines(introTitleRef.current, {
-        //     fixFont: true,
-        //     classes: isIntroAnimationFinished.current
-        //       ? {}
-        //       : { line: 'setup-overflow', word: 'setup-line-down' },
-        //   })
-        // }
-      }, 100),
-    )
-            
+const splitLines = (
+  el: HTMLElement,
+  {
+    fixFont,
+    classes,
+  }: { fixFont?: boolean; classes?: { line?: string; word?: string } } = {
+    classes: {},
+  },
+): ReturnType<typeof splitText> => {
+  const text = splitText(el, {
+    lineClass: `split-line ${classes?.line ?? ''}`,
+    wordClass: `split-word ${classes?.word ?? ''}`,
+  })
 
-    // const { lines } = splitLines(introTitleRef.current, {
-    //   fixFont: true,
-    //   classes: { line: 'setup-overflow', word: 'setup-line-down' },
-    // })
+  if (fixFont) fixFontSpacing(text.lines)
 
+  return text
+}
 
-
-
-
-        const splitLines = (
-      el: HTMLElement,
-      {
-        fixFont,
-        classes,
-      }: { fixFont?: boolean; classes?: { line?: string; word?: string } } = {
-        classes: {},
-      },
-    ): ReturnType<typeof splitText> => {
-      const text = splitText(el, {
-        lineClass: `split-line ${classes?.line ?? ''}`,
-        wordClass: `split-word ${classes?.word ?? ''}`,
-      })
-
-      if (fixFont) fixFontSpacing(text.lines)
-
-      return text
-    }
+;<div className="bg-white pb-16 xl:pb-32 pt-[200px]">
+  <div className="max-w-[1728px] mx-auto">
+    <div className="grid grid-cols-12 gap-x-4 px-4">
+      <span className="lg:col-start-2 col-span-12 lg:col-span-10">
+        <div id="contact"></div>
+        <p>
+          <a href="mailto:hello@anthonykoch.com" className="text-black">
+            <span className="block  font-500 2xl:text-left text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl xl:py-10">
+              <span className="text-lg xl:text-[22px] font-400 mb-5 block">
+                Let’s collaborate, or just chat.
+              </span>
+              <span className="font-500 -tracking-wide font-heading">
+                hello@anthonykoch.com
+              </span>
+            </span>
+          </a>
+        </p>
+      </span>
+    </div>
+  </div>
+</div>

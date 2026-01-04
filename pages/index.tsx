@@ -1,9 +1,9 @@
 import { Footer } from '@/components/app/footer/Footer'
-import ImageExhibitDownloadsPage from '@/public/final/exhibit-downloads-page.png'
-import ImageExhibitTadpoleShopPage from '@/public/final/exhibit-tadpole-shop.png'
-import type { NextPage } from 'next'
-// import ImageExhibitDoctorPage from '@/public/final/exhibit-doctor.png'
-// import ImageExhibitMediaPage from '@/public/final/exhibit-media.png'
+import ImageExhibitDownloadsPage from '@/public/final-compressed/exhibit-downloads-page.png'
+import ImageExhibitTadpoleShopPage from '@/public/final-compressed/exhibit-tadpole-shop.png'
+import type { GetStaticProps, NextPage } from 'next'
+// import ImageExhibitDoctorPage from '@/public/final-compressed/exhibit-doctor.png'
+// import ImageExhibitMediaPage from '@/public/final-compressed/exhibit-media.png'
 
 import { SiteNavigation } from '@/features/navigation/SiteNavigation'
 import {
@@ -21,6 +21,8 @@ import { FC, useEffect, useRef } from 'react'
 import { Grid } from '@/components/Grid'
 import { MobileImageScroller } from '@/components/MobileImageScroller'
 import { useScrollX } from '@/hooks/use-scroll-x'
+import { Post, PostList } from '@/components/PostList'
+import { getAllPostMeta } from '@/utils/post'
 
 const ArrowRightSvg: FC<{ className?: string }> = ({ className }) => {
   return (
@@ -39,7 +41,7 @@ const ArrowRightSvg: FC<{ className?: string }> = ({ className }) => {
   )
 }
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   const opalLogoRef = useRef(null)
 
   const opalcameraHomeImageRef = useRef<HTMLImageElement>(null)
@@ -160,7 +162,7 @@ const Home: NextPage = () => {
 
   const mfmobilescroll = useScroll({
     target: mfMobileContainer,
-    offset: ['30vh end', '160vh end'],
+    offset: ['0vh end', '160vh end'],
   })
 
   useScrollX({
@@ -172,7 +174,7 @@ const Home: NextPage = () => {
 
   const opalCameraScroll = useScroll({
     target: opalCameraImagesRef,
-    offset: ['60vh end', '160vh end'],
+    offset: ['30vh end', '160vh end'],
   })
 
   useScrollX({
@@ -207,12 +209,22 @@ const Home: NextPage = () => {
             className="max-w-[1728px] mx-auto grid grid-cols-12 gap-x-4 px-4 overflow-hidden"
             ref={introRef}
           >
-            <div className="col-span-12 xl:col-span-11 xl:col-start-2">
+            <div className="col-span-12 xl:col-span-11 xl:col-start-2 ">
+              {/* <div className="pt-20 xl:pt-[70px]" /> */}
               <div className="pt-20 xl:pt-[150px]" />
               {/* <div className="pt-10 xl:pt-[50px]" /> */}
 
-              <div className="inline-block">
-                <span className="text-[clamp(24px,calc(55vw*(100/1900)),46px)]  font-500 text-black font-heading leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
+              {/* <div className="mix-blend-difference relative size-13 bg-white flex items-end justify-center "> */}
+              {/* <div className="-mb-20">
+                <div className="mix-blend-difference relative size-[300px] bg-white flex items-end justify-center ">
+                <span className="size-[80%] absolute left-1/2 top-1/2 -translate-1/2 border border-solid border-[#151515] block"></span>
+                  <span className="text-[22px] text-[#EAEAEA] leading-[0.8] font-600 font-heading absolute bottom-[-1px]">Koch</span>
+                </div>
+                <img src="/final-compressed/favicon.svg" className="w-[60px]" />
+              </div> */}
+
+              <div className="inline-block text-white mix-blend-difference">
+                <span className="text-[clamp(24px,calc(55vw*(100/1900)),46px)]  font-500  font-heading leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
                   <p className="md:hidden">
                     Anthony Koch is a front-end developer helping companies and
                     startups ship pixel-perfect, responsive websites.
@@ -277,14 +289,14 @@ const Home: NextPage = () => {
               }
               images={[
                 <img
-                  src="/final/girl.png"
+                  src="/final-compressed/girl.png"
                   className="h-[320px] md:h-[420px]"
                 />,
                 <img
-                  src="/final/opal-tadpole.png"
+                  src="/final-compressed/opal-tadpole.png"
                   className="h-[320px] md:h-[420px]"
                 />,
-                // <img src="/final/card-opal.png" className="h-[320px]" />,
+                // <img src="/final-compressed/card-opal.png" className="h-[320px]" />,
               ]}
             />
             <div className="pb-4" />
@@ -318,7 +330,7 @@ const Home: NextPage = () => {
               <div className="aspect-784/1190 relative">
                 {/* <div className="striped rounded-md size-full"></div> */}
                 <img
-                  src="/final/girl.png"
+                  src="/final-compressed/girl.png"
                   className="selector-opal-camera-image setup-fade-in absolute size-full left-0 top-0"
                 />
               </div>
@@ -345,7 +357,7 @@ const Home: NextPage = () => {
                 {/* <div className="striped rounded-md size-full" /> */}
 
                 <img
-                  src="/final/opal-tadpole.png"
+                  src="/final-compressed/opal-tadpole.png"
                   className="selector-opal-camera-image setup-fade-in absolute size-full top-0 left-0"
                 />
               </div>
@@ -364,7 +376,7 @@ const Home: NextPage = () => {
                 </a>
 
                 {/* <img
-                  src="/final/person.png"
+                  src="/final-compressed/person.png"
                   className="selector-opal-camera-image setup-fade-in"
                 /> */}
                 {/* <a
@@ -375,7 +387,7 @@ const Home: NextPage = () => {
                   rel="noopener noreferrer"
                 >
                   View site
-                  <img src="/final/arrow-right.svg" className="w-[28px]" />
+                  <img src="/final-compressed/arrow-right.svg" className="w-[28px]" />
                 </a> */}
               </div>
             </div>
@@ -429,12 +441,12 @@ const Home: NextPage = () => {
             />
             <div className="aspect-1609/804 relative">
               <img
-                src="/final/logo-opal-wordmark.svg"
+                src="/final-compressed/logo-opal-wordmark.svg"
                 className="max-w-[1650px] mx-auto w-full absolute object-cover left-0 top-0 z-10"
               />
 
               <motion.img
-                src="/final/logo-opal-wordmark-orange.svg"
+                src="/final-compressed/logo-opal-wordmark-orange.svg"
                 className="max-w-[1650px] mx-auto w-full absolute object-cover left-0 top-0 z-20"
                 style={{ clipPath: clipPathTransform }}
               />
@@ -448,12 +460,12 @@ const Home: NextPage = () => {
             />
             <div className="relativ">
               <img
-                src="/final/logo-opal-wordmark-b.svg"
+                src="/final-compressed/logo-opal-wordmark-b.svg"
                 className="max-w-[850px] mx-auto w-full absolute object-cover right-0 top-0 z-10"
               />
 
               <motion.img
-                src="/final/logo-opal-wordmark.svg"
+                src="/final-compressed/logo-opal-wordmark.svg"
                 className="max-w-[850px] mx-auto w-full absolute object-cover right-0 top-0 z-20"
                 style={{ clipPath: clipPathTransform }}
               />
@@ -495,24 +507,25 @@ const Home: NextPage = () => {
                   </p>
                   <div className="pb-4" />
                   <video autoPlay muted loop className="object-cover size-full">
-                    <source src="/final/mobile-nav.mp4" type="video/mp4" />
+                    <source src="/final-compressed/mobile-nav.mp4" type="video/mp4" />
                   </video>
                 </div>
               </div>
               <div className="col-span-12 xl:col-span-7">
                 {/* <div className="col-span-12 lg:col-span-9 lg:col-start-2"> */}
                 <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
-                  DOCTOR OPAL FIRMWARE UPDATER
+                  {/* DOCTOR OPAL  */}
+                  FIRMWARE UPDATER
                 </p>
                 <div className="pb-4" />
 
-                <img src="/final/exhibit-doctor.png" />
+                <img src="/final-compressed/exhibit-doctor.png" />
                 <div className="pb-4" />
 
                 <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#999999] max-w-[500px] pb-4">
-                  Dr. Opal is a web based tool to help users update their
-                  Tadpole firmware. I built out the UI and collaborated with
-                  device engineers to interface it with the Tadpole.
+                  Dr. Opal is a web based tool created to help users update
+                  their Tadpole firmware. I built out the UI and collaborated
+                  with device engineers to interface it with the Tadpole.
                 </p>
                 <div className="pb-10" />
               </div>
@@ -522,7 +535,7 @@ const Home: NextPage = () => {
 
         <div className="pb-10 xl:pb-30" />
 
-        <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 px-4 xl:px-0 ">
+        <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 px-4 xl:px-0 max-w-[2700px] mx-auto">
           <div className="col-span-6 xl:h-[825px]">
             <div className="pb-4  text-center">
               <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
@@ -550,31 +563,21 @@ const Home: NextPage = () => {
         <div className="pt-30" />
 
         <div
-          className="relative h-[1400px] lg:h-[2400px] bg-[#EAEAEA] pb-40"
-          // className="relative h-[1400px] lg:h-[170vh] bg-[#EAEAEA] pb-4"
+          className="relative h-[1400px] lg:h-[2400px] bg-[#EAEAEA]"
+          // className="relative h-[1400px] lg:h-[170vh] bg-[#EAEAEA]"
           ref={opalcameraHomeImageScrollable}
         >
           <div className="sticky top-[10vh] left-0">
             <div className="relative z-10 ">
-              <div className="max-w-[760px] mx-auto px-4 pt-10 top-4 relative">
-                <p className="text-[14px] uppercase text-center leading-[1.2] font-heading font-700 tracking-wide">
-                  Opal Camera Landing Page
-                </p>
-                <div className="max-xl:pb-4" />
-                {/* <p className="text-[36px] leading-[1.2] font-heading font-500 -tracking-wide">
-                    Opal Camera had contacted me to help develop the first
-                    iteration of their landing page.
-                  </p> */}
-              </div>
               <img
-                src="/final/empty-macbook.png"
-                className="w-full max-w-[1300px] mx-auto absolute z-20 left-1/2 -translate-x-1/2"
+                src="/final-compressed/empty-macbook.png"
+                className="w-full max-w-[1300px] mx-auto absolute z-20 top-0 left-1/2 -translate-x-1/2"
               />
               <div className="max-w-[1300px] w-full mx-auto">
-                <div className="aspect-1000/570">
-                  <div className="overflow-hidden max-w-[71.5%]   aspect-640/400 relative left-[14%] top-[10%] z-40 ">
+                <div className="aspect-1000/570 relative  pt-[6%]">
+                  <div className="overflow-hidden w-full max-w-[71.5%] aspect-640/400 z-40 relative left-[14%] ">
                     <motion.img
-                      src="/final/opalcamera-home-full.png"
+                      src="/final-compressed/opalcamera-home-full.png"
                       className="absolute top-0 left-0 w-full h-auto  object-top z-10"
                       ref={opalcameraHomeImageRef}
                       style={{ y: homeImageY }}
@@ -592,9 +595,11 @@ const Home: NextPage = () => {
             {/* <div className="h-[50%] w-full absolute left-0 top-0 bg-[#EAEAEA]" /> */}
           </div>
         </div>
+        <div className="pb-4" />
 
         {/* <div className="bg-primary-500 text-black"> */}
-        <div className="bg-[#ffdb01] text-black">
+        <div className="bg-black text-white">
+          {/* <div className="bg-[#ffdb01] text-black"> */}
           <div className="max-w-[1728px] mx-auto">
             <div className="grid grid-cols-12 gap-x-4 px-4">
               <div className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2 pt-18">
@@ -645,7 +650,7 @@ const Home: NextPage = () => {
 
             <Grid
               left={
-                <h2 className="copy-heading-2 pb-6 max-w-[288px] xl:ml-auto">
+                <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[288px] xl:ml-auto">
                   A growing startup
                 </h2>
               }
@@ -663,7 +668,7 @@ const Home: NextPage = () => {
           <div className="pb-8" />
 
           <div className="mx-auto max-w-[1728px] ">
-            <div className="pb-40" />
+            <div className="pb-40 lg:pb-0" />
 
             <div className="xl:hidden">
               <MobileImageScroller
@@ -671,21 +676,21 @@ const Home: NextPage = () => {
                 title="Modern Fertility"
                 description={
                   <span className="max-w-[380px] block">
-                    A website dedicated to supporting and informing women about
+                    A business dedicated to supporting and informing women about
                     their fertility options.
                   </span>
                 }
                 images={[
                   <img
-                    src="/final/mf-first-mobile.svg"
+                    src="/final-compressed/mf-first-mobile.svg"
                     className="h-[350px] md:h-[440px]  w-auto"
                   />,
                   <img
-                    src="/final/mf-homepage-mobile.png"
+                    src="/final-compressed/mf-homepage-mobile.png"
                     className="h-[350px] md:h-[440px]  w-auto"
                   />,
                   // <img
-                  //   src="/final/mf-recommended-mobile.png"
+                  //   src="/final-compressed/mf-recommended-mobile.png"
                   //   className="h-[350px] w-auto"
                   // />,
                 ]}
@@ -693,28 +698,28 @@ const Home: NextPage = () => {
             </div>
 
             <div className="hidden xl:grid grid-cols-12 gap-x-4 px-4 pt-[200px] ">
-              <div className="col-span-12 lg:col-span-4 2xl:col-start-2">
+              <div className="col-span-12 lg:col-span-5 2xl:col-start-2">
                 <p className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[15px]">
                   Modern Fertility
                 </p>
 
                 <div className="max-lg:pb-4">
                   <img
-                    src="/final/mf-first.svg"
+                    src="/final-compressed/mf-first.svg"
                     className="max-lg:max-w-[400px]"
                   />
                 </div>
               </div>
               <div className="col-span-12 xl:col-span-5 2xl:col-span-4">
                 <div className="h-full flex flex-col justify-end">
-                  <p className="hidden lg:block xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[380px]">
-                    A website dedicated to supporting and informing women about
+                  <p className="hidden lg:block xl:text-[22px] leading-[30px] font-heading font-500 pb-[22px] max-w-[380px]">
+                    A business dedicated to supporting and informing women about
                     their fertility options.
                   </p>
-                  <img src="/final/mf-homepage.png" />
+                  <img src="/final-compressed/mf-homepage.png" />
                 </div>
               </div>
-              <div className="col-span-12 xl:col-span-3 2xl:col-span-2">
+              <div className="col-span-12 xl:col-span-2 2xl:col-span-2">
                 <div className="h-full flex flex-col justify-end max-lg:pt-4 max-lg:max-w-[320px]">
                   <p className="text-[13px] text-black/50 font-500 max-w-[200px]">
                     modernfertility.com is now a part of{' '}
@@ -843,39 +848,58 @@ const Home: NextPage = () => {
                 </div>
               }
             />
+            <div className="pt-40" />
           </section>
         </div>
-
-        <section>
-          {/* <div className="bg-white pb-16 xl:pb-32 pt-[200px]">
-            <div className="max-w-[1728px] mx-auto">
-              <div className="grid grid-cols-12 gap-x-4 px-4">
-                <span className="lg:col-start-2 col-span-12 lg:col-span-10">
-                  <div id="contact"></div>
-                  <p>
-                    <a
-                      href="mailto:hello@anthonykoch.com"
-                      className="text-black"
-                    >
-                      <span className="block  font-500 2xl:text-left text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl xl:py-10">
-                        <span className="text-lg xl:text-[22px] font-400 mb-5 block">
-                          Let’s collaborate, or just chat.
-                        </span>
-                        <span className="font-500 -tracking-wide font-heading">
-                          hello@anthonykoch.com
-                        </span>
-                      </span>
-                    </a>
-                  </p>
-                </span>
-              </div>
-            </div>
-          </div> */}
-        </section>
       </div>
+      <section>
+        <div className="text-white bg-black">
+          <div className="pt-40" />
+
+          <div className="max-w-[1728px] mx-auto">
+            <div className="grid grid-cols-12 gap-x-4 px-4 ">
+              <p className="col-span-12 xl:col-span-10 xl:col-start-2 ">
+                <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative max-w-[1200px]">
+                  <span className="block">Check out my blog</span>
+                  <span className="rotate-180 origin-center inline-block text-primary-500">
+                    ^^^
+                  </span>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div className="pb-30" />
+        </div>
+      </section>
+
+      <section>
+        <div className="pb-30" />
+        <div className="max-w-[1728px] mx-auto">
+          <div className="grid grid-cols-12 gap-x-4 px-4 ">
+            <div className="col-span-12 xl:col-span-10 xl:col-start-2 max-w-[800px]">
+              <PostList posts={posts.slice(0, 4)} />
+            </div>
+          </div>
+        </div>
+
+        <div className="pb-30" />
+      </section>
+
       <Footer />
     </div>
   )
+}
+
+import superjson from 'superjson'
+
+export const getStaticProps: GetStaticProps<any> = async () => {
+  const posts = await getAllPostMeta()
+
+  return {
+    props: {
+      posts: superjson.serialize(posts).json as any,
+    },
+  }
 }
 
 export default Home
