@@ -182,11 +182,11 @@ const Home: NextPage = () => {
 
   return (
     <div>
+      {/* Keep fixed? */}
       <div className="absolute top-0 left-0 w-full z-1000">
-        <div className="max-w-[1600px] mx-auto grid grid-cols-12 gap-x-4">
-          <div className="lg:col-span-10 lg:col-start-2">
-            <SiteNavigation />
-          </div>
+        <div className="max-w-[1728px] mx-auto">
+          <SiteNavigation />
+          {/* <div className="border-b border-black/5 w-[calc(100wh-16px)]"></div> */}
         </div>
       </div>
 
@@ -204,7 +204,7 @@ const Home: NextPage = () => {
           </div> */}
           {/* <div className="pt-[80px] xl:pt-[180px]" /> */}
           <div
-            className="max-w-[1600px] mx-auto grid grid-cols-12 gap-x-4 px-4 overflow-hidden"
+            className="max-w-[1728px] mx-auto grid grid-cols-12 gap-x-4 px-4 overflow-hidden"
             ref={introRef}
           >
             <div className="col-span-12 xl:col-span-11 xl:col-start-2">
@@ -247,7 +247,7 @@ const Home: NextPage = () => {
 
         <div className="bg-black  text-white">
           <div className="pt-30 lg:pt-52" />
-          <div className="max-w-[1600px] mx-auto">
+          <div className="max-w-[1728px] mx-auto">
             <div className="grid grid-cols-12 gap-x-4 px-4">
               <div className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2">
                 <p className="font-heading font-500 text-[46px] md:text-[58px] xl:text-[72px] leading-[1.1] xl:leading-none z-10 max-w-[1100px]">
@@ -263,8 +263,9 @@ const Home: NextPage = () => {
         </div>
 
         <section>
-          <div className="pb-20 lg:pb-30" />
           <div className="xl:hidden">
+            <div className="pb-20 lg:pb-30" />
+
             <MobileImageScroller
               containerRef={opalCameraImagesRef}
               title="Opal Camera"
@@ -275,8 +276,14 @@ const Home: NextPage = () => {
                 </span>
               }
               images={[
-                <img src="/final/girl.png" className="h-[320px] md:h-[420px]" />,
-                <img src="/final/opal-tadpole.png" className="h-[320px] md:h-[420px]" />,
+                <img
+                  src="/final/girl.png"
+                  className="h-[320px] md:h-[420px]"
+                />,
+                <img
+                  src="/final/opal-tadpole.png"
+                  className="h-[320px] md:h-[420px]"
+                />,
                 // <img src="/final/card-opal.png" className="h-[320px]" />,
               ]}
             />
@@ -297,7 +304,7 @@ const Home: NextPage = () => {
 
           <div className="pb-20 lg:pb-30" />
           {/* Desktop version */}
-          <div className="xl:max-w-[max(1200px,80%)] px-[16px] 5xl:max-w-[1600px] mx-auto hidden xl:flex gap-x-4 relative">
+          <div className="xl:max-w-[max(1200px,80%)] px-[16px] 5xl:max-w-[1728px] mx-auto hidden xl:flex gap-x-4 relative">
             <div className="w-[36.533085%]">
               <h3 className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[10px]">
                 <span className="relative">
@@ -376,7 +383,7 @@ const Home: NextPage = () => {
 
           <div className="pb-20 lg:pb-30" />
 
-          <div className=" mx-auto max-w-[1600px]">
+          <div className=" mx-auto max-w-[1728px]">
             <div className="grid grid-cols-12 gap-x-4 px-4">
               <div className="col-span-12 lg:col-span-6 xl:col-span-4 xl:col-start-2 2xl:col-start-2">
                 <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
@@ -460,7 +467,7 @@ const Home: NextPage = () => {
           <div className="bg-black  text-white">
             <div className="pt-30 lg:pt-40" />
 
-            <div className="max-w-[1600px] mx-auto">
+            <div className="max-w-[1728px] mx-auto">
               <div className="grid grid-cols-12 gap-x-4 px-4">
                 <div className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2">
                   <p className="font-heading font-500 text-[46px] md:text-[58px] xl:text-[72px] leading-[1.1] xl:leading-none z-10 max-w-[1100px]">
@@ -479,7 +486,7 @@ const Home: NextPage = () => {
 
           <div className="pb-20 lg:pb-30" />
 
-          <div className="max-w-[1600px] mx-auto px-4">
+          <div className="max-w-[1728px] mx-auto px-4">
             <div className="grid grid-cols-12 gap-x-4">
               <div className="max-xl:order-2 col-span-12 xl:col-span-3 xl:col-start-2">
                 <div className="max-xl:max-w-[350px] lg:mx-0 w-full">
@@ -588,7 +595,7 @@ const Home: NextPage = () => {
 
         {/* <div className="bg-primary-500 text-black"> */}
         <div className="bg-[#ffdb01] text-black">
-          <div className="max-w-[1600px] mx-auto">
+          <div className="max-w-[1728px] mx-auto">
             <div className="grid grid-cols-12 gap-x-4 px-4">
               <div className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2 pt-18">
                 <p className=" xl:pt-36  font-heading font-500 text-[46px] md:text-[58px] xl:text-[72px] leading-[1.1] xl:leading-none z-10">
@@ -605,7 +612,7 @@ const Home: NextPage = () => {
 
         <div className="bg-white ">
           <div className="pb-20 xl:pb-30" />
-          <div className="max-w-[1600px] mx-auto">
+          <div className="max-w-[1728px] mx-auto">
             <Grid
               left={
                 <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[310px] xl:ml-auto">
@@ -655,7 +662,7 @@ const Home: NextPage = () => {
           </div>
           <div className="pb-8" />
 
-          <div className="mx-auto max-w-[1600px] ">
+          <div className="mx-auto max-w-[1728px] ">
             <div className="pb-40" />
 
             <div className="xl:hidden">
@@ -726,7 +733,7 @@ const Home: NextPage = () => {
 
           <div className="pb-20 lg:pb-40" />
 
-          <div className="mx-auto max-w-[1600px]">
+          <div className="mx-auto max-w-[1728px]">
             <div className="grid grid-cols-12 gap-x-4 px-4">
               <div className="col-span-12 lg:col-span-6 xl:col-span-4 xl:col-start-2 2xl:col-start-2">
                 <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
@@ -776,7 +783,7 @@ const Home: NextPage = () => {
               <div className="text-white bg-black">
                 <div className="pt-40" />
 
-                <div className="max-w-[1600px] mx-auto">
+                <div className="max-w-[1728px] mx-auto">
                   <div className="grid grid-cols-12 gap-x-4 px-4 ">
                     <p className="col-span-12 xl:col-span-10 xl:col-start-2 font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative max-w-[1200px]">
                       I led frontend development for the marketing website and
@@ -840,8 +847,8 @@ const Home: NextPage = () => {
         </div>
 
         <section>
-          <div className="bg-white pb-16 xl:pb-32 pt-[200px]">
-            <div className="max-w-[1600px] mx-auto">
+          {/* <div className="bg-white pb-16 xl:pb-32 pt-[200px]">
+            <div className="max-w-[1728px] mx-auto">
               <div className="grid grid-cols-12 gap-x-4 px-4">
                 <span className="lg:col-start-2 col-span-12 lg:col-span-10">
                   <div id="contact"></div>
@@ -863,7 +870,7 @@ const Home: NextPage = () => {
                 </span>
               </div>
             </div>
-          </div>
+          </div> */}
         </section>
       </div>
       <Footer />

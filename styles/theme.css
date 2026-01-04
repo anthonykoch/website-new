@@ -76,6 +76,9 @@
   --spacing-nav-icon-width: 54px;
   --spacing-py-nav-link: 16px;
   /* --spacing-px-nav-link: 48px; */
+
+  --shadow-button: 0 24px 60px -9px rgb(0 0 0/20%);
+  --shadow-button-none: 0 24px 60px -9px rgb(0 0 0/0%);
 }
 
 @utility copy-heading-2 {
