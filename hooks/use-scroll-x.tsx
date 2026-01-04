@@ -16,11 +16,7 @@ export const useScrollX = ({
   useMotionValueEvent(scrollYProgress, 'change', (progress) => {
     if (!container.current) return
 
-    // console.log(scrollableWidth.current)
-    // console.log(scrollableTransform.current, container.current)
-
     if (scrollableTransform.current) {
-      // console.log('UPDATE', progress)
       const left = scrollableTransform.current(progress)
       container.current.scrollLeft = left
     }
@@ -38,12 +34,9 @@ export const useScrollX = ({
       [0, 1],
       [0, scrollableWidth.current],
     )
-
-    // console.log('width', scrollableWidth.current, el)
   }
 
   useEffect(() => {
-    console.log('initial', container.current)
     updateScrollableWidth()
 
     const stop = resize(() => updateScrollableWidth())

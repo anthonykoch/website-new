@@ -11,6 +11,7 @@ import {
   motion,
   stagger,
   useMotionTemplate,
+  useMotionValueEvent,
   useScroll,
   useTransform,
 } from 'motion/react'
@@ -42,17 +43,28 @@ const ArrowRightSvg: FC<{ className?: string }> = ({ className }) => {
 }
 
 const Home: NextPage = ({ posts }: { posts: Post[] }) => {
-  const opalLogoRef = useRef(null)
-
   const opalcameraHomeImageRef = useRef<HTMLImageElement>(null)
   const opalcameraHomeImageScrollable = useRef<HTMLDivElement>(null)
 
-  const meme = useScroll({
+  const opalCameraMacbookScroll = useScroll({
     target: opalcameraHomeImageScrollable,
-    offset: ['100vh end', 'end start'],
+    offset: ['60vh end', '220vh start'],
+    // offset: ['100vh end', 'end start'],
   })
 
-  const homeImageYRemap = useTransform(meme.scrollYProgress, [0, 1], [0, -64])
+  const homeImageYRemap = useTransform(
+    opalCameraMacbookScroll.scrollYProgress,
+    [0, 1],
+    [0, -64],
+  )
+
+  const homeImageScale = useTransform(
+    opalCameraMacbookScroll.scrollYProgress,
+    [0.2, 1],
+    [1, 1.06],
+
+    // [1, 0.97],
+  )
   const homeImageY = useMotionTemplate`${homeImageYRemap}%`
 
   useEffect(() => {
@@ -60,6 +72,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
     opalcameraHomeImageRef.current
   }, [])
+
+  // const opalLogoRef = useRef(null)
 
   // const { scrollYProgress } = useScroll({
   //   target: opalLogoRef,
@@ -75,9 +89,15 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   const timeout = useRef<any>(null)
 
   useEffect(() => {
-    if (!introTitleRef.current) return
-
     timeout.current = setTimeout(() => {
+      if (
+        !introTitleRef.current ||
+        !newJobRef.current ||
+        !lookRef.current ||
+        !arrowsRef.current
+      )
+        return
+
       let delay = 1.1
 
       if (introTitleRef.current) {
@@ -99,6 +119,32 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             },
           )
         }),
+      )
+
+      animate(
+        newJobRef.current,
+        { opacity: [0, 1], y: [10, 0] },
+        { duration: 1.5, delay: (delay += 0.7), ease: easeOutExpo },
+      )
+
+      animate(
+        lookRef.current,
+        { opacity: [0, 1] },
+        {
+          duration: 1.5,
+          delay: (delay += 0.5),
+          ease: easeOutExpo,
+        },
+      )
+
+      animate(
+        arrowsRef.current,
+        { opacity: [0, 1] },
+        {
+          duration: 1.2,
+          delay: (delay += 0.07),
+          ease: easeOutExpo,
+        },
       )
 
       const imageStaggerDelay = 0.8
@@ -182,6 +228,39 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
     scrollYProgress: opalCameraScroll.scrollYProgress,
   })
 
+  const newJobRef = useRef<HTMLParagraphElement>(null)
+
+  const lookRef = useRef<HTMLDivElement>(null)
+  const arrowsRef = useRef<HTMLDivElement>(null)
+  const firstBlockRef = useRef<HTMLDivElement>(null)
+
+  const opalIntroRef = useRef<HTMLElement>(null)
+
+  const { scrollYProgress: opalIntroScrollYProgress } = useScroll({
+    target: opalIntroRef,
+    offset: ['160vh end', '240vh end'],
+  })
+
+  const opalIntroY = useTransform(opalIntroScrollYProgress, [0, 1], [0, 500])
+  const opalIntroScale = useTransform(
+    opalIntroScrollYProgress,
+    [0, 1],
+    [1, 0.97],
+  )
+
+  const mfIntroRef = useRef<HTMLElement>(null)
+
+  const { scrollYProgress: mfIntroScrollYProgress } = useScroll({
+    target: mfIntroRef,
+    offset: ['160vh end', '240vh end'],
+    // offset: ['100vh end', '150vh end'],
+  })
+  const mfIntroY = useTransform(mfIntroScrollYProgress, [0, 1], [0, 400])
+
+  useMotionValueEvent(mfIntroScrollYProgress, 'change', (progress) => {
+    console.log(progress)
+  })
+
   return (
     <div>
       {/* Keep fixed? */}
@@ -206,65 +285,77 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           </div> */}
           {/* <div className="pt-[80px] xl:pt-[180px]" /> */}
           <div
-            className="max-w-[1728px] mx-auto grid grid-cols-12 gap-x-4 px-4 overflow-hidden"
+            className="max-w-[1728px] mx-auto grid grid-cols-12 gap-x-4 px-4"
             ref={introRef}
           >
-            <div className="col-span-12 xl:col-span-11 xl:col-start-2 ">
+            <div className="col-span-12 xl:col-span-11 xl:col-start-2  ">
               {/* <div className="pt-20 xl:pt-[70px]" /> */}
-              <div className="pt-20 xl:pt-[150px]" />
-              {/* <div className="pt-10 xl:pt-[50px]" /> */}
-
+              {/* <div className="pt-20 xl:pt-[150px]" /> */}
               {/* <div className="mix-blend-difference relative size-13 bg-white flex items-end justify-center "> */}
               {/* <div className="-mb-20">
                 <div className="mix-blend-difference relative size-[300px] bg-white flex items-end justify-center ">
                 <span className="size-[80%] absolute left-1/2 top-1/2 -translate-1/2 border border-solid border-[#151515] block"></span>
                   <span className="text-[22px] text-[#EAEAEA] leading-[0.8] font-600 font-heading absolute bottom-[-1px]">Koch</span>
                 </div>
-                <img src="/final-compressed/favicon.svg" className="w-[60px]" />
-              </div> */}
-
-              <div className="inline-block text-white mix-blend-difference">
-                <span className="text-[clamp(24px,calc(55vw*(100/1900)),46px)]  font-500  font-heading leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
-                  <p className="md:hidden">
-                    Anthony Koch is a front-end developer helping companies and
-                    startups ship pixel-perfect, responsive websites.
-                  </p>
-                  <span
-                    ref={introTitleRef}
-                    style={{ visibility: 'hidden' }}
-                    className="hidden md:block max-w-[1000px]"
-                  >
-                    <span className="setup-overflow">
-                      <span className="setup-line-down selector-line">
-                        Anthony Koch is a front-end developer helping{' '}
+                </div> */}
+              {/* <img src="/final/favicon.svg" className="w-[60px]" /> */}
+              <div className="h-[80vh] -mb-[30vh]">
+                <div className="text-black sticky top-[16vh]">
+                  <span className="text-[clamp(24px,calc(55vw*(100/1900)),46px)]  font-500  font-heading leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
+                    <p className="md:hidden">
+                      Anthony Koch is a front-end developer helping companies
+                      and startups ship pixel-perfect, responsive websites.
+                    </p>
+                    <span
+                      ref={introTitleRef}
+                      style={{ visibility: 'hidden' }}
+                      className="hidden md:block max-w-[1000px]"
+                    >
+                      <span className="setup-overflow">
+                        <span className="setup-line-down selector-line">
+                          Anthony Koch is a front-end developer helping{' '}
+                        </span>
                       </span>
-                    </span>
-                    <span className="setup-overflow">
-                      <span className="setup-line-down selector-line">
-                        companies and startups ship pixel-perfect,{' '}
+                      <span className="setup-overflow">
+                        <span className="setup-line-down selector-line">
+                          companies and startups ship pixel-perfect,{' '}
+                        </span>
                       </span>
-                    </span>
-                    <span className="setup-overflow">
-                      <span className="setup-line-down selector-line">
-                        responsive websites.
+                      <span className="setup-overflow">
+                        <span className="setup-line-down selector-line">
+                          responsive websites.
+                        </span>
                       </span>
                     </span>
                   </span>
-                </span>
+                  <p
+                    ref={newJobRef}
+                    className="mt-2 setup-fade-in bg-black px-5 py-3 inline-block text-white text-[13px] lg:text-[14px]"
+                  >
+                    Currently looking for new opportunities - Jan 2025
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-          <div className="pb-18 xl:pb-40 " />
+
+          {/* <div className="pb-18 xl:pb-40 " /> */}
         </section>
 
-        <div className="bg-black  text-white">
+        <div className="bg-black  text-white relative z-10" ref={firstBlockRef}>
+          {/* <div className="size-fill bg-[#eaeaea]"></div> */}
           <div className="pt-30 lg:pt-52" />
           <div className="max-w-[1728px] mx-auto">
             <div className="grid grid-cols-12 gap-x-4 px-4">
               <div className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2">
                 <p className="font-heading font-500 text-[46px] md:text-[58px] xl:text-[72px] leading-[1.1] xl:leading-none z-10 max-w-[1100px]">
-                  <span className="block">Take a look at my work below. </span>
-                  <span className="rotate-180 origin-center inline-block text-primary-500">
+                  <span className="block setup-fade-in" ref={lookRef}>
+                    Take a look at my work below.{' '}
+                  </span>
+                  <span
+                    ref={arrowsRef}
+                    className="setup-fade-in rotate-180 origin-center inline-block text-primary-500"
+                  >
                     ^^^
                   </span>
                 </p>
@@ -274,112 +365,118 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           <div className="pb-20 lg:pb-30" />
         </div>
 
-        <section>
-          <div className="xl:hidden">
-            <div className="pb-20 lg:pb-30" />
+        <section ref={opalIntroRef}>
+          <motion.div
+            style={{ y: opalIntroY, scale: opalIntroScale }}
+            transition={{ ease: 'easeIn' }}
+          >
+            <div className="xl:hidden">
+              <div className="pb-20 lg:pb-30" />
 
-            <MobileImageScroller
-              containerRef={opalCameraImagesRef}
-              title="Opal Camera"
-              description={
-                <span className="max-w-[420px] block">
-                  Opal Camera is a website made to market the capabilities of
-                  the C1 and Tadpole cameras.
-                </span>
-              }
-              images={[
-                <img
-                  src="/final-compressed/girl.png"
-                  className="h-[320px] md:h-[420px]"
-                />,
-                <img
-                  src="/final-compressed/opal-tadpole.png"
-                  className="h-[320px] md:h-[420px]"
-                />,
-                // <img src="/final-compressed/card-opal.png" className="h-[320px]" />,
-              ]}
-            />
-            <div className="pb-4" />
+              <MobileImageScroller
+                containerRef={opalCameraImagesRef}
+                title="Opal Camera"
+                description={
+                  <span className="max-w-[420px] block">
+                    A website made to market the capabilities of
+                    {/* Opal Camera is a website made to market the capabilities of */}
+                    the C1 and Tadpole cameras, and the accompanying Composer
+                    app.
+                  </span>
+                }
+                images={[
+                  <img
+                    src="/final-compressed/girl.png"
+                    className="h-[320px] md:h-[420px]"
+                  />,
+                  <img
+                    src="/final-compressed/opal-tadpole.png"
+                    className="h-[320px] md:h-[420px]"
+                  />,
+                  // <img src="/final-compressed/card-opal.png" className="h-[320px]" />,
+                ]}
+              />
+              <div className="pb-4" />
 
-            <div className="px-4 text-center">
-              <a
-                href="https://opalcamera.com/"
-                className="w-[200px] flex items-center justify-center gap-x-5 font-body uppercase text-[12px] font-500 tracking-wide text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black transition-all duration-150 px-5 py-2 shadow-none hover:shadow-[0_24px_60px_-9px_rgb(0_0_0/20%)]"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View site
-                <ArrowRightSvg className="w-[24px] *:fill-white " />
-              </a>
-            </div>
-          </div>
-
-          <div className="pb-20 lg:pb-30" />
-          {/* Desktop version */}
-          <div className="xl:max-w-[max(1200px,80%)] px-[16px] 5xl:max-w-[1728px] mx-auto hidden xl:flex gap-x-4 relative">
-            <div className="w-[36.533085%]">
-              <h3 className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[10px]">
-                <span className="relative">
-                  <span className="setup-overflow">
-                    <span className="setup-line-down selector-opal-camera-title">
-                      Opal Camera
-                    </span>
-                  </span>
-                </span>
-              </h3>
-              <div className="aspect-784/1190 relative">
-                {/* <div className="striped rounded-md size-full"></div> */}
-                <img
-                  src="/final-compressed/girl.png"
-                  className="selector-opal-camera-image setup-fade-in absolute size-full left-0 top-0"
-                />
-              </div>
-            </div>
-            <div className="w-[42.870457%] self-end">
-              <p className="text-[18px] xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[384px] selector-opal-camera-text">
-                <span className="setup-overflow selector-line">
-                  <span className="setup-line-down selector-inner">
-                    Opal Camera is a website made to
-                  </span>
-                </span>
-                <span className="setup-overflow selector-line">
-                  <span className="setup-line-down selector-inner">
-                    market the capabilities of the C1
-                  </span>
-                </span>
-                <span className="setup-overflow selector-line">
-                  <span className="setup-line-down selector-inner">
-                    and Tadpole cameras.
-                  </span>
-                </span>
-              </p>
-              <div className="aspect-920/608 relative">
-                {/* <div className="striped rounded-md size-full" /> */}
-
-                <img
-                  src="/final-compressed/opal-tadpole.png"
-                  className="selector-opal-camera-image setup-fade-in absolute size-full top-0 left-0"
-                />
-              </div>
-            </div>
-            <div className="w-[20.503262%]">
-              <div className="h-full flex flex-col items-start justify-end">
+              <div className="px-4 text-center">
                 <a
                   href="https://opalcamera.com/"
-                  className="inline-flex items-center justify-center gap-x-5 w-full font-body uppercase text-[12px] font-500 tracking-wide  setup-fade-in text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black  transition-all duration-150 px-5 py-2 shadow-none hover:shadow-[0_24px_60px_-9px_rgb(0_0_0/20%)]"
-                  ref={opalViewSiteRef}
+                  className="w-[200px] flex items-center justify-center gap-x-5 font-body uppercase text-[12px] font-500 tracking-wide text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black transition-all duration-150 px-5 py-2 shadow-none hover:shadow-[0_24px_60px_-9px_rgb(0_0_0/20%)]"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   View site
-                  <ArrowRightSvg className="w-[28px] *:fill-white " />
+                  <ArrowRightSvg className="w-[24px] *:fill-white " />
                 </a>
+              </div>
+            </div>
 
-                {/* <img
+            <div className="pb-20 lg:pb-30" />
+            {/* Desktop version */}
+            <div className="xl:max-w-[max(1200px,80%)] px-[16px] 5xl:max-w-[1728px] mx-auto hidden xl:flex gap-x-4 relative">
+              <div className="w-[36.533085%]">
+                <h3 className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[10px]">
+                  <span className="relative">
+                    <span className="setup-overflow">
+                      <span className="setup-line-down selector-opal-camera-title">
+                        Opal Camera
+                      </span>
+                    </span>
+                  </span>
+                </h3>
+                <div className="aspect-784/1190 relative">
+                  {/* <div className="striped rounded-md size-full"></div> */}
+                  <img
+                    src="/final-compressed/girl.png"
+                    className="selector-opal-camera-image setup-fade-in absolute size-full left-0 top-0"
+                  />
+                </div>
+              </div>
+              <div className="w-[42.870457%] self-end">
+                <p className="text-[18px] xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[384px] selector-opal-camera-text">
+                  <span className="setup-overflow selector-line">
+                    <span className="setup-line-down selector-inner">
+                      Opal Camera is a website made to
+                    </span>
+                  </span>
+                  <span className="setup-overflow selector-line">
+                    <span className="setup-line-down selector-inner">
+                      market the capabilities of the C1
+                    </span>
+                  </span>
+                  <span className="setup-overflow selector-line">
+                    <span className="setup-line-down selector-inner">
+                      and Tadpole cameras.
+                    </span>
+                  </span>
+                </p>
+                <div className="aspect-920/608 relative">
+                  {/* <div className="striped rounded-md size-full" /> */}
+
+                  <img
+                    src="/final-compressed/opal-tadpole.png"
+                    className="selector-opal-camera-image setup-fade-in absolute size-full top-0 left-0"
+                  />
+                </div>
+              </div>
+              <div className="w-[20.503262%]">
+                <div className="h-full flex flex-col items-start justify-end">
+                  <a
+                    href="https://opalcamera.com/"
+                    className="inline-flex items-center justify-center gap-x-5 w-full font-body uppercase text-[12px] font-500 tracking-wide  setup-fade-in text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black  transition-all duration-150 px-5 py-2 shadow-none hover:shadow-[0_24px_60px_-9px_rgb(0_0_0/20%)]"
+                    ref={opalViewSiteRef}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View site
+                    <ArrowRightSvg className="w-[28px] *:fill-white " />
+                  </a>
+
+                  {/* <img
                   src="/final-compressed/person.png"
                   className="selector-opal-camera-image setup-fade-in"
                 /> */}
-                {/* <a
+                  {/* <a
                   href="https://opalcamera.com/"
                   className="flex justify-end items-center gap-x-5 w-full font-body uppercase text-[12px] text-black font-500 tracking-wide  setup-fade-in"
                   ref={opalViewSiteRef}
@@ -389,33 +486,33 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   View site
                   <img src="/final-compressed/arrow-right.svg" className="w-[28px]" />
                 </a> */}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="pb-20 lg:pb-30" />
+            <div className="pb-20 lg:pb-30" />
 
-          <div className=" mx-auto max-w-[1728px]">
-            <div className="grid grid-cols-12 gap-x-4 px-4">
-              <div className="col-span-12 lg:col-span-6 xl:col-span-4 xl:col-start-2 2xl:col-start-2">
-                <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
-                  What is Opal Camera?
-                </h2>
-              </div>
+            <div className=" mx-auto max-w-[1728px]">
+              <div className="grid grid-cols-12 gap-x-4 px-4">
+                <div className="col-span-12 lg:col-span-6 xl:col-span-4 xl:col-start-2 2xl:col-start-2">
+                  <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
+                    What is Opal Camera?
+                  </h2>
+                </div>
 
-              <div className="xl:col-start-6 2xl:col-start-6 md:col-span-8 col-span-12 lg:col-span-6 xl:col-span-6 2xl:col-span-5">
-                <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
-                  Opal Camera creates premium webcams designed to help people
-                  look and sound great during video calls. Their main products
-                  are the Opal C1, a high-quality camera ideal for desktop or
-                  home office setups, and the Tadpole, a tiny portable camera
-                  made specifically for laptops.
-                </p>
+                <div className="xl:col-start-6 2xl:col-start-6 md:col-span-8 col-span-12 lg:col-span-6 xl:col-span-6 2xl:col-span-5">
+                  <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
+                    Opal Camera creates premium webcams designed to help people
+                    look and sound great during video calls. Their main products
+                    are the Opal C1, a high-quality camera ideal for desktop or
+                    home office setups, and the Tadpole, a tiny portable camera
+                    made specifically for laptops.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* 
+            {/* 
           <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 mt-[20px] px-4 xl:px-0">
             <div className="col-span-6 xl:h-[825px]">
               <img
@@ -431,9 +528,9 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             </div>
           </div> */}
 
-          <div className="pb-20 lg:pb-30" />
+            <div className="pb-20 lg:pb-30" />
 
-          {/* 
+            {/* 
           <div className="bg-black pt-10 relative">
             <div
               className=" absolute top-0 left-0 h-full w-full"
@@ -453,7 +550,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             </div>
           </div> */}
 
-          {/* <div className="bg-black pt-10 relative">
+            {/* <div className="bg-black pt-10 relative">
             <div
               className=" absolute top-0 left-0 h-full w-full"
               ref={opalLogoRef}
@@ -471,12 +568,13 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
               />
             </div>
           </div> */}
+          </motion.div>
         </section>
 
         {/* <div className="pt-30" /> */}
 
         <section>
-          <div className="bg-black  text-white">
+          <div className="bg-black  text-white z-10 relative">
             <div className="pt-30 lg:pt-40" />
 
             <div className="max-w-[1728px] mx-auto">
@@ -507,7 +605,10 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   </p>
                   <div className="pb-4" />
                   <video autoPlay muted loop className="object-cover size-full">
-                    <source src="/final-compressed/mobile-nav.mp4" type="video/mp4" />
+                    <source
+                      src="/final-compressed/mobile-nav.mp4"
+                      type="video/mp4"
+                    />
                   </video>
                 </div>
               </div>
@@ -563,12 +664,14 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         <div className="pt-30" />
 
         <div
-          className="relative h-[1400px] lg:h-[2400px] bg-[#EAEAEA]"
-          // className="relative h-[1400px] lg:h-[170vh] bg-[#EAEAEA]"
+          className="relative h-[calc(1700px+100vh)] lg:h-[calc(2400px+100vh)] -mb-[100vh] bg-[#EAEAEA]"
           ref={opalcameraHomeImageScrollable}
         >
-          <div className="sticky top-[10vh] left-0">
-            <div className="relative z-10 ">
+          <div className="sticky top-[30vh] lg:top-[10vh] left-0">
+            <motion.div
+              style={{ scale: homeImageScale }}
+              className="relative z-10 "
+            >
               <img
                 src="/final-compressed/empty-macbook.png"
                 className="w-full max-w-[1300px] mx-auto absolute z-20 top-0 left-1/2 -translate-x-1/2"
@@ -591,14 +694,14 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                     The project expanded into so much more.
                   </p>
                 </div> */}
-            </div>
+            </motion.div>
             {/* <div className="h-[50%] w-full absolute left-0 top-0 bg-[#EAEAEA]" /> */}
           </div>
         </div>
         <div className="pb-4" />
 
         {/* <div className="bg-primary-500 text-black"> */}
-        <div className="bg-black text-white">
+        <div className="bg-black text-white z-10 relative">
           {/* <div className="bg-[#ffdb01] text-black"> */}
           <div className="max-w-[1728px] mx-auto">
             <div className="grid grid-cols-12 gap-x-4 px-4">
@@ -615,7 +718,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           {/* <div className="pb-20 xl:pb-40" /> */}
         </div>
 
-        <div className="bg-white ">
+        <div className="bg-white z-10 relative">
           <div className="pb-20 xl:pb-30" />
           <div className="max-w-[1728px] mx-auto">
             <Grid
@@ -667,98 +770,100 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           </div>
           <div className="pb-8" />
 
-          <div className="mx-auto max-w-[1728px] ">
-            <div className="pb-40 lg:pb-0" />
+          <section ref={mfIntroRef}>
+            <motion.div style={{ y: mfIntroY }}>
+              <div className="mx-auto max-w-[1728px]">
+                <div className="pb-40 lg:pb-0" />
 
-            <div className="xl:hidden">
-              <MobileImageScroller
-                containerRef={mfMobileContainer}
-                title="Modern Fertility"
-                description={
-                  <span className="max-w-[380px] block">
-                    A business dedicated to supporting and informing women about
-                    their fertility options.
-                  </span>
-                }
-                images={[
-                  <img
-                    src="/final-compressed/mf-first-mobile.svg"
-                    className="h-[350px] md:h-[440px]  w-auto"
-                  />,
-                  <img
-                    src="/final-compressed/mf-homepage-mobile.png"
-                    className="h-[350px] md:h-[440px]  w-auto"
-                  />,
-                  // <img
-                  //   src="/final-compressed/mf-recommended-mobile.png"
-                  //   className="h-[350px] w-auto"
-                  // />,
-                ]}
-              />
-            </div>
-
-            <div className="hidden xl:grid grid-cols-12 gap-x-4 px-4 pt-[200px] ">
-              <div className="col-span-12 lg:col-span-5 2xl:col-start-2">
-                <p className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[15px]">
-                  Modern Fertility
-                </p>
-
-                <div className="max-lg:pb-4">
-                  <img
-                    src="/final-compressed/mf-first.svg"
-                    className="max-lg:max-w-[400px]"
+                <div className="xl:hidden">
+                  <MobileImageScroller
+                    containerRef={mfMobileContainer}
+                    title="Modern Fertility"
+                    description={
+                      <span className="max-w-[380px] block">
+                        A business dedicated to supporting and informing women
+                        about their fertility options.
+                      </span>
+                    }
+                    images={[
+                      <img
+                        src="/final-compressed/mf-first-mobile.svg"
+                        className="h-[350px] md:h-[440px]  w-auto"
+                      />,
+                      <img
+                        src="/final-compressed/mf-homepage-mobile.png"
+                        className="h-[350px] md:h-[440px]  w-auto"
+                      />,
+                      // <img
+                      //   src="/final-compressed/mf-recommended-mobile.png"
+                      //   className="h-[350px] w-auto"
+                      // />,
+                    ]}
                   />
                 </div>
-              </div>
-              <div className="col-span-12 xl:col-span-5 2xl:col-span-4">
-                <div className="h-full flex flex-col justify-end">
-                  <p className="hidden lg:block xl:text-[22px] leading-[30px] font-heading font-500 pb-[22px] max-w-[380px]">
-                    A business dedicated to supporting and informing women about
-                    their fertility options.
-                  </p>
-                  <img src="/final-compressed/mf-homepage.png" />
+
+                <div className="hidden xl:grid grid-cols-12 gap-x-4 px-4 pt-[200px] ">
+                  <div className="col-span-12 lg:col-span-5 2xl:col-start-2">
+                    <p className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[15px]">
+                      Modern Fertility
+                    </p>
+
+                    <div className="max-lg:pb-4">
+                      <img
+                        src="/final-compressed/mf-first.svg"
+                        className="max-lg:max-w-[400px]"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-span-12 xl:col-span-5 2xl:col-span-4">
+                    <div className="h-full flex flex-col justify-end">
+                      <p className="hidden lg:block xl:text-[22px] leading-[30px] font-heading font-500 pb-[22px] max-w-[380px]">
+                        A business dedicated to supporting and informing women
+                        about their fertility options.
+                      </p>
+                      <img src="/final-compressed/mf-homepage.png" />
+                    </div>
+                  </div>
+                  <div className="col-span-12 xl:col-span-2 2xl:col-span-2">
+                    <div className="h-full flex flex-col justify-end max-lg:pt-4 max-lg:max-w-[320px]">
+                      <p className="text-[13px] text-black/50 font-500 max-w-[200px]">
+                        modernfertility.com is now a part of{' '}
+                        <a
+                          href="https://ro.co/modern-fertility/"
+                          className="text-black/70 underline"
+                        >
+                          ro.co
+                        </a>{' '}
+                        and no longer able to be viewed.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="col-span-12 xl:col-span-2 2xl:col-span-2">
-                <div className="h-full flex flex-col justify-end max-lg:pt-4 max-lg:max-w-[320px]">
-                  <p className="text-[13px] text-black/50 font-500 max-w-[200px]">
-                    modernfertility.com is now a part of{' '}
-                    <a
-                      href="https://ro.co/modern-fertility/"
-                      className="text-black/70 underline"
-                    >
-                      ro.co
-                    </a>{' '}
-                    and no longer able to be viewed.
-                  </p>
+
+              <div className="pb-20 lg:pb-40" />
+
+              <div className="mx-auto max-w-[1728px]">
+                <div className="grid grid-cols-12 gap-x-4 px-4">
+                  <div className="col-span-12 lg:col-span-6 xl:col-span-4 xl:col-start-2 2xl:col-start-2">
+                    <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
+                      What is Modern Fertility?
+                    </h2>
+                  </div>
+
+                  <div className="xl:col-start-6 2xl:col-start-6 md:col-span-8 col-span-12 lg:col-span-6 xl:col-span-6 2xl:col-span-5">
+                    <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
+                      Modern Fertility is a women's health brand offering
+                      at-home reproductive testing, including hormone tests that
+                      assess key fertility markers like ovarian reserve and egg
+                      count. Founded in 2017, it makes fertility information
+                      more accessible and affordable by enabling convenient home
+                      testing at a lower cost than traditional clinics.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          <div className="pb-20 lg:pb-40" />
-
-          <div className="mx-auto max-w-[1728px]">
-            <div className="grid grid-cols-12 gap-x-4 px-4">
-              <div className="col-span-12 lg:col-span-6 xl:col-span-4 xl:col-start-2 2xl:col-start-2">
-                <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
-                  What is Modern Fertility?
-                </h2>
-              </div>
-
-              <div className="xl:col-start-6 2xl:col-start-6 md:col-span-8 col-span-12 lg:col-span-6 xl:col-span-6 2xl:col-span-5">
-                <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
-                  Modern Fertility is a women's health brand offering at-home
-                  reproductive testing, including hormone tests that assess key
-                  fertility markers like ovarian reserve and egg count. Founded
-                  in 2017, it makes fertility information more accessible and
-                  affordable by enabling convenient home testing at a lower cost
-                  than traditional clinics.
-                </p>
-              </div>
-            </div>
-
-            {/* <Grid
+                {/* <Grid
               left={
                 <div className="lg:text-right">
                   <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4 lg:ml-auto">
@@ -777,15 +882,15 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                 </p>
               }
             /> */}
-          </div>
-          {/* My role at Modern Fertility was in developing nearly the entire
-                front-end of both the marketing site and the dashboard. */}
+              </div>
+            </motion.div>
+          </section>
 
           <div className="pb-40" />
 
           <section>
             <div>
-              <div className="text-white bg-black">
+              <div className="text-white bg-black z-10 relative">
                 <div className="pt-40" />
 
                 <div className="max-w-[1728px] mx-auto">
@@ -853,17 +958,17 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         </div>
       </div>
       <section>
-        <div className="text-white bg-black">
-          <div className="pt-40" />
+        <div className="">
+          {/* <div className="pt-40" /> */}
 
           <div className="max-w-[1728px] mx-auto">
             <div className="grid grid-cols-12 gap-x-4 px-4 ">
               <p className="col-span-12 xl:col-span-10 xl:col-start-2 ">
-                <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative max-w-[1200px]">
-                  <span className="block">Check out my blog</span>
-                  <span className="rotate-180 origin-center inline-block text-primary-500">
+                <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative max-w-[1200px] text-center">
+                  <span className="block">Fin</span>
+                  {/* <span className="rotate-180 origin-center inline-block text-primary-500">
                     ^^^
-                  </span>
+                  </span> */}
                 </span>
               </p>
             </div>
@@ -872,7 +977,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         </div>
       </section>
 
-      <section>
+      {/* <section>
         <div className="pb-30" />
         <div className="max-w-[1728px] mx-auto">
           <div className="grid grid-cols-12 gap-x-4 px-4 ">
@@ -883,7 +988,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         </div>
 
         <div className="pb-30" />
-      </section>
+      </section> */}
 
       <Footer />
     </div>

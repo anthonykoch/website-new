@@ -14,14 +14,14 @@ export const Footer: React.FC = () => {
         <div>
           <div id="contact"></div>
 
+          <span className="text-[14px] xl:text-[22px] leading-[0.9] font-400 mb-6 block">
+            Let’s collaborate, or just chat.
+          </span>
           <a
             href="mailto:hello@anthonykoch.com"
             className="text-inherit block "
           >
             <span className="block font-500 xl:text-left text-[26px] md:text-[40px] lg:text-6xl xl:text-7xl 2xl:text-8xl xl:pb-4">
-              <span className="text-lg xl:text-[22px] leading-[0.9] font-400 mb-6 block">
-                Let’s collaborate, or just chat.
-              </span>
               <span
                 className="text-black bg-primary-500 hover:active:text-black 
                   block lg:block  
