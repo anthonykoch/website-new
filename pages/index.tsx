@@ -60,8 +60,9 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
   const homeImageScale = useTransform(
     opalCameraMacbookScroll.scrollYProgress,
-    [0.2, 1],
-    [1, 1.06],
+    [0.5, 1],
+    [1, 1.5],
+    // [1, 1.06],
 
     // [1, 0.97],
   )
@@ -84,9 +85,15 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   // const clipPathTransform = useMotionTemplate`inset(0% 0px ${clipPath1}% 0px)`
 
   const introTitleRef = useRef<HTMLSpanElement>(null)
+
   const introRef = useRef<HTMLDivElement>(null)
   const opalViewSiteRef = useRef<HTMLAnchorElement>(null)
   const timeout = useRef<any>(null)
+
+  const introBlockRef = useRef<HTMLDivElement>(null)
+
+  // const clipPath1 = useTransform(scrollYProgress, [0, 1], [100, 0])
+  // const introBlockClipPath = useMotionTemplate`inset(0% 0px ${clipPath1}% 0px)`
 
   useEffect(() => {
     timeout.current = setTimeout(() => {
@@ -94,15 +101,28 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         !introTitleRef.current ||
         !newJobRef.current ||
         !lookRef.current ||
-        !arrowsRef.current
+        !arrowsRef.current ||
+        !introBlockRef.current
       )
         return
 
-      let delay = 1.1
+      let delay = 0.9
 
       if (introTitleRef.current) {
         introTitleRef.current.style.visibility = 'visible'
       }
+
+      animate(
+        introBlockRef.current,
+        {
+          scaleY: [1, 0],
+        },
+        {
+          duration: 2.2,
+          ease: easeOutExpo,
+          delay: 0.4,
+        },
+      )
 
       Promise.all(
         Array.from(
@@ -255,11 +275,9 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
     offset: ['160vh end', '240vh end'],
     // offset: ['100vh end', '150vh end'],
   })
-  const mfIntroY = useTransform(mfIntroScrollYProgress, [0, 1], [0, 400])
 
-  useMotionValueEvent(mfIntroScrollYProgress, 'change', (progress) => {
-    console.log(progress)
-  })
+  const mfIntroY = useTransform(mfIntroScrollYProgress, [0, 1], [0, 400])
+  const mfIntroScale = useTransform(mfIntroScrollYProgress, [0, 1], [1, 0.96])
 
   return (
     <div>
@@ -273,7 +291,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
       <div className="bg-[#EAEAEA]">
         <section>
-          <div className="pt-10 xl:pt-[80px]" />
+          {/* <div className="pt-10 xl:pt-[80px]" /> */}
 
           {/* <div className="h-[500px] bg-black">
             <div className="max-w-[1200px] mx-auto">
@@ -284,56 +302,60 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             </div>
           </div> */}
           {/* <div className="pt-[80px] xl:pt-[180px]" /> */}
-          <div
-            className="max-w-[1728px] mx-auto grid grid-cols-12 gap-x-4 px-4"
-            ref={introRef}
-          >
-            <div className="col-span-12 xl:col-span-11 xl:col-start-2  ">
-              {/* <div className="pt-20 xl:pt-[70px]" /> */}
-              {/* <div className="pt-20 xl:pt-[150px]" /> */}
-              {/* <div className="mix-blend-difference relative size-13 bg-white flex items-end justify-center "> */}
-              {/* <div className="-mb-20">
+          <div className="h-[87vh] -mb-[30vh]" ref={introRef}>
+            <motion.div
+              ref={introBlockRef}
+              // style={{ clipPath: introBlockClipPath }}
+              className="bg-black h-[57vh] w-full z-10 absolute origin-bottom"
+            />
+            <div className="max-w-[1728px] mx-auto grid grid-cols-12 gap-x-4 px-4 h-full">
+              <div className="col-span-12 xl:col-span-11 xl:col-start-2 h-full ">
+                {/* <div className="pt-20 xl:pt-[70px]" /> */}
+                {/* <div className="pt-20 xl:pt-[150px]" /> */}
+                {/* <div className="mix-blend-difference relative size-13 bg-white flex items-end justify-center "> */}
+                {/* <div className="-mb-20">
                 <div className="mix-blend-difference relative size-[300px] bg-white flex items-end justify-center ">
                 <span className="size-[80%] absolute left-1/2 top-1/2 -translate-1/2 border border-solid border-[#151515] block"></span>
                   <span className="text-[22px] text-[#EAEAEA] leading-[0.8] font-600 font-heading absolute bottom-[-1px]">Koch</span>
                 </div>
                 </div> */}
-              {/* <img src="/final/favicon.svg" className="w-[60px]" /> */}
-              <div className="h-[80vh] -mb-[30vh]">
-                <div className="text-black sticky top-[16vh]">
-                  <span className="text-[clamp(24px,calc(55vw*(100/1900)),46px)]  font-500  font-heading leading-[1.3] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
-                    <p className="md:hidden">
-                      Anthony Koch is a front-end developer helping companies
-                      and startups ship pixel-perfect, responsive websites.
-                    </p>
-                    <span
-                      ref={introTitleRef}
-                      style={{ visibility: 'hidden' }}
-                      className="hidden md:block max-w-[1000px]"
-                    >
-                      <span className="setup-overflow">
-                        <span className="setup-line-down selector-line">
-                          Anthony Koch is a front-end developer helping{' '}
+                {/* <img src="/final/favicon.svg" className="w-[60px]" /> */}
+                <div className="h-full">
+                  <div className="text-black sticky top-[17vh]">
+                    <span className="text-[clamp(24px,calc(55vw*(100/1900)),46px)]  font-500  font-heading leading-[1.5] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
+                      <p className="md:hidden">
+                        Anthony Koch is a front-end developer helping companies
+                        and startups ship pixel-perfect, responsive websites.
+                      </p>
+                      <span
+                        ref={introTitleRef}
+                        style={{ visibility: 'hidden' }}
+                        className="hidden md:block max-w-[1000px]"
+                      >
+                        <span className="setup-overflow">
+                          <span className="setup-line-down selector-line">
+                            Anthony Koch is a front-end developer helping{' '}
+                          </span>
                         </span>
-                      </span>
-                      <span className="setup-overflow">
-                        <span className="setup-line-down selector-line">
-                          companies and startups ship pixel-perfect,{' '}
+                        <span className="setup-overflow">
+                          <span className="setup-line-down selector-line">
+                            companies and startups ship pixel-perfect,{' '}
+                          </span>
                         </span>
-                      </span>
-                      <span className="setup-overflow">
-                        <span className="setup-line-down selector-line">
-                          responsive websites.
+                        <span className="setup-overflow">
+                          <span className="setup-line-down selector-line">
+                            responsive websites.
+                          </span>
                         </span>
                       </span>
                     </span>
-                  </span>
-                  <p
-                    ref={newJobRef}
-                    className="mt-2 setup-fade-in bg-black px-5 py-3 inline-block text-white text-[13px] lg:text-[14px]"
-                  >
-                    Currently looking for new opportunities - Jan 2025
-                  </p>
+                    <p
+                      ref={newJobRef}
+                      className="mt-2 setup-fade-in bg-black px-5 py-3 inline-block text-white text-[13px] lg:text-[15px]"
+                    >
+                      Currently looking for new opportunities - Jan 2025
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -664,7 +686,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         <div className="pt-30" />
 
         <div
-          className="relative h-[calc(1700px+100vh)] lg:h-[calc(2400px+100vh)] -mb-[100vh] bg-[#EAEAEA]"
+          className="relative h-[calc(1700px+100vh)] lg:h-[calc(2200px+100vh)] -mb-[100vh] bg-[#EAEAEA]"
           ref={opalcameraHomeImageScrollable}
         >
           <div className="sticky top-[30vh] lg:top-[10vh] left-0">
@@ -674,9 +696,9 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             >
               <img
                 src="/final-compressed/empty-macbook.png"
-                className="w-full max-w-[1300px] mx-auto absolute z-20 top-0 left-1/2 -translate-x-1/2"
+                className="w-full max-w-[800px] xl:max-w-[1200px] mx-auto absolute z-20 top-0 left-1/2 -translate-x-1/2"
               />
-              <div className="max-w-[1300px] w-full mx-auto">
+              <div className="max-w-[800px] xl:max-w-[1200px] w-full mx-auto">
                 <div className="aspect-1000/570 relative  pt-[6%]">
                   <div className="overflow-hidden w-full max-w-[71.5%] aspect-640/400 z-40 relative left-[14%] ">
                     <motion.img
@@ -771,7 +793,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           <div className="pb-8" />
 
           <section ref={mfIntroRef}>
-            <motion.div style={{ y: mfIntroY }}>
+            <motion.div style={{ y: mfIntroY, scale: mfIntroScale }}>
               <div className="mx-auto max-w-[1728px]">
                 <div className="pb-40 lg:pb-0" />
 
@@ -803,7 +825,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                 </div>
 
                 <div className="hidden xl:grid grid-cols-12 gap-x-4 px-4 pt-[200px] ">
-                  <div className="col-span-12 lg:col-span-5 2xl:col-start-2">
+                  <div className="col-span-12 lg:col-span-5 xl:col-span-4 2xl:col-start-2">
                     <p className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[15px]">
                       Modern Fertility
                     </p>
@@ -815,7 +837,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                       />
                     </div>
                   </div>
-                  <div className="col-span-12 xl:col-span-5 2xl:col-span-4">
+                  <div className="col-span-12 xl:col-span-6 2xl:col-span-5">
                     <div className="h-full flex flex-col justify-end">
                       <p className="hidden lg:block xl:text-[22px] leading-[30px] font-heading font-500 pb-[22px] max-w-[380px]">
                         A business dedicated to supporting and informing women
@@ -962,9 +984,9 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           {/* <div className="pt-40" /> */}
 
           <div className="max-w-[1728px] mx-auto">
-            <div className="grid grid-cols-12 gap-x-4 px-4 ">
-              <p className="col-span-12 xl:col-span-10 xl:col-start-2 ">
-                <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative max-w-[1200px] text-center">
+            <div className="lg:grid grid-cols-12 gap-x-4 px-4 ">
+              <p className="text-center lg:text-left lg:col-span-4 lg:col-start-6 ">
+                <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative size-30 bg-black text-white flex justify-center items-center">
                   <span className="block">Fin</span>
                   {/* <span className="rotate-180 origin-center inline-block text-primary-500">
                     ^^^
