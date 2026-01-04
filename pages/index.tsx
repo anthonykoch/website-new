@@ -228,7 +228,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
   const mfmobilescroll = useScroll({
     target: mfMobileContainer,
-    offset: ['0vh end', '160vh end'],
+    // offset: ['0vh end', '160vh end'],
+    offset: ['0 end', '240vh end'],
   })
 
   useScrollX({
@@ -258,27 +259,33 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
   const { scrollYProgress: opalIntroScrollYProgress } = useScroll({
     target: opalIntroRef,
-    offset: ['160vh end', '240vh end'],
+    offset: ['1.5 end', '2 end'],
+    // offset: ['160vh end', '240vh end'],
   })
 
-  const opalIntroY = useTransform(opalIntroScrollYProgress, [0, 1], [0, 500])
+  const opalIntroY = useTransform(opalIntroScrollYProgress, [0, 1], [0, 400])
+  // const opalIntroY = useTransform(opalIntroScrollYProgress, [0, 1], [0, 500])
   const opalIntroScale = useTransform(
     opalIntroScrollYProgress,
     [0, 1],
     [1, 0.97],
+    // [1, 0.97],
   )
 
   const mfIntroRef = useRef<HTMLElement>(null)
 
   const { scrollYProgress: mfIntroScrollYProgress } = useScroll({
     target: mfIntroRef,
-    offset: ['160vh end', '246vh end'],
+    offset: ['1.5 end', '2 end'],
+    // offset: ['0.9 end', '1.8 end'],
+    // offset: ['160vh end', '246vh end'],
     // offset: ['160vh end', '240vh end'],
     // offset: ['100vh end', '150vh end'],
   })
 
-  const mfIntroY = useTransform(mfIntroScrollYProgress, [0, 1], [0, 400])
-  const mfIntroScale = useTransform(mfIntroScrollYProgress, [0, 1], [1, 0.96])
+  const mfIntroY = useTransform(mfIntroScrollYProgress, [0, 1], [0, 450])
+  const mfIntroScale = useTransform(mfIntroScrollYProgress, [0, 1], [1, 0.97])
+  // const mfIntroScale = useTransform(mfIntroScrollYProgress, [0, 1], [1, 0.96])
 
   return (
     <div>
@@ -612,34 +619,36 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           className="relative h-[calc(1700px+100vh)] lg:h-[calc(2200px+100vh)] -mb-[100vh] bg-[#EAEAEA]"
           ref={opalcameraHomeImageScrollable}
         >
-          <div className="sticky top-[30vh] lg:top-[10vh] left-0">
-            <motion.div
-              style={{ scale: homeImageScale }}
-              className="relative z-10 will-change-transform"
-            >
-              <img
-                src="/final-compressed/empty-macbook.png"
-                className="w-full max-w-[800px] xl:max-w-[1200px] mx-auto absolute z-20 top-0 left-1/2 -translate-x-1/2"
-              />
-              <div className="max-w-[800px] xl:max-w-[1200px] w-full mx-auto">
-                <div className="aspect-1000/570 relative  pt-[6%]">
-                  <div className="overflow-hidden w-full max-w-[71.5%] aspect-640/400 z-40 relative left-[14%] ">
-                    <motion.img
-                      src="/final-compressed/opalcamera-home-full.png"
-                      className="absolute top-0 left-0 w-full h-auto will-change-transform object-top z-10"
-                      ref={opalcameraHomeImageRef}
-                      style={{ y: homeImageY }}
-                    />
+          <div className="sticky top-[30vh] lg:top-[10vh] left-0 ">
+            <div className="">
+              <motion.div
+                // style={{ scale: homeImageScale }}
+                className="relative z-10 will-change-transform"
+              >
+                <img
+                  src="/final-compressed/empty-macbook.png"
+                  className="w-full max-w-[800px] xl:max-w-[1200px] mx-auto absolute z-20 top-0 left-1/2 -translate-x-1/2"
+                />
+                <div className="max-w-[800px] xl:max-w-[1200px] w-full mx-auto">
+                  <div className="aspect-1000/570 relative  pt-[6%]">
+                    <div className="overflow-hidden w-full max-w-[71.5%] aspect-640/400 z-40 relative left-[14%] ">
+                      <motion.img
+                        src="/final-compressed/opalcamera-home-full.png"
+                        className="absolute top-0 left-0 w-full h-auto will-change-transform object-top z-10"
+                        ref={opalcameraHomeImageRef}
+                        style={{ y: homeImageY }}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* <div className="max-w-[760px] mx-auto px-4 ">
+                {/* <div className="max-w-[760px] mx-auto px-4 ">
                   <p className="text-[36px] leading-[1.2] font-heading font-500 -tracking-wide">
                     The project expanded into so much more.
                   </p>
                 </div> */}
-            </motion.div>
+              </motion.div>
+            </div>
             {/* <div className="h-[50%] w-full absolute left-0 top-0 bg-[#EAEAEA]" /> */}
           </div>
         </div>
@@ -713,7 +722,33 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
               }
             />
           </div>
-          <div className="pb-8" />
+          <div className="pb-10 lg:pb-30" />
+          {/* 
+          <div className="max-w-[1728px] mx-auto">
+            <div className="lg:grid grid-cols-12 gap-x-4 px-4 ">
+              <p className="text-center lg:text-left lg:col-span-4 lg:col-start-6 ">
+                <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative size-40 bg-black text-white flex justify-center items-center">
+                  <span className="block">End</span>
+                </span>
+              </p>
+            </div>
+          </div> */}
+
+          <div className="bg-black text-white z-10 relative">
+            <div className="max-w-[1728px] mx-auto">
+              <div className="grid grid-cols-12 gap-x-4 px-4">
+                <div className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2 pt-18">
+                  <p className=" xl:pt-36  font-heading font-500 text-[46px] md:text-[58px] xl:text-[72px] leading-[1.1] xl:leading-none z-10">
+                    <span className="block">Up Next: Modern Fertility</span>
+                    <span className="rotate-180 origin-center inline-block text-primary-500">
+                      ^^^
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="pb-20 xl:pb-30" />
+          </div>
 
           <section ref={mfIntroRef}>
             <motion.div
@@ -742,10 +777,10 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                         src="/final-compressed/mf-homepage-mobile.png"
                         className="h-[350px] md:h-[440px]  w-auto"
                       />,
-                      // <img
-                      //   src="/final-compressed/mf-recommended-mobile.png"
-                      //   className="h-[350px] w-auto"
-                      // />,
+                      <img
+                        src="/final-compressed/mf-recommended-mobile.png"
+                        className="h-[350px] w-auto lg:hidden"
+                      />,
                     ]}
                   />
                 </div>
@@ -906,23 +941,21 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         </div>
       </div>
       <section>
-        <div className="">
-          {/* <div className="pt-40" /> */}
+        {/* <div className="pt-40" /> */}
 
-          <div className="max-w-[1728px] mx-auto">
-            <div className="lg:grid grid-cols-12 gap-x-4 px-4 ">
-              <p className="text-center lg:text-left lg:col-span-4 lg:col-start-6 ">
-                <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative size-30 bg-black text-white flex justify-center items-center">
-                  <span className="block">Fin</span>
-                  {/* <span className="rotate-180 origin-center inline-block text-primary-500">
+        <div className="max-w-[1728px] mx-auto">
+          <div className="lg:grid grid-cols-12 gap-x-4 px-4 ">
+            <p className="text-center lg:text-left lg:col-span-4 lg:col-start-6 ">
+              <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative size-30 bg-black text-white flex justify-center items-center">
+                <span className="block">Fin</span>
+                {/* <span className="rotate-180 origin-center inline-block text-primary-500">
                     ^^^
                   </span> */}
-                </span>
-              </p>
-            </div>
+              </span>
+            </p>
           </div>
-          <div className="pb-30" />
         </div>
+        <div className="pb-30" />
       </section>
 
       {/* <section>
