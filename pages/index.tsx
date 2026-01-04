@@ -391,6 +391,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           <motion.div
             style={{ y: opalIntroY, scale: opalIntroScale }}
             transition={{ ease: 'easeIn' }}
+            className="will-change-transform"
           >
             <div className="xl:hidden">
               <div className="pb-20 lg:pb-30" />
@@ -692,7 +693,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           <div className="sticky top-[30vh] lg:top-[10vh] left-0">
             <motion.div
               style={{ scale: homeImageScale }}
-              className="relative z-10 "
+              className="relative z-10 will-change-transform"
             >
               <img
                 src="/final-compressed/empty-macbook.png"
@@ -793,7 +794,10 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           <div className="pb-8" />
 
           <section ref={mfIntroRef}>
-            <motion.div style={{ y: mfIntroY, scale: mfIntroScale }}>
+            <motion.div
+              style={{ y: mfIntroY, scale: mfIntroScale }}
+              className="will-change-transform"
+            >
               <div className="mx-auto max-w-[1728px]">
                 <div className="pb-40 lg:pb-0" />
 
