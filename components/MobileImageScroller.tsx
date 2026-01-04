@@ -21,7 +21,7 @@ export const MobileImageScroller: FC<{
         className="flex items-end gap-x-4 overflow-hidden  flex-nowrap"
         ref={containerRef}
       >
-        {images.map((image, i) => {
+        {images.filter(Boolean).map((image, i) => {
           return (
             <div key={i} className="relative shrink-0">
               {image}

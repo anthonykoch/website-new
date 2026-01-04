@@ -9,23 +9,20 @@ import { SiteNavigation } from '@/features/navigation/SiteNavigation'
 import {
   animate,
   motion,
-  resize,
   stagger,
   useMotionTemplate,
   useScroll,
   useTransform,
 } from 'motion/react'
 
-import { easeOutExpo, fixFontSpacing } from '@/utils/animation'
-import { useEffect, useRef } from 'react'
+import { easeOutExpo } from '@/utils/animation'
+import { FC, useEffect, useRef } from 'react'
 
 import { Grid } from '@/components/Grid'
-import { useScrollX } from '@/hooks/use-scroll-x'
-import { debounce } from 'lodash'
-import { splitText } from 'motion-plus'
 import { MobileImageScroller } from '@/components/MobileImageScroller'
+import { useScrollX } from '@/hooks/use-scroll-x'
 
-const ArrowRightSvg = ({ className }) => {
+const ArrowRightSvg: FC<{ className?: string }> = ({ className }) => {
   return (
     <svg
       className={className}
@@ -55,10 +52,6 @@ const Home: NextPage = () => {
 
   const homeImageYRemap = useTransform(meme.scrollYProgress, [0, 1], [0, -64])
   const homeImageY = useMotionTemplate`${homeImageYRemap}%`
-
-  // useMotionValueEvent(meme.scrollYProgress, 'change', (progress) => {
-  //   console.log(progress)
-  // })
 
   useEffect(() => {
     if (!opalcameraHomeImageRef.current) return
@@ -160,7 +153,6 @@ const Home: NextPage = () => {
 
     return () => {
       clearTimeout(timeout.current)
-      stopResize1()
     }
   }, [])
 
@@ -168,7 +160,7 @@ const Home: NextPage = () => {
 
   const mfmobilescroll = useScroll({
     target: mfMobileContainer,
-    offset: ['30vh end', '140vh end'],
+    offset: ['30vh end', '160vh end'],
   })
 
   useScrollX({
@@ -180,7 +172,7 @@ const Home: NextPage = () => {
 
   const opalCameraScroll = useScroll({
     target: opalCameraImagesRef,
-    offset: ['60vh end', '140vh end'],
+    offset: ['60vh end', '160vh end'],
   })
 
   useScrollX({
@@ -283,10 +275,9 @@ const Home: NextPage = () => {
                 </span>
               }
               images={[
-                <img src="/final/girl.png" className="h-[320px]" />,
-
-                <img src="/final/opal-tadpole.png" className="h-[280px]" />,
-                <img src="/final/card-opal.png" className="h-[320px]" />,
+                <img src="/final/girl.png" className="h-[320px] md:h-[420px]" />,
+                <img src="/final/opal-tadpole.png" className="h-[320px] md:h-[420px]" />,
+                // <img src="/final/card-opal.png" className="h-[320px]" />,
               ]}
             />
             <div className="pb-4" />
@@ -680,16 +671,16 @@ const Home: NextPage = () => {
                 images={[
                   <img
                     src="/final/mf-first-mobile.svg"
-                    className="h-[350px] w-auto"
+                    className="h-[350px] md:h-[440px]  w-auto"
                   />,
                   <img
                     src="/final/mf-homepage-mobile.png"
-                    className="h-[350px] w-auto"
+                    className="h-[350px] md:h-[440px]  w-auto"
                   />,
-                  <img
-                    src="/final/mf-recommended-mobile.png"
-                    className="h-[350px] w-auto"
-                  />,
+                  // <img
+                  //   src="/final/mf-recommended-mobile.png"
+                  //   className="h-[350px] w-auto"
+                  // />,
                 ]}
               />
             </div>
