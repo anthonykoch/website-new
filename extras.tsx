@@ -184,3 +184,53 @@ const splitLines = (
     </div>
   </div>
 </div>
+
+
+  {/* <div className="bg-black pt-10 relative">
+            <div
+              className=" absolute top-0 left-0 h-full w-full"
+              ref={opalLogoRef}
+            />
+            <div className="relativ">
+              <img
+                src="/final-compressed/logo-opal-wordmark-b.svg"
+                className="max-w-[850px] mx-auto w-full absolute object-cover right-0 top-0 z-10"
+              />
+
+              <motion.img
+                src="/final-compressed/logo-opal-wordmark.svg"
+                className="max-w-[850px] mx-auto w-full absolute object-cover right-0 top-0 z-20"
+                style={{ clipPath: clipPathTransform }}
+              />
+            </div>
+          </div> */}
+
+
+
+
+
+            {/* 
+          <div className="bg-black pt-10 relative">
+            <div
+              className=" absolute top-0 left-0 h-full w-full"
+              ref={opalLogoRef}
+            />
+            <div className="aspect-1609/804 relative">
+              <img
+                src="/final-compressed/logo-opal-wordmark.svg"
+                className="max-w-[1650px] mx-auto w-full absolute object-cover left-0 top-0 z-10"
+              />
+
+              <motion.img
+                src="/final-compressed/logo-opal-wordmark-orange.svg"
+                className="max-w-[1650px] mx-auto w-full absolute object-cover left-0 top-0 z-20"
+                style={{ clipPath: clipPathTransform }}
+              />
+            </div>
+          </div> */}
+
+
+
+          
+          
+          

@@ -272,7 +272,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
   const { scrollYProgress: mfIntroScrollYProgress } = useScroll({
     target: mfIntroRef,
-    offset: ['160vh end', '240vh end'],
+    offset: ['160vh end', '246vh end'],
+    // offset: ['160vh end', '240vh end'],
     // offset: ['100vh end', '150vh end'],
   })
 
@@ -474,8 +475,6 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   </span>
                 </p>
                 <div className="aspect-920/608 relative">
-                  {/* <div className="striped rounded-md size-full" /> */}
-
                   <img
                     src="/final-compressed/opal-tadpole.png"
                     className="selector-opal-camera-image setup-fade-in absolute size-full top-0 left-0"
@@ -494,21 +493,6 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                     View site
                     <ArrowRightSvg className="w-[28px] *:fill-white " />
                   </a>
-
-                  {/* <img
-                  src="/final-compressed/person.png"
-                  className="selector-opal-camera-image setup-fade-in"
-                /> */}
-                  {/* <a
-                  href="https://opalcamera.com/"
-                  className="flex justify-end items-center gap-x-5 w-full font-body uppercase text-[12px] text-black font-500 tracking-wide  setup-fade-in"
-                  ref={opalViewSiteRef}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View site
-                  <img src="/final-compressed/arrow-right.svg" className="w-[28px]" />
-                </a> */}
                 </div>
               </div>
             </div>
@@ -534,70 +518,12 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                 </div>
               </div>
             </div>
-
-            {/* 
-          <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 mt-[20px] px-4 xl:px-0">
-            <div className="col-span-6 xl:h-[825px]">
-              <img
-                className="size-full xl:object-cover object-right"
-                src={ImageExhibitDoctorPage.src}
-              />
-            </div>
-            <div className="col-span-6 xl:h-[825px]">
-               <img
-                className="size-full xl:object-cover object-left"
-                src={ImageExhibitMediaPage.src}
-              />
-            </div>
-          </div> */}
-
             <div className="pb-20 lg:pb-30" />
-
-            {/* 
-          <div className="bg-black pt-10 relative">
-            <div
-              className=" absolute top-0 left-0 h-full w-full"
-              ref={opalLogoRef}
-            />
-            <div className="aspect-1609/804 relative">
-              <img
-                src="/final-compressed/logo-opal-wordmark.svg"
-                className="max-w-[1650px] mx-auto w-full absolute object-cover left-0 top-0 z-10"
-              />
-
-              <motion.img
-                src="/final-compressed/logo-opal-wordmark-orange.svg"
-                className="max-w-[1650px] mx-auto w-full absolute object-cover left-0 top-0 z-20"
-                style={{ clipPath: clipPathTransform }}
-              />
-            </div>
-          </div> */}
-
-            {/* <div className="bg-black pt-10 relative">
-            <div
-              className=" absolute top-0 left-0 h-full w-full"
-              ref={opalLogoRef}
-            />
-            <div className="relativ">
-              <img
-                src="/final-compressed/logo-opal-wordmark-b.svg"
-                className="max-w-[850px] mx-auto w-full absolute object-cover right-0 top-0 z-10"
-              />
-
-              <motion.img
-                src="/final-compressed/logo-opal-wordmark.svg"
-                className="max-w-[850px] mx-auto w-full absolute object-cover right-0 top-0 z-20"
-                style={{ clipPath: clipPathTransform }}
-              />
-            </div>
-          </div> */}
           </motion.div>
         </section>
 
-        {/* <div className="pt-30" /> */}
-
-        <section>
-          <div className="bg-black  text-white z-10 relative">
+        <section className="bg-[#eaeaea] z-10 relative">
+          <div className="bg-black text-white">
             <div className="pt-30 lg:pt-40" />
 
             <div className="max-w-[1728px] mx-auto">
@@ -607,9 +533,6 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                     <span className="block">
                       A selection of my work at Opal
                     </span>
-                    {/* <span className="rotate-180 origin-center inline-block text-primary-500">
-                      ^^^
-                    </span> */}
                   </p>
                 </div>
               </div>
@@ -617,9 +540,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             <div className="pb-20 lg:pb-30" />
           </div>
 
-          <div className="pb-20 lg:pb-30" />
-
           <div className="max-w-[1728px] mx-auto px-4">
+            <div className="pb-20 lg:pb-30" />
             <div className="grid grid-cols-12 gap-x-4">
               <div className="max-xl:order-2 col-span-12 xl:col-span-3 xl:col-start-2">
                 <div className="max-xl:max-w-[350px] lg:mx-0 w-full">
@@ -704,7 +626,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   <div className="overflow-hidden w-full max-w-[71.5%] aspect-640/400 z-40 relative left-[14%] ">
                     <motion.img
                       src="/final-compressed/opalcamera-home-full.png"
-                      className="absolute top-0 left-0 w-full h-auto  object-top z-10"
+                      className="absolute top-0 left-0 w-full h-auto will-change-transform object-top z-10"
                       ref={opalcameraHomeImageRef}
                       style={{ y: homeImageY }}
                     />
