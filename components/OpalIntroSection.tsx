@@ -1,12 +1,11 @@
 import { Description4x8Grid } from '@/features/grid/Description4x8Grid'
 import { useScrollX } from '@/hooks/use-scroll-x'
 import {
-  useScroll,
-  useTransform,
   motion,
-  useMotionValueEvent,
+  useScroll,
+  useTransform
 } from 'motion/react'
-import { useRef } from 'react'
+import { FC, useRef } from 'react'
 import { MobileImageScroller } from './MobileImageScroller'
 
 const ArrowRightSvg: FC<{ className?: string }> = ({ className }) => {
@@ -96,12 +95,12 @@ export const OpalIntroSection = () => {
             <div className="px-4 text-center">
               <a
                 href="https://opalcamera.com/"
-                className="selector-view-site w-[200px] flex items-center justify-center gap-x-5 font-body uppercase text-[12px] font-500 tracking-wide text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black transition-all duration-150 px-5 py-2 shadow-none hover:shadow-[0_24px_60px_-9px_rgb(0_0_0/20%)]"
+                className="selector-view-site w-[200px] flex items-center justify-center gap-x-5 font-body uppercase text-[12px] font-500 tracking-wide text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black transition-all duration-150 px-5 py-2 shadow-none hover:shadow-box"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 View site
-                <ArrowRightSvg className="w-[24px] *:fill-white " />
+                <ArrowRightSvg className="w-[22px] *:fill-white " />
               </a>
             </div>
           </div>
@@ -154,13 +153,13 @@ export const OpalIntroSection = () => {
               <div className="h-full flex flex-col items-start justify-end">
                 <a
                   href="https://opalcamera.com/"
-                  className="inline-flex items-center justify-center gap-x-5 w-full font-body uppercase text-[12px] font-500 tracking-wide   text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black  transition-all duration-150 px-5 py-2 shadow-none hover:shadow-[0_24px_60px_-9px_rgb(0_0_0/20%)]"
+                  className="inline-flex items-center justify-center gap-x-5 w-full font-body uppercase text-[12px] font-500 tracking-wide   text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black  transition-all duration-150 px-5 py-2 shadow-none hover:shadow-box"
                   ref={opalViewSiteRef}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   View site
-                  <ArrowRightSvg className="w-[28px] *:fill-white " />
+                  <ArrowRightSvg className="w-[22px] *:fill-white " />
                 </a>
               </div>
             </div>
