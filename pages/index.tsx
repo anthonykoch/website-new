@@ -111,6 +111,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         },
       )
 
+      delay += 0.3
+
       Promise.all(
         Array.from(
           introTitleRef.current!.querySelectorAll('.selector-line'),
@@ -119,9 +121,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             line,
             { y: ['110%', '0%'] },
             {
-              // delay: 0 + 0.07 * i,
-              delay: (delay += 0.3) + 0.07 * i,
-              duration: 1.9,
+              delay: delay + 0.16 * i,
+              duration: 1.1,
               ease: easeOutExpo,
             },
           )
@@ -219,7 +220,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
   const opalAboutSectionScroller = useScroll({
     target: aboutOpalRef,
-    offset: ['80vh end', '110vh end'],
+    offset: ['-200px start', '400px start'],
+    // offset: ['75vh end', '110vh end'],
   })
 
   const opalAboutSectionScale = useTransform(
@@ -231,16 +233,23 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   const opalAboutSectionY = useTransform(
     opalAboutSectionScroller.scrollYProgress,
     [0, 1],
-    [0, 250],
+    [0, 300],
   )
+
+  // useMotionValueEvent(
+  //   opalAboutSectionScroller.scrollYProgress,
+  //   'change',
+  //   (progress) => {
+  //     console.log(progress)
+  //   },
+  // )
 
   return (
     <div>
       {/* Keep fixed? */}
-      <div className="absolute top-0 left-0 w-full z-1000">
+      <div className="mix-blend-difference absolute top-0 left-0 w-full z-1000">
         <div className="max-w-site mx-auto">
-          <SiteNavigation />
-          {/* <div className="border-b border-black/5 w-[calc(100wh-16px)]"></div> */}
+          <SiteNavigation colorVariant="white" isBlendModeDifference />
         </div>
       </div>
 
@@ -468,6 +477,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
               style={{
                 scale: opalAboutSectionScale,
                 y: opalAboutSectionY,
+                z: 1,
               }}
               className="will-change-transform"
             >
@@ -498,7 +508,6 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   </div>
                 }
               />
-
               <div className="pb-8" />
 
               <Grid
@@ -508,7 +517,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   </h2>
                 }
                 right={
-                  <div className="*:pb-6 copy-body-4 text-[#888787] ">
+                  <div className="*:pb-6 copy-body-4-sm lg:copy-body-4 text-[#888787] ">
                     <p>
                       Opal Camera has had great success and continues to grow,
                       having gotten several rounds of funding, even by the AI
@@ -518,9 +527,10 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                 }
               />
             </motion.div>
+            <div className="pb-10 lg:pb-30" />
+
             <div ref={aboutOpalRef} />
           </div>
-          <div className="pb-10 lg:pb-30" />
 
           <div className="bg-black text-white z-10 relative">
             <div className="max-w-site mx-auto">
@@ -534,7 +544,9 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           </div>
 
           <section>
-            <ModernFertilityIntroSection />
+            <div className="bg-white">
+              <ModernFertilityIntroSection />
+            </div>
           </section>
 
           <div className="pb-20 lg:pb-40" />

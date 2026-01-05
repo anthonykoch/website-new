@@ -4,7 +4,7 @@ import { ExternalLink } from '@/components/action/Link'
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="max-w-[1728px] mx-auto px-4 pt-20">
+    <footer className="max-w-[1728px] mx-auto px-4">
       <div className="border-b border-black/10 w-[calc(100wh-16px)]"></div>
 
       {/* <div className="pb-10 lg:pb-20" /> */}
@@ -23,10 +23,14 @@ export const Footer: React.FC = () => {
           >
             <span className="block font-500 xl:text-left text-[26px] md:text-[40px] lg:text-6xl xl:text-7xl 2xl:text-8xl xl:pb-4">
               <span
-                className="text-black bg-primary-500 hover:active:text-black 
+               className="text-black hover:active:text-black 
                   block lg:block  
                   py-3 md:py-5 lg:py-12 px-6 font-500 -tracking-wide font-heading
-                  transition-all duration-200 shadow-button"
+                  transition-all duration-200"
+                // className="text-black bg-primary-500 hover:active:text-black 
+                //   block lg:block  
+                //   py-3 md:py-5 lg:py-12 px-6 font-500 -tracking-wide font-heading
+                //   transition-all duration-200 shadow-button"
               >
                 hello@anthonykoch.com
               </span>

@@ -12,15 +12,13 @@ export type Post = {
   slug: string
 }
 
-console.log(styles)
-
 export const PostList: FC<{
   posts: Array<Post>
   activeId?: string
 }> = ({ posts, activeId }) => {
   return (
     <ul className={styles.PostList}>
-      {posts.map((listing) => (
+      {posts.map((listing, i) => (
         <li
           key={listing.slug}
           className={classNames({
@@ -37,7 +35,9 @@ export const PostList: FC<{
             <time dateTime={listing.created_at}>
               {listing.humanized.created_at}
             </time>
-            <span>{listing.title}</span>
+            <span>
+              {listing.title}
+            </span>
           </a>
         </li>
       ))}

@@ -46,7 +46,7 @@ export const ModernFertilityIntroSection = () => {
         className="will-change-transform"
       >
         <div className="mx-auto max-w-site">
-          <div className="pb-40 lg:pb-0" />
+          <div className="pb-20 lg:pb-40" />
 
           <div className="xl:hidden">
             <MobileImageScroller
@@ -75,8 +75,8 @@ export const ModernFertilityIntroSection = () => {
             />
           </div>
 
-          <div className="hidden xl:grid grid-cols-12 gap-x-4 px-4 pt-[200px] ">
-            <div className="col-span-12 lg:col-span-5 xl:col-span-4 2xl:col-start-2">
+          <div className="hidden xl:grid grid-cols-12 gap-x-4 px-4  ">
+            <div className="col-span-12 lg:col-span-5 xl:col-span-4 2xl:col-start-2 self-end">
               <p className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[15px]">
                 Modern Fertility
               </p>

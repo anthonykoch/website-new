@@ -61,10 +61,11 @@ The [application I built](https://github.com/anthonykoch/emailapp/) to try out N
 - ES6/7 on the client and server
 
 <p>
-  <div data-allow-fullscreen data-max-width="80vw"></div>
   <img
     src="https://raw.githubusercontent.com/anthonykoch/emailapp/master/emailapp.gif"
     class="Image has-shadow is-rounded"
+    data-allow-fullscreen
+    data-max-width="80vw"
   />
 </p>
 
@@ -77,16 +78,21 @@ It doesn't include a loader for loading images or CSS files, and becomes quite a
 If we compare Next with [Nuxt](http://nuxtjs.org), we see Nuxt provides a lot more out of the box such as default loaders for images, css, postcss, first class support for postcss plugins and first class provisions to setup a Vuex store. As mentioned, Next doesn't come with any of these things, but provides a simple platform on which to build SSR applications where you only integrate what you need.
 
 <div>
-  <div class="Aside">
-    <div class="Aside-content">
-      <div class="Aside-tag  [ Tag is-absolute ]">Integration examples</div>
-      There are a <a href="https://github.com/zeit/next.js/tree/master/examples">
-        ton of examples
-      </a> of how to integrate various loaders and other packages in with Next. I
-      would highly recommend reading them because this is SSR land, and things need
-      to be set up in special ways in order to function properly.
-    </div>
-  </div>
+  {
+    (0,
+    (
+      <div class="Aside">
+        <div class="Aside-content">
+          <div class="Aside-tag  [ Tag is-absolute ]">Integration examples</div>
+          There are a <a href="https://github.com/zeit/next.js/tree/master/examples">
+            ton of examples
+          </a> of how to integrate various loaders and other packages in with Next.
+          I would highly recommend reading them because this is SSR land, and things
+          need to be set up in special ways in order to function properly.
+        </div>
+      </div>
+    ))
+  }
 </div>
 
 As someone who hasn't done much backend work, integrating FeathersJS was actually pretty simple once I read [http://www.albertgao.xyz/2018/02/04/how-to-do-server-side-rendering-with-feathersjs-and-nextjs/](http://www.albertgao.xyz/2018/02/04/how-to-do-server-side-rendering-with-feathersjs-and-nextjs/). A little rewiring in places and setup of some middleware was all that was needed.

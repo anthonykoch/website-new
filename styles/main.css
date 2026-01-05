@@ -3,6 +3,7 @@
 @import './rift-soft.css';
 @import './theme.css';
 @import './syntax.css';
+@import './blog.css';
 @import './post.css';
 
 @layer base {

@@ -89,6 +89,9 @@ dependencies:
   next:
     specifier: ^16.0.10
     version: 16.1.1(@babel/core@7.17.2)(react-dom@19.2.3)(react@19.2.3)
+  next-mdx-remote:
+    specifier: ^5.0.0
+    version: 5.0.0(@types/react@19.2.7)(react@19.2.3)
   normalize.css:
     specifier: ^8.0.1
     version: 8.0.1
@@ -204,7 +207,6 @@ packages:
       '@babel/helper-validator-identifier': 7.28.5
       js-tokens: 4.0.0
       picocolors: 1.1.1
-    dev: true
 
   /@babel/compat-data@7.17.0:
     resolution: {integrity: sha512-392byTlpGWXMv4FbyWw3sAZ/FrW/DrwqLGXpy0mbyNe9Taqv1mg9yON5/o0cnr8XYCkFTZbC1eV+c+LAROgrng==}
@@ -534,7 +536,6 @@ packages:
   /@babel/helper-validator-identifier@7.28.5:
     resolution: {integrity: sha512-qSs4ifwzKJSV39ucNjsvc6WVHs6b7S03sOh2OcHF9UHfVPqWWALUsNUVzhSBiItjRZoLHx7nIarVjqKVusUZ1Q==}
     engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-validator-option@7.16.7:
     resolution: {integrity: sha512-TRtenOuRUVo9oIQGPC5G9DgK4743cdxvtOw0weQNpZXaS16SCBi5MNjZF8vba3ETURjZpTbVn7Vvcf2eAwFozQ==}
@@ -9011,6 +9012,24 @@ packages:
     dev: true
     optional: true
 
+  /next-mdx-remote@5.0.0(@types/react@19.2.7)(react@19.2.3):
+    resolution: {integrity: sha512-RNNbqRpK9/dcIFZs/esQhuLA8jANqlH694yqoDBK8hkVdJUndzzGmnPHa2nyi90N4Z9VmzuSWNRpr5ItT3M7xQ==}
+    engines: {node: '>=14', npm: '>=7'}
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      '@babel/code-frame': 7.27.1
+      '@mdx-js/mdx': 3.1.1
+      '@mdx-js/react': 3.1.1(@types/react@19.2.7)(react@19.2.3)
+      react: 19.2.3
+      unist-util-remove: 3.1.1
+      vfile: 6.0.3
+      vfile-matter: 5.0.1
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+    dev: false
+
   /next@16.1.1(@babel/core@7.17.2)(react-dom@19.2.3)(react@19.2.3):
     resolution: {integrity: sha512-QI+T7xrxt1pF6SQ/JYFz95ro/mg/1Znk5vBebsWwbpejj1T0A23hO7GYEaVac9QUOT2BIMiuzm0L99ooq7k0/w==}
     engines: {node: '>=20.9.0'}
@@ -11693,6 +11712,14 @@ packages:
       '@types/unist': 3.0.3
     dev: false
 
+  /unist-util-remove@3.1.1:
+    resolution: {integrity: sha512-kfCqZK5YVY5yEa89tvpl7KnBBHu2c6CzMkqHUrlOqaRgGOMp0sMvwWOVrbAtj03KhovQB7i96Gda72v/EFE0vw==}
+    dependencies:
+      '@types/unist': 2.0.6
+      unist-util-is: 5.1.1
+      unist-util-visit-parents: 5.1.0
+    dev: false
+
   /unist-util-stringify-position@3.0.0:
     resolution: {integrity: sha512-SdfAl8fsDclywZpfMDTVDxA2V7LjtRDTOFd44wUJamgl6OlVngsqWjxvermMYf60elWHbxhuRCZml7AnuXCaSA==}
     dependencies:
@@ -11938,6 +11965,13 @@ packages:
     dependencies:
       '@types/unist': 2.0.6
       vfile: 5.3.0
+    dev: false
+
+  /vfile-matter@5.0.1:
+    resolution: {integrity: sha512-o6roP82AiX0XfkyTHyRCMXgHfltUNlXSEqCIS80f+mbAyiQBE2fxtDVMtseyytGx75sihiJFo/zR6r/4LTs2Cw==}
+    dependencies:
+      vfile: 6.0.3
+      yaml: 2.8.2
     dev: false
 
   /vfile-message@3.1.0:
@@ -12272,6 +12306,12 @@ packages:
   /yaml@2.0.0-10:
     resolution: {integrity: sha512-FHV8s5ODFFQXX/enJEU2EkanNl1UDBUz8oa4k5Qo/sR+Iq7VmhCDkRMb0/mjJCNeAWQ31W8WV6PYStDE4d9EIw==}
     engines: {node: '>= 12'}
+    dev: false
+
+  /yaml@2.8.2:
+    resolution: {integrity: sha512-mplynKqc1C2hTVYxd0PU2xQAc22TI1vShAYGksCCfxbn/dFwnHTNi1bvYsBTkhdUNtGIf5xNOg938rrSSYvS9A==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
     dev: false
 
   /yargs-parser@15.0.3:

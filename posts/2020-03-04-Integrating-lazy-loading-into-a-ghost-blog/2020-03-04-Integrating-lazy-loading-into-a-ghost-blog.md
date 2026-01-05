@@ -1,12 +1,8 @@
-
 Lazy loading images doesn't come with Ghost out of the box, so if you want it then you have to figure out a solution yourself. Pretty much all of the solutions found online boil down to modifying the theme and the posts themselves. Modifying the theme isn't a big deal, but for the blog I was helping on, [modernfertility.com/blog](https://modernfertility.com/blog/), there were simply too many posts that modifying them was out of the picture.
 
 Finding a better solution for what we wanted was quite a journey, so before we go over the failed attempts and other potential options.
 
-
 ### Solutions that didn't work
-
-
 
 #### 1. Making a handlebars helper
 
@@ -14,7 +10,7 @@ My first idea was to just wrap the entire page in a helper that would lazy-ify t
 
 ```html
 {{#lazify}}
-  <main>some html</main>
+<main>some html</main>
 {{/lazyify}}
 ```
 
@@ -30,13 +26,11 @@ Well, there's actually an undocumented plugin system built within ghost called a
 
 The plan here was to manually change the theme, and then write a markdown plugin to transform the images within a post. I was never able to figure out where the hell the markdown parsing was done within Ghost's core.
 
-
 #### 3. Implement cloudfare html rewriting
 
 You can somehow hook up cloudflare to a website and rewrite the html. I almost like this solution, but apparently it wasn't possible with the setup we were using.
 
 [Cloudflare HTMLRewriter](https://developers.cloudflare.com/workers/reference/apis/html-rewriter/)
-
 
 ### The actual working solution
 
@@ -50,11 +44,7 @@ const {
   transformLazify,
 } = require('../../../../../utils/lazyload')
 
-const transform = compose(
-  html => loadHtml(html),
-  transformLazify,
-  getHtml,
-)
+const transform = compose((html) => loadHtml(html), transformLazify, getHtml)
 
 // ... bunch of stuff
 
@@ -99,12 +89,12 @@ To create the transform function, you'll need to create a file lazyload.js (or c
 As for the actual content, our lazifying file does some extra stuff, but I've put the [stripped down version of it into a gist](https://gist.github.com/anthonykoch/d7b84adcaa2be2412c14bb2b5de6cdb8).
 
 <div>
-  <div class="Aside">
+  {0,<div class="Aside">
     <div class="Aside-content">
       <div class="Aside-tag  [ Tag is-absolute ]">Note</div>
       With the version of ghost as of this writing, cheeriojs is already installed, so you don't need to <code>npm i cheeriojs</code>
     </div>
-  </div>
+  </div>}
 </div>
 
 Lastly, we added a lazy loader to the frontend to actually load the images in. We went with [vanilla-lazyload](https://www.npmjs.com/package/vanilla-lazyload) because it's simple to use and only **6.5KB minified**. The only thing I don't like is that it doesn't add a loaded class to background-image elements.
@@ -112,5 +102,3 @@ Lastly, we added a lazy loader to the frontend to actually load the images in. W
 ### But perf tho?
 
 A `console.time()` around the `transform(html)` bit measured an average of **7ms**. Not a super big deal, imo. We were doing a couple more things in our transform, so it should even be less than that. Perhaps if you had a large DOM, (maybe because of syntax highlighted code blocks or something), it could potentially be much higher.
-
-

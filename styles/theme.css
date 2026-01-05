@@ -10,7 +10,10 @@
   --color-transparent: rgba(0, 0, 0, 0);
   --color-overlay-bg: #2b292b;
   --color-body: #333;
-  --color-link: #25cead;
+  --color-link: rgb(97 150 204);
+  /* --color-link: #25cead; */
+
+  --color-primary-invert: #1746d3;
 
   --color-seafoam-100: #e4efeb;
   --color-seafoam-300: #1beaa4;
@@ -77,6 +80,9 @@
   --spacing-py-nav-link: 16px;
   /* --spacing-px-nav-link: 48px; */
 
+  /* --drop-shadow-button: drop-shadow(3px 4px 7px rgba(0,0,0,.2)); */
+  --shadow-box: 0 20px 30px -9px rgb(0 0 0/20%);
+
   --shadow-button: 0 24px 60px -9px rgb(0 0 0/20%);
   --shadow-button-none: 0 24px 60px -9px rgb(0 0 0/0%);
 }
@@ -106,7 +112,7 @@
 }
 
 @utility copy-body-4-sm {
-  font-size: 16px;
+  font-size: 15px;
   font-family: theme(--font-body);
   font-weight: 500;
   line-height: 30px;

@@ -71,10 +71,13 @@
     font-family: var(--font-heading);
     font-weight: 500;
     line-height: 1.3;
-    min-width: 150px;
+      min-width: 150px;
+    /* min-width: 130px; */
   }
+}
 
-  @media (min-width: theme(--breakpoint-xl)) {
+@media (min-width: theme(--breakpoint-xl)) {
+  .PostList {
     time,
     span {
       padding: 18px 15px;
@@ -86,6 +89,14 @@
 
     time {
       font-size: 14px;
+    }
+  }
+}
+
+@media (min-width: theme(--breakpoint-lg)) {
+  .PostList {
+    time {
+      min-width: 150px;
     }
   }
 }

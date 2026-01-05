@@ -1,8 +1,13 @@
 import Link from 'next/link'
 import { Logo } from './Logo'
 import { Navigation } from './Navigation'
+import classNames from 'classnames'
+import { FC } from 'react'
 
-export const SiteNavigation = () => {
+export const SiteNavigation: FC<{
+  isBlendModeDifference?: boolean
+  colorVariant?: 'black' | 'white'
+}> = ({ colorVariant = 'black', isBlendModeDifference }) => {
   return (
     <div
       className="flex items-start justify-between w-full z-900"
@@ -10,13 +15,25 @@ export const SiteNavigation = () => {
     >
       <Link
         href="/"
-        // text-gray-200
-        className="text-zinc-700 h-[60px] flex items-center transition-colors hover:text-gray-700 hover:bg-primary-500"
+        className={classNames(
+          'h-[60px] flex items-center transition-colors duration-200 hover:shadow-box',
+          {
+            'hover:bg-primary-500 hover:text-black hover:shadow-button hover:shadow-black/10':
+              !isBlendModeDifference,
+            'hover:bg-primary-invert hover:shadow-white/20':
+              isBlendModeDifference,
+            'text-black/80': colorVariant === 'black',
+            'text-white/80': colorVariant === 'white',
+          },
+        )}
       >
         <Logo />
       </Link>
 
-      <Navigation />
+      <Navigation
+        isBlendModeDifference={isBlendModeDifference}
+        colorVariant={colorVariant}
+      />
     </div>
   )
 }

@@ -7,6 +7,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/solid'
 
 import { scrollTo } from '@/hooks/use-scroll-into-view'
 import { NextRouter, useRouter } from 'next/router'
+import classNames from 'classnames'
 
 const createLinks = (
   router: NextRouter,
@@ -45,8 +46,10 @@ const createLinks = (
   },
 ]
 
-export const Navigation: React.FC<{ className?: string }> = ({ className }) => {
-  const [isNavigationModalOpen, setOpen] = useState(false)
+export const Navigation: React.FC<{
+  isBlendModeDifference?: boolean
+  colorVariant?: 'white' | 'black'
+}> = ({ colorVariant, isBlendModeDifference = false }) => {
   const router = useRouter()
   const links = createLinks(router)
 
@@ -57,11 +60,19 @@ export const Navigation: React.FC<{ className?: string }> = ({ className }) => {
           <li className="hidden xl:block" key={href}>
             <Link
               href={href}
-              className="h-[60px] px-12 flex items-center justify-center
-                hover:text-gray-700 hover:bg-primary-500
+              className={classNames(
+                `h-[60px] px-12 flex items-center justify-center hover:shadow-box
                 tracking-widest text-[15px] font-600 uppercase font-display
-                text-[#5a5a5a]
-              "
+              `,
+                {
+                  'hover:bg-primary-500 hover:text-black hover:shadow-button hover:shadow-black/10':
+                    !isBlendModeDifference,
+                  'hover:bg-primary-invert hover:shadow-white/20':
+                    isBlendModeDifference,
+                  'text-black/80': colorVariant === 'black',
+                  'text-white/80': colorVariant === 'white',
+                },
+              )}
               // text-[#ddd]
             >
               {children}
