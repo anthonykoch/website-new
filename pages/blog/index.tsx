@@ -3,9 +3,12 @@ import { PostList } from '@/components/PostList'
 import { BlogHero } from '@/features/blog/Hero'
 import { SiteNavigation } from '@/features/navigation/SiteNavigation'
 import { PostMeta } from '@/types/index'
+import { easeOutExpo } from '@/utils/animation'
 import { getAllPostMeta } from '@/utils/post'
+import { animate } from 'motion/react'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
+import { useEffect } from 'react'
 import superjson from 'superjson'
 
 interface Props {
@@ -13,6 +16,22 @@ interface Props {
 }
 
 const Blog: NextPage<Props> = ({ posts }) => {
+  useEffect(() => {
+    let delay = 0.4
+
+    animate(
+      '.selector-title',
+      {  y: [12, 0], opacity: [0, 1] },
+      { delay: delay, duration: 1, ease: easeOutExpo },
+    )
+
+    animate(
+      '.selector-lead',
+      {  y: [12, 0], opacity: [0, 1] },
+      { delay: (delay += 0.06), duration: 1, ease: easeOutExpo },
+    )
+  }, [])
+
   return (
     <div>
       <Head>
@@ -33,10 +52,10 @@ const Blog: NextPage<Props> = ({ posts }) => {
           <div className="max-w-[800px] mx-auto">
             {/* <BillboardGrid> */}
             <div className="px-4 pt-40 xl:pt-52">
-              <h1 className="text-[22px] font-600 font-display text-primary-500 pb-4 tracking-[2.5px]">
+              <h1 className="selector-title text-[22px] font-600 font-display text-primary-500 pb-4 tracking-[2.5px]">
                 My Writings
               </h1>
-              <p className="font-body font-500 text-white/90 xl:text-[16px] text-[16px]">
+              <p className="selector-lead font-body font-500 text-white/90 xl:text-[16px] text-[16px]">
                 These are my various writings, mostly on topics surrounding
                 front-end development.
               </p>

@@ -37,12 +37,12 @@ console.log(42 || getUserAge()) // 42
 ```
 
 <div>
-  <div class="Aside has-tagSpacing">
+  {0,<div class="Aside has-tagSpacing">
     <div class="Aside-content">
       <div class="Aside-tag  [ Tag is-absolute ]">Falsey values</div>
         The falsey values are <code>null</code>, <code>undefined</code>, <code>NaN</code>, <code>0</code>, <code>false</code>, and empty strings. All other values are considered truthy.
     </div>
-  </div>
+  </div>}
 </div>
 
 This pattern works well with function parameters because parameters default to `undefined` when they are not passed.

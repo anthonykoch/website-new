@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next'
 import cx from 'classnames'
-import * as React from 'react'
+import React, { useEffect } from 'react'
 import superjson from 'superjson'
 import { useRouter } from 'next/router'
 import rehypePrism from 'rehype-prism-plus'
@@ -18,6 +18,8 @@ import { PostList } from '@/components/PostList'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 import { BlogHero } from '@/features/blog/Hero'
+import { animate } from 'motion/react'
+import { easeOutExpo } from '@/utils/animation'
 
 type MDXSource = Awaited<ReturnType<typeof serialize>>
 
@@ -30,6 +32,40 @@ interface Props {
 
 const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
   const { asPath } = useRouter()
+
+  useEffect(() => {
+    let delay = 0.5
+
+    animate(
+      '.selector-title',
+      { y: [20, 0], opacity: [0, 1] },
+      {
+        delay: delay,
+        ease: easeOutExpo,
+        duration: 1,
+      },
+    )
+
+    animate(
+      '.selector-date',
+      { y: [12, 0], opacity: [0, 1] },
+      {
+        delay: delay += 0.08,
+        ease: easeOutExpo,
+        duration: 1,
+      },
+    )
+
+    animate(
+      '.selector-post',
+      {  opacity: [0, 1] },
+      {
+        delay: delay += 0.06,
+        ease: easeOutExpo,
+        duration: 0.8,
+      },
+    )
+  }, [])
 
   return (
     <div>
@@ -50,25 +86,25 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
         <div className="">
           <header className="px-gutter pt-48 relative">
             <div className="max-w-post xl:max-w-post-wide  mx-auto">
-              <h1 className="text-left text-[42px] lg:text-[52px] 2xl:text-[64px] leading-[1.1] text-primary-500 font-heading font-800">
+              <h1 className="selector-title setup-fade-in text-left text-[42px] lg:text-[52px] 2xl:text-[64px] leading-[1.1] text-primary-500 font-heading font-800">
                 {/* <h1 className="text-left text-4xl 2xl:text-[64px] leading-[1.1] text-primary-500 font-heading font-600"> */}
                 <a href={asPath} className="text-inherit">
                   {post.title}
                 </a>
               </h1>
-              <p className="mt-4 text-white/90 font-display tracking-widest font-semibold ">
+              <p className="selector-date setup-fade-in mt-4 text-white/90 font-display tracking-widest font-semibold ">
                 {post.humanized.created_at}
               </p>
             </div>
           </header>
         </div>
       </div>
-      
+
       {/* <div className="lg:pb-20 pb-40"></div> */}
 
       <main>
         <article id="post">
-          <div>
+          <div className="setup-fade-in selector-post">
             <div className="md pt-20 pb-24">
               <MDXRemote {...mdx} components={markdownComponents as any} />
             </div>
