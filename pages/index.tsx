@@ -427,9 +427,14 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                 <div className="max-w-[800px] xl:max-w-[1200px] w-full mx-auto">
                   <div className="aspect-1000/570 relative  pt-[6%]">
                     <div className="overflow-hidden w-full max-w-[71.5%] aspect-640/400 z-40 relative left-[14%] ">
+                      <div className="striped z-10 absolute size-full">
+                        <span className="absolute top-1/2 left-1/2 -translate-1/2 text-[14px] text-white/90 bg-black py-2 px-4 font-display tracking-wider uppercase font-600">
+                          Loading...
+                        </span>
+                      </div>
                       <motion.img
                         src="/final-compressed/opalcamera-home-full.png"
-                        className="absolute top-0 left-0 w-full h-auto will-change-transform object-top z-10"
+                        className="absolute top-0 left-0 w-full h-auto will-change-transform object-top z-20"
                         loading="lazy"
                         ref={opalcameraHomeImageRef}
                         style={{ y: homeImageY }}
