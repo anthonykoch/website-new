@@ -234,14 +234,6 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
     [0, 250],
   )
 
-  useMotionValueEvent(
-    opalAboutSectionScroller.scrollYProgress,
-    'change',
-    (progress) => {
-      console.log(progress)
-    },
-  )
-
   return (
     <div>
       {/* Keep fixed? */}

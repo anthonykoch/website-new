@@ -2,7 +2,6 @@ import * as React from 'react'
 import { useState, useMemo } from 'react'
 import { RemoveScroll } from 'react-remove-scroll'
 import FocusLock from 'react-focus-lock'
-import { motion, AnimatePresence } from 'framer-motion'
 import { Portal } from '@radix-ui/react-portal'
 import cx from 'classnames'
 

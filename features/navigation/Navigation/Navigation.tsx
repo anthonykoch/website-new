@@ -4,8 +4,6 @@ import Link from 'next/link'
 import cx from 'classnames'
 import { IoLogoGithub } from 'react-icons/io5'
 import { MenuIcon, XIcon } from '@heroicons/react/solid'
-import { motion } from 'framer-motion'
-import { easing } from '@/styles/index'
 
 import { scrollTo } from '@/hooks/use-scroll-into-view'
 import { NextRouter, useRouter } from 'next/router'
