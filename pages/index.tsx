@@ -1,34 +1,27 @@
 import { Footer } from '@/components/app/footer/Footer'
 import ImageExhibitDownloadsPage from '@/public/final-compressed/exhibit-downloads-page.png'
 import ImageExhibitTadpoleShopPage from '@/public/final-compressed/exhibit-tadpole-shop.png'
-import type { GetStaticProps, NextPage } from 'next'
-// import ImageExhibitDoctorPage from '@/public/final-compressed/exhibit-doctor.png'
-// import ImageExhibitMediaPage from '@/public/final-compressed/exhibit-media.png'
+import type { NextPage } from 'next'
 
-import { TripleChevron } from '@/features/embellishments/TripleChevron'
 import { Billboard } from '@/components/Billboard'
-import { OpalIntroSection } from '@/components/OpalIntroSection'
 import { ModernFertilityIntroSection } from '@/components/ModernFertilityIntroSection'
+import { OpalIntroSection } from '@/components/OpalIntroSection'
+import { TripleChevron } from '@/features/embellishments/TripleChevron'
 
 import { SiteNavigation } from '@/features/navigation/SiteNavigation'
 import {
   animate,
   motion,
-  stagger,
   useMotionTemplate,
-  useMotionValueEvent,
   useScroll,
   useTransform,
 } from 'motion/react'
 
 import { easeOutExpo } from '@/utils/animation'
-import { FC, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { Grid } from '@/components/Grid'
-import { MobileImageScroller } from '@/components/MobileImageScroller'
-import { useScrollX } from '@/hooks/use-scroll-x'
-import { Post, PostList } from '@/components/PostList'
-import { getAllPostMeta } from '@/utils/post'
+import { Post } from '@/components/PostList'
 
 const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   const opalcameraHomeImageRef = useRef<HTMLImageElement>(null)
@@ -236,14 +229,6 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
     [0, 300],
   )
 
-  // useMotionValueEvent(
-  //   opalAboutSectionScroller.scrollYProgress,
-  //   'change',
-  //   (progress) => {
-  //     console.log(progress)
-  //   },
-  // )
-
   return (
     <div>
       {/* Keep fixed? */}
@@ -377,7 +362,10 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                 </p>
                 <div className="pb-4" />
 
-                <img src="/final-compressed/exhibit-doctor.png" />
+                <img
+                  src="/final-compressed/exhibit-doctor.png"
+                  loading="lazy"
+                />
                 <div className="pb-4" />
 
                 <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#999999] max-w-[500px] pb-4">
@@ -403,6 +391,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             <img
               className="xl:size-full xl:object-cover object-right"
               src={ImageExhibitTadpoleShopPage.src}
+              loading="lazy"
             />
           </div>
           <div className="col-span-6 xl:h-[825px]">
@@ -414,6 +403,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             <img
               className="xl:size-full xl:object-cover object-left"
               src={ImageExhibitDownloadsPage.src}
+              loading="lazy"
             />
           </div>
         </div>
@@ -440,6 +430,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                       <motion.img
                         src="/final-compressed/opalcamera-home-full.png"
                         className="absolute top-0 left-0 w-full h-auto will-change-transform object-top z-10"
+                        loading="lazy"
                         ref={opalcameraHomeImageRef}
                         style={{ y: homeImageY }}
                       />
