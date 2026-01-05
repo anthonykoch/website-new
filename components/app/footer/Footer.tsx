@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
           </span>
           <a
             href="mailto:hello@anthonykoch.com"
-            className="text-inherit block "
+            className="text-inherit block hover:bg-primary-500 hover:shadow-box transition-all duration-150"
           >
             <span className="block font-500 xl:text-left text-[26px] md:text-[40px] lg:text-6xl xl:text-7xl 2xl:text-8xl xl:pb-4">
               <span
