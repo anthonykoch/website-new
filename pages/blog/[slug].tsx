@@ -7,11 +7,11 @@ import rehypePrism from 'rehype-prism-plus'
 import { RehypeCode } from '@/rehype-plugins/code'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
-import {
-  SiteHeader,
-  SiteHeaderBackground,
-  SiteHeaderPlaceholder,
-} from '@/components/app/Header'
+// import {
+//   SiteHeader,
+//   SiteHeaderBackground,
+//   SiteHeaderPlaceholder,
+// } from '@/components/app/Header'
 import { Footer } from '@/components/app/footer/Footer'
 import { getAllPostMeta, getPostBySlug, getPostsPaths } from '@/utils/post'
 import { PostMeta } from '@/types'
@@ -31,7 +31,6 @@ const BlogPost: NextPage<Props> = ({  post, posts }) => {
 
   return (
     <div>
-      <SiteHeader isAbsolute />
 
       <main>
         {/* <SiteHeaderPlaceholder className="relative">
