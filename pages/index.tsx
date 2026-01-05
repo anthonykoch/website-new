@@ -672,8 +672,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
               <div className="max-w-site mx-auto">
                 <div className="lg:grid grid-cols-12 gap-x-4 px-4 ">
                   <p className="text-center lg:text-left lg:col-span-4 lg:col-start-6 ">
-                    <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative size-30 bg-black text-white flex justify-center items-center">
-                      <span className="block">Fin</span>
+                    <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative size-30 bg-black text-white flex justify-center items-center logo-blink-rect">
+                      <span className="block logo-blink">Fin</span>
                     </span>
                   </p>
                 </div>

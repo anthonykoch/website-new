@@ -17,7 +17,7 @@ import { PostList } from '@/components/PostList'
 // import { serialize } from 'superjson'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
-import { BlogHero } from '@/features/blog/Hero'
+import { BlogHero, BlogPlacerholder } from '@/features/blog/Hero'
 import { animate } from 'motion/react'
 import { easeOutExpo } from '@/utils/animation'
 import Link from 'next/link'
@@ -82,7 +82,7 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
 
       {/* <div className="absolute top-0 left-0 w-full z-1000"></div> */}
 
-      <div className="h-[500px]  relative z-10">
+      <BlogPlacerholder className="relative z-10">
         {/* <div className="h-[500px] bg-[#f8f7f8]"> */}
         <div className="">
           <header className="px-gutter pt-48 relative">
@@ -99,7 +99,7 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
             </div>
           </header>
         </div>
-      </div>
+      </BlogPlacerholder>
 
       {/* <div className="lg:pb-20 pb-40"></div> */}
 
