@@ -5,6 +5,11 @@ import type { GetStaticProps, NextPage } from 'next'
 // import ImageExhibitDoctorPage from '@/public/final-compressed/exhibit-doctor.png'
 // import ImageExhibitMediaPage from '@/public/final-compressed/exhibit-media.png'
 
+import { TripleChevron } from '@/features/embellishments/TripleChevron'
+import { Billboard } from '@/components/Billboard'
+import { OpalIntroSection } from '@/components/OpalIntroSection'
+import { ModernFertilityIntroSection } from '@/components/ModernFertilityIntroSection'
+
 import { SiteNavigation } from '@/features/navigation/SiteNavigation'
 import {
   animate,
@@ -24,23 +29,6 @@ import { MobileImageScroller } from '@/components/MobileImageScroller'
 import { useScrollX } from '@/hooks/use-scroll-x'
 import { Post, PostList } from '@/components/PostList'
 import { getAllPostMeta } from '@/utils/post'
-
-const ArrowRightSvg: FC<{ className?: string }> = ({ className }) => {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 28 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M18 18.9998C17.744 18.9998 17.488 18.9018 17.293 18.7068C16.902 18.3158 16.902 17.6838 17.293 17.2928L23.586 10.9998H2C1.448 10.9998 1 10.5518 1 9.99976C1 9.44776 1.448 8.99976 2 8.99976H23.586L17.293 2.70676C16.902 2.31576 16.902 1.68376 17.293 1.29276C17.684 0.901762 18.316 0.901762 18.707 1.29276L26.707 9.29276C26.804 9.38876 26.876 9.50076 26.925 9.61876C26.973 9.73476 27 9.86276 27 9.99676C27 9.99876 27 10.0008 27 10.0028C27 10.1368 26.973 10.2648 26.925 10.3808C26.876 10.4998 26.804 10.6108 26.707 10.7068L18.707 18.7068C18.512 18.9018 18.256 18.9998 18 18.9998Z"
-        fill="black"
-        className="transition-colors duration-150"
-      />
-    </svg>
-  )
-}
 
 const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   const opalcameraHomeImageRef = useRef<HTMLImageElement>(null)
@@ -87,7 +75,6 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   const introTitleRef = useRef<HTMLSpanElement>(null)
 
   const introRef = useRef<HTMLDivElement>(null)
-  const opalViewSiteRef = useRef<HTMLAnchorElement>(null)
   const timeout = useRef<any>(null)
 
   const introBlockRef = useRef<HTMLDivElement>(null)
@@ -167,56 +154,54 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         },
       )
 
-      const imageStaggerDelay = 0.8
+      // const imageStaggerDelay = 0.8
 
-      animate(
-        '.selector-opal-camera-image',
-        { opacity: [0, 1] },
-        {
-          delay: stagger(imageStaggerDelay, { startDelay: (delay += 1) }),
-          duration: 1,
-          ease: [0.33, 1, 0.68, 1],
-        },
-      )
+      // animate(
+      //   '.selector-opal-camera-image',
+      //   { opacity: [0, 1] },
+      //   {
+      //     delay: stagger(imageStaggerDelay, { startDelay: (delay += 1) }),
+      //     duration: 1,
+      //     ease: [0.33, 1, 0.68, 1],
+      //   },
+      // )
 
-      delay += imageStaggerDelay * 2
+      // delay += imageStaggerDelay * 2
 
-      animate(
-        '.selector-opal-camera-title',
-        { y: ['110%', '0%'] },
-        {
-          delay: delay,
-          duration: 1.9,
-          ease: easeOutExpo,
-        },
-      )
+      // animate(
+      //   '.selector-opal-camera-title',
+      //   { y: ['110%', '0%'] },
+      //   {
+      //     delay: delay,
+      //     duration: 1.9,
+      //     ease: easeOutExpo,
+      //   },
+      // )
 
-      Array.from(
-        document.querySelectorAll('.selector-opal-camera-text .selector-inner'),
-      ).forEach((line, i) => {
-        animate(
-          line,
-          { y: ['110%', '0%'], opacity: [0, 1] },
-          {
-            delay: (delay += 0.07) + 0.07 * i,
-            duration: 1.9,
-            ease: easeOutExpo,
-            opacity: { delay: 0.03 * i + 0.1, duration: 1 },
-          },
-        )
-      })
+      // Array.from(
+      //   document.querySelectorAll('.selector-opal-camera-text .selector-inner'),
+      // ).forEach((line, i) => {
+      //   animate(
+      //     line,
+      //     { y: ['110%', '0%'], opacity: [0, 1] },
+      //     {
+      //       delay: (delay += 0.07) + 0.07 * i,
+      //       duration: 1.9,
+      //       ease: easeOutExpo,
+      //       opacity: { delay: 0.03 * i + 0.1, duration: 1 },
+      //     },
+      //   )
+      // })
 
-      if (opalViewSiteRef.current) {
-        animate(
-          opalViewSiteRef.current,
-          { opacity: [0, 1], x: [-18, 0] },
-          {
-            delay: (delay += 0.14),
-            duration: 1.2,
-            ease: easeOutExpo,
-          },
-        )
-      }
+      // animate(
+      //   '.selector-view-site',
+      //   { opacity: [0, 1], x: [-18, 0] },
+      //   {
+      //     delay: (delay += 0.14),
+      //     duration: 1.2,
+      //     ease: easeOutExpo,
+      //   },
+      // )
     }, 400)
 
     return () => {
@@ -224,68 +209,38 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
     }
   }, [])
 
-  const mfMobileContainer = useRef<HTMLDivElement>(null)
-
-  const mfmobilescroll = useScroll({
-    target: mfMobileContainer,
-    // offset: ['0vh end', '160vh end'],
-    offset: ['0 end', '240vh end'],
-  })
-
-  useScrollX({
-    container: mfMobileContainer,
-    scrollYProgress: mfmobilescroll.scrollYProgress,
-  })
-
-  const opalCameraImagesRef = useRef<HTMLDivElement>(null)
-
-  const opalCameraScroll = useScroll({
-    target: opalCameraImagesRef,
-    offset: ['30vh end', '160vh end'],
-  })
-
-  useScrollX({
-    container: opalCameraImagesRef,
-    scrollYProgress: opalCameraScroll.scrollYProgress,
-  })
-
   const newJobRef = useRef<HTMLParagraphElement>(null)
 
   const lookRef = useRef<HTMLDivElement>(null)
   const arrowsRef = useRef<HTMLDivElement>(null)
   const firstBlockRef = useRef<HTMLDivElement>(null)
 
-  const opalIntroRef = useRef<HTMLElement>(null)
+  const aboutOpalRef = useRef<HTMLDivElement>(null)
 
-  const { scrollYProgress: opalIntroScrollYProgress } = useScroll({
-    target: opalIntroRef,
-    offset: ['1.5 end', '2 end'],
-    // offset: ['160vh end', '240vh end'],
+  const opalAboutSectionScroller = useScroll({
+    target: aboutOpalRef,
+    offset: ['80vh end', '110vh end'],
   })
 
-  const opalIntroY = useTransform(opalIntroScrollYProgress, [0, 1], [0, 400])
-  // const opalIntroY = useTransform(opalIntroScrollYProgress, [0, 1], [0, 500])
-  const opalIntroScale = useTransform(
-    opalIntroScrollYProgress,
+  const opalAboutSectionScale = useTransform(
+    opalAboutSectionScroller.scrollYProgress,
     [0, 1],
     [1, 0.97],
-    // [1, 0.97],
   )
 
-  const mfIntroRef = useRef<HTMLElement>(null)
+  const opalAboutSectionY = useTransform(
+    opalAboutSectionScroller.scrollYProgress,
+    [0, 1],
+    [0, 250],
+  )
 
-  const { scrollYProgress: mfIntroScrollYProgress } = useScroll({
-    target: mfIntroRef,
-    offset: ['1.5 end', '2 end'],
-    // offset: ['0.9 end', '1.8 end'],
-    // offset: ['160vh end', '246vh end'],
-    // offset: ['160vh end', '240vh end'],
-    // offset: ['100vh end', '150vh end'],
-  })
-
-  const mfIntroY = useTransform(mfIntroScrollYProgress, [0, 1], [0, 450])
-  const mfIntroScale = useTransform(mfIntroScrollYProgress, [0, 1], [1, 0.97])
-  // const mfIntroScale = useTransform(mfIntroScrollYProgress, [0, 1], [1, 0.96])
+  useMotionValueEvent(
+    opalAboutSectionScroller.scrollYProgress,
+    'change',
+    (progress) => {
+      console.log(progress)
+    },
+  )
 
   return (
     <div>
@@ -386,134 +341,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         </div>
 
         <section>
-          <div ref={opalIntroRef}>
-            <motion.div
-              style={{ y: opalIntroY, scale: opalIntroScale }}
-              transition={{ ease: 'easeIn' }}
-              className="will-change-transform"
-            >
-              <div className="xl:hidden">
-                <div className="pb-20 lg:pb-30" />
-
-                <MobileImageScroller
-                  containerRef={opalCameraImagesRef}
-                  title="Opal Camera"
-                  description={
-                    <span className="max-w-[420px] block">
-                      A website made to market the capabilities of
-                      {/* Opal Camera is a website made to market the capabilities of */}
-                      the C1 and Tadpole cameras, and the accompanying Composer
-                      app.
-                    </span>
-                  }
-                  images={[
-                    <img
-                      src="/final-compressed/girl.png"
-                      className="h-[320px] md:h-[420px]"
-                    />,
-                    <img
-                      src="/final-compressed/opal-tadpole.png"
-                      className="h-[320px] md:h-[420px]"
-                    />,
-                    // <img src="/final-compressed/card-opal.png" className="h-[320px]" />,
-                  ]}
-                />
-                <div className="pb-4" />
-
-                <div className="px-4 text-center">
-                  <a
-                    href="https://opalcamera.com/"
-                    className="w-[200px] flex items-center justify-center gap-x-5 font-body uppercase text-[12px] font-500 tracking-wide text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black transition-all duration-150 px-5 py-2 shadow-none hover:shadow-[0_24px_60px_-9px_rgb(0_0_0/20%)]"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View site
-                    <ArrowRightSvg className="w-[24px] *:fill-white " />
-                  </a>
-                </div>
-              </div>
-
-              <div className="pb-20 lg:pb-30" />
-              {/* Desktop version */}
-              <div className="xl:max-w-[max(1200px,80%)] px-[16px] 5xl:max-w-site mx-auto hidden xl:flex gap-x-4 relative">
-                <div className="w-[36.533085%]">
-                  <h3 className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[10px]">
-                    <span className="relative">
-                      <span className="setup-overflow">
-                        <span className="setup-line-down selector-opal-camera-title">
-                          Opal Camera
-                        </span>
-                      </span>
-                    </span>
-                  </h3>
-                  <div className="aspect-784/1190 relative">
-                    {/* <div className="striped rounded-md size-full"></div> */}
-                    <img
-                      src="/final-compressed/girl.png"
-                      className="selector-opal-camera-image setup-fade-in absolute size-full left-0 top-0"
-                    />
-                  </div>
-                </div>
-                <div className="w-[42.870457%] self-end">
-                  <p className="text-[18px] xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[384px] selector-opal-camera-text">
-                    <span className="setup-overflow selector-line">
-                      <span className="setup-line-down selector-inner">
-                        Opal Camera is a website made to
-                      </span>
-                    </span>
-                    <span className="setup-overflow selector-line">
-                      <span className="setup-line-down selector-inner">
-                        market the capabilities of the C1
-                      </span>
-                    </span>
-                    <span className="setup-overflow selector-line">
-                      <span className="setup-line-down selector-inner">
-                        and Tadpole cameras.
-                      </span>
-                    </span>
-                  </p>
-                  <div className="aspect-920/608 relative">
-                    <img
-                      src="/final-compressed/opal-tadpole.png"
-                      className="selector-opal-camera-image setup-fade-in absolute size-full top-0 left-0"
-                    />
-                  </div>
-                </div>
-                <div className="w-[20.503262%]">
-                  <div className="h-full flex flex-col items-start justify-end">
-                    <a
-                      href="https://opalcamera.com/"
-                      className="inline-flex items-center justify-center gap-x-5 w-full font-body uppercase text-[12px] font-500 tracking-wide  setup-fade-in text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black  transition-all duration-150 px-5 py-2 shadow-none hover:shadow-[0_24px_60px_-9px_rgb(0_0_0/20%)]"
-                      ref={opalViewSiteRef}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View site
-                      <ArrowRightSvg className="w-[28px] *:fill-white " />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pb-20 lg:pb-30" />
-
-              <div className=" mx-auto max-w-site">
-                <Description4x8Grid>
-                  <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
-                    What is Opal Camera?
-                  </h2>
-                  <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
-                    Opal Camera creates premium webcams designed to help people
-                    look and sound great during video calls. Their main products
-                    are the Opal C1, a high-quality camera ideal for desktop or
-                    home office setups, and the Tadpole, a tiny portable camera
-                    made specifically for laptops.
-                  </p>
-                </Description4x8Grid>
-              </div>
-              <div className="pb-20 lg:pb-30" />
-            </motion.div>
-          </div>
+          <OpalIntroSection />
         </section>
 
         <section className="bg-[#eaeaea] z-10 relative">
@@ -630,9 +458,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         </div>
         <div className="pb-4" />
 
-        {/* <div className="bg-primary-500 text-black"> */}
         <div className="bg-black text-white z-10 relative">
-          {/* <div className="bg-[#ffdb01] text-black"> */}
           <div className="max-w-site mx-auto">
             <Billboard>
               <p>
@@ -646,52 +472,61 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         <div className="bg-white z-10 relative">
           <div className="pb-20 xl:pb-30" />
           <div className="max-w-site mx-auto">
-            <Grid
-              left={
-                <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[310px] xl:ml-auto">
-                  An expanding role in an evolving stack
-                </h2>
-              }
-              right={
-                <div className="flex flex-col gap-y-6 copy-body-4-sm lg:copy-body-4 text-[#888787]">
-                  <p>
-                    The Opal Camera website is a simple Shopify app utilizing
-                    the Storefront API through graphQL running inside an
-                    AdonisJS application. In the beginning stages, we were using
-                    Docker deployed through Digital Ocean but have since
-                    transferred the site to a much simpler stack of NextJS using
-                    Vercel. The frontend is written using tools like Tailwind,
-                    motion.dev and React.
-                  </p>
-                  <p>
-                    At the start of my time at Opal, I was purely creating the
-                    front-end. I’ve since worked in many different aspects of
-                    development, ranging from building out administrative tools
-                    that manage email signups to custom email development and
-                    Shopify management.
-                  </p>
-                </div>
-              }
-            />
+            <motion.div
+              style={{
+                scale: opalAboutSectionScale,
+                y: opalAboutSectionY,
+              }}
+              className="will-change-transform"
+            >
+              <Grid
+                left={
+                  <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[310px] xl:ml-auto">
+                    An expanding role in an evolving stack
+                  </h2>
+                }
+                right={
+                  <div className="flex flex-col gap-y-6 copy-body-4-sm lg:copy-body-4 text-[#888787]">
+                    <p>
+                      The Opal Camera website is a simple Shopify app utilizing
+                      the Storefront API through graphQL running inside an
+                      AdonisJS application. In the beginning stages, we were
+                      using Docker deployed through Digital Ocean but have since
+                      transferred the site to a much simpler stack of NextJS
+                      using Vercel. The frontend is written using tools like
+                      Tailwind, motion.dev and React.
+                    </p>
+                    <p>
+                      At the start of my time at Opal, I was purely creating the
+                      front-end. I’ve since worked in many different aspects of
+                      development, ranging from building out administrative
+                      tools that manage email signups to custom email
+                      development and Shopify management.
+                    </p>
+                  </div>
+                }
+              />
 
-            <div className="pb-8" />
+              <div className="pb-8" />
 
-            <Grid
-              left={
-                <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[288px] xl:ml-auto">
-                  A growing startup
-                </h2>
-              }
-              right={
-                <div className="*:pb-6 copy-body-4 text-[#888787] ">
-                  <p>
-                    Opal Camera has had great success and continues to grow,
-                    having gotten several rounds of funding, even by the AI
-                    giant OpenAI.
-                  </p>
-                </div>
-              }
-            />
+              <Grid
+                left={
+                  <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[288px] xl:ml-auto">
+                    A growing startup
+                  </h2>
+                }
+                right={
+                  <div className="*:pb-6 copy-body-4 text-[#888787] ">
+                    <p>
+                      Opal Camera has had great success and continues to grow,
+                      having gotten several rounds of funding, even by the AI
+                      giant OpenAI.
+                    </p>
+                  </div>
+                }
+              />
+            </motion.div>
+            <div ref={aboutOpalRef} />
           </div>
           <div className="pb-10 lg:pb-30" />
 
@@ -707,102 +542,10 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           </div>
 
           <section>
-            <div ref={mfIntroRef}>
-              <motion.div
-                style={{ y: mfIntroY, scale: mfIntroScale }}
-                className="will-change-transform"
-              >
-                <div className="mx-auto max-w-site">
-                  <div className="pb-40 lg:pb-0" />
-
-                  <div className="xl:hidden">
-                    <MobileImageScroller
-                      containerRef={mfMobileContainer}
-                      title="Modern Fertility"
-                      description={
-                        <span className="max-w-[380px] block">
-                          A business dedicated to supporting and informing women
-                          about their fertility options.
-                        </span>
-                      }
-                      images={[
-                        <img
-                          src="/final-compressed/mf-first-mobile.svg"
-                          className="h-[350px] md:h-[440px]  w-auto"
-                        />,
-                        <img
-                          src="/final-compressed/mf-homepage-mobile.png"
-                          className="h-[350px] md:h-[440px]  w-auto"
-                        />,
-                        <img
-                          src="/final-compressed/mf-recommended-mobile.png"
-                          className="h-[350px] w-auto lg:hidden"
-                        />,
-                      ]}
-                    />
-                  </div>
-
-                  <div className="hidden xl:grid grid-cols-12 gap-x-4 px-4 pt-[200px] ">
-                    <div className="col-span-12 lg:col-span-5 xl:col-span-4 2xl:col-start-2">
-                      <p className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[15px]">
-                        Modern Fertility
-                      </p>
-
-                      <div className="max-lg:pb-4">
-                        <img
-                          src="/final-compressed/mf-first.svg"
-                          className="max-lg:max-w-[400px]"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-span-12 xl:col-span-6 2xl:col-span-5">
-                      <div className="h-full flex flex-col justify-end">
-                        <p className="hidden lg:block xl:text-[22px] leading-[30px] font-heading font-500 pb-[22px] max-w-[380px]">
-                          A business dedicated to supporting and informing women
-                          about their fertility options.
-                        </p>
-                        <img src="/final-compressed/mf-homepage.png" />
-                      </div>
-                    </div>
-                    <div className="col-span-12 xl:col-span-2 2xl:col-span-2">
-                      <div className="h-full flex flex-col justify-end max-lg:pt-4 max-lg:max-w-[320px]">
-                        <p className="text-[13px] text-black/50 font-500 max-w-[200px]">
-                          modernfertility.com is now a part of{' '}
-                          <a
-                            href="https://ro.co/modern-fertility/"
-                            className="text-black/70 underline"
-                          >
-                            ro.co
-                          </a>{' '}
-                          and no longer able to be viewed.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pb-20 lg:pb-40" />
-
-                <div className="mx-auto max-w-site">
-                  <Description4x8Grid>
-                    <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
-                      What is Modern Fertility?
-                    </h2>
-                    <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
-                      Modern Fertility is a women's health brand offering
-                      at-home reproductive testing, including hormone tests that
-                      assess key fertility markers like ovarian reserve and egg
-                      count. Founded in 2017, it makes fertility information
-                      more accessible and affordable by enabling convenient home
-                      testing at a lower cost than traditional clinics.
-                    </p>
-                  </Description4x8Grid>
-                </div>
-              </motion.div>
-            </div>
+            <ModernFertilityIntroSection />
           </section>
 
-          <div className="pb-40" />
+          <div className="pb-20 lg:pb-40" />
 
           <section>
             <div>
@@ -888,19 +631,14 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   )
 }
 
-import superjson from 'superjson'
-import { TripleChevron } from '@/features/embellishments/TripleChevron'
-import { Billboard } from '@/components/Billboard'
-import { Description4x8Grid } from '@/features/grid/Description4x8Grid'
+// export const getStaticProps: GetStaticProps<any> = async () => {
+//   const posts = await getAllPostMeta()
 
-export const getStaticProps: GetStaticProps<any> = async () => {
-  const posts = await getAllPostMeta()
-
-  return {
-    props: {
-      posts: superjson.serialize(posts).json as any,
-    },
-  }
-}
+//   return {
+//     props: {
+//       // posts: superjson.serialize(posts).json as any,
+//     },
+//   }
+// }
 
 export default Home
