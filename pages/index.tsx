@@ -230,6 +230,51 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
   return (
     <div>
+      {/* 
+      <div>
+        <motion.div
+          initial={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
+          animate={{ clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' }}
+          // initial={{
+          //   scaleY: 1,
+          // }}
+          // animate={{
+          //   scaleY: 0,
+          // }}
+          transition={{ ease: easeOutExpo, duration: 1, delay: 3.1 }}
+          // style={{
+          //   scaleY: [100, 0],
+          // }}
+          className="fixed size-full z-2000  bg-black inline-block logo-blink-rect  left-1/2 top-1/2 -translate-1/2"
+        >
+          <svg
+            className="w-30"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              className="logo-blink"
+              d="M7.27914 11L4.88914 7.55L3.87914 8.62V11H2.82914V4H3.87914V7.22L6.94914 4H8.25914L5.59914 6.8L8.54914 11H7.27914ZM11.2894 11.08C9.77938 11.08 8.68937 9.99 8.68937 8.48C8.68937 6.97 9.77938 5.88 11.2894 5.88C12.7994 5.88 13.8794 6.97 13.8794 8.48C13.8794 9.99 12.7994 11.08 11.2894 11.08ZM11.2894 10.23C12.2394 10.23 12.8894 9.51 12.8894 8.48C12.8894 7.45 12.2394 6.73 11.2894 6.73C10.3294 6.73 9.67937 7.45 9.67937 8.48C9.67937 9.51 10.3294 10.23 11.2894 10.23Z"
+              fill="white"
+            />
+          </svg>
+        </motion.div>
+       <svg className="w-20 invert-color" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_908_189)">
+            <rect width="16" height="16" fill="black" />
+            <path
+              d="M7.27914 11L4.88914 7.55L3.87914 8.62V11H2.82914V4H3.87914V7.22L6.94914 4H8.25914L5.59914 6.8L8.54914 11H7.27914ZM11.2894 11.08C9.77938 11.08 8.68937 9.99 8.68937 8.48C8.68937 6.97 9.77938 5.88 11.2894 5.88C12.7994 5.88 13.8794 6.97 13.8794 8.48C13.8794 9.99 12.7994 11.08 11.2894 11.08ZM11.2894 10.23C12.2394 10.23 12.8894 9.51 12.8894 8.48C12.8894 7.45 12.2394 6.73 11.2894 6.73C10.3294 6.73 9.67937 7.45 9.67937 8.48C9.67937 9.51 10.3294 10.23 11.2894 10.23Z"
+              fill="white"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_908_189">
+              <rect width="16" height="16" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      </div> */}
       {/* Keep fixed? */}
       <div className="mix-blend-difference absolute top-0 left-0 w-full z-1000">
         <div className="max-w-site mx-auto">
@@ -311,12 +356,9 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           </div>
         </section>
         <div className="absolute top-[57vh] z-500 bg-[#EAEAEA]">
-          <div className="">
-            {/* <div className="h-[100vh] absolute top-0 w-full"> */}
+          <div id="work">
             <div
               className="bg-black text-white relative z-1000 "
-              // className="bg-black text-white relative top-[57vh] z-1000 "
-              // className="bg-black text-white relative z-1000 -mt-[30vh]"
               ref={firstBlockRef}
             >
               <div className="max-w-site mx-auto">

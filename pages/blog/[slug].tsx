@@ -20,6 +20,7 @@ import { MDXRemote } from 'next-mdx-remote'
 import { BlogHero } from '@/features/blog/Hero'
 import { animate } from 'motion/react'
 import { easeOutExpo } from '@/utils/animation'
+import Link from 'next/link'
 
 type MDXSource = Awaited<ReturnType<typeof serialize>>
 
@@ -88,9 +89,9 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
             <div className="max-w-post xl:max-w-post-wide  mx-auto">
               <h1 className="selector-title setup-fade-in text-left text-[42px] lg:text-[52px] 2xl:text-[64px] leading-[1.1] text-primary-500 font-heading font-800">
                 {/* <h1 className="text-left text-4xl 2xl:text-[64px] leading-[1.1] text-primary-500 font-heading font-600"> */}
-                <a href={asPath} className="text-inherit">
+                <Link href={asPath} className="text-inherit">
                   {post.title}
-                </a>
+                </Link>
               </h1>
               <p className="selector-date setup-fade-in mt-4 text-white/90 font-display tracking-widest font-semibold ">
                 {post.humanized.created_at}
