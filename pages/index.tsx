@@ -312,50 +312,52 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                 </div> */}
             {/* <img src="/final/favicon.svg" className="w-[60px]" /> */}
 
-            <div className="text-black fixed top-[17vh]">
+            <div className="text-black fixed w-full top-[17vh]">
               {/* Safari absolute breaks when using sticky. 1000% a rendering error. ugh... */}
               {/* <div className="text-black sticky top-[17vh]"> */}
-              <div className="max-w-site mx-auto grid grid-cols-12 gap-x-4 px-4">
-                <div className="col-span-12 xl:col-span-11 xl:col-start-2">
-                  <span className="text-[clamp(24px,calc(55vw*(100/1900)),46px)] font-500  font-heading leading-[1.5] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
-                    <p className="md:hidden">
-                      Anthony Koch is a front-end developer helping companies
-                      and startups ship pixel-perfect, responsive websites.
-                    </p>
-                    <span
-                      ref={introTitleRef}
-                      style={{ visibility: 'hidden' }}
-                      className="hidden md:block max-w-[1000px]"
-                    >
-                      <span className="setup-overflow">
-                        <span className="setup-line-down selector-line">
-                          Anthony Koch is a front-end developer helping{' '}
+              <div className="max-w-site mx-auto">
+                <div className="grid grid-cols-12 gap-x-4 px-4">
+                  <div className="col-span-12 xl:col-span-11 xl:col-start-2">
+                    <span className="text-[clamp(24px,calc(55vw*(100/1900)),46px)] font-500  font-heading leading-[1.5] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
+                      <p className="md:hidden">
+                        Anthony Koch is a front-end developer helping companies
+                        and startups ship pixel-perfect, responsive websites.
+                      </p>
+                      <span
+                        ref={introTitleRef}
+                        style={{ visibility: 'hidden' }}
+                        className="hidden md:block max-w-[1000px]"
+                      >
+                        <span className="setup-overflow">
+                          <span className="setup-line-down selector-line">
+                            Anthony Koch is a front-end developer helping{' '}
+                          </span>
                         </span>
-                      </span>
-                      <span className="setup-overflow">
-                        <span className="setup-line-down selector-line">
-                          companies and startups ship pixel-perfect,{' '}
+                        <span className="setup-overflow">
+                          <span className="setup-line-down selector-line">
+                            companies and startups ship pixel-perfect,{' '}
+                          </span>
                         </span>
-                      </span>
-                      <span className="setup-overflow">
-                        <span className="setup-line-down selector-line">
-                          responsive websites.
+                        <span className="setup-overflow">
+                          <span className="setup-line-down selector-line">
+                            responsive websites.
+                          </span>
                         </span>
                       </span>
                     </span>
-                  </span>
-                  <p
-                    ref={newJobRef}
-                    className="mt-2 setup-fade-in bg-black px-5 py-3 inline-block text-white text-[13px] lg:text-[15px]"
-                  >
-                    Currently looking for new opportunities - Jan 2025
-                  </p>
+                    <p
+                      ref={newJobRef}
+                      className="mt-2 setup-fade-in bg-black px-5 py-3 inline-block text-white text-[13px] lg:text-[15px]"
+                    >
+                      Currently looking for new opportunities - Jan 2025
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <div className="absolute top-[57vh] z-500 bg-[#EAEAEA]">
+        <div className="absolute w-full top-[57vh] z-500 bg-[#EAEAEA]">
           <div id="work">
             <div
               className="bg-black text-white relative z-1000 "

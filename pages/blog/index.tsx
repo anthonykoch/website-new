@@ -5,7 +5,7 @@ import { SiteNavigation } from '@/features/navigation/SiteNavigation'
 import { PostMeta } from '@/types/index'
 import { easeOutExpo } from '@/utils/animation'
 import { getAllPostMeta } from '@/utils/post'
-import { animate } from 'motion/react'
+import { animate, stagger } from 'motion/react'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { useEffect } from 'react'
@@ -21,15 +21,64 @@ const Blog: NextPage<Props> = ({ posts }) => {
 
     animate(
       '.selector-title',
-      {  y: [12, 0], opacity: [0, 1] },
-      { delay: delay, duration: 1, ease: easeOutExpo },
+      { y: ['-110%', '0%'], opacity: [0, 1] },
+      // { y: [12, 0], opacity: [0, 1] },
+      { delay: delay, duration: 1.4, ease: easeOutExpo },
+      // { delay: delay, duration: 1, ease: easeOutExpo },
     )
 
     animate(
       '.selector-lead',
-      {  y: [12, 0], opacity: [0, 1] },
-      { delay: (delay += 0.06), duration: 1, ease: easeOutExpo },
+      { y: ['-110%', '0%'], opacity: [0, 1] },
+      // { y: [12, 0], opacity: [0, 1] },
+      { delay: (delay += 0.0), duration: 1.4, ease: easeOutExpo },
+      // { delay: (delay += 0.06), duration: 1, ease: easeOutExpo },
     )
+
+    delay = 0.1
+
+    // animate(
+    //   '.selector-border',
+    //   {
+    //     scaleY: [0, 1],
+    //   },
+    //   {
+    //     duration: 1.2,
+    //     ease: [0.64, 0, 0.78, 0],
+    //     // duration: 2.2,
+    //     // ease: [0.33, 1, 0.68, 1],
+    //     // duration: 5,
+    //     // ease: easeOutExpo,
+    //     delay: (delay += 0),
+    //   },
+    // )
+
+    // animate(
+    //   '.selector-text',
+    //   {
+    //     y: ['110%', '0%'],
+    //     // y: [100, 0],
+    //   },
+    //   {
+    //     duration: 1,
+    //     // duration: 0.7,
+    //     ease: easeOutExpo,
+    //     delay: stagger(0.05, { startDelay: (delay += 0.8) }),
+    //     // delay: () => {}
+    //   },
+    // )
+    // animate(
+    //   '.selector-text',
+    //   {
+    //     opacity: [12, 0],
+    //   },
+    //   {
+    //     duration: 0.7,
+    //     // ease: easeOutExpo,
+    //     delay: stagger(0.06, { startDelay: 1, }),
+    //     // delay: () => {}
+    //   },
+    // )
   }, [])
 
   return (
@@ -52,10 +101,10 @@ const Blog: NextPage<Props> = ({ posts }) => {
           <div className="max-w-[800px] mx-auto">
             {/* <BillboardGrid> */}
             <div className="px-4 pt-40 xl:pt-52">
-              <h1 className="selector-title text-[22px] font-600 font-display text-primary-500 pb-4 tracking-[2.5px]">
+              <h1 className="selector-title will-change-transform setup-fade-in text-[22px] font-600 font-display text-primary-500 pb-4 tracking-[2.5px] leading-none">
                 My Writings
               </h1>
-              <p className="selector-lead font-body font-500 text-white/90 xl:text-[16px] text-[16px]">
+              <p className="selector-lead will-change-transform setup-fade-in font-body font-500 text-white/90 xl:text-[16px] text-[16px]">
                 These are my various writings, mostly on topics surrounding
                 front-end development.
               </p>
@@ -67,17 +116,7 @@ const Blog: NextPage<Props> = ({ posts }) => {
         <div className="z-10 relative">
           <div className="max-w-site mx-auto">
             <section>
-              {/* <div className="pb-30" /> */}
-              {/* <div className="grid grid-cols-12 gap-x-4 px-4 "> */}
-              {/* <div className="col-span-12 xl:col-span-10 xl:col-start-5 "> */}
               <div className="max-w-[800px] mx-auto">
-                <div className="lg:w-[151px] lg:min-w-[151px] border-r border-black/10 h-[100px]"></div>
-                <div className="flex">
-                  <div className="lg:w-[151px] lg:min-w-[151px] border-r border-black/10"></div>
-                  <p className="text-[14px] font-600 pl-3 font-display tracking-wider pb-2">
-                    Most Recent
-                  </p>
-                </div>
                 {/* <a
                   href={posts[0].slug}
                   className="flex transition-colors duration-100 text-black hover:bg-primary-500 hover:*:first:border-white hover:shadow-button "
@@ -96,11 +135,17 @@ const Blog: NextPage<Props> = ({ posts }) => {
                     </div>
                   </div>
                 </a> */}
-                <PostList posts={posts.slice(0)} />
+                <div className="relative pt-10 lg:pt-20 pb-20 lg:pb-30 min-h-[max(50lvh,800px)]">
+                  <div>
+                    <p className="ml-[141px] lg:ml-[170px] text-[14px] font-600 pl-4 font-display tracking-wider pb-2">
+                      Most Recent
+                    </p>
+                  </div>
+                  <div className="selector-border absolute left-[140px] lg:left-[170px] top-0 h-full w-px bg-[#e6e6e6] origin-top"></div>
+                  <PostList posts={posts.slice(0)} />
+                </div>
+                {/* <OldPostList posts={posts.slice(0)}  /> */}
                 {/* <PostList posts={posts.slice(1)} /> */}
-                <div className="w-[151px] border-r border-black/10 h-[150px]"></div>
-                {/* </div> */}
-                {/* </div> */}
               </div>
 
               {/* <div className="pb-30" /> */}
