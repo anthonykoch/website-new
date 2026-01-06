@@ -1,6 +1,5 @@
 import classNames from 'classnames'
-import { FC, ReactNode } from 'react'
-import styles from './PostList.module.css'
+import { FC } from 'react'
 
 export type Post = {
   id: string

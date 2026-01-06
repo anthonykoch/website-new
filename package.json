@@ -35,6 +35,7 @@
     "fast-glob": "^3.2.11",
     "gray-matter": "^4.0.3",
     "jest": "^27.4.7",
+    "jotai": "^2.16.1",
     "lodash": "^4.17.21",
     "motion": "^12.23.26",
     "motion-plus": "https://api.motion.dev/registry.tgz?package=motion-plus&version=2.0.2&token=f3bd88d558d7e29435c21575225ef6f530de20c4dd4b22f47d97c2bca09959dd",

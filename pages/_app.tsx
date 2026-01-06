@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import '../styles/main.css'
 
 import Head from 'next/head'
+import { Provider } from 'jotai'
 
 const HeadMeta = () => {
   return (

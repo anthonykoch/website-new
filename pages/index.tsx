@@ -1,4 +1,4 @@
-import { Footer } from '@/components/app/footer/Footer'
+import { Footer } from '@/features/site/footer/Footer'
 import ImageExhibitDownloadsPage from '@/public/final-compressed/exhibit-downloads-page.png'
 import ImageExhibitTadpoleShopPage from '@/public/final-compressed/exhibit-tadpole-shop.png'
 import type { NextPage } from 'next'
@@ -8,7 +8,7 @@ import { ModernFertilityIntroSection } from '@/components/ModernFertilityIntroSe
 import { OpalIntroSection } from '@/components/OpalIntroSection'
 import { TripleChevron } from '@/features/embellishments/TripleChevron'
 
-import { SiteNavigation } from '@/features/navigation/SiteNavigation'
+import { SiteNavigation } from '@/features/site/SiteNavigation'
 import {
   animate,
   motion,
