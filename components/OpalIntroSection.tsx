@@ -1,12 +1,8 @@
 import { Description4x8Grid } from '@/features/grid/Description4x8Grid'
 import { useScrollX } from '@/hooks/use-scroll-x'
-import {
-  motion,
-  useScroll,
-  useTransform
-} from 'motion/react'
+import { motion, useScroll, useTransform } from 'motion/react'
 import { FC, useRef } from 'react'
-import { MobileImageScroller } from './MobileImageScroller'
+import { FigCaption, MobileImageScroller } from './MobileImageScroller'
 
 const ArrowRightSvg: FC<{ className?: string }> = ({ className }) => {
   return (
@@ -68,8 +64,7 @@ export const OpalIntroSection = () => {
           <div className="xl:hidden">
             <div className="pb-20 lg:pb-30" />
 
-            <MobileImageScroller
-              containerRef={opalCameraImagesRef}
+            <FigCaption
               title="Opal Camera"
               description={
                 <span className="max-w-[420px] block">
@@ -78,6 +73,10 @@ export const OpalIntroSection = () => {
                   the C1 and Tadpole cameras, and the accompanying Composer app.
                 </span>
               }
+            />
+
+            <MobileImageScroller
+              containerRef={opalCameraImagesRef}
               images={[
                 <img
                   src="/final-compressed/girl.png"

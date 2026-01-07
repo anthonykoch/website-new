@@ -3,9 +3,27 @@ import { FC, ReactNode, Ref } from 'react'
 export const MobileImageScroller: FC<{
   containerRef: Ref<HTMLDivElement>
   images: ReactNode[]
-  title: ReactNode
-  description: ReactNode
-}> = ({ title, description, containerRef, images }) => {
+}> = ({ containerRef, images }) => {
+  return (
+    <div
+      className="flex items-end gap-x-4 overflow-hidden  flex-nowrap"
+      ref={containerRef}
+    >
+      {images.filter(Boolean).map((image, i) => {
+        return (
+          <div key={i} className="relative shrink-0">
+            {image}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+export const FigCaption: FC<{
+  title?: ReactNode
+  description?: ReactNode
+}> = ({ title, description }) => {
   return (
     <div>
       <div className="px-4">
@@ -14,21 +32,8 @@ export const MobileImageScroller: FC<{
         </p>
 
         <p className="text-[15px] xl:text-[24px] leading-[28px] font-body text-black/60 font-500 pb-[26px]">
-        {/* <p className="xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px]"> */}
           {description}
         </p>
-      </div>
-      <div
-        className="flex items-end gap-x-4 overflow-hidden  flex-nowrap"
-        ref={containerRef}
-      >
-        {images.filter(Boolean).map((image, i) => {
-          return (
-            <div key={i} className="relative shrink-0">
-              {image}
-            </div>
-          )
-        })}
       </div>
     </div>
   )

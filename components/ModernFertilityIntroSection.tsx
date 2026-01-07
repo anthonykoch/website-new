@@ -1,5 +1,5 @@
 import { Description4x8Grid } from '@/features/grid/Description4x8Grid'
-import { MobileImageScroller } from './MobileImageScroller'
+import { FigCaption, MobileImageScroller } from './MobileImageScroller'
 import { useRef } from 'react'
 import { useScroll, useTransform, motion } from 'motion/react'
 import { useScrollX } from '@/hooks/use-scroll-x'
@@ -38,9 +38,7 @@ export const ModernFertilityIntroSection = () => {
   })
 
   return (
-    <div
-    // ref={mfIntroRef}
-    >
+    <div>
       <motion.div
         style={{ y: mfIntroY, scale: mfIntroScale }}
         className="will-change-transform"
@@ -49,8 +47,7 @@ export const ModernFertilityIntroSection = () => {
           <div className="pb-20 lg:pb-40" />
 
           <div className="xl:hidden">
-            <MobileImageScroller
-              containerRef={mfMobileContainer}
+            <FigCaption
               title="Modern Fertility"
               description={
                 <span className="max-w-[380px] block">
@@ -58,6 +55,9 @@ export const ModernFertilityIntroSection = () => {
                   their fertility options.
                 </span>
               }
+            />
+            <MobileImageScroller
+              containerRef={mfMobileContainer}
               images={[
                 <img
                   src="/final-compressed/mf-first-mobile.svg"
