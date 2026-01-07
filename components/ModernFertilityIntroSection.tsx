@@ -29,7 +29,8 @@ export const ModernFertilityIntroSection = () => {
   const mfmobilescroll = useScroll({
     target: mfMobileContainer,
     // offset: ['0vh end', '160vh end'],
-    offset: ['0 end', '240vh end'],
+    offset: ['10vh end', '50vh start'],
+    // offset: ['0 end', '240vh end'],
   })
 
   useScrollX({

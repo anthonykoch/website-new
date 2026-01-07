@@ -18,7 +18,7 @@ export const useScrollX = ({
 
     if (scrollableTransform.current) {
       const left = scrollableTransform.current(progress)
-      container.current.scrollLeft = left
+      container.current.style.transform = `translateX(${-left}px)`
     }
   })
 
