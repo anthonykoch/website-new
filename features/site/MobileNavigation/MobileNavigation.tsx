@@ -23,7 +23,7 @@ export const MobileNavigation = () => {
               id="mobile-navigation"
               className="xl:hidden fixed flex justify-end z-2000 left-0 top-0 size-full"
             >
-              <div className="w-[290px] max-w-full relative">
+              <div className="w-full min-[500px]:w-[290px] max-w-full relative">
                 <MobileNavOverlay />
                 <div className="w-[calc(100%-60px)] pt-[30px] mx-auto relative text-center">
                   <div className="relative">
@@ -166,20 +166,20 @@ const Links = () => {
       if (isPresent) {
         if (!hasAnimatedIn.current) {
           hasAnimatedIn.current = true
-          animate(
+          await animate(
             'a',
             { opacity: [0, 1] },
             {
               delay: 0.2,
-              // delay: stagger(0.06, { startDelay: 0.2 }),
-              // delay: 0.2 + i * 0.06,
               ease: easeOutExpo,
               duration: 1,
             },
           )
+          hasAnimatedIn.current = false
         }
       } else {
         hasAnimatedOut.current = true
+
         if (hasAnimatedOut) {
           await animate(
             'a',
@@ -191,24 +191,37 @@ const Links = () => {
             },
           )
           safeToRemove()
+          hasAnimatedOut.current = false
         }
       }
     })()
   }, [isPresent])
 
   return (
-    <div className="z-10" ref={scope}>
-      <Link href="/blog" onClick={() => setVisible(false)}>
+    <div ref={scope}>
+      <Link
+        className="block will-change-[opacity]"
+        href="/blog"
+        onClick={() => setVisible(false)}
+      >
         <Appearance>
           <Text>Blog</Text>
         </Appearance>
       </Link>
-      <Link href="/#work" onClick={() => setVisible(false)}>
+      <Link
+        className="block will-change-[opacity]"
+        href="/#work"
+        onClick={() => setVisible(false)}
+      >
         <Appearance>
           <Text>Work</Text>
         </Appearance>
       </Link>
-      <Link href="/#contact" onClick={() => setVisible(false)}>
+      <Link
+        className="block will-change-[opacity]"
+        href="/#contact"
+        onClick={() => setVisible(false)}
+      >
         <Appearance>
           <Text>Contact</Text>
         </Appearance>
@@ -231,7 +244,7 @@ const Links = () => {
           opacity: [1, 0],
           transition: {
             opacity: {
-              delay: 0.1
+              delay: 0.1,
             },
             delay: 0,
             duration: 0.3,
@@ -241,12 +254,18 @@ const Links = () => {
         className="selector-line origin-top  h-px w-full bg-black/15"
       />
 
-      <ExternalLink href="https://github.com/anthonykoch?tab=repositories">
+      <ExternalLink
+        className="block will-change-[opacity]"
+        href="https://github.com/anthonykoch?tab=repositories"
+      >
         <Appearance>
           <Text>Github</Text>
         </Appearance>
       </ExternalLink>
-      <ExternalLink href="https://x.com/">
+      <ExternalLink
+        className="block will-change-[opacity]"
+        href="https://x.com/"
+      >
         <Appearance>
           <Text>@anthkoch</Text>
         </Appearance>
