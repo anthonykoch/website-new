@@ -1,9 +1,9 @@
 import { ExternalLink } from '@/components/action/Link'
 import { isMobileMenuVisible } from '@/store'
-import { easeOutExpo } from '@/utils/animation'
+import { easeOutCubic, easeOutExpo } from '@/utils/animation'
 import { Portal } from '@radix-ui/react-portal'
 import classNames from 'classnames'
-import { useAtom } from 'jotai'
+import { useAtom, useSetAtom } from 'jotai'
 import { AnimatePresence, motion, useAnimate, usePresence } from 'motion/react'
 import Link from 'next/link'
 import { FC, ReactNode, useEffect, useRef } from 'react'
@@ -23,7 +23,7 @@ export const MobileNavigation = () => {
               id="mobile-navigation"
               className="xl:hidden fixed flex justify-end z-2000 left-0 top-0 size-full"
             >
-              <div className="w-[40vw] relative">
+              <div className="w-[290px] max-w-full relative">
                 <MobileNavOverlay />
                 <div className="w-[calc(100%-60px)] pt-[30px] mx-auto relative text-center">
                   <div className="relative">
@@ -34,7 +34,7 @@ export const MobileNavigation = () => {
                         transition: {
                           opacity: {
                             ease: easeOutExpo,
-                            duration: 1,
+                            duration: 1.2,
                             delay: 0.2,
                           },
                         },
@@ -43,9 +43,9 @@ export const MobileNavigation = () => {
                         opacity: [1, 0],
                         transition: {
                           opacity: {
-                            ease: easeOutExpo,
+                            ease: easeOutCubic,
                           },
-                          duration: 1,
+                          duration: 0.3,
                         },
                       }}
                       type="button"
@@ -91,7 +91,7 @@ const Text: FC<{ children: ReactNode }> = ({ children }) => {
   )
 }
 
-const Button: FC<{ children: ReactNode }> = ({ children }) => {
+const Appearance: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <span className="text-black relative block py-5 px-3 active:bg-primary-500 hover:bg-primary-500 hover:shadow-box transition-colors duration-100 hover:text-black">
       {children}
@@ -113,15 +113,13 @@ const MobileNavOverlay = () => {
           animate(
             'div',
             {
-              scaleY: [0.9, 1],
-              scaleX: [0.9, 1],
+              scaleY: [0.92, 1],
+              scaleX: [0.92, 1],
             },
             {
               delay: 0,
-              // delay: 0.2 + i * 0.06,
               ease: easeOutExpo,
-              duration: 0.5,
-              // duration: 1,
+              duration: 0.6,
             },
           )
         }
@@ -130,14 +128,13 @@ const MobileNavOverlay = () => {
         if (hasAnimatedOut) {
           await animate(
             'div',
-            { opacity: [1, 0], scaleY: [1, 0.9], scaleX: [1, 0.9] },
             {
-              delay: 0.06,
-              ease: easeOutExpo,
+              opacity: [1, 0],
+            },
+            {
+              delay: 0.12,
+              ease: easeOutCubic,
               duration: 0.3,
-              //     delay: (list.length - i) * 0.05,
-              //     duration: 0.3,
-              //     ease: easeOutExpo,
             },
           )
           safeToRemove()
@@ -162,13 +159,15 @@ const Links = () => {
   const hasAnimatedIn = useRef(false)
   const hasAnimatedOut = useRef(false)
 
+  const setVisible = useSetAtom(isMobileMenuVisible)
+
   useEffect(() => {
     ;(async () => {
       if (isPresent) {
         if (!hasAnimatedIn.current) {
           hasAnimatedIn.current = true
           animate(
-            '.selector-text',
+            'a',
             { opacity: [0, 1] },
             {
               delay: 0.2,
@@ -183,11 +182,11 @@ const Links = () => {
         hasAnimatedOut.current = true
         if (hasAnimatedOut) {
           await animate(
-            '.selector-text',
+            'a',
             { opacity: [1, 0] },
             {
               delay: 0,
-              ease: easeOutExpo,
+              ease: easeOutCubic,
               duration: 0.3,
               //     delay: (list.length - i) * 0.05,
               //     duration: 0.3,
@@ -202,33 +201,33 @@ const Links = () => {
 
   return (
     <div className="z-10" ref={scope}>
-      <Link href="/blog">
-        <Button>
+      <Link href="/blog" onClick={() => setVisible(false)}>
+        <Appearance>
           <Text>Blog</Text>
-        </Button>
+        </Appearance>
       </Link>
-      <Link href="/#work">
-        <Button>
+      <Link href="/#work" onClick={() => setVisible(false)}>
+        <Appearance>
           <Text>Work</Text>
-        </Button>
+        </Appearance>
       </Link>
-      <Link href="/#contact">
-        <Button>
+      <Link href="/#contact" onClick={() => setVisible(false)}>
+        <Appearance>
           <Text>Contact</Text>
-        </Button>
+        </Appearance>
       </Link>
 
-      <div className="h-px w-full bg-white/50" />
+      <div className="h-px w-full bg-black/15" />
 
       <ExternalLink href="https://github.com/anthonykoch?tab=repositories">
-        <Button>
+        <Appearance>
           <Text>Github</Text>
-        </Button>
+        </Appearance>
       </ExternalLink>
       <ExternalLink href="https://x.com/">
-        <Button>
+        <Appearance>
           <Text>@anthkoch</Text>
-        </Button>
+        </Appearance>
       </ExternalLink>
     </div>
   )

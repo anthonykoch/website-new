@@ -1,12 +1,11 @@
-import { isMobileNavigationAnimationOpen, isMobileMenuVisible } from '@/store'
+import { isMobileMenuVisible } from '@/store'
 import classNames from 'classnames'
-import { useAtom, useAtomValue, useSetAtom } from 'jotai'
-import { NavigationScrollReveal } from './Navigation/NavigationScrollReveal'
+import { useAtom } from 'jotai'
 import { AnimatePresence } from 'motion/react'
+import { NavigationScrollReveal } from './Navigation/NavigationScrollReveal'
 
 export const MobileNavTrigger = () => {
   const [isOpen, setOpen] = useAtom(isMobileMenuVisible)
-  // const isRangeOpen = useAtomValue(isMobileNavigationAnimationOpen)
 
   return (
     <div>
@@ -21,7 +20,7 @@ export const MobileNavTrigger = () => {
                 aria-expanded="false"
                 aria-controls="mobile-navigation"
                 className={classNames(
-                  `appearance-none cursor-pointer h-[60px] w-[120px]
+                  `appearance-none cursor-pointer h-[60px] w-[90px]
           flex items-center justify-center xl:hidden
           tracking-widest text-[15px] font-600 uppercase font-display
 group-hover:text-black text-white hover:bg-primary-500

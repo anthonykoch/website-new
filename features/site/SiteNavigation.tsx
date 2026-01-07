@@ -18,9 +18,9 @@ export const SiteNavigation: FC<{
         className={classNames(
           'h-[60px] flex items-center transition-colors duration-200 hover:shadow-box',
           {
-            'hover:bg-primary-500 hover:text-black hover:shadow-button hover:shadow-black/10':
+            'active:bg-primary-500 hover:bg-primary-500 hover:text-black active:shadow-button hover:shadow-button hover:shadow-black/10':
               !isBlendModeDifference,
-            'hover:bg-primary-invert hover:shadow-white/20':
+            'hover:bg-primary-invert active:shadow-white/20 hover:shadow-white/20':
               isBlendModeDifference,
             'text-black/80': colorVariant === 'black',
             'text-white/80': colorVariant === 'white',
