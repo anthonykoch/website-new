@@ -1,14 +1,8 @@
-import * as React from 'react'
-import { useState } from 'react'
-import Link from 'next/link'
-import cx from 'classnames'
-import { MenuIcon, XIcon } from '@heroicons/react/solid'
-
 import { scrollTo } from '@/hooks/use-scroll-into-view'
+import { default as classNames, default as cx } from 'classnames'
+import Link from 'next/link'
 import { NextRouter, useRouter } from 'next/router'
-import classNames from 'classnames'
-import { useSetAtom } from 'jotai'
-import { isMobileNavigationOpen } from '@/store'
+import * as React from 'react'
 
 const createLinks = (
   router: NextRouter,
@@ -53,12 +47,11 @@ export const Navigation: React.FC<{
 }> = ({ colorVariant, isBlendModeDifference = false }) => {
   const router = useRouter()
   const links = createLinks(router)
-  const setOpen = useSetAtom(isMobileNavigationOpen)
 
   return (
     <nav>
       <div className="inline-flex list-none *:relative">
-        {links.map(({ href, children, props }) => (
+        {links.map(({ href, children }) => (
           <li className="hidden xl:block" key={href}>
             <Link
               href={href}
@@ -81,24 +74,7 @@ export const Navigation: React.FC<{
           </li>
         ))}
 
-        <li className="xl:hidden">
-          <button
-            onClick={() => setOpen(true)}
-            className={classNames(
-              `appearance-none cursor-pointer h-[60px] px-7 flex items-center justify-center 
-                tracking-widest text-[15px] font-600 uppercase font-display
-              `,
-              {
-                'text-black/80': colorVariant === 'black',
-                'text-white/80': colorVariant === 'white',
-              },
-            )}
-          >
-            Menu
-          </button>
-        </li>
-
-        <li>
+        <li className="hidden xl:block">
           <a
             href="https://github.com/anthonykoch?tab=repositories"
             target="_blank"

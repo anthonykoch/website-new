@@ -274,13 +274,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             </clipPath>
           </defs>
         </svg>
-      </div> */}
-      {/* Keep fixed? */}
-      <div className="mix-blend-difference absolute top-0 left-0 w-full z-1000">
-        <div className="max-w-site mx-auto">
-          <SiteNavigation colorVariant="white" isBlendModeDifference />
-        </div>
-      </div>
+      </div> */} 
 
       <div className="bg-[#EAEAEA]">
         <section>

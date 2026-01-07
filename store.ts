@@ -1,3 +1,3 @@
 import { atom } from 'jotai'
 
-export const isMobileNavigationOpen = atom(false)
+export const isMobileMenuVisible = atom(false)

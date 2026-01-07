@@ -70,11 +70,11 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
 
   return (
     <div>
-      <div className="absolute top-0 left-0 w-full z-1000">
+      {/* <div className="absolute top-0 left-0 w-full z-1000">
         <div className="max-w-site mx-auto">
           <SiteNavigation colorVariant="white" />
         </div>
-      </div>
+      </div> */}
 
       <div className="absolute top-0 left-0 w-full">
         <BlogHero />

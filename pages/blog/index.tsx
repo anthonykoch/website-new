@@ -86,13 +86,12 @@ const Blog: NextPage<Props> = ({ posts }) => {
       <Head>
         <title>Blog | Anthony Koch</title>
       </Head>
-
+{/* 
       <div className="absolute top-0 left-0 w-full z-1000">
         <div className="max-w-site mx-auto">
           <SiteNavigation colorVariant="white" />
-          {/* <div className="border-b border-black/5 w-[calc(100wh-16px)]"></div> */}
         </div>
-      </div>
+      </div> */}
 
       <BlogHero />
 

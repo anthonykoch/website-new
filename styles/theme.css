@@ -34,7 +34,7 @@
   --font-display: 'rift-soft', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Helvetica, Arial, sans-serif;
   --font-link: 'Rift Soft', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Helvetica, Arial, sans-serif, ;
+    Helvetica, Arial, sans-serif;
   --font-heading: 'visby', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Helvetica, Arial, sans-serif;
   --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -76,6 +76,8 @@
   --spacing-nav-icon-width: 54px;
   --spacing-py-nav-link: 16px;
   /* --spacing-px-nav-link: 48px; */
+
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
   /* --drop-shadow-button: drop-shadow(3px 4px 7px rgba(0,0,0,.2)); */
   --shadow-box: 0 20px 30px -9px rgb(0 0 0/20%);
