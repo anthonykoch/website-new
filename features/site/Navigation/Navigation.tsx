@@ -44,9 +44,11 @@ const createLinks = (
 export const Navigation: React.FC<{
   isBlendModeDifference?: boolean
   colorVariant?: 'white' | 'black'
-}> = ({ colorVariant, isBlendModeDifference = false }) => {
+}> = ({ colorVariant }) => {
+  // }> = ({ colorVariant, isBlendModeDifference = false }) => {
   const router = useRouter()
   const links = createLinks(router)
+  const isNotHome = router.pathname !== '/'
 
   return (
     <nav>
@@ -61,9 +63,12 @@ export const Navigation: React.FC<{
               `,
                 {
                   'hover:bg-primary-500 hover:text-black hover:shadow-button hover:shadow-black/10':
-                    !isBlendModeDifference,
-                  'hover:bg-primary-invert hover:shadow-white/20':
-                    isBlendModeDifference,
+                    isNotHome,
+                  'hover:bg-primary-invert hover:shadow-white/20': !isNotHome,
+                  // 'hover:bg-primary-500 hover:text-black hover:shadow-button hover:shadow-black/10':
+                  //   !isBlendModeDifference,
+                  // 'hover:bg-primary-invert hover:shadow-white/20':
+                  //   isBlendModeDifference,
                   'text-black/80': colorVariant === 'black',
                   'text-white/80': colorVariant === 'white',
                 },

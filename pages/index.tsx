@@ -65,6 +65,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   // const clipPath1 = useTransform(scrollYProgress, [0, 1], [100, 0])
   // const introBlockClipPath = useMotionTemplate`inset(0% 0px ${clipPath1}% 0px)`
 
+  const hash = typeof window === 'undefined' ? '' : window.location.hash
+
   useEffect(() => {
     timeout.current = setTimeout(() => {
       if (
@@ -124,7 +126,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         { opacity: [0, 1] },
         {
           duration: 1.5,
-          delay: (delay += 0.5),
+          delay: hash.length ? 0.5 : (delay += 0.5),
           ease: easeOutExpo,
         },
       )
@@ -134,7 +136,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         { opacity: [0, 1] },
         {
           duration: 1.2,
-          delay: (delay += 0.07),
+          delay: hash.length ? 0.5 + 0.06 : (delay += 0.07),
           ease: easeOutExpo,
         },
       )

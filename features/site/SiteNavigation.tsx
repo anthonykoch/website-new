@@ -3,11 +3,15 @@ import { Logo } from './Logo'
 import { Navigation } from './Navigation'
 import classNames from 'classnames'
 import { FC } from 'react'
+import { useRouter } from 'next/router'
 
 export const SiteNavigation: FC<{
   isBlendModeDifference?: boolean
   colorVariant?: 'black' | 'white'
 }> = ({ colorVariant = 'black', isBlendModeDifference }) => {
+  const router = useRouter()
+  const isNotHome = router.pathname !== '/'
+
   return (
     <div
       className="flex items-start justify-between w-full z-900"
@@ -18,10 +22,14 @@ export const SiteNavigation: FC<{
         className={classNames(
           'h-[60px] flex items-center transition-colors duration-200 hover:shadow-box',
           {
-            'active:bg-primary-500 hover:bg-primary-500 hover:text-black active:shadow-button hover:shadow-button hover:shadow-black/10':
-              !isBlendModeDifference,
-            'hover:bg-primary-invert active:shadow-white/20 hover:shadow-white/20':
-              isBlendModeDifference,
+            'hover:bg-primary-500 hover:text-black hover:shadow-button hover:shadow-black/10':
+              isNotHome,
+            'hover:bg-primary-invert hover:shadow-white/20': !isNotHome,
+
+            // 'active:bg-primary-500 hover:bg-primary-500 hover:text-black active:shadow-button hover:shadow-button hover:shadow-black/10':
+            //   !isBlendModeDifference,
+            // 'hover:bg-primary-invert active:shadow-white/20 hover:shadow-white/20':
+            //   isBlendModeDifference,
             'text-black/80': colorVariant === 'black',
             'text-white/80': colorVariant === 'white',
           },
