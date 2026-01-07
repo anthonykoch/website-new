@@ -188,9 +188,6 @@ const Links = () => {
               delay: 0,
               ease: easeOutCubic,
               duration: 0.3,
-              //     delay: (list.length - i) * 0.05,
-              //     duration: 0.3,
-              //     ease: easeOutExpo,
             },
           )
           safeToRemove()
@@ -217,7 +214,32 @@ const Links = () => {
         </Appearance>
       </Link>
 
-      <div className="h-px w-full bg-black/15" />
+      <motion.div
+        initial={{
+          scaleX: 0,
+        }}
+        animate={{
+          scaleX: [0, 1],
+          transition: {
+            delay: 0.1,
+            duration: 0.5,
+            ease: easeOutExpo,
+          },
+        }}
+        exit={{
+          scaleX: [1, 0],
+          opacity: [1, 0],
+          transition: {
+            opacity: {
+              delay: 0.1
+            },
+            delay: 0,
+            duration: 0.3,
+            ease: easeOutCubic,
+          },
+        }}
+        className="selector-line origin-top  h-px w-full bg-black/15"
+      />
 
       <ExternalLink href="https://github.com/anthonykoch?tab=repositories">
         <Appearance>

@@ -335,7 +335,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                     </span>
                     <div
                       ref={newJobRef}
-                      className="mt-2 setup-fade-in px-5 py-3 text-white text-[13px] lg:text-[15px] inline-flex items-center relative"
+                      className="mt-2 setup-fade-in px-5 py-3 text-white text-[13px] lg:text-[15px] max-[380px]:flex inline-flex items-center relative"
                     >
                       <div className="size-full absolute bg-black z-10 top-0 left-0" />
                       {/* <div className="absolute top-0 left-0 size-full translate-[20px]">
@@ -345,12 +345,12 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                           transition={{ type: 'spring', bounce: 0 }}
                         />
                       </div> */}
-                      <p className="relative z-20">
-                        <span className="top-[-0.08em] relative text-primary-500 text-[19px] inline-block align-middle mr-0.5 font-500">
+                      <p className="relative z-20 flex flex-nowrap items-baseline">
+                        <span className="top-[0.03em] relative text-primary-500 text-[19px] inline-block align-middle mr-0.5 font-500 leading-[0.8]">
                           {'>'}
                         </span>
                         <span className="inline-block align-middle">
-                          Currently looking for new opportunities - Jan 2025
+                          Currently looking for new opportunities <span className='max-[380px]:block'>- Jan 2026</span>
                         </span>
                       </p>
                     </div>
