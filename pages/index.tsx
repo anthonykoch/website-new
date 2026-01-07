@@ -1,14 +1,12 @@
 import { Footer } from '@/features/site/footer/Footer'
-import ImageExhibitDownloadsPage from '@/public/final-compressed/exhibit-downloads-page.png'
-import ImageExhibitTadpoleShopPage from '@/public/final-compressed/exhibit-tadpole-shop.png'
 import type { NextPage } from 'next'
 
 import { Billboard } from '@/components/Billboard'
 import { ModernFertilityIntroSection } from '@/components/ModernFertilityIntroSection'
 import { OpalIntroSection } from '@/components/OpalIntroSection'
 import { TripleChevron } from '@/features/embellishments/TripleChevron'
+// import { splitText } from 'motion-plus'
 
-import { SiteNavigation } from '@/features/site/SiteNavigation'
 import {
   animate,
   motion,
@@ -20,8 +18,10 @@ import {
 import { easeOutExpo } from '@/utils/animation'
 import { useEffect, useRef } from 'react'
 
+import { ExhibitPages } from '@/components/ExhibitPages'
 import { Grid } from '@/components/Grid'
 import { Post } from '@/components/PostList'
+import { usePointerProgress } from '@/hooks/use-pointer-progress'
 
 const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   const opalcameraHomeImageRef = useRef<HTMLImageElement>(null)
@@ -29,8 +29,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
   const opalCameraMacbookScroll = useScroll({
     target: opalcameraHomeImageScrollable,
-    offset: ['60vh end', '220vh start'],
-    // offset: ['100vh end', 'end start'],
+    offset: ['60vh end', 'end 120vh'],
   })
 
   const homeImageYRemap = useTransform(
@@ -39,14 +38,6 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
     [0, -64],
   )
 
-  const homeImageScale = useTransform(
-    opalCameraMacbookScroll.scrollYProgress,
-    [0.5, 1],
-    [1, 1.5],
-    // [1, 1.06],
-
-    // [1, 0.97],
-  )
   const homeImageY = useMotionTemplate`${homeImageYRemap}%`
 
   useEffect(() => {
@@ -85,7 +76,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
       )
         return
 
-      let delay = 0.9
+      let delay = 0.4
+      // let delay = 3.1
 
       if (introTitleRef.current) {
         introTitleRef.current.style.visibility = 'visible'
@@ -99,7 +91,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         {
           duration: 2.2,
           ease: easeOutExpo,
-          delay: 0.4,
+          delay: delay,
         },
       )
 
@@ -228,11 +220,22 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
     [0, 300],
   )
 
+  // const testRef = useRef(null)
+
+  // useEffect(() => {
+  //   if (!testRef.current) return
+
+  //   // splitText(testRef.current)
+  // }, [])
+
+  const { x: mouseX, y: mouseY } = usePointerProgress()
+
+  const y = useTransform(mouseY, [0, 1], [-20, 20], {})
+  const x = useTransform(mouseX, [0, 1], [-20, 20], {})
+
   return (
     <div>
-      {/* 
-      <div>
-        <motion.div
+      {/* <motion.div
           initial={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
           animate={{ clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' }}
           // initial={{
@@ -241,7 +244,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           // animate={{
           //   scaleY: 0,
           // }}
-          transition={{ ease: easeOutExpo, duration: 1, delay: 3.1 }}
+          transition={{ ease: easeOutExpo, duration: 1, delay: 3.6 }}
           // style={{
           //   scaleY: [100, 0],
           // }}
@@ -259,7 +262,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
               fill="white"
             />
           </svg>
-        </motion.div>
+        </motion.div> */}
+      {/*       
        <svg className="w-20 invert-color" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_908_189)">
             <rect width="16" height="16" fill="black" />
@@ -274,41 +278,29 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             </clipPath>
           </defs>
         </svg>
-      </div> */} 
+
+         */}
+
+      {/* 
+      <div className="fixed z-99999 top-0 left-0 size-full">
+        <p className="mt-2  bg-black px-5 py-3 text-white text-[13px] lg:text-[15px] inline-flex items-center">
+          <span className="top-[-0.08em] relative text-primary-500 text-[19px] inline-block align-middle mr-0.5 font-500">
+            {'>'}
+          </span>
+          <span ref={testRef} className="inline-block align-middle">
+            Currently looking for new opportunities - Jan 2025
+          </span>
+        </p>
+      </div> */}
 
       <div className="bg-[#EAEAEA]">
         <section>
-          {/* <div className="pt-10 xl:pt-[80px]" /> */}
-
-          {/* <div className="h-[500px] bg-black">
-            <div className="max-w-[1200px] mx-auto">
-              <span className="text-[70px] font-300 text-white font-heading leading-[1.3] xl:leading-[1.1] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
-                Anthony Koch is a front-end developer helping companies and
-                startups ship pixel-perfect, responsive websites.
-              </span>
-            </div>
-          </div> */}
-          {/* <div className="pt-[80px] xl:pt-[180px]" /> */}
           <div
             ref={introBlockRef}
-            // style={{ clipPath: introBlockClipPath }}
             className="bg-black h-[57vh] w-full z-10 absolute origin-bottom"
           />
-          <div className="h-[100vh]">
-            {/* <div className="pt-20 xl:pt-[70px]" /> */}
-            {/* <div className="pt-20 xl:pt-[150px]" /> */}
-            {/* <div className="mix-blend-difference relative size-13 bg-white flex items-end justify-center "> */}
-            {/* <div className="-mb-20">
-                <div className="mix-blend-difference relative size-[300px] bg-white flex items-end justify-center ">
-                <span className="size-[80%] absolute left-1/2 top-1/2 -translate-1/2 border border-solid border-[#151515] block"></span>
-                  <span className="text-[22px] text-[#EAEAEA] leading-[0.8] font-600 font-heading absolute bottom-[-1px]">Koch</span>
-                </div>
-                </div> */}
-            {/* <img src="/final/favicon.svg" className="w-[60px]" /> */}
-
+          <div className="h-screen">
             <div className="text-black fixed w-full top-[17vh]">
-              {/* Safari absolute breaks when using sticky. 1000% a rendering error. ugh... */}
-              {/* <div className="text-black sticky top-[17vh]"> */}
               <div className="max-w-site mx-auto">
                 <div className="grid grid-cols-12 gap-x-4 px-4">
                   <div className="col-span-12 xl:col-span-11 xl:col-start-2">
@@ -339,12 +331,27 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                         </span>
                       </span>
                     </span>
-                    <p
+                    <div
                       ref={newJobRef}
-                      className="mt-2 setup-fade-in bg-black px-5 py-3 inline-block text-white text-[13px] lg:text-[15px]"
+                      className="mt-2 setup-fade-in px-5 py-3 text-white text-[13px] lg:text-[15px] inline-flex items-center relative"
                     >
-                      Currently looking for new opportunities - Jan 2025
-                    </p>
+                      <div className="size-full absolute bg-black z-10 top-0 left-0" />
+                      {/* <div className="absolute top-0 left-0 size-full translate-[20px]">
+                        <motion.div
+                          className="striped bg-primary-500 size-full"
+                          style={{ y, x }}
+                          transition={{ type: 'spring', bounce: 0 }}
+                        />
+                      </div> */}
+                      <p className="relative z-20">
+                        <span className="top-[-0.08em] relative text-primary-500 text-[19px] inline-block align-middle mr-0.5 font-500">
+                          {'>'}
+                        </span>
+                        <span className="inline-block align-middle">
+                          Currently looking for new opportunities - Jan 2025
+                        </span>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -430,36 +437,12 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             </div>
           </section>
 
-          <div className="pb-10 xl:pb-30" />
+          <div className="pb-20 xl:pb-40" />
+          {/* <div className="pb-10 xl:pb-30" /> */}
+          <ExhibitPages />
 
-          <div className="grid xl:grid-cols-12 gap-x-4 gap-y-4 px-4 xl:px-0 max-w-[2700px] mx-auto">
-            <div className="col-span-6 xl:h-[825px]">
-              <div className="pb-4  text-center">
-                <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
-                  Tadpole Shop Page
-                </p>
-              </div>
-              <img
-                className="xl:size-full xl:object-cover object-right"
-                src={ImageExhibitTadpoleShopPage.src}
-                loading="lazy"
-              />
-            </div>
-            <div className="col-span-6 xl:h-[825px]">
-              <div className="pb-4 max-xl:pt-10 text-center">
-                <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
-                  Downloads Page
-                </p>
-              </div>
-              <img
-                className="xl:size-full xl:object-cover object-left"
-                src={ImageExhibitDownloadsPage.src}
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          <div className="pt-30" />
+          <div className="pt-30 lg:pt-40" />
+          {/* <div className="pt-30" /> */}
 
           <div
             className="relative h-[calc(1700px+100vh)] lg:h-[calc(2200px+100vh)] -mb-[100vh] bg-[#EAEAEA]"
