@@ -33,7 +33,7 @@ export const FigCaption: FC<{
           {title}
         </p>
 
-        <p className="text-[15px] xl:text-[24px] leading-7 font-body text-black/60 font-500 pb-[26px]">
+        <p className="text-[15px] xl:text-[24px] leading-7 font-body text-black/70 font-500 pb-[26px]">
           {description}
         </p>
       </div>

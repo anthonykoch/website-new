@@ -21,15 +21,15 @@ const Blog: NextPage<Props> = ({ posts }) => {
 
     animate(
       '.selector-title',
-      { y: ['-110%', '0%'], opacity: [0, 1] },
+      { y: ['110%', '0%'], opacity: [0, 1] },
       // { y: [12, 0], opacity: [0, 1] },
-      { delay: delay, duration: 1.4, ease: easeOutExpo },
+      { delay: delay, duration: 1.2, ease: easeOutExpo },
       // { delay: delay, duration: 1, ease: easeOutExpo },
     )
 
     animate(
       '.selector-lead',
-      { y: ['-110%', '0%'], opacity: [0, 1] },
+      { y: ['110%', '0%'], opacity: [0, 1] },
       // { y: [12, 0], opacity: [0, 1] },
       { delay: (delay += 0.0), duration: 1.4, ease: easeOutExpo },
       // { delay: (delay += 0.06), duration: 1, ease: easeOutExpo },

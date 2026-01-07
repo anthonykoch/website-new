@@ -106,7 +106,7 @@ export const OpalIntroSection = () => {
 
           <div className="pb-20 lg:pb-30" />
           {/* Desktop version */}
-          <div className="xl:max-w-[max(1200px,80%)] px-[16px] 5xl:max-w-site mx-auto hidden xl:flex gap-x-4 relative">
+          <div className="xl:max-w-[max(1200px,80%)] px-[16px] 5xl:max-w-[1800px] mx-auto hidden xl:flex gap-x-4 relative">
             <div className="w-[36.533085%]">
               <h3 className="font-bold text-[14px] uppercase tracking-[1.4px] text-right mb-[10px]">
                 <span className="relative">

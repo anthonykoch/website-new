@@ -78,12 +78,18 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
         <div className="">
           <header className="px-gutter pt-48 relative">
             <div className="max-w-post xl:max-w-post-wide  mx-auto">
-              <h1 className="selector-title setup-fade-in text-left text-[42px] lg:text-[52px] 2xl:text-[64px] leading-[1.1] text-primary-500 font-heading font-800">
+              <h1
+                className="selector-title setup-fade-in text-left text-[42px] lg:text-[52px] 2xl:text-[64px] leading-[1.1] text-primary-500 font-heading font-800"
+                style={{ transform: 'translateY(20px)' }}
+              >
                 <Link href={asPath} className="text-inherit">
                   {post.title}
                 </Link>
               </h1>
-              <p className="selector-date setup-fade-in mt-4 text-white/90 font-display tracking-widest font-semibold ">
+              <p
+                className="selector-date setup-fade-in mt-4 text-white/90 font-display tracking-widest font-semibold"
+                style={{ transform: 'translateY(12px)' }}
+              >
                 {post.humanized.created_at}
               </p>
             </div>

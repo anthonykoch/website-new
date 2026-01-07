@@ -110,7 +110,7 @@ export const ExhibitPages = () => {
           {/* <motion.div className="w-[130vw] will-change-transform" style={{ x }}> */}
           <div
             ref={ref}
-            className="flex gap-x-4 gap-y-4 xl:px-0 max-w-[2700px] mx-auto"
+            className="flex gap-x-4 gap-y-4 xl:px-0 max-w-[3400px] mx-auto"
           >
             <div className="xl:w-1/2 relative aspect-2485/1736 h-[400px] xl:h-[825px] xl:aspect-auto">
               <div className="pb-4  text-center">

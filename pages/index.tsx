@@ -301,7 +301,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             ref={introBlockRef}
             className="bg-black h-[57vh] w-full z-10 absolute origin-bottom"
           />
-          <div className="h-screen">
+          <div className="h-screen ">
+
             <div className="text-black fixed w-full top-[17vh]">
               <div className="max-w-site mx-auto">
                 <div className="grid grid-cols-12 gap-x-4 px-4">
@@ -350,7 +351,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                           {'>'}
                         </span>
                         <span className="inline-block align-middle">
-                          Currently looking for new opportunities <span className='max-[380px]:block'>- Jan 2026</span>
+                          Currently looking for new opportunities{' '}
+                          <span className="max-[380px]:block">- Jan 2026</span>
                         </span>
                       </p>
                     </div>
@@ -428,7 +430,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   />
                   <div className="pb-4" />
 
-                  <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#999999] max-w-[500px] pb-4">
+                  <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#757575] max-w-[500px] pb-4">
                     Dr. Opal is a web based tool created to help users update
                     their Tadpole firmware. I built out the UI and collaborated
                     with device engineers to interface it with the Tadpole.
