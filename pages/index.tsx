@@ -443,7 +443,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           {/* <div className="pb-10 xl:pb-30" /> */}
           <ExhibitPages />
 
-          <div className="pt-30 lg:pt-40" />
+          <div className="pt-10 lg:pt-40" />
           {/* <div className="pt-30" /> */}
 
           <div
