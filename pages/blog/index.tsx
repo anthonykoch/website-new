@@ -86,12 +86,6 @@ const Blog: NextPage<Props> = ({ posts }) => {
       <Head>
         <title>Blog | Anthony Koch</title>
       </Head>
-{/* 
-      <div className="absolute top-0 left-0 w-full z-1000">
-        <div className="max-w-site mx-auto">
-          <SiteNavigation colorVariant="white" />
-        </div>
-      </div> */}
 
       <BlogHero />
 
@@ -109,7 +103,6 @@ const Blog: NextPage<Props> = ({ posts }) => {
               </p>
             </div>
           </div>
-          {/* </BillboardGrid> */}
         </div>
 
         <div className="z-10 relative">
@@ -141,10 +134,8 @@ const Blog: NextPage<Props> = ({ posts }) => {
                     </p>
                   </div>
                   <div className="selector-border absolute left-[140px] lg:left-[170px] top-0 h-full w-px bg-[#e6e6e6] origin-top"></div>
-                  <PostList posts={posts.slice(0)} />
+                  <PostList posts={posts} />
                 </div>
-                {/* <OldPostList posts={posts.slice(0)}  /> */}
-                {/* <PostList posts={posts.slice(1)} /> */}
               </div>
 
               {/* <div className="pb-30" /> */}

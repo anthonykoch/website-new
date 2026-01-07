@@ -51,7 +51,7 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
       '.selector-date',
       { y: [12, 0], opacity: [0, 1] },
       {
-        delay: delay += 0.08,
+        delay: (delay += 0.08),
         ease: easeOutExpo,
         duration: 1,
       },
@@ -59,9 +59,9 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
 
     animate(
       '.selector-post',
-      {  opacity: [0, 1] },
+      { opacity: [0, 1] },
       {
-        delay: delay += 0.06,
+        delay: (delay += 0.06),
         ease: easeOutExpo,
         duration: 0.8,
       },
@@ -70,25 +70,15 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
 
   return (
     <div>
-      {/* <div className="absolute top-0 left-0 w-full z-1000">
-        <div className="max-w-site mx-auto">
-          <SiteNavigation colorVariant="white" />
-        </div>
-      </div> */}
-
       <div className="absolute top-0 left-0 w-full">
         <BlogHero />
       </div>
 
-      {/* <div className="absolute top-0 left-0 w-full z-1000"></div> */}
-
       <BlogPlacerholder className="relative z-10">
-        {/* <div className="h-[500px] bg-[#f8f7f8]"> */}
         <div className="">
           <header className="px-gutter pt-48 relative">
             <div className="max-w-post xl:max-w-post-wide  mx-auto">
               <h1 className="selector-title setup-fade-in text-left text-[42px] lg:text-[52px] 2xl:text-[64px] leading-[1.1] text-primary-500 font-heading font-800">
-                {/* <h1 className="text-left text-4xl 2xl:text-[64px] leading-[1.1] text-primary-500 font-heading font-600"> */}
                 <Link href={asPath} className="text-inherit">
                   {post.title}
                 </Link>
