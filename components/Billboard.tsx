@@ -12,7 +12,7 @@ export const Billboard: FC<{ children?: ReactNode }> = ({ children }) => (
 
 export const BillboardGrid: FC<{ children?: ReactNode }> = ({ children }) => {
   return (
-    <div className="grid grid-cols-12 gap-x-4 px-4">
+    <div data-c="BillboardGrid" className="grid grid-cols-12 gap-x-4 px-4">
       <div className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2">
         {children}
       </div>

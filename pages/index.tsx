@@ -295,16 +295,22 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         </p>
       </div> */}
 
-      <div className="bg-[#EAEAEA]">
+      <div>
         <section>
           <div
             ref={introBlockRef}
             className="bg-black h-[57vh] w-full z-10 absolute origin-bottom"
           />
-          <div className="h-screen ">
+          <div className="h-screen bg-[#e6ddc3] relative">
+            {/* <div
+  class="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"
+></div> */}
 
-            <div className="text-black fixed w-full top-[17vh]">
-              <div className="max-w-site mx-auto">
+ {/* <div class="absolute z-10 top-0 left-0 h-full w-full bg-neutral-200"><div class="absolute inset-0 bg-primary-500 bg-size-[20px_20px] opacity-20 blur-[100px]"></div></div>  */}
+
+            <div className="text-black fixed z-10 w-full top-[17vh]">
+              
+              <div className="max-w-site mx-auto relative z-10">
                 <div className="grid grid-cols-12 gap-x-4 px-4">
                   <div className="col-span-12 xl:col-span-11 xl:col-start-2">
                     <span className="text-[clamp(24px,calc(55vw*(100/1900)),46px)] font-500  font-heading leading-[1.5] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
@@ -319,7 +325,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                       >
                         <span className="setup-overflow">
                           <span className="setup-line-down selector-line">
-                            Anthony Koch is a front-end developer helping{' '}
+                            Anthony Koch is a UI developer helping{' '}
                           </span>
                         </span>
                         <span className="setup-overflow">
@@ -351,7 +357,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                           {'>'}
                         </span>
                         <span className="inline-block align-middle">
-                          Currently looking for new opportunities{' '}
+                          Actively looking for new opportunities{' '}
                           <span className="max-[380px]:block">- Jan 2026</span>
                         </span>
                       </p>
@@ -362,136 +368,152 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             </div>
           </div>
         </section>
-        <div className="absolute w-full top-[57vh] z-500 bg-[#EAEAEA]">
-          <div id="work">
-            <div
-              className="bg-black text-white relative z-1000 "
-              ref={firstBlockRef}
-            >
-              <div className="max-w-site mx-auto">
-                <Billboard>
-                  <p>
-                    <span className="block setup-fade-in" ref={lookRef}>
-                      Take a look at my work below.{' '}
-                    </span>
-                    <span className="setup-fade-in" ref={arrowsRef}>
-                      <TripleChevron />
-                    </span>
-                  </p>
-                </Billboard>
-              </div>
-            </div>
-          </div>
-
-          <section>
-            <OpalIntroSection />
-          </section>
-
-          <section className="bg-[#eaeaea] z-10 relative">
-            <div className="bg-black text-white">
-              <div className="max-w-site mx-auto">
-                <Billboard>
-                  <p>A selection of my work at Opal</p>
-                </Billboard>
-              </div>
-            </div>
-
-            <div className="max-w-site mx-auto px-4">
-              <div className="pb-20 lg:pb-30" />
-              <div className="grid grid-cols-12 gap-x-4">
-                <div className="max-xl:order-2 col-span-12 xl:col-span-3 xl:col-start-2">
-                  <div className="max-xl:max-w-[350px] lg:mx-0 w-full">
-                    <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
-                      MOBILE NAVIGATION
+        <div className="absolute w-full top-[57vh] z-500">
+          <div className="bg-[#EAEAEA]">
+            <div id="work">
+              <div
+                className="bg-black text-white relative z-1000 "
+                ref={firstBlockRef}
+              >
+                <div className="max-w-site mx-auto">
+                  <Billboard>
+                    <p>
+                      <span className="block setup-fade-in" ref={lookRef}>
+                        Here's companies I've worked with
+                        {/* Take a look at my work below.{' '} */}
+                      </span>
+                      <span className="setup-fade-in" ref={arrowsRef}>
+                        <TripleChevron />
+                      </span>
                     </p>
-                    <div className="pb-4" />
-                    <video
-                      autoPlay
-                      muted
-                      loop
-                      className="object-cover size-full"
-                    >
-                      <source
-                        src="/final-compressed/mobile-nav.mp4"
-                        type="video/mp4"
-                      />
-                    </video>
-                  </div>
-                </div>
-                <div className="col-span-12 xl:col-span-7">
-                  <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
-                    FIRMWARE UPDATER
-                  </p>
-                  <div className="pb-4" />
-
-                  <img
-                    src="/final-compressed/exhibit-doctor.png"
-                    loading="lazy"
-                  />
-                  <div className="pb-4" />
-
-                  <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#757575] max-w-[500px] pb-4">
-                    Dr. Opal is a web based tool created to help users update
-                    their Tadpole firmware. I built out the UI and collaborated
-                    with device engineers to interface it with the Tadpole.
-                  </p>
-                  <div className="pb-10" />
+                  </Billboard>
                 </div>
               </div>
             </div>
-          </section>
 
-          <div className="pb-20 xl:pb-40" />
-          {/* <div className="pb-10 xl:pb-30" /> */}
-          <ExhibitPages />
+            <section className='relative'>
 
-          <div className="pt-10 lg:pt-40" />
-          {/* <div className="pt-30" /> */}
 
-          <div
-            className="relative h-[calc(1700px+100vh)] lg:h-[calc(2200px+100vh)] -mb-[100vh] bg-[#EAEAEA]"
-            ref={opalcameraHomeImageScrollable}
-          >
-            <div className="sticky top-[30vh] lg:top-[10vh] left-0 ">
-              <div className="">
-                <motion.div
-                  // style={{ scale: homeImageScale }}
-                  className="relative z-10 will-change-transform"
-                >
-                  <img
-                    src="/final-compressed/empty-macbook.png"
-                    className="w-full max-w-[800px] xl:max-w-[1200px] mx-auto absolute z-20 top-0 left-1/2 -translate-x-1/2"
-                  />
-                  <div className="max-w-[800px] xl:max-w-[1200px] w-full mx-auto">
-                    <div className="aspect-1000/570 relative  pt-[6%]">
-                      <div className="overflow-hidden w-full max-w-[71.5%] aspect-640/400 z-40 relative left-[14%] ">
-                        <div className="striped z-10 absolute size-full">
-                          <span className="absolute top-1/2 left-1/2 -translate-1/2 text-[14px] text-white/90 bg-black py-2 px-4 font-display tracking-wider uppercase font-600">
-                            Loading...
-                          </span>
-                        </div>
-                        <motion.img
-                          src="/final-compressed/opalcamera-home-full.png"
-                          className="absolute top-0 left-0 w-full h-auto will-change-transform object-top z-20"
-                          loading="lazy"
-                          ref={opalcameraHomeImageRef}
-                          style={{ y: homeImageY }}
+              <OpalIntroSection />
+
+
+
+            </section>
+
+            <section className="bg-[#eaeaea] z-10 relative">
+              <div className="bg-black text-white">
+                <div className="max-w-site mx-auto">
+                  <Billboard>
+                    <p>A selection of my work at Opal</p>
+                  </Billboard>
+                </div>
+              </div>
+            
+              <div className="max-w-site mx-auto px-4 z-10 relative">
+                {/* <div className="absolute -z-10 top-0 left-0 h-full w-full bg-slate-950"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[14px_24px]"></div></div> */}
+  
+                 {/* <div class="absolute -z-10 top-0 left-0 h-full w-full bg-neutral-200"><div class="absolute inset-0 bg-primary-500 bg-[size:20px_20px] opacity-20 blur-[100px]"></div></div>  */}
+
+{/* <div class="absolute -z-10 top-0 left-0 h-full inset-0 w-full bg-[radial-gradient(rgba(0,0,0,0.2)_1px,transparent_1px)] bg-size-[16px_16px]"></div> */}
+
+
+                <div className="pb-20 lg:pb-30" />
+                <div className="grid grid-cols-12 gap-x-4">
+                  <div className="max-xl:order-2 col-span-12 xl:col-span-3 xl:col-start-2">
+                    <div className="max-xl:max-w-[350px] lg:mx-0 w-full">
+                      <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
+                        MOBILE NAVIGATION
+                      </p>
+                      <div className="pb-4" />
+                      <video
+                        autoPlay
+                        muted
+                        loop
+                        className="object-cover size-full"
+                      >
+                        <source
+                          src="/final-compressed/mobile-nav.mp4"
+                          type="video/mp4"
                         />
-                      </div>
+                      </video>
                     </div>
                   </div>
+                  <div className="col-span-12 xl:col-span-7">
+                    <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
+                      FIRMWARE UPDATER
+                    </p>
+                    <div className="pb-4" />
 
-                  {/* <div className="max-w-[760px] mx-auto px-4 ">
+                    <img
+                      src="/final-compressed/exhibit-doctor.png"
+                      loading="lazy"
+                    />
+                    <div className="pb-4" />
+
+                    <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#757575] max-w-[500px] pb-4">
+                      Dr. Opal is a web based tool created to help users update
+                      their Tadpole firmware. I built out the UI and
+                      collaborated with device engineers to interface it with
+                      the Tadpole.
+                    </p>
+                    <div className="pb-10" />
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <div className="pb-20 xl:pb-40" />
+            {/* <div className="pb-10 xl:pb-30" /> */}
+            <ExhibitPages />
+
+            <div className="pt-10 lg:pt-40" />
+            {/* <div className="pt-30" /> */}
+
+            <div
+              className="relative h-[calc(1700px+100vh)] lg:h-[calc(2200px+100vh)] -mb-[100vh]"
+              ref={opalcameraHomeImageScrollable}
+            >
+              <div className="sticky top-[30vh] lg:top-[10vh] left-0 ">
+                <div className="">
+                  <motion.div
+                    // style={{ scale: homeImageScale }}
+                    className="relative z-10 will-change-transform"
+                  >
+                    <img
+                      src="/final-compressed/empty-macbook.png"
+                      className="w-full max-w-[800px] xl:max-w-[1200px] mx-auto absolute z-20 top-0 left-1/2 -translate-x-1/2"
+                    />
+                    <div className="max-w-[800px] xl:max-w-[1200px] w-full mx-auto">
+                      <div className="aspect-1000/570 relative  pt-[6%]">
+                        <div className="overflow-hidden w-full max-w-[71.5%] aspect-640/400 z-40 relative left-[14%] ">
+                          <div className="striped z-10 absolute size-full">
+                            <span className="absolute top-1/2 left-1/2 -translate-1/2 text-[14px] text-white/90 bg-black py-2 px-4 font-display tracking-wider uppercase font-600">
+                              Loading...
+                            </span>
+                          </div>
+                          <motion.img
+                            src="/final-compressed/opalcamera-home-full.png"
+                            className="absolute top-0 left-0 w-full h-auto will-change-transform object-top z-20"
+                            loading="lazy"
+                            ref={opalcameraHomeImageRef}
+                            style={{ y: homeImageY }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* <div className="max-w-[760px] mx-auto px-4 ">
                   <p className="text-[36px] leading-[1.2] font-heading font-500 -tracking-wide">
                     The project expanded into so much more.
                   </p>
                 </div> */}
-                </motion.div>
+                  </motion.div>
+                </div>
+                {/* <div className="h-[50%] w-full absolute left-0 top-0 bg-[#EAEAEA]" /> */}
               </div>
-              {/* <div className="h-[50%] w-full absolute left-0 top-0 bg-[#EAEAEA]" /> */}
             </div>
+            <div className="pb-4" />
           </div>
-          <div className="pb-4" />
 
           <div className="bg-black text-white z-10 relative">
             <div className="max-w-site mx-auto">
@@ -572,7 +594,20 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   <p>
                     <span className="block">Up Next: Modern Fertility</span>
                     <TripleChevron />
-                  </p>
+                  </p> 
+
+{/* <img src="/final/card-mf.png" className='ml-auto w-[300px]'/> */}
+                  {/* <svg
+                    className="w-auto "
+                    viewBox="0 0 353 387"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M299.904 0C299.904 0 294.302 47.335 280.483 85.782C270.772 112.753 250.169 175.446 197.321 201.565C186.677 206.844 159.818 219.682 128.85 210.317C109.888 204.584 93.1499 192.247 81.1695 175.174C53.1585 133.049 52.5672 43.7934 52.5672 7.90052V0H0V386.24H50.4197V164.447C62.5372 184.502 78.1728 201.725 96.4198 215.119C112.839 227.897 131.45 236.909 151.135 241.613C167.277 245.442 183.903 246.191 200.278 243.826C230.689 238.811 258.807 223.189 280.452 199.284C288.939 190.09 296.37 179.798 302.58 168.635V386.581H353V0H299.904Z"
+                      fill="white"
+                    />
+                  </svg> */}
                 </Billboard>
               </div>
             </div>
@@ -591,8 +626,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   <div className="max-w-site mx-auto">
                     <Billboard>
                       <p className="max-w-[1200px]">
-                        I led frontend development for the marketing website and
-                        user dashboard.
+                        I led front-end development for the marketing website
+                        and user dashboard.
                       </p>
                     </Billboard>
                   </div>
@@ -650,7 +685,27 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
               <div className="pt-40" />
             </section>
           </div>
+          {/* 
+          <div className="bg-black text-white z-10 relative">
+            <div className="max-w-site mx-auto">
+              <Billboard>
+                <p>
+                  I've also worked with
+                </p>
+              </Billboard>
+            </div>
+          </div> */}
+
           <div className="bg-white">
+            <div className="pb-40" />
+            {/* 
+            <img
+              className="max-w-[1200px] mx-auto"
+              src="/final/companies.png"
+            />
+            <div className="pb-40" />
+            <div className="pb-40" /> */}
+
             <section>
               <div className="max-w-site mx-auto">
                 <div className="lg:grid grid-cols-12 gap-x-4 px-4 ">
@@ -661,7 +716,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   </p>
                 </div>
               </div>
-              <div className="pb-30" />
+              <div className="pb-40" />
+              <div className="pb-40" />
             </section>
 
             <Footer />

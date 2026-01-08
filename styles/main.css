@@ -61,11 +61,11 @@
 }
 
 .logo-blink-rect {
-  animation: logo-blink-rect 2000ms 0ms infinite;
+  animation: logo-blink-rect 3000ms 0ms infinite;
 }
 
 .logo-blink {
-  animation: logo-blink 2000ms 0ms infinite;
+  animation: logo-blink 3000ms 0ms infinite;
 }
 
 @layer base {

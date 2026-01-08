@@ -152,7 +152,7 @@ export const OpalIntroSection = () => {
               <div className="h-full flex flex-col items-start justify-end">
                 <a
                   href="https://opalcamera.com/"
-                  className="inline-flex items-center justify-center gap-x-5 w-full font-body uppercase text-[12px] font-500 tracking-wide   text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black  transition-all duration-150 px-5 py-2 shadow-none hover:shadow-box"
+                  className="inline-flex items-center justify-center gap-x-5 w-full font-body uppercase text-[12px] lg:text-[13px] font-500 tracking-wide   text-white hover:text-black bg-black hover:bg-primary-500 hover:**:fill-black  transition-all duration-150 px-5 lg:py-3 shadow-none hover:shadow-box"
                   ref={opalViewSiteRef}
                   target="_blank"
                   rel="noopener noreferrer"
