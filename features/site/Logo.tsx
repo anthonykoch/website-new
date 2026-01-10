@@ -5,7 +5,7 @@ export const Logo: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <div
       className={cx(
-        'flex items-center px-gutter-lg xl:px-0 xl:justify-center w-[190px] xl:w-[220px]',
+        'flex items-center px-4 xl:px-0 xl:justify-center w-[190px] xl:w-[220px]',
         className,
       )}
       style={{ transition: 'transform 200ms ease-in' }}

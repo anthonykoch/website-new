@@ -9,6 +9,10 @@ import { MobileNavTrigger } from '@/features/site/MobileNavTrigger'
 import { Animations } from '@/features/site/Animations'
 import { SiteNavigation } from '@/features/site/SiteNavigation'
 import { NavigationScrollReveal } from '@/features/site/Navigation/NavigationScrollReveal'
+import { AnimatePresence, motion } from 'motion/react'
+import { useRouter } from 'next/router'
+import { Sail } from '@/features/sail/Sail'
+import { RouterComposerProvider } from '@/features/router/context/RouterComposerContext'
 
 const HeadMeta = () => {
   return (
@@ -27,21 +31,26 @@ const HeadMeta = () => {
 }
 
 function App({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
   return (
-    <Provider>
-      <HeadMeta />
-      <MobileNavigation />
-      <MobileNavTrigger />
-      <Animations />
-      <div className="mix-blend-difference fixed top-0 left-0 w-full z-1000">
-        <NavigationScrollReveal>
-          <div className="max-w-site mx-auto">
-            <SiteNavigation colorVariant="white" isBlendModeDifference />
-          </div>
-        </NavigationScrollReveal>
-      </div>
-      <Component {...pageProps} />
-    </Provider>
+    <RouterComposerProvider>
+      <Provider>
+        <HeadMeta />
+        <MobileNavigation />
+        <MobileNavTrigger />
+        <Sail />
+        <Animations />
+        <div className="mix-blend-difference fixed top-0 left-0 w-full z-1000">
+          <NavigationScrollReveal>
+            <div className="max-w-site mx-auto">
+              <SiteNavigation colorVariant="white" isBlendModeDifference />
+            </div>
+          </NavigationScrollReveal>
+        </div>
+        <Component key={router.route} {...pageProps} />
+      </Provider>
+    </RouterComposerProvider>
   )
 }
 

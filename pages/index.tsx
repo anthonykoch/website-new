@@ -1,11 +1,11 @@
 import { Footer } from '@/features/site/footer/Footer'
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
+import superjson from 'superjson'
 
 import { Billboard } from '@/components/Billboard'
 import { ModernFertilityIntroSection } from '@/components/ModernFertilityIntroSection'
 import { OpalIntroSection } from '@/components/OpalIntroSection'
 import { TripleChevron } from '@/features/embellishments/TripleChevron'
-// import { splitText } from 'motion-plus'
 
 import {
   animate,
@@ -16,12 +16,41 @@ import {
 } from 'motion/react'
 
 import { easeOutExpo } from '@/utils/animation'
-import { useEffect, useRef } from 'react'
+import { FC, RefObject, useEffect, useRef } from 'react'
 
 import { ExhibitPages } from '@/components/ExhibitPages'
 import { Grid } from '@/components/Grid'
-import { Post } from '@/components/PostList'
+import { Post, PostList } from '@/components/PostList'
 import { usePointerProgress } from '@/hooks/use-pointer-progress'
+import { getAllPostMeta } from '@/utils/post'
+
+const Looking: FC<{ containerRef: RefObject<HTMLDivElement | null> }> = ({
+  containerRef,
+}) => (
+  <div
+    ref={containerRef}
+    className="mt-2 setup-fade-in px-5 py-3 text-white text-[13px] lg:text-[15px] max-[380px]:flex inline-flex items-center relative"
+  >
+    <div className="size-full absolute bg-black z-10 top-0 left-0" />
+    {/* <div className="absolute top-0 left-0 size-full translate-[20px]">
+                          <motion.div
+                            className="striped bg-primary-500 size-full"
+                            style={{ y, x }}
+                            transition={{ type: 'spring', bounce: 0 }}
+                          />
+                        </div> */}
+    <p className="relative z-20 flex flex-nowrap items-center">
+      {/* <span className="top-[0.03em] relative text-primary-500 text-[19px] inline-block align-middle mr-0.5 font-500 leading-[0.8]">
+        {'>'}
+      </span> */}
+      <span className="hidden lg:block bg-primary-500 size-[4px] rounded-full leading-0 mr-1" />
+      <span className="inline-block align-middle font-body text-[13px] font-500">
+        Actively looking for new opportunities{' '}
+        <span className="max-[380px]:block">- Jan 2026</span>
+      </span>
+    </p>
+  </div>
+)
 
 const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   const opalcameraHomeImageRef = useRef<HTMLImageElement>(null)
@@ -299,21 +328,31 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         <section>
           <div
             ref={introBlockRef}
-            className="bg-black h-[57vh] w-full z-10 absolute origin-bottom"
+            className="bg-black h-[69vh] w-full z-10 absolute origin-bottom"
           />
           <div className="h-screen bg-[#e6ddc3] relative">
+            {/* <BlogBackground> */}
+            {/* <BlogImages /> */}
+            {/* </BlogBackground> */}
+            <div className="bg-linear-to-r from-white/70 to-transparent size-full absolute top-0 left-0 z-20"></div>
+            {/* <div className="bg-linear-to-t from-black to-transparent w-full h-1/2 absolute bottom-[29vh] left-0" /> */}
+
             {/* <div
   class="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"
 ></div> */}
 
- {/* <div class="absolute z-10 top-0 left-0 h-full w-full bg-neutral-200"><div class="absolute inset-0 bg-primary-500 bg-size-[20px_20px] opacity-20 blur-[100px]"></div></div>  */}
+            <div className="absolute z-10 top-0 left-0 h-full w-full bg-neutral-200">
+              <div className="absolute inset-0 bg-primary-500 bg-size-[20px_20px] opacity-20 blur-[100px]"></div>
+            </div>
 
-            <div className="text-black fixed z-10 w-full top-[17vh]">
-              
-              <div className="max-w-site mx-auto relative z-10">
+            {/* <div className="text-black absolute z-20 w-full top-[20vh]"> */}
+            <div className="text-black fixed z-20 w-full top-[20vh]">
+              {/* <div className="text-white fixed z-20 w-full top-[20vh]"> */}
+              <div className="max-w-site mx-auto relative z-20">
                 <div className="grid grid-cols-12 gap-x-4 px-4">
-                  <div className="col-span-12 xl:col-span-11 xl:col-start-2">
-                    <span className="text-[clamp(24px,calc(55vw*(100/1900)),46px)] font-500  font-heading leading-[1.5] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
+                  <div className="col-span-12 xl:col-span-11 xl:col-start-2 flex gap-x-4 items-start justify-between">
+                    <div className="text-[clamp(24px,calc(55vw*(100/1900)),35px)] font-500  font-heading leading-[1.5] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative">
+                      {/* <div className="text-[clamp(24px,calc(55vw*(100/1900)),46px)] font-500  font-heading leading-[1.5] xl:leading-[1.3] max-w-[1200px] [.split-word]:will-change-[transform,opacity] relative"> */}
                       <p className="md:hidden">
                         Anthony Koch is a front-end developer helping companies
                         and startups ship pixel-perfect, responsive websites.
@@ -321,7 +360,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                       <span
                         ref={introTitleRef}
                         style={{ visibility: 'hidden' }}
-                        className="hidden md:block max-w-[1000px]"
+                        className="hidden md:block max-w-[700px]"
+                        // className="hidden md:block max-w-[1000px]"
                       >
                         <span className="setup-overflow">
                           <span className="setup-line-down selector-line">
@@ -339,28 +379,26 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                           </span>
                         </span>
                       </span>
-                    </span>
-                    <div
-                      ref={newJobRef}
-                      className="mt-2 setup-fade-in px-5 py-3 text-white text-[13px] lg:text-[15px] max-[380px]:flex inline-flex items-center relative"
-                    >
-                      <div className="size-full absolute bg-black z-10 top-0 left-0" />
-                      {/* <div className="absolute top-0 left-0 size-full translate-[20px]">
-                        <motion.div
-                          className="striped bg-primary-500 size-full"
-                          style={{ y, x }}
-                          transition={{ type: 'spring', bounce: 0 }}
-                        />
-                      </div> */}
-                      <p className="relative z-20 flex flex-nowrap items-baseline">
-                        <span className="top-[0.03em] relative text-primary-500 text-[19px] inline-block align-middle mr-0.5 font-500 leading-[0.8]">
-                          {'>'}
-                        </span>
-                        <span className="inline-block align-middle">
-                          Actively looking for new opportunities{' '}
-                          <span className="max-[380px]:block">- Jan 2026</span>
-                        </span>
-                      </p>
+                      <Looking containerRef={newJobRef} />
+                    </div>
+                    <div className="relative flex-1 h-full flex gap-x-4">
+                      {/* <div className="relative flex-1 h-full flex gap-x-4 justify-end"> */}
+                      {/* <img
+                        src="/final/downloads-mobile.png"
+                        // src="/final/opalcamera-home.png"
+                        className="w-[300px] shadow-button z-10 absolute translate-y-[100px] translate-x-[100px]"
+                      />
+                      <img
+                        src="/final/card-mf.png"
+                        className="w-[300px] shadow-button absolute top-0 left-0"
+                      /> */}
+                      {/* <img
+                        src="/final/downloads-mobile.png"
+                        className="w-[300px] shadow-button absolute top-0 left-0"
+                        // className="w-[300px] shadow-button absolute top-0 left-0 translate-x-[100px]"
+                      /> */}
+                      {/* <img src="/final/downloads-mobile.png" className="w-[300px]" /> */}
+                      {/* <PostList posts={posts}></PostList> */}
                     </div>
                   </div>
                 </div>
@@ -368,7 +406,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             </div>
           </div>
         </section>
-        <div className="absolute w-full top-[57vh] z-500">
+        <div className="absolute w-full top-[68vh] z-500">
           <div className="bg-[#EAEAEA]">
             <div id="work">
               <div
@@ -391,13 +429,8 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
               </div>
             </div>
 
-            <section className='relative'>
-
-
+            <section className="relative">
               <OpalIntroSection />
-
-
-
             </section>
 
             <section className="bg-[#eaeaea] z-10 relative">
@@ -408,14 +441,13 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   </Billboard>
                 </div>
               </div>
-            
+
               <div className="max-w-site mx-auto px-4 z-10 relative">
                 {/* <div className="absolute -z-10 top-0 left-0 h-full w-full bg-slate-950"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-size-[14px_24px]"></div></div> */}
-  
-                 {/* <div class="absolute -z-10 top-0 left-0 h-full w-full bg-neutral-200"><div class="absolute inset-0 bg-primary-500 bg-[size:20px_20px] opacity-20 blur-[100px]"></div></div>  */}
 
-{/* <div class="absolute -z-10 top-0 left-0 h-full inset-0 w-full bg-[radial-gradient(rgba(0,0,0,0.2)_1px,transparent_1px)] bg-size-[16px_16px]"></div> */}
+                {/* <div class="absolute -z-10 top-0 left-0 h-full w-full bg-neutral-200"><div class="absolute inset-0 bg-primary-500 bg-[size:20px_20px] opacity-20 blur-[100px]"></div></div>  */}
 
+                {/* <div class="absolute -z-10 top-0 left-0 h-full inset-0 w-full bg-[radial-gradient(rgba(0,0,0,0.2)_1px,transparent_1px)] bg-size-[16px_16px]"></div> */}
 
                 <div className="pb-20 lg:pb-30" />
                 <div className="grid grid-cols-12 gap-x-4">
@@ -594,9 +626,9 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   <p>
                     <span className="block">Up Next: Modern Fertility</span>
                     <TripleChevron />
-                  </p> 
+                  </p>
 
-{/* <img src="/final/card-mf.png" className='ml-auto w-[300px]'/> */}
+                  {/* <img src="/final/card-mf.png" className='ml-auto w-[300px]'/> */}
                   {/* <svg
                     className="w-auto "
                     viewBox="0 0 353 387"
@@ -728,14 +760,14 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   )
 }
 
-// export const getStaticProps: GetStaticProps<any> = async () => {
-//   const posts = await getAllPostMeta()
+export const getStaticProps: GetStaticProps<any> = async () => {
+  const posts = await getAllPostMeta()
 
-//   return {
-//     props: {
-//       // posts: superjson.serialize(posts).json as any,
-//     },
-//   }
-// }
+  return {
+    props: {
+      posts: superjson.serialize(posts).json as any,
+    },
+  }
+}
 
 export default Home

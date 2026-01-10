@@ -7,8 +7,18 @@ export const useAnimator = <Key extends string>() => {
   const ref = useRef({} as RefValue)
 
   return {
+    // active(): AnimationPlaybackControls[] {
+    //   return Object.values(ref.current).flat()
+    // },
+
+    async wait() {
+      return (await Promise.all(
+        Object.values(ref.current).flat(),
+      )) as AnimationPlaybackControls[]
+    },
+
     add(
-      animations: Record<Key, AnimationPlaybackControls[] | undefined | null>
+      animations: Record<Key, AnimationPlaybackControls[] | undefined | null>,
     ) {
       Object.keys(animations).forEach((key) => {
         const k = key as Key
