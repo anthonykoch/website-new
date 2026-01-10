@@ -86,15 +86,22 @@
   --shadow-box: 0 20px 30px -9px rgb(0 0 0/20%);
 
   --shadow-button: 0 24px 60px -9px rgb(0 0 0/20%);
+  --shadow-button-2: 0 20px 50px -4px #0003;
   --shadow-button-none: 0 24px 60px -9px rgb(0 0 0/0%);
 }
 
 @utility copy-heading-2 {
-  font-family: theme(--font-heading);
+  /* font-family: theme(--font-heading);
   font-size: 36px;
   font-weight: 600;
   letter-spacing: -0.9px;
-  line-height: 45px;
+  line-height: 45px; */
+
+  font-family: theme(--font-heading);
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
 }
 
 @utility copy-heading-2-sm {
@@ -106,11 +113,16 @@
 }
 
 @utility copy-body-4 {
-  font-size: 18px;
+  /* font-size: 18px;
   font-family: theme(--font-body);
   font-weight: 500;
   line-height: 32px;
-  letter-spacing: -0.9px;
+  letter-spacing: -0.9px; */
+  font-size: 17px;
+  font-family: theme(--font-body);
+  font-weight: 500;
+  line-height: 1.9;
+  letter-spacing: -0.5px;
 }
 
 @utility copy-body-4-sm {
@@ -131,3 +143,49 @@
     rgba(0, 0, 0, 0.06) 20px
   );
 }
+
+.gradient-flow {
+  /* font-size: 5rem; */
+  /* font-weight: 900; */
+  background: linear-gradient(90deg, #f09, #0ff, #9f0, #f09);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: flow 7s linear infinite;
+}
+
+@keyframes flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
+}
+
+/* 
+.image-text {
+  font-size: 9vw;
+  font-weight: 900;
+  background: url('/final/exhibit-doctor.png') center/cover;
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  mix-blend-mode: screen;  
+}
+  
+*/
+
+.gradient-text {
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(-90deg, green, black);
+  /* background-image: linear-gradient(-90deg, #e6ddc3, white); */
+  /* linear-gradient(-90deg, #e6ddc3, #572d41) */
+  /* background-image: linear-gradient(90deg, #898989, #494949); */
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+
+

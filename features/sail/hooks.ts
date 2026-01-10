@@ -23,14 +23,21 @@ const isCurrentLink = (href: string) => {
 
 export const useHandleLinkClicks = () => {
   const router = useRouter()
-  // const set = useSetAtom(routerState)
   const composer = useRouterComposer()
 
   useEffect(() => {
     const handleClick = async (e: MouseEvent) => {
+      if (e.button !== 0) {
+        return
+      }
+
       const target = (e.target as HTMLElement).closest('a')
 
-      if (target && isInternalLink(target.href) && !isCurrentLink(target.href)) {
+      if (
+        target &&
+        isInternalLink(target.href) &&
+        !isCurrentLink(target.href)
+      ) {
         e.preventDefault()
         e.stopPropagation()
 

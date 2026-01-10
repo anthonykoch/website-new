@@ -41,7 +41,7 @@ export const ModernFertilityIntroSection = () => {
   return (
     <div>
       <motion.div
-        style={{ y: mfIntroY, scale: mfIntroScale }}
+        // style={{ y: mfIntroY, scale: mfIntroScale }}
         className="will-change-transform"
       >
         <div className="mx-auto max-w-site">

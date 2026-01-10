@@ -57,7 +57,7 @@ export const OpalIntroSection = () => {
     <div>
       <div>
         <motion.div
-          style={{ y: opalIntroSectionY, scale: opalIntroSectionScale }}
+          // style={{ y: opalIntroSectionY, scale: opalIntroSectionScale }}
           transition={{ ease: 'easeIn' }}
           className="will-change-transform"
         >
@@ -68,9 +68,8 @@ export const OpalIntroSection = () => {
               title="Opal Camera"
               description={
                 <span className="max-w-[420px] block">
-                  A website made to market the capabilities of
-                  {/* Opal Camera is a website made to market the capabilities of */}
-                  the C1 and Tadpole cameras, and the accompanying Composer app.
+                  A website made to market the capabilities of the C1 and
+                  Tadpole cameras, and the accompanying Composer app.
                 </span>
               }
             />
