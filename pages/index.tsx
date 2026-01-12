@@ -247,14 +247,18 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
   const coverScroll = useScroll({
     target: cover,
-    offset: ['-40vw start', '0px start'],
+    offset: ['-30vw start', '0px start'],
   })
 
   const opacity = useTransform(coverScroll.scrollYProgress, [0, 1], [0, 1])
 
+  useEffect(() => {
+    // alert(window.innerHeight)
+  }, [])
+
   return (
     <div>
-      <div className=" px-2 pt-3 fixed z-1000 bottom-10 right-10 ">
+      {/* <div className=" px-2 pt-3 fixed z-1000 bottom-10 right-10 ">
         <div className="pb-4 font-heading font-600 text-[14px] text-black/70 text-center ">
           Jump to 
         </div>
@@ -269,43 +273,38 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             <img src="/final/logo-mf.svg" className="w-[calc(70px-20px)]" />
           </div>
         </div>
-      </div>
+      </div> */}
       <div>
+        {/* <div className="bg-black opacity-10 w-full h-[60px] absolute top-0 left-0 z-100 " /> */}
+        {/* <div className="bg-white opacity-10 w-full h-[60px] absolute top-0 left-0 z-100 " /> */}
+        {/* <div className="bg-linear-to-b from-black/70 to-transparent w-full h-[60px] absolute top-0 left-0 z-100 " /> */}
+
         <section>
-          <div
+          {/* <div
             ref={introBlockRef}
             className="bg-black h-[69vh] w-full z-10 absolute origin-bottom"
-          />
-          <div className="h-screen bg-[#e6ddc3] relative">
-            {/* <BlogBackground> */}
-            {/* <BlogImages /> */}
-            {/* </BlogBackground> */}
-            <div className="bg-linear-to-r from-white/70 to-transparent size-full absolute top-0 left-0 z-20"></div>
+          /> */}
+          <div className="h-screen  relative">
+            {/* <div className="h-screen bg-[#e6ddc3] relative"> */}
+
+            {/* <div className="bg-linear-to-r from-black/70 to-transparent size-1/2 absolute top-0 left-0 z-20" /> */}
             {/* <div className="bg-linear-to-t from-black to-transparent w-full h-1/2 absolute bottom-[29vh] left-0" /> */}
 
             {/* <div
-  class="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"
-></div> */}
-
+  className="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"
+></div>  */}
+            {/* 
             <div className="absolute z-10 top-0 left-0 h-full w-full bg-neutral-200">
               <div className="absolute inset-0 bg-primary-500 bg-size-[20px_20px] opacity-20 blur-[100px]"></div>
-            </div>
-            {/* 
-            <div className="p-20 bg-black z-20 relative">
-              <img
-                src="/final/exhibit-tadpole-shop.png"
-                className="max-w-full w-full  object-contain top-0 left-0 z-20"
-              />
             </div> */}
 
-            {/* <div className="text-black fixed z-20 w-full top-[20vh]"> */}
-            {/* #3f4450 */}
-            {/* <div className="text-black  fixed z-20 w-full top-[20vh]"> */}
-            <div className="text-black mix-blend-difference fixed z-20 w-full top-[20vh]">
+            <div className="text-black mix-blend-difference absolute z-20 w-full top-[40vh]">
               <div className="max-w-site mx-auto relative z-20">
                 <div className="grid grid-cols-12 gap-x-4 px-4">
                   <div className="col-span-12 xl:col-span-10 xl:col-start-2 flex flex-col gap-x-4 items-start justify-between">
                     <div>
+                      {/* <div className="shadow-button border-[10px] border-white border-solid p-20"> */}
+
                       <p className="text-[80px] text-white  font-500 leading-none  font-heading">
                         {/* <p className="text-[80px] text-[#3f4450]  font-500 leading-none  font-heading"> */}
                         I help companies and startups ship pixel-perfect,
@@ -314,43 +313,24 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                       <div className="pb-10" />
                       <button
                         type="button"
-                        className="cursor-pointer shadow-button-2 shadow-black/40 bg-black py-3.5 px-8 inline-block hover:bg-primary-500 transition-colors duration-100 hover:text-black text-[#eee]"
+                        className="cursor-pointer shadow-button-2 shadow-white/40 bg-white py-3.5 px-8 inline-block hover:bg-primary-invert transition-colors duration-100 hover:text-white text-[#111]"
+                        // className="cursor-pointer shadow-button-2 shadow-black/40 bg-black py-3.5 px-8 inline-block hover:bg-primary-500 transition-colors duration-100 hover:text-black text-[#eee]"
                       >
                         <span className="font-600 text-[14px] uppercase font-display tracking-widest">
                           View my latest work
                         </span>
                       </button>
-                      {/* <button
-                        type="button"
-                        className="cursor-pointer   shadow-button-2  shadow-black/40 bg-black py-3.5 px-8 inline-block hover:bg-primary-invert transition-colors duration-100 hover:text-white text-[#111]"
-                      >
-                        <span className="font-600 text-[14px] uppercase font-display tracking-widest">
-                          View my latest work
-                        </span>
-                      </button> */}
                     </div>
                   </div>
                 </div>
-                {/* <img
-                  src="/final/logo-opal-wordmark-b.svg"
-                  className="w-[800px] max-w-full"
-                /> */}
               </div>
             </div>
           </div>
         </section>
-        {/* <div className="w-full relative top-[100vh] z-500"> */}
-        {/* <div className="w-full top-[88vh] z-500"> */}
-        {/* <div className="w-full top-[68vh] z-500"> */}
-        <div className="absolute w-full top-[100vh] z-500">
-          {/* <div className="absolute w-full top-[68vh] z-500"> */}
+        <div className=" w-full  z-500">
           <div className="bg-[#EAEAEA]">
             <div id="work">
-              <div
-                // className="bg-black text-white relative z-1000 "
-                className="bg-black text-white "
-                ref={firstBlockRef}
-              >
+              <div className="bg-black text-white " ref={firstBlockRef}>
                 <div className="max-w-site mx-auto">
                   <Billboard>
                     <p>
@@ -606,6 +586,9 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                 </div>
               </div>
 
+              <img src="/final/MacBook-Pro-16.png" className="w-full mx-auto" />
+              {/* <img src="/final/MacBook-Pro-16.png" className="w-[800px] mx-auto" /> */}
+
               <div className="overflow-hidden">
                 <div className="px-4 max-w-[1200px] mx-auto">
                   {/* <BillboardGrid> */}
@@ -703,7 +686,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                     </div>
                     <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
                       Mentored students 1-on-1 on all aspects of front-end and
-                      backend development. Languages were taught in JavaScript
+                      backend development. Languages were taught for JavaScript
                       and Ruby.
                     </p>
                   </div>

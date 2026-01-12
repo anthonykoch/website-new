@@ -494,3 +494,40 @@ const splitLines = (
 
         
           
+
+
+{/*             
+
+            <div className="flex gap-x-10">
+              <img
+                src="/final/opal-mobile-menu.png"
+                // src="/final/exhibit-tadpole-shop-2.png"
+                className=" w-[300px] mx-auto object-cover top-0 left-0 z-20"
+                // className=" size-full absolute mx-auto object-cover top-0 left-0 z-20"
+              />
+              <img
+                src="/final/mf-home-mobile.png"
+                // src="/final/exhibit-tadpole-shop-2.png"
+                className=" w-[300px] mx-auto object-cover top-0 left-0 z-20"
+                // className=" size-full absolute mx-auto object-cover top-0 left-0 z-20"
+              />
+            </div> */}
+
+
+            {/* <div className="w-full z-30 absolute top-0 left-0"> */}
+            {/* <div className="px-20 w-full z-30 absolute bottom-0 left-0"> */}
+            {/* <img
+                src="/final/opal-mobile-menu.png"
+                // src="/final/exhibit-tadpole-shop-2.png"
+                className=" w-[300px] mx-auto object-cover top-0 left-0 z-20"
+                // className=" size-full absolute mx-auto object-cover top-0 left-0 z-20"
+              /> */}
+            {/* </div> */}
+            {/* 
+            <div className="p-20 w-full z-20 absolute top-0 left-0 -translate-y-1/2">
+              <img
+                src="/final/exhibit-tadpole-shop-sm.png"
+                className=" w-full mx-auto object-contain top-0 left-0 z-20"
+              />
+            </div> */}
+      
