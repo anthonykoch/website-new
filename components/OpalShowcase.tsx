@@ -7,7 +7,7 @@ export const OpalShowcase = () => {
       <div className="max-w-site mx-auto  z-10 relative">
         {/* <div className="px-4"> */}
         <Billboard textSize="lg">
-          <p>
+          <p className="copy-largest">
             I've since worked on <br />
             many parts of Opal.
           </p>

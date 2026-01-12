@@ -61,10 +61,13 @@ export const Sail = () => {
         sail: [
           animate(
             sail.current,
-            { opacity: [1, 0] },
+            { scale: [1, 0] },
+            // { opacity: [1, 0] },
             {
-              duration: 0.3,
-              ease: 'linear',
+              // duration: 0.3,
+              // ease: 'linear',
+              duration: 0.7,
+              ease: easeInOutCubic,
             },
           ),
         ],

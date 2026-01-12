@@ -92,7 +92,7 @@ export const OpalFirst = () => {
 
   return (
     <div className="bg-[#eaeaea] z-10 relative">
-      <div className="pb-20 lg:pb-40" />
+      <div className="pb-40 lg:pb-40" />
       <BillboardGrid>
         <p className="copy-largest">
           My journey at Opal started <br />
@@ -106,33 +106,18 @@ export const OpalFirst = () => {
       <div className="pb-10 lg:pb-30"></div>
 
       <div className="h-[150vh] lg:h-[270vh] relative">
-      {/* <div className="h-[270vh] relative"> */}
         <div
           ref={target}
           className="h-[90%] absolute top-[10%] z-1000 w-full pointer-events-none"
-          // className="h-[90%] absolute top-[10vh] z-1000 w-full pointer-events-none"
         />
         <div
           ref={scaleRef}
-          className="h-[44%]  absolute top-[23%] z-1000 w-full pointer-events-none"
-          // className="h-[44%]  absolute top-[35vh] z-1000 w-full pointer-events-none"
-          // className="h-[120vh]  absolute top-[30vh] z-1000 w-full pointer-events-none"
-          // className="h-[80vh] debug absolute top-0 -translate-y-full z-1000 w-full pointer-events-none"
+          className="h-[44%] absolute top-[23%] z-1000 w-full pointer-events-none"
         />
         <div className="sticky top-0" style={{ top }}>
-          <BillboardGrid>
-            <div className="">
-              {/* <div className="h-[100vh] overflow-visible lg:h-screen w-full flex justify-center items-center"> */}
+          <div className="grid grid-cols-12 gap-x-4 px-4">
+            <div className="col-span-12 lg:col-span-10 md:col-start-1 lg:col-start-2">
               <div className="relative aspect-1648/949 w-full" ref={container}>
-                {/* <div
-                  ref={target}
-                  className="h-[180vh] absolute top-[-45vh] z-1000 w-full pointer-events-none"
-                />
-                <div
-                  ref={before}
-                  className="h-[80vh] absolute top-0 -translate-y-full z-1000 w-full pointer-events-none"
-                /> */}
-                {/* <div ref={before} className="h-[50vh] absolute top-0 -translate-y-full z-1000 w-full" /> */}
                 <motion.div
                   style={{ scale }}
                   className="will-change-transform size-full"
@@ -150,7 +135,7 @@ export const OpalFirst = () => {
                 </motion.div>
               </div>
             </div>
-          </BillboardGrid>
+          </div>
         </div>
       </div>
     </div>

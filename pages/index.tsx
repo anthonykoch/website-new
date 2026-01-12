@@ -274,230 +274,225 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           </div>
         </div>
       </div> */}
-      <div>
-        {/* <div className="bg-black opacity-10 w-full h-[60px] absolute top-0 left-0 z-100 " /> */}
-        {/* <div className="bg-white opacity-10 w-full h-[60px] absolute top-0 left-0 z-100 " /> */}
-        {/* <div className="bg-linear-to-b from-black/70 to-transparent w-full h-[60px] absolute top-0 left-0 z-100 " /> */}
+      {/* <div className="bg-black opacity-10 w-full h-[60px] absolute top-0 left-0 z-100 " /> */}
+      {/* <div className="bg-white opacity-10 w-full h-[60px] absolute top-0 left-0 z-100 " /> */}
+      {/* <div className="bg-linear-to-b from-black/70 to-transparent w-full h-[60px] absolute top-0 left-0 z-100 " /> */}
 
-        <section>
-          <Hero />
-        </section>
+      <section>
+        <Hero />
+      </section>
 
-        <div className="w-full relative z-500">
-          <div className="bg-[#EAEAEA]">
-            <section id="work">
-              <div className="bg-black text-white" ref={firstBlockRef}>
-                <div className="max-w-site mx-auto">
-                  <Billboard>
-                    <p>
-                      <span className="block setup-fade-in" ref={lookRef}>
-                        Brand: Opal Camera
-                        {/* Here's companies I've worked with */}
-                        {/* Take a look at my work below.{' '} */}
-                      </span>
-                      <span className="setup-fade-in" ref={arrowsRef}>
-                        <TripleChevron />
-                      </span>
-                    </p>
-                  </Billboard>
-                </div>
-              </div>
-            </section>
-
-            <section className="relative">
-              <OpalIntroSection />
-            </section>
-
-            <section>
-              <OpalFirst />
-            </section>
-
-            {/* <div class="absolute -z-10 top-0 left-0 h-full inset-0 w-full bg-[radial-gradient(rgba(0,0,0,0.13)_1px,transparent_1px)] bg-size-[16px_16px]"></div> */}
-            <section>
-              <OpalShowcase />
-              <LaptopScroller />
-            </section>
-          </div>
-
-          <div className="bg-white z-10 relative">
-            <div ref={cover} />
-            <motion.div
-              style={{
-                opacity,
-              }}
-              className="bg-black absolute top-[-100vh] left-0 h-screen w-full z-10 pointer-events-none"
-            />
-            <div className="text-black">
+      <div className="w-full relative z-500">
+        <div className="bg-[#EAEAEA]">
+          <section id="work">
+            <div className="bg-black text-white" ref={firstBlockRef}>
               <div className="max-w-site mx-auto">
                 <Billboard>
                   <p>
-                    What started as a landing page grew into architecting an
-                    entire <span className="whitespace-nowrap">e-commerce</span>{' '}
-                    experience.
+                    <span className="block setup-fade-in" ref={lookRef}>
+                      Brand: Opal Camera
+                      {/* Here's companies I've worked with */}
+                      {/* Take a look at my work below.{' '} */}
+                    </span>
+                    <span className="setup-fade-in" ref={arrowsRef}>
+                      <TripleChevron />
+                    </span>
                   </p>
                 </Billboard>
               </div>
             </div>
+          </section>
 
-            {/* <div className="pb-20 xl:pb-30" /> */}
+          <section className="relative">
+            <OpalIntroSection />
+          </section>
+
+          <section>
+            <OpalFirst />
+          </section>
+
+          {/* <div class="absolute -z-10 top-0 left-0 h-full inset-0 w-full bg-[radial-gradient(rgba(0,0,0,0.13)_1px,transparent_1px)] bg-size-[16px_16px]"></div> */}
+          <section>
+            <OpalShowcase />
+            <LaptopScroller />
+          </section>
+        </div>
+
+        <div className="bg-white z-10 relative">
+          <div ref={cover} />
+          <motion.div
+            style={{
+              opacity,
+            }}
+            className="bg-black absolute top-[-100vh] left-0 h-screen w-full z-10 pointer-events-none"
+          />
+          <div className="text-black">
             <div className="max-w-site mx-auto">
-              <motion.div
-                style={{
-                  scale: opalAboutSectionScale,
-                  y: opalAboutSectionY,
-                  z: 1,
-                }}
-                className="will-change-transform"
-              >
-                <Grid
-                  left={
-                    <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[240px] xl:ml-auto">
-                      An expanding role in an evolving stack
-                    </h2>
-                  }
-                  right={
-                    <div className="flex flex-col gap-y-6 copy-body-4-sm lg:copy-body-4 text-[#888787] **:[span]:text-black/70 **:[span]:underline">
-                      <p>
-                        The Opal Camera website is a simple <span>Shopify</span>{' '}
-                        app utilizing the Storefront API through{' '}
-                        <span>graphQL</span> running inside an{' '}
-                        <span>AdonisJS</span> application. In the beginning
-                        stages, we were using <span>Docker</span> deployed
-                        through Digital Ocean but have since transferred the
-                        site to a much simpler stack of <span>NextJS</span>{' '}
-                        using Vercel. The frontend is written using tools like{' '}
-                        <span>Tailwind</span>, <span>motion.dev</span> and{' '}
-                        <span>React</span>.
-                      </p>
-                      <p>
-                        At the start of my time at Opal, I was purely creating
-                        the front-end. I’ve since worked in many different
-                        aspects of development, ranging from building out
-                        administrative tools that manage email signups to custom
-                        email development and Shopify management.
-                      </p>
-                    </div>
-                  }
-                />
-                <div className="pb-8 xl:pb-20" />
-
-                <Grid
-                  left={
-                    <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[288px] text-right xl:ml-auto">
-                      A growing startup
-                    </h2>
-                  }
-                  right={
-                    <div className="*:pb-6 copy-body-4-sm lg:copy-body-4 text-[#888787] ">
-                      <p>
-                        Opal Camera has had great success and continues to grow,
-                        having gotten several rounds of funding, even by the AI
-                        giant OpenAI.
-                      </p>
-                    </div>
-                  }
-                />
-              </motion.div>
-              <div className="pb-20 xl:pb-50" />
-              {/* <div className="pb-10 lg:pb-30" /> */}
-
-              <div ref={aboutOpalRef} />
-            </div>
-
-            <section>
-              <div className="bg-white">
-                <ModernFertilityBrand />
-
-                <ModernFertilityHero />
-                <div className="pb-20 lg:pb-40" />
-
-                <section>
-                  <div className="mx-auto max-w-site">
-                    <Description4x8Grid>
-                      <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
-                        What is Modern Fertility?
-                      </h2>
-                      <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
-                        Modern Fertility is a women's health brand offering
-                        at-home reproductive testing, including hormone tests
-                        that assess key fertility markers like ovarian reserve
-                        and egg count. Founded in 2017, it makes fertility
-                        information more accessible and affordable by enabling
-                        convenient home testing at a lower cost than traditional
-                        clinics.
-                      </p>
-                    </Description4x8Grid>
-                  </div>
-                </section>
-
-                <div className="pb-20 lg:pb-40" />
-
-                <section>
-                  <ModernFertilityShowcase />
-                </section>
-
-                <div className="pb-20 lg:pb-40" />
-
-                <section>
-                  <ModernFertilityAbout />
-                </section>
-              </div>
-            </section>
-
-            {/* <div className="pb-20 lg:pb-40" /> */}
-
-            <div className="bg-white relative z-10">
-              <div className="h-px bg-black/10" />
-              <div className="pb-20 lg:pb-40" />
-              <BillboardGrid>
-                <h2 className="copy-largest">Honorable mentions</h2>
-                <div className="pb-6"></div>
-                <p className="text-black/60 text-[18px] font-body font-500 tracking-tight">
-                  Other places and projects I've worked for.
+              <Billboard>
+                <p>
+                  What started as a landing page grew into architecting an
+                  entire <span className="whitespace-nowrap">e-commerce</span>{' '}
+                  experience.
                 </p>
-              </BillboardGrid>
+              </Billboard>
+            </div>
+          </div>
 
-              <div className="pb-30"></div>
-              <div className="max-w-site px-4">
-                <div className="grid grid-cols-12 items-start gap-x-4 lg:gap-x-10 r-full">
-                  <div className="col-span-12 lg:col-span-4 lg:col-start-3">
-                    <div className="">
-                      <div className="flex items-center min-h-[90px]">
-                        <img
-                          src="/final/logo-thinkful.png"
-                          className="w-[190px]"
-                        />
-                      </div>
-                      <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
-                        Mentored students 1-on-1 on all aspects of front-end and
-                        backend development. Languages were taught for
-                        JavaScript and Ruby.
-                      </p>
-                    </div>
+          {/* <div className="pb-20 xl:pb-30" /> */}
+          <div className="max-w-site mx-auto">
+            <motion.div
+              style={{
+                scale: opalAboutSectionScale,
+                y: opalAboutSectionY,
+                z: 1,
+              }}
+              className="will-change-transform"
+            >
+              <Grid
+                left={
+                  <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[240px] xl:ml-auto">
+                    An expanding role in an evolving stack
+                  </h2>
+                }
+                right={
+                  <div className="flex flex-col gap-y-6 copy-body-4-sm lg:copy-body-4 text-[#888787] **:[span]:text-black/70 **:[span]:underline">
+                    <p>
+                      The Opal Camera website is a simple <span>Shopify</span>{' '}
+                      app utilizing the Storefront API through{' '}
+                      <span>graphQL</span> running inside an{' '}
+                      <span>AdonisJS</span> application. In the beginning
+                      stages, we were using <span>Docker</span> deployed through
+                      Digital Ocean but have since transferred the site to a
+                      much simpler stack of <span>NextJS</span> using Vercel.
+                      The frontend is written using tools like{' '}
+                      <span>Tailwind</span>, <span>motion.dev</span> and{' '}
+                      <span>React</span>.
+                    </p>
+                    <p>
+                      At the start of my time at Opal, I was purely creating the
+                      front-end. I’ve since worked in many different aspects of
+                      development, ranging from building out administrative
+                      tools that manage email signups to custom email
+                      development and Shopify management.
+                    </p>
                   </div>
-                  <div className="col-span-12 lg:col-span-5">
-                    <div className="">
-                      <div className="flex items-center min-h-[90px]">
-                        <img
-                          src="/final/logo-plaid.svg"
-                          className="w-[150px]"
-                        />
-                      </div>
-                      <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
-                        Worked on the marketing site of plaid.com, increasing
-                        performance, building pipeline tools, and making updates
-                        to their documentation.
-                      </p>
+                }
+              />
+              <div className="pb-8 xl:pb-20" />
+
+              <Grid
+                left={
+                  <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[288px] text-right xl:ml-auto">
+                    A growing startup
+                  </h2>
+                }
+                right={
+                  <div className="*:pb-6 copy-body-4-sm lg:copy-body-4 text-[#888787] ">
+                    <p>
+                      Opal Camera has had great success and continues to grow,
+                      having gotten several rounds of funding, even by the AI
+                      giant OpenAI.
+                    </p>
+                  </div>
+                }
+              />
+            </motion.div>
+            <div className="pb-20 xl:pb-50" />
+            {/* <div className="pb-10 lg:pb-30" /> */}
+
+            <div ref={aboutOpalRef} />
+          </div>
+
+          <section>
+            <div className="bg-white">
+              <ModernFertilityBrand />
+
+              <ModernFertilityHero />
+              <div className="pb-20 lg:pb-40" />
+
+              <section>
+                <div className="mx-auto max-w-site">
+                  <Description4x8Grid>
+                    <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
+                      What is Modern Fertility?
+                    </h2>
+                    <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
+                      Modern Fertility is a women's health brand offering
+                      at-home reproductive testing, including hormone tests that
+                      assess key fertility markers like ovarian reserve and egg
+                      count. Founded in 2017, it makes fertility information
+                      more accessible and affordable by enabling convenient home
+                      testing at a lower cost than traditional clinics.
+                    </p>
+                  </Description4x8Grid>
+                </div>
+              </section>
+
+              <div className="pb-20 lg:pb-40" />
+
+              <section>
+                <ModernFertilityShowcase />
+              </section>
+
+              <div className="pb-20 lg:pb-40" />
+
+              <section>
+                <ModernFertilityAbout />
+              </section>
+            </div>
+          </section>
+
+          {/* <div className="pb-20 lg:pb-40" /> */}
+
+          <div className="bg-white relative z-10">
+            <div className="h-px bg-black/10" />
+            <div className="pb-20 lg:pb-40" />
+            <BillboardGrid>
+              <h2 className="copy-largest">Honorable mentions</h2>
+              <div className="pb-6"></div>
+              <p className="text-black/60 text-[16px] xl:text-[18px] font-body font-500 tracking-tight">
+                Other places and projects I've worked for.
+              </p>
+            </BillboardGrid>
+
+            <div className="pb-10 2xl:pb-30"></div>
+            <div className="max-w-site px-4">
+              <div className="grid grid-cols-12 items-start gap-y-10 gap-x-4 2xl:gap-x-10 r-full">
+                <div className="col-span-12 2xl:col-span-4 2xl:col-start-3">
+                  <div className="">
+                    <div className="flex items-center min-h-[90px]">
+                      <img
+                        src="/final/logo-thinkful.png"
+                        className="w-[190px]"
+                      />
                     </div>
+                    <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
+                      Mentored students 1-on-1 on all aspects of front-end and
+                      backend development. Languages were taught for JavaScript
+                      and Ruby.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-span-12 lg:col-span-5">
+                  <div className="">
+                    <div className="flex items-center min-h-[90px]">
+                      <img src="/final/logo-plaid.svg" className="w-[150px]" />
+                    </div>
+                    <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
+                      Worked on the marketing site of plaid.com, increasing
+                      performance, building pipeline tools, and making updates
+                      to their documentation.
+                    </p>
                   </div>
                 </div>
               </div>
-
-              <div className="pb-10 lg:pb-20" />
             </div>
-            {/* <div className="pb-20 lg:pb-40" /> */}
+
+            <div className="pb-10 lg:pb-40" />
           </div>
-          {/* 
+          {/* <div className="pb-20 lg:pb-40" /> */}
+        </div>
+        {/* 
           <div className="bg-black text-white z-10 relative">
             <div className="max-w-site mx-auto">
               <Billboard>
@@ -508,9 +503,9 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             </div>
           </div> */}
 
-          <div className="bg-white z-10 relative">
-            <div className="pb-40" />
-            {/* 
+        <div className="bg-white z-10 relative">
+          <div className="pb-40" />
+          {/* 
             <img
               className="max-w-[1200px] mx-auto"
               src="/final/companies.png"
@@ -518,22 +513,21 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             <div className="pb-40" />
             <div className="pb-40" /> */}
 
-            <section>
-              <div className="max-w-site mx-auto">
-                <div className="lg:grid grid-cols-12 gap-x-4 px-4 ">
-                  <p className="text-center lg:text-left lg:col-span-4 lg:col-start-6 ">
-                    <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative size-30 bg-black text-white flex justify-center items-center logo-blink-rect">
-                      <span className="block logo-blink">Fin</span>
-                    </span>
-                  </p>
-                </div>
+          <section>
+            <div className="max-w-site mx-auto">
+              <div className="lg:grid grid-cols-12 gap-x-4 px-4 ">
+                <p className="text-center lg:text-left lg:col-span-4 lg:col-start-6 ">
+                  <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative size-30 bg-black text-white flex justify-center items-center logo-blink-rect">
+                    <span className="block logo-blink">Fin</span>
+                  </span>
+                </p>
               </div>
-              <div className="pb-40" />
-              <div className="pb-40" />
-            </section>
+            </div>
+            <div className="pb-60" />
+            {/* <div className="pb-40" /> */}
+          </section>
 
-            <Footer />
-          </div>
+          <Footer />
         </div>
       </div>
     </div>

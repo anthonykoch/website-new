@@ -1,3 +1,6 @@
+import { animate } from 'motion/react'
+import { easeInOutCubic } from './animation'
+
 /**
  * Gets the absolute offset (top and left position) of an element relative to the document.
  *
@@ -46,4 +49,21 @@ export function getScrollDuration(
   const calculatedDuration = absoluteDistance / pixelsPerSecond
 
   return Math.max(minDuration, Math.min(maxDuration, calculatedDuration))
+}
+
+export const scrollTo = (el: string | HTMLElement) => {
+  // const el = document.getElementById('work')!
+
+  const offset = getOffset(el)
+  const distance = offset.top - window.scrollY
+  const duration = getScrollDuration(distance)
+
+  animate(scrollY, offset.top, {
+    ease: easeInOutCubic,
+    // duration,
+    duration: 1,
+    onUpdate(progress) {
+      window.scrollTo(0, progress)
+    },
+  })
 }

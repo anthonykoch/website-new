@@ -181,7 +181,7 @@ export const OpalIntroSection = () => {
               </p>
             </Description4x8Grid>
           </div>
-          <div className="pb-20 lg:pb-30" />
+          {/* <div className="pb-20 lg:pb-30" /> */}
         </motion.div>
       </div>
       <div ref={opalIntroSectionRef}></div>

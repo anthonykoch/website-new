@@ -63,7 +63,8 @@ export const ModernFertilityAbout = () => {
 
       {/* <div className="pb-[100px]" /> */}
 
-      <div className="pb-40" />
+      {/* <div className="pb-40" /> */}
+      <div className="pb-100" />
     </div>
   )
 }
