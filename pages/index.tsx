@@ -3,27 +3,27 @@ import type { GetStaticProps, NextPage } from 'next'
 import superjson from 'superjson'
 
 import { Billboard, BillboardGrid } from '@/components/Billboard'
-import { ModernFertilityIntroSection } from '@/components/ModernFertilityIntroSection'
 import { OpalIntroSection } from '@/components/OpalIntroSection'
 import { TripleChevron } from '@/features/embellishments/TripleChevron'
 
-import {
-  animate,
-  motion,
-  useMotionTemplate,
-  useScroll,
-  useTransform,
-} from 'motion/react'
+import { animate, motion, useScroll, useTransform } from 'motion/react'
 
 import { easeOutExpo } from '@/utils/animation'
 import { FC, RefObject, useEffect, useRef } from 'react'
 
 import { ExhibitPages } from '@/components/ExhibitPages'
 import { Grid } from '@/components/Grid'
-import { Post, PostList } from '@/components/PostList'
-import { usePointerProgress } from '@/hooks/use-pointer-progress'
-import { getAllPostMeta } from '@/utils/post'
 import { LaptopScroller } from '@/components/LaptopScroller'
+import { ModernFertilityAbout } from '@/components/ModernFertilityAbout'
+import { ModernFertilityBrand } from '@/components/ModernFertilityBrand'
+import { ModernFertilityHero } from '@/components/ModernFertilityHero'
+import { ModernFertilityShowcase } from '@/components/ModernFertilityShowcase'
+import { Post } from '@/components/PostList'
+import { Description4x8Grid } from '@/features/grid/Description4x8Grid'
+import { getAllPostMeta } from '@/utils/post'
+import { OpalFirst } from '@/components/OpalFirst'
+import { OpalShowcase } from '@/components/OpalShowcase'
+import { Hero } from '@/components/Hero'
 
 const Looking: FC<{ containerRef: RefObject<HTMLDivElement | null> }> = ({
   containerRef,
@@ -280,62 +280,19 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         {/* <div className="bg-linear-to-b from-black/70 to-transparent w-full h-[60px] absolute top-0 left-0 z-100 " /> */}
 
         <section>
-          {/* <div
-            ref={introBlockRef}
-            className="bg-black h-[69vh] w-full z-10 absolute origin-bottom"
-          /> */}
-          <div className="h-screen  relative">
-            {/* <div className="h-screen bg-[#e6ddc3] relative"> */}
-
-            {/* <div className="bg-linear-to-r from-black/70 to-transparent size-1/2 absolute top-0 left-0 z-20" /> */}
-            {/* <div className="bg-linear-to-t from-black to-transparent w-full h-1/2 absolute bottom-[29vh] left-0" /> */}
-
-            {/* <div
-  className="absolute inset-0 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"
-></div>  */}
-            {/* 
-            <div className="absolute z-10 top-0 left-0 h-full w-full bg-neutral-200">
-              <div className="absolute inset-0 bg-primary-500 bg-size-[20px_20px] opacity-20 blur-[100px]"></div>
-            </div> */}
-
-            <div className="text-black mix-blend-difference absolute z-20 w-full top-[40vh]">
-              <div className="max-w-site mx-auto relative z-20">
-                <div className="grid grid-cols-12 gap-x-4 px-4">
-                  <div className="col-span-12 xl:col-span-10 xl:col-start-2 flex flex-col gap-x-4 items-start justify-between">
-                    <div>
-                      {/* <div className="shadow-button border-[10px] border-white border-solid p-20"> */}
-
-                      <p className="text-[80px] text-white  font-500 leading-none  font-heading">
-                        {/* <p className="text-[80px] text-[#3f4450]  font-500 leading-none  font-heading"> */}
-                        I help companies and startups ship pixel-perfect,
-                        responsive websites.
-                      </p>
-                      <div className="pb-10" />
-                      <button
-                        type="button"
-                        className="cursor-pointer shadow-button-2 shadow-white/40 bg-white py-3.5 px-8 inline-block hover:bg-primary-invert transition-colors duration-100 hover:text-white text-[#111]"
-                        // className="cursor-pointer shadow-button-2 shadow-black/40 bg-black py-3.5 px-8 inline-block hover:bg-primary-500 transition-colors duration-100 hover:text-black text-[#eee]"
-                      >
-                        <span className="font-600 text-[14px] uppercase font-display tracking-widest">
-                          View my latest work
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Hero />
         </section>
-        <div className=" w-full  z-500">
+
+        <div className="w-full relative z-500">
           <div className="bg-[#EAEAEA]">
-            <div id="work">
-              <div className="bg-black text-white " ref={firstBlockRef}>
+            <section id="work">
+              <div className="bg-black text-white" ref={firstBlockRef}>
                 <div className="max-w-site mx-auto">
                   <Billboard>
                     <p>
                       <span className="block setup-fade-in" ref={lookRef}>
-                        Here's companies I've worked with
+                        Brand: Opal Camera
+                        {/* Here's companies I've worked with */}
                         {/* Take a look at my work below.{' '} */}
                       </span>
                       <span className="setup-fade-in" ref={arrowsRef}>
@@ -345,110 +302,21 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                   </Billboard>
                 </div>
               </div>
-            </div>
+            </section>
 
-            <div>
-              <section className="relative">
-                <OpalIntroSection />
-              </section>
+            <section className="relative">
+              <OpalIntroSection />
+            </section>
 
-              <section className="bg-[#eaeaea] z-10 relative">
-                {/* <div className="bg-black text-white">
-                  <div className="max-w-site mx-auto">
-                    <Billboard>
-                      <p>A selection of my work at Opal</p>
-                    </Billboard>
-                  </div>
-                </div> */}
-                <div className="pb-20 lg:pb-40" />
+            <section>
+              <OpalFirst />
+            </section>
 
-                <BillboardGrid className="max-w-[860px] mx-auto px-4 ">
-                  <p className="text-[100px] leading-[1] font-heading font-500 -tracking-wide">
-                    My journey at Opal started <br />
-                    with a simple landing page
-                    {/* My journey started with <br />
-                    Opal's first landing page */}
-                    {/* I developed Opal's <br />
-                    first landing page. */}
-                  </p>
-                  <div className="pb-10"></div>
-                  <p className="text-black/60 text-[18px] font-body font-500 tracking-tight">
-                    The page was a simple teaser, letting everyone know what's
-                    coming.
-                  </p>
-                  <div className="pb-10 lg:pb-20" />
-                  <img src="/final/test.png" />
-                  {/* <div className="pb-20 lg:pb-40" /> */}
-                </BillboardGrid>
-              </section>
-              {/* <div class="absolute -z-10 top-0 left-0 h-full inset-0 w-full bg-[radial-gradient(rgba(0,0,0,0.13)_1px,transparent_1px)] bg-size-[16px_16px]"></div> */}
-
-              <div className="bg-[#eaeaea] z-10 relative">
-                <div className="max-w-site mx-auto  z-10 relative">
-                  {/* <div className="px-4"> */}
-                  <Billboard textSize="lg">
-                    <p>
-                      I've since worked on <br />
-                      many parts of Opal.
-                    </p>
-                  </Billboard>
-                  {/* </div> */}
-
-                  {/* <div class="absolute -z-10 top-0 left-0 h-full w-full bg-neutral-200"><div class="absolute inset-0 bg-primary-500 bg-[size:20px_20px] opacity-20 blur-[100px]"></div></div>  */}
-
-                  <ExhibitPages />
-
-                  <div className="pt-10 lg:pt-40" />
-
-                  {/* <div className="pb-20 lg:pb-30" /> */}
-                  <div className="grid grid-cols-12 gap-x-4">
-                    <div className="max-xl:order-2 col-span-12 xl:col-span-3 xl:col-start-2">
-                      <div className="max-xl:max-w-[350px] lg:mx-0 w-full">
-                        <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
-                          MOBILE NAVIGATION
-                        </p>
-                        <div className="pb-4" />
-                        <video
-                          autoPlay
-                          muted
-                          loop
-                          className="object-cover size-full"
-                        >
-                          <source
-                            src="/final-compressed/mobile-nav.mp4"
-                            type="video/mp4"
-                          />
-                        </video>
-                      </div>
-                    </div>
-                    <div className="col-span-12 xl:col-span-7">
-                      <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
-                        FIRMWARE UPDATER
-                      </p>
-                      <div className="pb-4" />
-
-                      <img
-                        src="/final-compressed/exhibit-doctor.png"
-                        loading="lazy"
-                      />
-                      <div className="pb-4" />
-
-                      <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#757575] max-w-[500px] pb-4">
-                        Dr. Opal is a web based tool created to help users
-                        update their Tadpole firmware. I built out the UI and
-                        collaborated with device engineers to interface it with
-                        the Tadpole.
-                      </p>
-                      <div className="pb-10" />
-                    </div>
-                  </div>
-                </div>
-                <div className="pb-20 xl:pb-40" />
-
-                <LaptopScroller />
-              </div>
-            </div>
-            {/* <div className="pb-4" /> */}
+            {/* <div class="absolute -z-10 top-0 left-0 h-full inset-0 w-full bg-[radial-gradient(rgba(0,0,0,0.13)_1px,transparent_1px)] bg-size-[16px_16px]"></div> */}
+            <section>
+              <OpalShowcase />
+              <LaptopScroller />
+            </section>
           </div>
 
           <div className="bg-white z-10 relative">
@@ -460,21 +328,17 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
               className="bg-black absolute top-[-100vh] left-0 h-screen w-full z-10 pointer-events-none"
             />
             <div className="text-black">
-              {/* <div className="bg-black text-white z-10 relative"> */}
               <div className="max-w-site mx-auto">
                 <Billboard>
                   <p>
-                    {/* Turned into architecting an e-commerce experience */}
                     What started as a landing page grew into architecting an
-                    entire <span className="whitespace-nowrap">
-                      e-commerce
-                    </span>{' '}
+                    entire <span className="whitespace-nowrap">e-commerce</span>{' '}
                     experience.
                   </p>
                 </Billboard>
               </div>
             </div>
-            {/* <div className="pb-30 xl:pb-40" /> */}
+
             {/* <div className="pb-20 xl:pb-30" /> */}
             <div className="max-w-site mx-auto">
               <motion.div
@@ -540,173 +404,97 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
               <div ref={aboutOpalRef} />
             </div>
 
-            <div className="bg-black text-white z-10 relative">
-              <div className="max-w-site mx-auto">
-                <Billboard>
-                  <p>
-                    <span className="block">Up Next: Modern Fertility</span>
-                    <TripleChevron />
-                  </p>
-
-                  {/* <img src="/final/card-mf.png" className='ml-auto w-[300px]'/> */}
-                  {/* <svg
-                    className="w-auto "
-                    viewBox="0 0 353 387"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M299.904 0C299.904 0 294.302 47.335 280.483 85.782C270.772 112.753 250.169 175.446 197.321 201.565C186.677 206.844 159.818 219.682 128.85 210.317C109.888 204.584 93.1499 192.247 81.1695 175.174C53.1585 133.049 52.5672 43.7934 52.5672 7.90052V0H0V386.24H50.4197V164.447C62.5372 184.502 78.1728 201.725 96.4198 215.119C112.839 227.897 131.45 236.909 151.135 241.613C167.277 245.442 183.903 246.191 200.278 243.826C230.689 238.811 258.807 223.189 280.452 199.284C288.939 190.09 296.37 179.798 302.58 168.635V386.581H353V0H299.904Z"
-                      fill="white"
-                    />
-                  </svg> */}
-                </Billboard>
-              </div>
-            </div>
-
             <section>
               <div className="bg-white">
-                <ModernFertilityIntroSection />
+                <ModernFertilityBrand />
+
+                <ModernFertilityHero />
+                <div className="pb-20 lg:pb-40" />
+
+                <section>
+                  <div className="mx-auto max-w-site">
+                    <Description4x8Grid>
+                      <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
+                        What is Modern Fertility?
+                      </h2>
+                      <p className="copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
+                        Modern Fertility is a women's health brand offering
+                        at-home reproductive testing, including hormone tests
+                        that assess key fertility markers like ovarian reserve
+                        and egg count. Founded in 2017, it makes fertility
+                        information more accessible and affordable by enabling
+                        convenient home testing at a lower cost than traditional
+                        clinics.
+                      </p>
+                    </Description4x8Grid>
+                  </div>
+                </section>
+
+                <div className="pb-20 lg:pb-40" />
+
+                <section>
+                  <ModernFertilityShowcase />
+                </section>
+
+                <div className="pb-20 lg:pb-40" />
+
+                <section>
+                  <ModernFertilityAbout />
+                </section>
               </div>
             </section>
 
             {/* <div className="pb-20 lg:pb-40" /> */}
 
-            <section className="relative z-10">
-              <div>
-                <div className="z-10 relative">
-                  <div className="max-w-site mx-auto">
-                    <Billboard>
-                      <p className="max-w-[1200px]">
-                        I led front-end development for the marketing website
-                        and user dashboard.
-                      </p>
-                    </Billboard>
-                  </div>
-                </div>
-              </div>
-
-              <img src="/final/MacBook-Pro-16.png" className="w-full mx-auto" />
-              {/* <img src="/final/MacBook-Pro-16.png" className="w-[800px] mx-auto" /> */}
-
-              <div className="overflow-hidden">
-                <div className="px-4 max-w-[1200px] mx-auto">
-                  {/* <BillboardGrid> */}
-                  <div className="flex-col 2xl:flex-row flex gap-x-4 gap-y-4">
-                    <div className="flex flex-col gap-y-4">
-                      <img
-                        className="max-w-[800px] mx-auto 2xl:max-w-full w-full border border-black/10"
-                        src="/final/exhibit-mf-dash-plan-plain.png"
-                        // src="/final/exhibit-mf-dash.png"
-                      />
-                      <img
-                        className="max-w-[800px] mx-auto 2xl:max-w-full w-full border border-black/10"
-                        src="/final/exhibit-mf-dash-home-plain.png"
-                        // src="/final/exhibit-mf-home-plain.png"
-                      />
-                    </div>
-
-                    <div>
-                      <img
-                        className="max-w-[800px] mx-auto 2xl:max-w-full w-full border border-black/10"
-                        src="/final/exhibit-mf-home-plain.png"
-                        // className="mx-auto max-w-[700px]"
-                      />
-                    </div>
-                  </div>
-                </div>
-                {/* </BillboardGrid> */}
-              </div>
-
+            <div className="bg-white relative z-10">
+              <div className="h-px bg-black/10" />
               <div className="pb-20 lg:pb-40" />
-              <Grid
-                left={
-                  <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[300px] xl:ml-auto lg:text-right">
-                    The early days of Modern Fertility
-                  </h2>
-                }
-                right={
-                  <div className="gap-y-6 flex flex-col copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
-                    <p>
-                      Modern Fertility approached me to assist them in
-                      developing their website. At the time, I was the sole
-                      front-end developer, working alongside Tom Chokel to help
-                      Carly and Afton give women the tools to better understand
-                      their fertility.
-                    </p>
-                    <p>
-                      Fast forward several years, and not only has the website
-                      grown in scale, but Modern Fertility has grown as a wildly
-                      successful company, being acquired by Ro for $225 million.
-                    </p>
-                  </div>
-                }
-              />
+              <BillboardGrid>
+                <h2 className="copy-largest">Honorable mentions</h2>
+                <div className="pb-6"></div>
+                <p className="text-black/60 text-[18px] font-body font-500 tracking-tight">
+                  Other places and projects I've worked for.
+                </p>
+              </BillboardGrid>
 
-              <div className="pb-[100px]" />
-
-              <Grid
-                left={
-                  <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[310px] xl:ml-auto lg:text-right">
-                    A responsive website, built from the ground up.
-                  </h2>
-                }
-                right={
-                  <div className="*:pb-6 copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
-                    <p>
-                      I worked closely with designers to build out the first
-                      iteration of Modern Fertility’s website using just simple
-                      HTML and CSS. Over time, the tech stack has evolved from
-                      the basics to React and styled-components running inside
-                      of a Django application.
-                    </p>
-
-                    <div className="pb-4" />
-                  </div>
-                }
-              />
-              <div className="pb-40" />
-            </section>
-            <BillboardGrid>
-              <p className="text-[100px] leading-[1] font-heading font-500 -tracking-wide">
-                Honorable mentions
-                {/* I've also had the pleasure <br/>of working with */}
-              </p>
-            </BillboardGrid>
-            <div className="pb-30"></div>
-            <div className="max-w-site px-4">
-              <div className="grid grid-cols-12 items-start gap-x-10 r-full">
-                <div className="col-span-12 lg:col-span-4 lg:col-start-2">
-                  <div className="">
-                    <div className="flex items-center min-h-[90px]">
-                      <img
-                        src="/final/logo-thinkful.png"
-                        className="w-[190px]"
-                      />
+              <div className="pb-30"></div>
+              <div className="max-w-site px-4">
+                <div className="grid grid-cols-12 items-start gap-x-4 lg:gap-x-10 r-full">
+                  <div className="col-span-12 lg:col-span-4 lg:col-start-3">
+                    <div className="">
+                      <div className="flex items-center min-h-[90px]">
+                        <img
+                          src="/final/logo-thinkful.png"
+                          className="w-[190px]"
+                        />
+                      </div>
+                      <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
+                        Mentored students 1-on-1 on all aspects of front-end and
+                        backend development. Languages were taught for
+                        JavaScript and Ruby.
+                      </p>
                     </div>
-                    <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
-                      Mentored students 1-on-1 on all aspects of front-end and
-                      backend development. Languages were taught for JavaScript
-                      and Ruby.
-                    </p>
                   </div>
-                </div>
-                <div className="col-span-12 lg:col-span-5">
-                  <div className="">
-                    <div className="flex items-center min-h-[90px]">
-                      <img src="/final/logo-plaid.svg" className="w-[150px]" />
+                  <div className="col-span-12 lg:col-span-5">
+                    <div className="">
+                      <div className="flex items-center min-h-[90px]">
+                        <img
+                          src="/final/logo-plaid.svg"
+                          className="w-[150px]"
+                        />
+                      </div>
+                      <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
+                        Worked on the marketing site of plaid.com, increasing
+                        performance, building pipeline tools, and making updates
+                        to their documentation.
+                      </p>
                     </div>
-                    <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
-                      Worked on the marketing site of plaid.com, increasing
-                      performance, building pipeline tools, and making updates
-                      to their documentation.
-                    </p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="pb-10 lg:pb-20" />
+              <div className="pb-10 lg:pb-20" />
+            </div>
             {/* <div className="pb-20 lg:pb-40" /> */}
           </div>
           {/* 
@@ -720,7 +508,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             </div>
           </div> */}
 
-          <div className="bg-white">
+          <div className="bg-white z-10 relative">
             <div className="pb-40" />
             {/* 
             <img

@@ -1,9 +1,14 @@
-import { easeOutCubic, easeOutExpo } from '@/utils/animation'
+import {
+  easeInExpo,
+  easeInOutCubic,
+  easeOutCubic,
+  easeOutExpo,
+} from '@/utils/animation'
 import { useAnimator } from '@/utils/animator'
 import { animate, useAnimate } from 'motion/react'
 import { useRouterListener } from '../router/context/RouterComposerContext'
 import { useHandleLinkClicks } from './hooks'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 export const Sail = () => {
   const animator = useAnimator<'sail'>()
@@ -24,7 +29,8 @@ export const Sail = () => {
             { scaleY: [0, 1] },
             {
               duration: 1,
-              ease: easeOutExpo,
+              ease: easeInOutCubic,
+              // ease: easeOutExpo,
             },
           ),
         ],
@@ -82,26 +88,47 @@ export const Sail = () => {
     //   .wait()
   })
 
-  {
-    /* <div
-    // className="selector-sail bg-black origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
-    className="selector-sail bg-[#222224] origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
-    // className="selector-sail bg-white size-full fixed top-0 left-0 z-3000 pointer-events-none"
-    // className="selector-sail bg-[#eaeaea] size-full fixed top-0 left-0 z-3000 pointer-events-none"
-    style={{ opacity: 0 }}
-  /> */
-  }
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    animate(
+      '#splash',
+      {
+        scaleY: [1, 0],
+      },
+      {
+        // duration: 0.9,
+        // ease: easeOutCubic,
+        delay: 0.2,
+        duration: 1.4,
+        ease: easeInOutCubic,
+        // duration: 12.1,
+        // ease: (t) => easeInOutCubic(easeOutExpo(easeOutCubic(t))),
+      },
+    )
+  }, [])
+
   return (
-    <div
-      data-c-sail
-      ref={sail}
-      className="selector-sail-top bg-black h-screen origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
-      // className="selector-sail-top mix-blend-color-burn  bg-black h-screen origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
-      // className="selector-sail-top bg-[#222224] lg:h-[50vh] xl:h-[60vh] origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
-      // style={{ opacity: 0 }}
-      style={{ transform: 'scaleY(0)' }}
-    >
-      {/* <span className=" bg-white size-full block"></span> */}
-    </div>
+    <>
+      <div
+        id="splash"
+        ref={ref}
+        style={{
+          transform: 'scaleY(0)',
+        }}
+        className="bg-black w-screen h-screen fixed top-0 left-0 origin-bottom z-4000 will-change-transform"
+      />
+      <div
+        data-c-sail
+        ref={sail}
+        className="selector-sail-top bg-black h-screen origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
+        // className="selector-sail-top mix-blend-color-burn  bg-black h-screen origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
+        // className="selector-sail-top bg-[#222224] lg:h-[50vh] xl:h-[60vh] origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
+        // style={{ opacity: 0 }}
+        style={{ transform: 'scaleY(0)' }}
+      >
+        {/* <span className=" bg-white size-full block"></span> */}
+      </div>
+    </>
   )
 }

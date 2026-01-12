@@ -2,7 +2,18 @@ export function easeOutExpo(x: number): number {
   return x === 1 ? 1 : 1 - Math.pow(2, -10 * x)
 }
 
+export function easeInQuart(x: number): number {
+  return x * x * x * x
+}
+
+export function easeInExpo(x: number): number {
+  return x === 0 ? 0 : Math.pow(2, 10 * x - 10)
+}
+
 export const easeOutCubic = (m: number) => --m * m * m + 1
+
+export const easeInOutCubic = (x: number): number =>
+  x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2
 
 export function staggeredEase(
   index: number,
