@@ -49,16 +49,20 @@ export const OpalFirst = () => {
   // })
 
   const updateScale = useCallback(() => {
-    if (!container.current) return
+    if (!container.current || !compare.current) return
 
     const width = container.current.offsetWidth
+    const scale = compare.current.offsetWidth / width
 
-    const scale = innerWidth / width
+    console.log(container.current.offsetWidth)
 
-    setOuter(scale + 0.007)
+    setOuter(scale + 0.001)
+    // setOuter(scale + 0.007)
   }, [])
 
   const img = useRef<HTMLImageElement>(null)
+  const bg = useRef<HTMLImageElement>(null)
+  const compare = useRef<HTMLDivElement>(null)
 
   const [top, setTop] = useState(0)
 
@@ -73,9 +77,19 @@ export const OpalFirst = () => {
     setTop(calc)
   }, [])
 
+  const [bgHeight, setBgHeight] = useState(400)
+
+  const updateBgDimension = useCallback(() => {
+    if (bg.current) {
+      bg.current.offsetHeight
+      setBgHeight(bg.current.offsetHeight)
+    }
+  }, [])
+
   const update = useCallback(() => {
     updateScale()
     updateTop()
+    updateBgDimension()
   }, [updateScale, updateTop])
 
   useEffect(() => {
@@ -109,18 +123,26 @@ export const OpalFirst = () => {
       </BillboardGrid>
       <div className="pb-10 lg:pb-30"></div>
 
-      <div className="relative">
-        <div className="h-[170vw] lg:h-[290vh] absolute top-0 left-0 w-full">
-          <div className=" sticky top-0 w-full">
-            <div className="">
-              <img
-                src="/actual/first-bg.png"
-                className="w-full max-w-[90%] z-10 translate-y-[20vh]"
-              />
-            </div>
+      <div
+        className="relative"
+        style={{ ['--bg-height' as any]: `${bgHeight}px` }}
+      >
+        <div className="h-[calc(150vh+(var(--bg-height)/2))] lg:h-[calc(270vh+(var(--bg-height)/2))] absolute top-0 left-0 w-full">
+          {/* <div className="h-[172vh] lg:h-[325vh] absolute top-0 left-0 w-full"> */}
+          <div className=" sticky top-[0vh] w-full " style={{ top }}>
+            {/* <div className="overflow-hidden"> */}
+              {/* <div className="max-w-[90vw]"> */}
+                {/* <img
+                  src="/actual/first-bg.png"
+                  className=" lg:block w-full z-10 object-contain relative translate-x-[3vw] translate-y-[-10vh]"
+                  // className=" lg:block w-full  z-10 translate-y-[0vh] lg:translate-y-[20vh] object-contain"
+                  ref={bg}
+                /> */}
+              {/* </div> */}
+            {/* </div> */}
           </div>
         </div>
-        <div className="h-[150vh] lg:h-[270vh] relative z-20">
+        <div className="h-[150vh] lg:h-[270vh] relative z-20" ref={compare}>
           <div
             ref={target}
             className="h-[90%] absolute top-[10%] z-1000 w-full pointer-events-none"
@@ -130,7 +152,7 @@ export const OpalFirst = () => {
             className="h-[44%] absolute top-[23%] z-1000 w-full pointer-events-none"
           />
           <div className="sticky top-0" style={{ top }}>
-            <div className="grid grid-cols-12 gap-x-4 px-4">
+            <div className="grid grid-cols-12 gap-x-4 px-4 overflow-hidden">
               <div className="col-span-12 lg:col-span-10 md:col-start-1 lg:col-start-2">
                 <div
                   className="relative aspect-1648/949 w-full"

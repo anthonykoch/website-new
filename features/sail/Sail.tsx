@@ -115,8 +115,8 @@ export const Sail = () => {
       {
         // duration: 0.9,
         // ease: easeOutCubic,
-        delay: 0.4,
-        duration: 0.8,
+        delay: 0.6,
+        duration: 0.6,
         ease: 'linear',
         // ease: easeInOutCubic,
         // duration: 12.1,
@@ -133,7 +133,11 @@ export const Sail = () => {
         style={{
           opacity: 1,
         }}
+        // #4f4550
+
         className="bg-black w-screen h-screen fixed top-0 left-0 origin-top z-4000 will-change-transform pointer-events-none"
+        // className="bg-[#0D0D0D] w-screen h-screen fixed top-0 left-0 origin-top z-4000 will-change-transform pointer-events-none"
+        // className="bg-[#0e1a1a] w-screen h-screen fixed top-0 left-0 origin-top z-4000 will-change-transform pointer-events-none"
       >
         {/* <img
           src="/actual/splash-og.jpg"

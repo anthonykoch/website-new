@@ -11,7 +11,7 @@ export const Hero = () => {
   }, [])
 
   return (
-    <div>
+    <div className="overflow-hidden">
       {/* <div className="absolute left-0 top-0 w-full h-[50vh] ">
         <div className="sticky top-0 left-0 w-full  " ref={container}>
           <div className="absolute debug left-0 top-0 w-full h-[30vh]">
