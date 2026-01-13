@@ -84,7 +84,7 @@ export const ModernFertilityTriplePhone = () => {
           />
           <div className="w-[200px] lg:w-[298px] mx-auto relative z-10">
             <div
-              className="h-[200vh] -top-[100vh] absolute w-full pointer-events-none"
+              className="h-[200vh] -top-[100vh] lg:-top-[84vh] absolute w-full pointer-events-none"
               ref={target}
             />
             <img

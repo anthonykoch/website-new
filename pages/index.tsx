@@ -360,6 +360,14 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                 right={
                   <div className="flex flex-col gap-y-6 copy-body-4-sm lg:copy-body-4 text-[#888787] **:[span]:text-black/70 **:[span]:underline">
                     <p>
+                      At the start of my time at Opal, I was purely creating the
+                      front-end. I’ve since worked in many different aspects of
+                      development, ranging from building out administrative
+                      tools that manage email signups to custom email
+                      development and Shopify management.
+                    </p>
+
+                    <p>
                       The Opal Camera website is a simple <span>Shopify</span>{' '}
                       app utilizing the Storefront API through{' '}
                       <span>graphQL</span> running inside an{' '}
@@ -370,13 +378,6 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                       The frontend is written using tools like{' '}
                       <span>Tailwind</span>, <span>motion.dev</span> and{' '}
                       <span>React</span>.
-                    </p>
-                    <p>
-                      At the start of my time at Opal, I was purely creating the
-                      front-end. I’ve since worked in many different aspects of
-                      development, ranging from building out administrative
-                      tools that manage email signups to custom email
-                      development and Shopify management.
                     </p>
                   </div>
                 }
@@ -477,9 +478,13 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             <div className="max-w-site mx-auto">
               <div className="lg:grid grid-cols-12 gap-x-4 px-4 ">
                 <p className="text-center lg:text-left lg:col-span-4 lg:col-start-6 ">
+                  {/* <div className="inline-flex flex-col items-center justify-center"> */}
                   <span className="font-heading font-500 text-[58px] xl:text-[72px] leading-[1] z-10 relative size-30 bg-black text-white flex justify-center items-center logo-blink-rect">
                     <span className="block logo-blink">Fin</span>
                   </span>
+                  {/* <div className='pb-20' />
+                    <img src="/actual/arrow-down.svg" className="h-[70px]" /> */}
+                  {/* </div> */}
                 </p>
               </div>
             </div>

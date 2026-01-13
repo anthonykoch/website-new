@@ -19,7 +19,8 @@ export const OpalShowcase = () => {
 
         <ExhibitPages />
 
-        <div className="pt-20 lg:pt-40" />
+        <div className="pt-20 lg:pt-50" />
+        {/* <div className="pt-20 lg:pt-40" /> */}
 
         {/* <div className="pb-20 lg:pb-30" /> */}
         <div className="grid grid-cols-12 gap-x-4 px-4">

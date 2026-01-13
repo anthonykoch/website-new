@@ -113,37 +113,26 @@ export const OpalFirst = () => {
 
   return (
     <div>
-      {/* <div className="bg-[#eaeaea] z-10 relative"> */}
       <div className="pb-40 lg:pb-40" />
-      <BillboardGrid>
-        <p
-          className="copy-largest"
-          // className="copy-largest text-copy-2/50"
-          // style={{
-          //   background: `url('/actual/cotton.png')`,
-          //   backgroundPosition: 'center',
-          //   backgroundRepeat: 'repeat',
-          //   backgroundSize: 'contain',
-          //   backgroundClip: 'text',
-          //   // color: 'transparent',
-          // }}
-        >
-          My journey at Opal started <br />
-          with a simple landing page
-        </p>
-        <div className="pb-10"></div>
-        <p className="text-black/60 text-[18px] font-body font-500 tracking-tight">
-          The page was a simple teaser, letting everyone know what's coming.
-        </p>
-      </BillboardGrid>
-      <div className="pb-10 lg:pb-30"></div>
+      <div className="relative max-w-site mx-auto">
+        <BillboardGrid>
+          <p className="copy-largest">
+            My journey at Opal started <br />
+            with a simple landing page
+          </p>
+          <div className="pb-10"></div>
+          <p className="text-black/60 text-[18px] font-body font-500 tracking-tight">
+            The page was a simple teaser, letting everyone know what's coming.
+          </p>
+        </BillboardGrid>
+        <div className="pb-10 lg:pb-30"></div>
+      </div>
 
       <div
-        className="relative"
+        className="relative max-w-site mx-auto"
         style={{ ['--bg-height' as any]: `${bgHeight}px` }}
       >
         <div className="h-[calc(150vh+(var(--bg-height)/2))] lg:h-[calc(270vh+(var(--bg-height)/2))] absolute top-0 left-0 w-full">
-          {/* <div className="h-[172vh] lg:h-[325vh] absolute top-0 left-0 w-full"> */}
           <div className=" sticky top-[0vh] w-full " style={{ top }}>
             {/* <div className="overflow-hidden"> */}
             {/* <div className="max-w-[90vw]"> */}
@@ -168,7 +157,7 @@ export const OpalFirst = () => {
           />
           <div className="sticky top-0" style={{ top }}>
             <motion.div
-              className="grid grid-cols-12 gap-x-4 px-4 overflow-hidden"
+              className="grid grid-cols-12 gap-x-4 px-4 2xl:px-0 overflow-hidden"
               style={{ scale }}
             >
               <div className="col-span-12 lg:col-span-10 md:col-start-1 lg:col-start-2">

@@ -200,3 +200,14 @@
 
           
 
+
+
+            // className="copy-largest text-copy-2/50"
+            // style={{
+            //   background: `url('/actual/cotton.png')`,
+            //   backgroundPosition: 'center',
+            //   backgroundRepeat: 'repeat',
+            //   backgroundSize: 'contain',
+            //   backgroundClip: 'text',
+            //   // color: 'transparent',
+            // }}
