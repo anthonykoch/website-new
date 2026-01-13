@@ -190,7 +190,7 @@ export const Sail = () => {
           /> */}
           <img
             // src="/actual/plant.jpg"
-            src="/actual/splash-og.jpg"
+            src="/actual/splash.jpg"
             // src="/actual/splash.jpg"
             className="absolute size-full object-cover"
             // className="size-[105%] absolute -translate-1/2 top-1/2 left-1/2 object-cover"
