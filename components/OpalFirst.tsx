@@ -19,6 +19,7 @@ import ImageOpalFirst2_1000w from '@/public/actual/opal-first-2_1000w.jpg'
 import ImageOpalFirst2_1500w from '@/public/actual/opal-first-2_1500w.jpg'
 import ImageOpalFirst2_2200w from '@/public/actual/opal-first-2_2200w.jpg'
 import ImageOpalFirst2_3000w from '@/public/actual/opal-first-2_3000w.jpg'
+import { getOffset } from '@/utils/dom'
 
 export const OpalFirst = () => {
   const target = useRef<HTMLDivElement>(null)
@@ -26,15 +27,12 @@ export const OpalFirst = () => {
   const { scrollYProgress } = useScroll({
     target,
     offset: ['start end', 'end end'],
-    // offset: ['0vh end', '110vh end'],
-    // offset: ['50vh end', '110vh end'],
   })
 
   const clipPathTransform = useTransform(scrollYProgress, [0, 1], [100, 0], {
     ease: easeInQuart,
   })
   const clipPath = useMotionTemplate`inset(0 0 0 ${clipPathTransform}%)`
-
   // // useMotionValueEvent(clipPath, 'change', (progress) => {
   // //   console.log(progress)
   // // })
@@ -53,23 +51,28 @@ export const OpalFirst = () => {
   const scale = useTransform(
     scaleScroll.scrollYProgress,
     [0, 1],
-    [calculatedScale, 1],
+    [1, calculatedScale],
   )
 
-  // useMotionValueEvent(beforeScroll.scrollYProgress, 'change', (progress) => {
-  //   console.log(progress)
-  // })
+  const left = useRef<HTMLDivElement>(null)
 
   const updateScale = useCallback(() => {
-    if (!container.current || !compare.current) return
+    if (!container.current || !left.current) return
 
-    const width = container.current.offsetWidth
-    const scale = compare.current.offsetWidth / width
+    let scale = 1
 
-    // console.log(container.current.offsetWidth)
+    if (innerWidth < 760) {
+      scale = (innerWidth - 32) / innerWidth
+      // console.log('< 760')
+    } else if (innerWidth < 1200) {
+      // console.log('< 1200')
+      scale = (innerWidth - 100) / innerWidth
+    } else {
+      // console.log('else')
+      scale = (innerWidth - getOffset(left.current).left * 2) / innerWidth
+    }
 
-    setCalculatedScale(scale + 0.001)
-    // setOuter(scale + 0.007)
+    setCalculatedScale(scale)
   }, [])
 
   const img = useRef<HTMLImageElement>(null)
@@ -106,7 +109,7 @@ export const OpalFirst = () => {
 
   useEffect(() => {
     update()
-  }, [update])
+  }, [update, calculatedScale])
 
   useWindowEvent(
     'resize',
@@ -124,6 +127,7 @@ export const OpalFirst = () => {
       <div className="pb-40 lg:pb-40" />
       <div className="relative max-w-site mx-auto">
         <BillboardGrid>
+          <div ref={left} />
           <p className="copy-largest">
             My journey at Opal started <br />
             with a simple landing page
@@ -163,33 +167,25 @@ export const OpalFirst = () => {
             ref={scaleRef}
             className="h-[44%] absolute top-[23%] z-1000 w-full pointer-events-none"
           />
-          <div className="sticky top-0" style={{ top }}>
-            <motion.div
-              className="grid grid-cols-12 gap-x-4 px-4 2xl:px-0 overflow-hidden"
-              style={{ scale }}
-            >
-              <div className="col-span-12 lg:col-span-10 md:col-start-1 lg:col-start-2">
-                <div
-                  className="relative aspect-1648/949 w-full"
-                  ref={container}
-                >
-                  <motion.div className="will-change-transform size-full">
-                    <motion.img
-                      src={ImageOpalFirst2_1500w.src}
-                      srcSet={`${ImageOpalFirst2_1000w.src} 1000w, ${ImageOpalFirst2_1500w.src} 1500w, ${ImageOpalFirst2_2200w.src} 2200w, ${ImageOpalFirst2_3000w.src} 3000w`}
-                      sizes="100vw"
-                      className="absolute left-0 size-full z-20 will-change-[clip-path]"
-                      style={{ clipPath }}
-                    />
-                    <motion.img
-                      src={ImageOpalFirst1_1500w.src}
-                      srcSet={`${ImageOpalFirst1_1000w.src} 1000w, ${ImageOpalFirst1_1500w.src} 1500w, ${ImageOpalFirst1_2200w.src} 2200w, ${ImageOpalFirst1_3000w.src} 3000w`}
-                      sizes="100vw"
-                      className="absolute left-0 size-full z-10"
-                      ref={img}
-                    />
-                  </motion.div>
-                </div>
+          <div className="sticky top-0 overflow-hidden" style={{ top }}>
+            <motion.div style={{ scale }}>
+              <div className="relative aspect-1648/949 w-full" ref={container}>
+                <motion.div className="will-change-transform size-full">
+                  <motion.img
+                    src={ImageOpalFirst2_1500w.src}
+                    srcSet={`${ImageOpalFirst2_1000w.src} 1000w, ${ImageOpalFirst2_1500w.src} 1500w, ${ImageOpalFirst2_2200w.src} 2200w, ${ImageOpalFirst2_3000w.src} 3000w`}
+                    sizes="100vw"
+                    className="absolute left-0 size-full z-20 will-change-[clip-path]"
+                    style={{ clipPath }}
+                  />
+                  <motion.img
+                    src={ImageOpalFirst1_1500w.src}
+                    srcSet={`${ImageOpalFirst1_1000w.src} 1000w, ${ImageOpalFirst1_1500w.src} 1500w, ${ImageOpalFirst1_2200w.src} 2200w, ${ImageOpalFirst1_3000w.src} 3000w`}
+                    sizes="100vw"
+                    className="absolute left-0 size-full z-10"
+                    ref={img}
+                  />
+                </motion.div>
               </div>
             </motion.div>
           </div>

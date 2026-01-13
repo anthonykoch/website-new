@@ -10,7 +10,7 @@ export const OpalShowcase = () => {
   return (
     <div>
       {/* <div className="bg-[#eaeaea] z-10 relative"> */}
-      <div className="max-w-site mx-auto z-10 relative">
+      <div className="max-w-site mx-auto z-10 relative xl:-mt-40">
         {/* <div className="px-4"> */}
         <Billboard textSize="lg">
           <p className="copy-largest">
