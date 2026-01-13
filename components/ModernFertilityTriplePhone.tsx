@@ -1,4 +1,13 @@
 import ImagePhoneBg from '@/public/actual/showcase-mf-home-bg.png'
+import ImagePhoneMfHome900w from '@/public/actual/phone-mf-home_900w.png'
+import ImagePhoneMfHome1300w from '@/public/actual/phone-mf-home_1300w.png'
+import ImagePhoneMfHome1700w from '@/public/actual/phone-mf-home_1700w.png'
+import ImagePhoneMfDashboardPlan900w from '@/public/actual/phone-mf-dashboard-plan_900w.png'
+import ImagePhoneMfDashboardPlan1300w from '@/public/actual/phone-mf-dashboard-plan_1300w.png'
+import ImagePhoneMfDashboardPlan1700w from '@/public/actual/phone-mf-dashboard-plan_1700w.png'
+import ImagePhoneMfPrenatalPdp900w from '@/public/actual/phone-mf-prenatal-pdp_900w.png'
+import ImagePhoneMfPrenatalPdp1300w from '@/public/actual/phone-mf-prenatal-pdp_1300w.png'
+import ImagePhoneMfPrenatalPdp1700w from '@/public/actual/phone-mf-prenatal-pdp_1700w.png'
 import { easeInOutCubic } from '@/utils/animation'
 import { themeValue } from '@/utils/theme'
 import {
@@ -95,16 +104,22 @@ export const ModernFertilityTriplePhone = () => {
               ref={target}
             />
             <img
-              src="/actual/phone-mf-home-v2.png"
+              src={ImagePhoneMfHome1300w.src}
+              srcSet={`${ImagePhoneMfHome900w.src} 900w, ${ImagePhoneMfHome1300w.src} 1300w, ${ImagePhoneMfHome1700w.src} 1700w`}
+              sizes="(max-width: 1024px) 200px, 298px"
               className="mx-auto w-full relative z-20"
             />
             <motion.img
-              src="/actual/phone-mf-dashboard-plan.png"
+              src={ImagePhoneMfDashboardPlan1300w.src}
+              srcSet={`${ImagePhoneMfDashboardPlan900w.src} 900w, ${ImagePhoneMfDashboardPlan1300w.src} 1300w, ${ImagePhoneMfDashboardPlan1700w.src} 1700w`}
+              sizes="(max-width: 1024px) 200px, 298px"
               className="absolute top-0 left-0 w-full h-auto will-change-transform"
               style={{ x: transformLeft, scale }}
             />
             <motion.img
-              src="/actual/phone-mf-prenatal-pdp.png"
+              src={ImagePhoneMfPrenatalPdp1300w.src}
+              srcSet={`${ImagePhoneMfPrenatalPdp900w.src} 900w, ${ImagePhoneMfPrenatalPdp1300w.src} 1300w, ${ImagePhoneMfPrenatalPdp1700w.src} 1700w`}
+              sizes="(max-width: 1024px) 200px, 298px"
               className="absolute top-0 left-0 w-full h-auto will-change-transform"
               style={{ x: transformRight, scale }}
             />

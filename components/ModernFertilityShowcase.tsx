@@ -34,7 +34,7 @@ export const ModernFertilityShowcase = () => {
                     src={ImagePhoneMfCheckout1300w.src}
                     srcSet={`${ImagePhoneMfCheckout900w.src} 900w, ${ImagePhoneMfCheckout1300w.src} 1300w, ${ImagePhoneMfCheckout1700w.src} 1700w`}
                     sizes="(max-width: 1024px) 100vw, 35vw"
-                    className="max-w-[332px] lg:max-w-[calc(100%-64px)] 2xl:max-w-[340px] w-full drop-shadow-phone"
+                    className="max-w-[332px] lg:max-w-[calc(100%-64px)] 2xl:max-w-[310px] w-full drop-shadow-phone"
                   />
                 </div>
               </div>
@@ -44,7 +44,7 @@ export const ModernFertilityShowcase = () => {
                     src={ImagePhoneMfDashboardPlan1300w.src}
                     srcSet={`${ImagePhoneMfDashboardPlan900w.src} 900w, ${ImagePhoneMfDashboardPlan1300w.src} 1300w, ${ImagePhoneMfDashboardPlan1700w.src} 1700w`}
                     sizes="(max-width: 1024px) 100vw, 35vw"
-                    className="max-w-[332px] lg:max-w-[calc(100%-64px)] 2xl:max-w-[340px] w-full drop-shadow-phone"
+                    className="max-w-[332px] lg:max-w-[calc(100%-64px)] 2xl:max-w-[310px] w-full drop-shadow-phone"
                   />
                 </div>
                 <div className="bg-[#E7E7E7] py-18 lg:py-10 lg:px-4 flex items-center justify-center w-full lg:w-[65%]">
