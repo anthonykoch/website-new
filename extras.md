@@ -139,3 +139,64 @@
                 /> */}
               {/* <div className="max-w-[1200px] size-full absolute top-0 left-1/2 -translate-x-1/2 bg-size-[1200px_auto] bg-no-repeat bg-top-left bg-[url(/actual/hero-bg.png)] bg-contain " /> */}
               {/* <div className="max-w-[1200px] h-[1200px] w-full absolute top-0 left-1/2 -translate-x-1/2 bg-size-[1200px_auto] bg-no-repeat bg-top-left bg-[url(/actual/hero-bg.png)] bg-contain " /> */}
+
+
+
+
+
+
+
+
+
+
+ <div className="bg-white relative z-10">
+            <div className="pb-20 lg:pb-40" />
+            <BillboardGrid>
+              <h2 className="copy-largest">Honorable <br />mentions</h2>
+              <div className="pb-6"></div>
+              <p className="text-black/60 text-[16px] xl:text-[18px] font-body font-500 tracking-tight">
+                Other places and projects I've worked for.
+              </p>
+            </BillboardGrid>
+
+            <div className="pb-10 2xl:pb-30"></div>
+            <div className="max-w-site px-4">
+              <div className="grid grid-cols-12 items-start gap-y-10 gap-x-4 2xl:gap-x-10 r-full">
+                <div className="col-span-12 xl:col-span-9 2xl:col-start-3">
+                {/* <div className="col-span-12 2xl:col-span-4 2xl:col-start-3"> */}
+                  <div className="">
+                    <div className="flex items-center min-h-[90px]">
+                      <img
+                        src="/final/logo-thinkful.png"
+                        className="w-[190px]"
+                      />
+                    </div>
+                    <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
+                      Mentored students 1-on-1 on all aspects of front-end and
+                      backend development. Languages were taught for JavaScript
+                      and Ruby.
+                    </p>
+                  </div>
+                </div>
+                <div className="col-span-11 xl:col-span-9 xl:col-start-3">
+                {/* <div className="col-span-12 lg:col-span-5"> */}
+                  <div className="">
+                    <div className="flex items-center min-h-[90px]">
+                      <img src="/final/logo-plaid.svg" className="w-[150px]" />
+                    </div>
+                    <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
+                      Worked on the marketing site of plaid.com, increasing
+                      performance, building pipeline tools, and making updates
+                      to their documentation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pb-10 lg:pb-40" />
+          </div>
+
+
+          
+

@@ -13,8 +13,7 @@ export const LaptopScroller = () => {
 
   const opalCameraMacbookScroll = useScroll({
     target: opalcameraHomeImageScrollable,
-    // offset: ['60vh end', 'end 120vh'],
-    offset: ['140vh end', 'end 130vh'],
+    offset: ['start -10vw', 'end 50vw'],
   })
 
   const homeImageYRemap = useTransform(
@@ -32,18 +31,11 @@ export const LaptopScroller = () => {
   }, [])
 
   return (
-    <div
-      className="relative h-[calc(1700px+100vh)] lg:h-[calc(2200px+100vh)] -mb-[65vh]"
-      // className="relative h-[calc(1700px+100vh)] lg:h-[calc(2200px+100vh)] -mb-[100vh]"
-      ref={opalcameraHomeImageScrollable}
-    >
-      {/* <div className=" mx-auto px-4 "> */}
-
-      {/* <BillboardGrid className="max-w-[860px] mx-auto px-4 text-center">
-        <p className="text-[100px] leading-[1] font-heading font-500 -tracking-wide">
-          The most recent landing page I worked on is more complex.
-        </p>
-      </BillboardGrid> */}
+    <div className="relative h-[calc(1700px+100vh)] lg:h-[calc(2200px+100vh)] -mb-[65vh]">
+      <div
+        ref={opalcameraHomeImageScrollable}
+        className="absolute top-0 left-0 size-full"
+      />
 
       <div className="sticky top-[30vh] lg:top-[10vh] left-0 ">
         <div>

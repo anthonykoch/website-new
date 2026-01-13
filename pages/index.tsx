@@ -24,6 +24,8 @@ import { getAllPostMeta } from '@/utils/post'
 import { OpalFirst } from '@/components/OpalFirst'
 import { OpalShowcase } from '@/components/OpalShowcase'
 import { Hero } from '@/components/Hero'
+import { ModernFertilityTriplePhone } from '@/components/ModernFertilityTriplePhone'
+import { ModernFertilityTriplePhonev2 } from '@/components/ModernFertilityTriplePhonev2'
 
 const Looking: FC<{ containerRef: RefObject<HTMLDivElement | null> }> = ({
   containerRef,
@@ -252,13 +254,11 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
   const opacity = useTransform(coverScroll.scrollYProgress, [0, 1], [0, 1])
 
-  useEffect(() => {
-    // alert(window.innerHeight)
-  }, [])
+  useEffect(() => {}, [])
 
   return (
     <div>
-      {/* <div className=" px-2 pt-3 fixed z-1000 bottom-10 right-10 ">
+      {/* <div className=" px-2 pt-3 fixed z-1000 bottom-10 rigzt-10 ">
         <div className="pb-4 font-heading font-600 text-[14px] text-black/70 text-center ">
           Jump to 
         </div>
@@ -385,7 +385,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
               <Grid
                 left={
-                  <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[288px] text-right xl:ml-auto">
+                  <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[288px] xl:text-right xl:ml-auto">
                     A growing startup
                   </h2>
                 }
@@ -411,9 +411,16 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
               <ModernFertilityBrand />
 
               <ModernFertilityHero />
-              <div className="pb-20 lg:pb-40" />
+
+              <div className="pb-30 lg:pb-50" />
 
               <section>
+                <ModernFertilityTriplePhone />
+                <div className="pb-20 lg:pb-50" />
+                {/* <div className="pb-30 lg:pb-60" /> */}
+              </section>
+
+              <section className="z-10 relative">
                 <div className="mx-auto max-w-site">
                   <Description4x8Grid>
                     <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
@@ -437,62 +444,12 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                 <ModernFertilityShowcase />
               </section>
 
-              <div className="pb-20 lg:pb-40" />
-
               <section>
                 <ModernFertilityAbout />
               </section>
             </div>
           </section>
 
-          {/* <div className="pb-20 lg:pb-40" /> */}
-
-          <div className="bg-white relative z-10">
-            <div className="h-px bg-black/10" />
-            <div className="pb-20 lg:pb-40" />
-            <BillboardGrid>
-              <h2 className="copy-largest">Honorable mentions</h2>
-              <div className="pb-6"></div>
-              <p className="text-black/60 text-[16px] xl:text-[18px] font-body font-500 tracking-tight">
-                Other places and projects I've worked for.
-              </p>
-            </BillboardGrid>
-
-            <div className="pb-10 2xl:pb-30"></div>
-            <div className="max-w-site px-4">
-              <div className="grid grid-cols-12 items-start gap-y-10 gap-x-4 2xl:gap-x-10 r-full">
-                <div className="col-span-12 2xl:col-span-4 2xl:col-start-3">
-                  <div className="">
-                    <div className="flex items-center min-h-[90px]">
-                      <img
-                        src="/final/logo-thinkful.png"
-                        className="w-[190px]"
-                      />
-                    </div>
-                    <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
-                      Mentored students 1-on-1 on all aspects of front-end and
-                      backend development. Languages were taught for JavaScript
-                      and Ruby.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-span-12 lg:col-span-5">
-                  <div className="">
-                    <div className="flex items-center min-h-[90px]">
-                      <img src="/final/logo-plaid.svg" className="w-[150px]" />
-                    </div>
-                    <p className="text-black/60 text-[16px] font-body font-500 tracking-tight max-w-[390px]">
-                      Worked on the marketing site of plaid.com, increasing
-                      performance, building pipeline tools, and making updates
-                      to their documentation.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="pb-10 lg:pb-40" />
-          </div>
           {/* <div className="pb-20 lg:pb-40" /> */}
         </div>
         {/* 
@@ -507,7 +464,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
           </div> */}
 
         <div className="bg-white z-10 relative">
-          <div className="pb-40" />
+          {/* <div className="pb-40" /> */}
           {/* 
             <img
               className="max-w-[1200px] mx-auto"

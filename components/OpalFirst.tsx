@@ -38,11 +38,15 @@ export const OpalFirst = () => {
     offset: ['start end', 'end end'],
   })
 
-  const [outer, setOuter] = useState(1)
+  const [calculatedScale, setCalculatedScale] = useState(1)
 
   const container = useRef<HTMLDivElement>(null)
 
-  const scale = useTransform(scaleScroll.scrollYProgress, [0, 1], [outer, 1])
+  const scale = useTransform(
+    scaleScroll.scrollYProgress,
+    [0, 1],
+    [calculatedScale, 1],
+  )
 
   // useMotionValueEvent(beforeScroll.scrollYProgress, 'change', (progress) => {
   //   console.log(progress)
@@ -54,9 +58,9 @@ export const OpalFirst = () => {
     const width = container.current.offsetWidth
     const scale = compare.current.offsetWidth / width
 
-    console.log(container.current.offsetWidth)
+    // console.log(container.current.offsetWidth)
 
-    setOuter(scale + 0.001)
+    setCalculatedScale(scale + 0.001)
     // setOuter(scale + 0.007)
   }, [])
 
@@ -112,7 +116,18 @@ export const OpalFirst = () => {
       {/* <div className="bg-[#eaeaea] z-10 relative"> */}
       <div className="pb-40 lg:pb-40" />
       <BillboardGrid>
-        <p className="copy-largest">
+        <p
+          className="copy-largest"
+          // className="copy-largest text-copy-2/50"
+          // style={{
+          //   background: `url('/actual/cotton.png')`,
+          //   backgroundPosition: 'center',
+          //   backgroundRepeat: 'repeat',
+          //   backgroundSize: 'contain',
+          //   backgroundClip: 'text',
+          //   // color: 'transparent',
+          // }}
+        >
           My journey at Opal started <br />
           with a simple landing page
         </p>
@@ -131,14 +146,14 @@ export const OpalFirst = () => {
           {/* <div className="h-[172vh] lg:h-[325vh] absolute top-0 left-0 w-full"> */}
           <div className=" sticky top-[0vh] w-full " style={{ top }}>
             {/* <div className="overflow-hidden"> */}
-              {/* <div className="max-w-[90vw]"> */}
-                {/* <img
+            {/* <div className="max-w-[90vw]"> */}
+            {/* <img
                   src="/actual/first-bg.png"
                   className=" lg:block w-full z-10 object-contain relative translate-x-[3vw] translate-y-[-10vh]"
                   // className=" lg:block w-full  z-10 translate-y-[0vh] lg:translate-y-[20vh] object-contain"
                   ref={bg}
                 /> */}
-              {/* </div> */}
+            {/* </div> */}
             {/* </div> */}
           </div>
         </div>
@@ -152,16 +167,16 @@ export const OpalFirst = () => {
             className="h-[44%] absolute top-[23%] z-1000 w-full pointer-events-none"
           />
           <div className="sticky top-0" style={{ top }}>
-            <div className="grid grid-cols-12 gap-x-4 px-4 overflow-hidden">
+            <motion.div
+              className="grid grid-cols-12 gap-x-4 px-4 overflow-hidden"
+              style={{ scale }}
+            >
               <div className="col-span-12 lg:col-span-10 md:col-start-1 lg:col-start-2">
                 <div
                   className="relative aspect-1648/949 w-full"
                   ref={container}
                 >
-                  <motion.div
-                    style={{ scale }}
-                    className="will-change-transform size-full"
-                  >
+                  <motion.div className="will-change-transform size-full">
                     <motion.img
                       src="/actual/opal-first-2.png"
                       className="absolute left-0 size-full z-20 will-change-[clip-path]"
@@ -175,7 +190,7 @@ export const OpalFirst = () => {
                   </motion.div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

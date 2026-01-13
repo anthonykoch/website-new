@@ -202,7 +202,9 @@ const Links = () => {
       <Link
         className="block will-change-[opacity]"
         href="/blog"
-        onClick={() => setVisible(false)}
+        onClickCapture={() => {
+          setVisible(false)
+        }}
       >
         <Appearance>
           <Text>Blog</Text>
@@ -211,7 +213,7 @@ const Links = () => {
       <Link
         className="block will-change-[opacity]"
         href="/#work"
-        onClick={() => setVisible(false)}
+        onClickCapture={() => setVisible(false)}
       >
         <Appearance>
           <Text>Work</Text>
@@ -220,7 +222,7 @@ const Links = () => {
       <Link
         className="block will-change-[opacity]"
         href="/#contact"
-        onClick={() => setVisible(false)}
+        onClickCapture={() => setVisible(false)}
       >
         <Appearance>
           <Text>Contact</Text>

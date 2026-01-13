@@ -39,10 +39,21 @@ export const Hero = () => {
       <div className="max-w-site mx-auto z-20 px-4">
         {/* <div className="pb-10 lg:pb-40" /> */}
 
-        <p className="text-copy-secondary relative pt-[15vh] z-40 w-full text-[clamp(36px,6vw,74px)]  font-600 leading-[1.15] lg:leading-none tracking-[-0.25px] font-heading lg:text-center max-w-[1200px] mx-auto">
-          {/* <p className="text-[#4f4550] relative mix-blend-difference pt-[15vh] z-40 w-full text-[clamp(36px,6vw,74px)]  font-600 leading-[1.15] lg:leading-none tracking-[-0.25px] font-heading lg:text-center max-w-[1200px] mx-auto"> */}
-          I help companies and startups ship pixel-perfect, responsive websites.
-        </p>
+        <div className="pt-[14vh] max-w-[1200px] mx-auto lg:text-center w-full relative z-40">
+          <p className="text-copy-secondary text-[clamp(36px,6vw,74px)] font-600 leading-[1.15] lg:leading-none tracking-[-0.25px] font-heading">
+            {/* <p className="text-[#4f4550] relative mix-blend-difference pt-[15vh] z-40 w-full text-[clamp(36px,6vw,74px)]  font-600 leading-[1.15] lg:leading-none tracking-[-0.25px] font-heading lg:text-center max-w-[1200px] mx-auto"> */}
+            I help companies and startups ship pixel-perfect, responsive
+            websites.
+          </p>
+
+          {/* <div className="pb-4 lg:pb-8" />
+          <div className="max-w-[360px] lg:max-w-full lg:text-center">
+            <p className="text-copy-2 text-[clamp(15px,1.5vw,16px)] font-body font-500">
+              A UI Developer working with lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Ipsa, iste!
+            </p>
+          </div> */}
+        </div>
 
         <div className="z-10 relative">
           <div className="pb-20" />

@@ -4,3 +4,7 @@ export const theme = (name: string): string => {
 
   return computedStyles.getPropertyValue(name)
 }
+
+export const themeValue = (name: string): number => {
+  return parseFloat(theme(name))
+}

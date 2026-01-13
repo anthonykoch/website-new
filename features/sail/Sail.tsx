@@ -10,6 +10,7 @@ import { useRouterListener } from '../router/context/RouterComposerContext'
 import { useHandleLinkClicks } from './hooks'
 import { useEffect, useRef } from 'react'
 import { BlogImages } from '../blog/Hero'
+import { theme } from '@/utils/theme'
 
 export const Sail = () => {
   const animator = useAnimator<'sail'>()
@@ -76,8 +77,10 @@ export const Sail = () => {
             {
               // duration: 0.3,
               // ease: 'linear',
-              delay: 0.1,
-              duration: 0.3,
+              // Delay because
+              delay:
+                innerWidth < parseInt(theme('--breakpoint-lg')) ? 0.6 : 0.1,
+              duration: 0.44,
               // duration: 0.5,
               ease: easeInOutCubic,
             },

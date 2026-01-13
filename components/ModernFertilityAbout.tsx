@@ -9,14 +9,16 @@ export const ModernFertilityAbout = () => {
 
   const coverScroll = useScroll({
     target: cover,
-    offset: ['-40vw start', '0px start'],
+    offset: ['-50vw start', '0 start'],
+
   })
 
   const opacity = useTransform(coverScroll.scrollYProgress, [0, 1], [0, 1])
 
   return (
     <div className="relative z-10 bg-white">
-      <div ref={cover} />
+      <div ref={cover} 
+      />
       <motion.div
         style={{
           opacity,

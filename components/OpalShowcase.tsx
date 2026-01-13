@@ -5,10 +5,10 @@ export const OpalShowcase = () => {
   return (
     <div>
       {/* <div className="bg-[#eaeaea] z-10 relative"> */}
-      <div className="max-w-site mx-auto  z-10 relative">
+      <div className="max-w-site mx-auto z-10 relative">
         {/* <div className="px-4"> */}
         <Billboard textSize="lg">
-          <p className="copy-largest text-black/80">
+          <p className="copy-largest">
             I've since worked on <br />
             many parts of Opal.
           </p>
@@ -19,12 +19,12 @@ export const OpalShowcase = () => {
 
         <ExhibitPages />
 
-        <div className="pt-10 lg:pt-40" />
+        <div className="pt-20 lg:pt-40" />
 
         {/* <div className="pb-20 lg:pb-30" /> */}
-        <div className="grid grid-cols-12 gap-x-4">
+        <div className="grid grid-cols-12 gap-x-4 px-4">
           <div className="max-xl:order-2 col-span-12 xl:col-span-3 xl:col-start-2">
-            <div className="max-xl:max-w-[350px] lg:mx-0 w-full">
+            <div className="max-xl:max-w-[350px] lg:mx-0 mx-auto w-full">
               <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
                 MOBILE NAVIGATION
               </p>
@@ -51,7 +51,7 @@ export const OpalShowcase = () => {
               Tadpole firmware. I built out the UI and collaborated with device
               engineers to interface it with the Tadpole.
             </p>
-            <div className="pb-10" />
+            <div className="pb-40" />
           </div>
         </div>
       </div>
