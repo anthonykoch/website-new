@@ -136,79 +136,29 @@ export const Sail = () => {
         style={{
           opacity: 1,
         }}
-        // #4f4550
-
         className="bg-black w-screen h-screen fixed top-0 left-0 origin-top z-4000 will-change-transform pointer-events-none"
-        // className="bg-[#0D0D0D] w-screen h-screen fixed top-0 left-0 origin-top z-4000 will-change-transform pointer-events-none"
-        // className="bg-[#0e1a1a] w-screen h-screen fixed top-0 left-0 origin-top z-4000 will-change-transform pointer-events-none"
-      >
-        {/* <img
-          src="/actual/splash-og.jpg"
-          className="absolute size-full top-0 left-0 object-cover"
-        /> */}
-      </div>
-      {/* <div
-        id="splash"
-        ref={ref}
-        style={{
-          opacity: 1,
-          // transform: 'scaleY(0)',
-        }}
-        className="bg-white w-screen h-screen fixed top-0 left-0 origin-top z-4000 will-change-transform pointer-events-none"
-        // className="bg-black w-screen h-screen fixed top-0 left-0 origin-top z-4000 will-change-transform"
-      >
-        <img
-          // src="/actual/plant.jpg"
-          src="/actual/splash-og.jpg"
-          // src="/actual/splash.jpg"
-          className="absolute size-full top-0 left-0 object-cover"
-          // className="size-[105%] absolute -translate-1/2 top-1/2 left-1/2 object-cover"
-        />
-      </div> */}
+      ></div>
+
       <div
         data-c-sail
         ref={sail}
         className="selector-sail-top bg-white h-screen origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
-        // className="selector-sail-top bg-black h-screen origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
+        x
         style={{ clipPath: 'inset(0 0 100% 0)' }}
       >
         <div
-          className="absolute left-0 top-0 size-[100%] 
+          className="absolute left-0 top-0 size-full 
         "
         >
+          {/* // #4f4550 */}
           {/* #a7b1a6 */}
           {/* #bec9bb */}
 
-          {/* blur-[20px] */}
-          {/* <BlogImages
-          // src="/actual/pawl.jpg"
-          // className="size-full absolute top-0 left-0 object-cover opacity-50 blur-[10px]"
-          // src="/actual/desk.jpg"
-          // className="size-[105%] absolute -translate-1/2 top-1/2 left-1/2 object-cover opacity-50 blur-[10px]"
-          // src="/blog-hero-d.jpg"
-          // className="size-[105%] absolute -translate-1/2 top-1/2 left-1/2 object-cover opacity-50 blur-[10px]"
-          /> */}
           <img
-            // src="/actual/plant.jpg"
             src="/actual/splash.jpg"
-            // src="/actual/splash.jpg"
             className="absolute size-full object-cover"
-            // className="size-[105%] absolute -translate-1/2 top-1/2 left-1/2 object-cover"
           />
-          {/* <div className="size-full absolute left-0 top-0 flex items-center justify-center">
-            <img
-              src="/actual/phone-opal-tadpole-shop.png"
-              className="max-w-[300px] md:max-w-[330px] w-full mx-auto"
-              // className="max-w-[300px] md:max-w-[360px] w-full mx-auto"
-            />
-          </div> */}
-          {/* <div className="backdrop-blur-[10px] size-full absolute top-0 left-0 z-10" /> */}
-
-          {/* <div className="size-full absolute flex justify-center items-center z-20">
-            <img src="/actual/favicon.svg" className='w-[100px]' />
-          </div> */}
         </div>
-        {/* <span className=" bg-white size-full block"></span> */}
       </div>
     </>
   )
