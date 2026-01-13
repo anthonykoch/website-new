@@ -1,45 +1,45 @@
-import { scrollTo } from '@/hooks/use-scroll-into-view'
+import { scrollTo } from '@/utils/dom'
 import { default as classNames, default as cx } from 'classnames'
 import Link from 'next/link'
 import { NextRouter, useRouter } from 'next/router'
 import * as React from 'react'
 
-const createLinks = (
-  router: NextRouter,
-): Array<{
-  href: string
-  children: React.ReactNode
-  props?: React.HTMLProps<HTMLAnchorElement>
-}> => [
-  {
-    href: '/blog',
-    children: 'Blog',
-  },
-  {
-    href: '/#work',
-    children: 'Work',
-    props: {
-      onClick: (e) => {
-        if (router.pathname === '/') {
-          e.preventDefault()
-          scrollTo('#work')
-        }
-      },
-    },
-  },
-  {
-    href: '/#contact',
-    children: 'Contact',
-    props: {
-      onClick: (e) => {
-        if (router.pathname === '/') {
-          e.preventDefault()
-          scrollTo('#contact')
-        }
-      },
-    },
-  },
-]
+// const createLinks = (
+//   router: NextRouter,
+// ): Array<{
+//   href: string
+//   children: React.ReactNode
+//   props?: React.HTMLProps<HTMLAnchorElement>
+// }> => [
+//   {
+//     href: '/blog',
+//     children: 'Blog',
+//   },
+//   {
+//     href: '/#work',
+//     children: 'Work',
+//     props: {
+//       onClick: (e) => {
+//         if (router.pathname === '/') {
+//           e.preventDefault()
+//           scrollTo('#work')
+//         }
+//       },
+//     },
+//   },
+//   {
+//     href: '/#contact',
+//     children: 'Contact',
+//     props: {
+//       onClick: (e) => {
+//         if (router.pathname === '/') {
+//           e.preventDefault()
+//           scrollTo('#contact')
+//         }
+//       },
+//     },
+//   },
+// ]
 
 export const Navigation: React.FC<{
   isBlendModeDifference?: boolean
@@ -47,37 +47,47 @@ export const Navigation: React.FC<{
 }> = ({ colorVariant }) => {
   // }> = ({ colorVariant, isBlendModeDifference = false }) => {
   const router = useRouter()
-  const links = createLinks(router)
-  const isNotHome = router.pathname !== '/'
 
   return (
     <nav>
       <div className="inline-flex list-none *:relative">
-        {links.map(({ href, children }) => (
-          <li className="hidden xl:block" key={href}>
-            <Link
-              href={href}
-              className={classNames(
-                `h-[60px] px-12 flex items-center justify-center hover:shadow-box
-                tracking-widest text-[15px] font-600 uppercase font-display
-              `,
-                {
-                  'hover:bg-primary-500 hover:text-black hover:shadow-button hover:shadow-black/10':
-                    isNotHome,
-                  'hover:bg-primary-invert hover:shadow-white/20': !isNotHome,
-                  // 'hover:bg-primary-500 hover:text-black hover:shadow-button hover:shadow-black/10':
-                  //   !isBlendModeDifference,
-                  // 'hover:bg-primary-invert hover:shadow-white/20':
-                  //   isBlendModeDifference,
-                  'text-black/80': colorVariant === 'black',
-                  'text-white/80': colorVariant === 'white',
-                },
-              )}
-            >
-              {children}
-            </Link>
-          </li>
-        ))}
+        <li className="hidden xl:block">
+          <Link href="/blog">
+            <MenuItemAppearance colorVariant={colorVariant}>
+              Blog
+            </MenuItemAppearance>
+          </Link>
+        </li>
+        <li className="hidden xl:block">
+          <Link
+            href="/#work"
+            onClick={(e) => {
+              if (router.pathname === '/') {
+                e.preventDefault()
+                scrollTo('#work')
+              }
+            }}
+          >
+            <MenuItemAppearance colorVariant={colorVariant}>
+              Work
+            </MenuItemAppearance>
+          </Link>
+        </li>
+        <li className="hidden xl:block">
+          <Link
+            href="/#contact"
+            onClick={(e) => {
+              if (router.pathname === '/') {
+                e.preventDefault()
+                scrollTo('#contact')
+              }
+            }}
+          >
+            <MenuItemAppearance colorVariant={colorVariant}>
+              Contact
+            </MenuItemAppearance>
+          </Link>
+        </li>
 
         <li className="hidden xl:block">
           <a
@@ -100,5 +110,36 @@ export const Navigation: React.FC<{
         </li>
       </div>
     </nav>
+  )
+}
+
+const MenuItemAppearance: React.FC<{
+  children?: React.ReactNode
+  colorVariant?: 'white' | 'black'
+}> = ({ children, colorVariant }) => {
+  const router = useRouter()
+  const isNotHome = router.pathname !== '/'
+
+  return (
+    <span
+      className={classNames(
+        `h-[60px] px-12 flex items-center justify-center hover:shadow-box
+                tracking-widest text-[15px] font-600 uppercase font-display
+              `,
+        {
+          'hover:bg-primary-500 hover:text-black hover:shadow-button hover:shadow-black/10':
+            isNotHome,
+          'hover:bg-primary-invert hover:shadow-white/20': !isNotHome,
+          // 'hover:bg-primary-500 hover:text-black hover:shadow-button hover:shadow-black/10':
+          //   !isBlendModeDifference,
+          // 'hover:bg-primary-invert hover:shadow-white/20':
+          //   isBlendModeDifference,
+          'text-black/80': colorVariant === 'black',
+          'text-white/80': colorVariant === 'white',
+        },
+      )}
+    >
+      {children}
+    </span>
   )
 }

@@ -3,11 +3,12 @@ import { ExhibitPages } from './ExhibitPages'
 
 export const OpalShowcase = () => {
   return (
-    <div className="bg-[#eaeaea] z-10 relative">
+    <div>
+      {/* <div className="bg-[#eaeaea] z-10 relative"> */}
       <div className="max-w-site mx-auto  z-10 relative">
         {/* <div className="px-4"> */}
         <Billboard textSize="lg">
-          <p className="copy-largest">
+          <p className="copy-largest text-black/80">
             I've since worked on <br />
             many parts of Opal.
           </p>

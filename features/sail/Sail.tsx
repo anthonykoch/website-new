@@ -9,6 +9,7 @@ import { animate, useAnimate } from 'motion/react'
 import { useRouterListener } from '../router/context/RouterComposerContext'
 import { useHandleLinkClicks } from './hooks'
 import { useEffect, useRef } from 'react'
+import { BlogImages } from '../blog/Hero'
 
 export const Sail = () => {
   const animator = useAnimator<'sail'>()
@@ -23,12 +24,17 @@ export const Sail = () => {
     return animator
       .overwrite({
         sail: [
-          await animate(sail.current, { opacity: 1 }, { duration: 0 }),
+          // await animate(sail.current, { opacity: 1 }, { duration: 0 }),
           animate(
             '.selector-sail-top',
-            { scaleY: [0, 1] },
+            // { clipPath: [`inset(100% 0 0 0)`, `inset(0 0 0 0)`] },
+            { clipPath: [`inset(0 0 100% 0)`, `inset(0 0 0% 0)`] },
+
+            // { opacity: [1, 0] },
+            // { scaleY: [0, 1] },
             {
-              duration: 1,
+              // duration: 0.5,
+              duration: 0.3,
               ease: easeInOutCubic,
               // ease: easeOutExpo,
             },
@@ -61,12 +67,18 @@ export const Sail = () => {
         sail: [
           animate(
             sail.current,
-            { scale: [1, 0] },
+
+            // { clipPath: [`inset(0 0 0 0)`, `inset(100% 0 0 0)`] },
+            { clipPath: [`inset(0 0 0% 0)`, `inset(100% 0 0 0)`] },
+
+            // { scaleY: [1, 0] },
             // { opacity: [1, 0] },
             {
               // duration: 0.3,
               // ease: 'linear',
-              duration: 0.7,
+              delay: 0.1,
+              duration: 0.3,
+              // duration: 0.5,
               ease: easeInOutCubic,
             },
           ),
@@ -97,14 +109,16 @@ export const Sail = () => {
     animate(
       '#splash',
       {
-        scaleY: [1, 0],
+        opacity: [1, 0],
+        // scaleY: [1, 0],
       },
       {
         // duration: 0.9,
         // ease: easeOutCubic,
-        delay: 0.2,
-        duration: 1.4,
-        ease: easeInOutCubic,
+        delay: 0.4,
+        duration: 0.8,
+        ease: 'linear',
+        // ease: easeInOutCubic,
         // duration: 12.1,
         // ease: (t) => easeInOutCubic(easeOutExpo(easeOutCubic(t))),
       },
@@ -117,19 +131,76 @@ export const Sail = () => {
         id="splash"
         ref={ref}
         style={{
-          transform: 'scaleY(0)',
+          opacity: 1,
         }}
-        className="bg-black w-screen h-screen fixed top-0 left-0 origin-bottom z-4000 will-change-transform"
-      />
+        className="bg-black w-screen h-screen fixed top-0 left-0 origin-top z-4000 will-change-transform pointer-events-none"
+      >
+        {/* <img
+          src="/actual/splash-og.jpg"
+          className="absolute size-full top-0 left-0 object-cover"
+        /> */}
+      </div>
+      {/* <div
+        id="splash"
+        ref={ref}
+        style={{
+          opacity: 1,
+          // transform: 'scaleY(0)',
+        }}
+        className="bg-white w-screen h-screen fixed top-0 left-0 origin-top z-4000 will-change-transform pointer-events-none"
+        // className="bg-black w-screen h-screen fixed top-0 left-0 origin-top z-4000 will-change-transform"
+      >
+        <img
+          // src="/actual/plant.jpg"
+          src="/actual/splash-og.jpg"
+          // src="/actual/splash.jpg"
+          className="absolute size-full top-0 left-0 object-cover"
+          // className="size-[105%] absolute -translate-1/2 top-1/2 left-1/2 object-cover"
+        />
+      </div> */}
       <div
         data-c-sail
         ref={sail}
-        className="selector-sail-top bg-black h-screen origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
-        // className="selector-sail-top mix-blend-color-burn  bg-black h-screen origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
-        // className="selector-sail-top bg-[#222224] lg:h-[50vh] xl:h-[60vh] origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
-        // style={{ opacity: 0 }}
-        style={{ transform: 'scaleY(0)' }}
+        className="selector-sail-top bg-white h-screen origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
+        // className="selector-sail-top bg-black h-screen origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
+        style={{ clipPath: 'inset(0 0 100% 0)' }}
       >
+        <div
+          className="absolute left-0 top-0 size-[100%] 
+        "
+        >
+          {/* #a7b1a6 */}
+          {/* #bec9bb */}
+
+          {/* blur-[20px] */}
+          {/* <BlogImages
+          // src="/actual/pawl.jpg"
+          // className="size-full absolute top-0 left-0 object-cover opacity-50 blur-[10px]"
+          // src="/actual/desk.jpg"
+          // className="size-[105%] absolute -translate-1/2 top-1/2 left-1/2 object-cover opacity-50 blur-[10px]"
+          // src="/blog-hero-d.jpg"
+          // className="size-[105%] absolute -translate-1/2 top-1/2 left-1/2 object-cover opacity-50 blur-[10px]"
+          /> */}
+          <img
+            // src="/actual/plant.jpg"
+            src="/actual/splash-og.jpg"
+            // src="/actual/splash.jpg"
+            className="absolute size-full object-cover"
+            // className="size-[105%] absolute -translate-1/2 top-1/2 left-1/2 object-cover"
+          />
+          {/* <div className="size-full absolute left-0 top-0 flex items-center justify-center">
+            <img
+              src="/actual/phone-opal-tadpole-shop.png"
+              className="max-w-[300px] md:max-w-[330px] w-full mx-auto"
+              // className="max-w-[300px] md:max-w-[360px] w-full mx-auto"
+            />
+          </div> */}
+          {/* <div className="backdrop-blur-[10px] size-full absolute top-0 left-0 z-10" /> */}
+
+          {/* <div className="size-full absolute flex justify-center items-center z-20">
+            <img src="/actual/favicon.svg" className='w-[100px]' />
+          </div> */}
+        </div>
         {/* <span className=" bg-white size-full block"></span> */}
       </div>
     </>

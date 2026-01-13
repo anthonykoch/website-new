@@ -41,8 +41,8 @@ export function getScrollDuration(
 ): number {
   const {
     minDuration = 0.3,
-    maxDuration = 2,
-    pixelsPerSecond = 1200,
+    maxDuration = 4.5,
+    pixelsPerSecond = 1500,
   } = options || {}
 
   const absoluteDistance = Math.abs(distance)
@@ -51,19 +51,23 @@ export function getScrollDuration(
   return Math.max(minDuration, Math.min(maxDuration, calculatedDuration))
 }
 
-export const scrollTo = (el: string | HTMLElement) => {
-  // const el = document.getElementById('work')!
+export const scrollTo = (selector: string | HTMLElement) => {
+  const dom =
+    typeof selector === 'string'
+      ? (document.querySelector(selector)! as HTMLElement)
+      : selector
 
-  const offset = getOffset(el)
-  const distance = offset.top - window.scrollY
-  const duration = getScrollDuration(distance)
+  const offset = getOffset(dom)
+  window.scrollTo({top: offset.top, behavior: 'smooth'})
+  // const distance = offset.top - window.scrollY
+  // const duration = getScrollDuration(distance)
 
-  animate(scrollY, offset.top, {
-    ease: easeInOutCubic,
-    // duration,
-    duration: 1,
-    onUpdate(progress) {
-      window.scrollTo(0, progress)
-    },
-  })
+  // animate(scrollY, offset.top, {
+  //   ease: easeInOutCubic,
+  //   duration,
+  //   // duration: 1,
+  //   onUpdate(progress) {
+  //     window.scrollTo(0, progress)
+  //   },
+  // })
 }

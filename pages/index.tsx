@@ -307,18 +307,21 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             <OpalIntroSection />
           </section>
 
-          <section>
+          <section className="relative z-40">
             <OpalFirst />
           </section>
 
           {/* <div class="absolute -z-10 top-0 left-0 h-full inset-0 w-full bg-[radial-gradient(rgba(0,0,0,0.13)_1px,transparent_1px)] bg-size-[16px_16px]"></div> */}
           <section>
-            <OpalShowcase />
-            <LaptopScroller />
+            <div className="relative"></div>
+            <div className="relative z-50">
+              <OpalShowcase />
+              <LaptopScroller />
+            </div>
           </section>
         </div>
 
-        <div className="bg-white z-10 relative">
+        <div className="bg-white z-60 relative">
           <div ref={cover} />
           <motion.div
             style={{

@@ -13,6 +13,8 @@
   --color-link: rgb(97 150 204);
   /* --color-link: #25cead; */
 
+  --color-copy-secondary: #4f4550;
+
   --color-primary-invert: #1746d3;
 
   --color-seafoam-100: #e4efeb;
@@ -137,11 +139,11 @@
 }
 
 @utility debug {
-  @apply bg-[tomato]/50
+  @apply bg-[tomato]/50;
 }
 
 @utility copy-largest {
-  @apply text-[clamp(38px,6.5vw,100px)] leading-[1] font-heading font-500 -tracking-wide;
+  @apply text-[clamp(38px,6.5vw,100px)] leading-[1] font-heading font-600 -tracking-wide;
 }
 
 @utility striped {
@@ -190,7 +192,12 @@
 
 .gradient-text {
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(-90deg, green, black);
+  background-image: linear-gradient(-90deg, #4f4550, #2a232a);
+  /* background-image: linear-gradient(
+    -90deg,
+    theme(--color-copy-secondary),
+    black
+  ); */
   /* background-image: linear-gradient(-90deg, #e6ddc3, white); */
   /* linear-gradient(-90deg, #e6ddc3, #572d41) */
   /* background-image: linear-gradient(90deg, #898989, #494949); */
