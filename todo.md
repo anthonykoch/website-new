@@ -1,5 +1,6 @@
 
 
+- [ ] Do the opal pages exhibit better on large screens cause it looks a bit hit
 - [ ] Re-export all assets with srcset sizes
 - [ ] Compress the appropriate ones
 - [x] Fix mobile sticky for modern fertility section
@@ -11,5 +12,5 @@
 - [ ] Opal doctor needs to be a video
 - [ ] Add credits for images/assets used. 
 - [ ] Maybe add what fonts/tech were used
-
-
+- [ ] Either change the intro phone to a video or pay someone to make a mockup or scrollable animation renders
+- [ ] ? Maybe make the intro text have an animation out. But you'd have to do this with all headings to make it feel consistent, so idk.

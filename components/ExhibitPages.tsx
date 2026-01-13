@@ -1,10 +1,14 @@
-import ImageExhibitDownloadsPage from '@/public/final-compressed/exhibit-downloads-page.png'
-import ImageExhibitTadpoleShopPage from '@/public/final-compressed/exhibit-tadpole-shop.png'
-import {
-  motion,
-  useScroll,
-  useTransform
-} from 'motion/react'
+import ImageShowcaseDownloads800w from '@/public/actual/showcase-downloads_800w.jpg'
+import ImageShowcaseDownloads1200w from '@/public/actual/showcase-downloads_1200w.jpg'
+import ImageShowcaseDownloads1800w from '@/public/actual/showcase-downloads_1800w.jpg'
+import ImageShowcaseDownloads2400w from '@/public/actual/showcase-downloads_2400w.jpg'
+import ImageShowcaseDownloads3000w from '@/public/actual/showcase-downloads_3000w.jpg'
+import ImageShowcaseShopTadpole800w from '@/public/actual/showcase-shop-tadpole_800w.jpg'
+import ImageShowcaseShopTadpole1200w from '@/public/actual/showcase-shop-tadpole_1200w.jpg'
+import ImageShowcaseShopTadpole1800w from '@/public/actual/showcase-shop-tadpole_1800w.jpg'
+import ImageShowcaseShopTadpole2400w from '@/public/actual/showcase-shop-tadpole_2400w.jpg'
+import ImageShowcaseShopTadpole3000w from '@/public/actual/showcase-shop-tadpole_3000w.jpg'
+import { motion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 
 export const ExhibitPages = () => {
@@ -50,7 +54,9 @@ export const ExhibitPages = () => {
             </div>
             <img
               className="size-full object-cover object-right"
-              src={ImageExhibitTadpoleShopPage.src}
+              src={ImageShowcaseShopTadpole1200w.src}
+              srcSet={`${ImageShowcaseShopTadpole800w.src} 800w, ${ImageShowcaseShopTadpole1200w.src} 1200w, ${ImageShowcaseShopTadpole1800w.src} 1800w, ${ImageShowcaseShopTadpole2400w.src} 2400w, ${ImageShowcaseShopTadpole3000w.src} 3000w`}
+              sizes="(max-width: 1024px) 100vw, 120vw"
               loading="lazy"
             />
           </div>
@@ -67,7 +73,9 @@ export const ExhibitPages = () => {
             </div>
             <img
               className="size-full object-cover object-left"
-              src={ImageExhibitDownloadsPage.src}
+              src={ImageShowcaseDownloads1200w.src}
+              srcSet={`${ImageShowcaseDownloads800w.src} 800w, ${ImageShowcaseDownloads1200w.src} 1200w, ${ImageShowcaseDownloads1800w.src} 1800w, ${ImageShowcaseDownloads2400w.src} 2400w, ${ImageShowcaseDownloads3000w.src} 3000w`}
+              sizes="(max-width: 1024px) 100vw, 120vw"
               loading="lazy"
             />
           </div>
@@ -120,7 +128,9 @@ export const ExhibitPages = () => {
               </div>
               <img
                 className="size-full object-cover object-right"
-                src={ImageExhibitTadpoleShopPage.src}
+                src={ImageShowcaseShopTadpole1200w.src}
+                srcSet={`${ImageShowcaseShopTadpole800w.src} 800w, ${ImageShowcaseShopTadpole1200w.src} 1200w, ${ImageShowcaseShopTadpole1800w.src} 1800w, ${ImageShowcaseShopTadpole2400w.src} 2400w, ${ImageShowcaseShopTadpole3000w.src} 3000w`}
+                sizes="(max-width: 1024px) 100vw, 120vw"
                 loading="lazy"
               />
             </div>
@@ -132,7 +142,9 @@ export const ExhibitPages = () => {
               </div>
               <img
                 className="size-full object-cover object-left"
-                src={ImageExhibitDownloadsPage.src}
+                src={ImageShowcaseDownloads1200w.src}
+                srcSet={`${ImageShowcaseDownloads800w.src} 800w, ${ImageShowcaseDownloads1200w.src} 1200w, ${ImageShowcaseDownloads1800w.src} 1800w, ${ImageShowcaseDownloads2400w.src} 2400w, ${ImageShowcaseDownloads3000w.src} 3000w`}
+                sizes="(max-width: 1024px) 100vw, 120vw"
                 loading="lazy"
               />
             </div>

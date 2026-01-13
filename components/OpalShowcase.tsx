@@ -1,5 +1,10 @@
 import { Billboard } from './Billboard'
 import { ExhibitPages } from './ExhibitPages'
+import ImageShowcaseDoctor800w from '@/public/actual/showcase-doctor_800w.jpg'
+import ImageShowcaseDoctor1200w from '@/public/actual/showcase-doctor_1200w.jpg'
+import ImageShowcaseDoctor1800w from '@/public/actual/showcase-doctor_1800w.jpg'
+import ImageShowcaseDoctor2400w from '@/public/actual/showcase-doctor_2400w.jpg'
+import ImageShowcaseDoctor3000w from '@/public/actual/showcase-doctor_3000w.jpg'
 
 export const OpalShowcase = () => {
   return (
@@ -44,7 +49,12 @@ export const OpalShowcase = () => {
             </p>
             <div className="pb-4" />
 
-            <img src="/final-compressed/exhibit-doctor.png" loading="lazy" />
+            <img
+              src={ImageShowcaseDoctor1200w.src}
+              srcSet={`${ImageShowcaseDoctor800w.src} 800w, ${ImageShowcaseDoctor1200w.src} 1200w, ${ImageShowcaseDoctor1800w.src} 1800w, ${ImageShowcaseDoctor2400w.src} 2400w, ${ImageShowcaseDoctor3000w.src} 3000w`}
+              sizes="(max-width: 1024) 100vw, 1000px"
+              loading="lazy"
+            />
             <div className="pb-4" />
 
             <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#757575] max-w-[500px] pb-4">

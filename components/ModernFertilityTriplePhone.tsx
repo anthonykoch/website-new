@@ -48,7 +48,7 @@ export const ModernFertilityTriplePhone = () => {
   })
 
   const scaleImg = useTransform(scroll.scrollYProgress, [0, 1], [1, 1.3], {
-  // const scaleImg = useTransform(scroll.scrollYProgress, [0, 1], [1, 1.6], {
+    // const scaleImg = useTransform(scroll.scrollYProgress, [0, 1], [1, 1.6], {
     ease: easeInOutCubic,
   })
 
@@ -58,13 +58,13 @@ export const ModernFertilityTriplePhone = () => {
 
   return (
     <div className="mx-auto max-w-site relative">
-      <div className="absolute top-0 left-0 h-[1150px] w-full pointer-events-none overflow-hidden">
+      {/* <div className="absolute top-0 left-0 h-[1150px] w-full pointer-events-none overflow-hidden">
         {/* <motion.div
           className="absolute h-full bg-center bg-contain bg-no-repeat top-0 left-1/2 -translate-x-1/2 z-10 w-[500px] lg:w-[1158px] mx-auto "
           // className="w-full h-full bg-center bg-contain bg-no-repeat top-0 left-0 z-10 max-w-[1158px] mx-auto"
           style={{ backgroundImage: `url(${ImagePhoneBg.src})`, scale: scaleImg }}
-        /> */}
-      </div>
+        /> 
+      </div>*/}
       <div className="z-20 relative">
         <h2 className="px-4 lg:text-center max-w-[1150px] mx-auto copy-largest font-heading z-20 relative">
           A responsive website, <br />
@@ -73,16 +73,23 @@ export const ModernFertilityTriplePhone = () => {
 
         <div className="pb-10 lg:pb-20" />
 
-        <div className="overflow-hidden">
-          <motion.div
-            className="absolute h-[150vh] w-full bg-no-repeat top-[60%] left-1/2 -translate-1/2 z-10 mx-auto bg-size-[auto_500px] lg:bg-size-[auto_800px] bg-center"
-            // className="w-full h-full bg-center bg-contain bg-no-repeat top-0 left-0 z-10 max-w-[1158px] mx-auto"
-            style={{
-              backgroundImage: `url(${ImagePhoneBg.src})`,
-              scale: scaleImg,
-            }}
-          />
-          <div className="w-[200px] lg:w-[298px] mx-auto relative z-10">
+        <div className="relative">
+          <div className="  w-full top-0 left-0">
+            <div
+              className="absolute h-[240vh] w-full top-[-60vh] left-0 z-10 mx-auto overflow-hidden"
+              // className="h-[150vh] w-full bg-no-repeat top-[60%] left-1/2 -translate-1/2 z-10 mx-auto bg-size-[auto_500px] lg:bg-size-[auto_800px] bg-center"
+              // className="w-full h-full bg-center bg-contain bg-no-repeat top-0 left-0 z-10 max-w-[1158px] mx-auto"
+            >
+              <motion.div
+                className="size-full bg-no-repeat bg-size-[auto_500px] lg:bg-size-[auto_800px] bg-position-[center_70vh] md:bg-position-[center_65vh] lg:bg-position-[center_60vh] 2xl:bg-position-[center_60vh]"
+                style={{
+                  backgroundImage: `url(${ImagePhoneBg.src})`,
+                  scale: scaleImg,
+                }}
+              />
+            </div>
+          </div>
+          <div className="w-[200px] lg:w-[298px] mx-auto relative z-20">
             <div
               className="h-[200vh] -top-[100vh] lg:-top-[84vh] absolute w-full pointer-events-none"
               ref={target}

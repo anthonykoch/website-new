@@ -11,6 +11,14 @@ import {
 import { easeInQuart, easeOutExpo } from '@/utils/animation'
 import { useWindowEvent } from '@/hooks/use-window-event'
 import { debounce } from 'lodash'
+import ImageOpalFirst1_1000w from '@/public/actual/opal-first-1_1000w.jpg'
+import ImageOpalFirst1_1500w from '@/public/actual/opal-first-1_1500w.jpg'
+import ImageOpalFirst1_2200w from '@/public/actual/opal-first-1_2200w.jpg'
+import ImageOpalFirst1_3000w from '@/public/actual/opal-first-1_3000w.png'
+import ImageOpalFirst2_1000w from '@/public/actual/opal-first-2_1000w.jpg'
+import ImageOpalFirst2_1500w from '@/public/actual/opal-first-2_1500w.jpg'
+import ImageOpalFirst2_2200w from '@/public/actual/opal-first-2_2200w.jpg'
+import ImageOpalFirst2_3000w from '@/public/actual/opal-first-2_3000w.jpg'
 
 export const OpalFirst = () => {
   const target = useRef<HTMLDivElement>(null)
@@ -167,12 +175,16 @@ export const OpalFirst = () => {
                 >
                   <motion.div className="will-change-transform size-full">
                     <motion.img
-                      src="/actual/opal-first-2.png"
+                      src={ImageOpalFirst2_1500w.src}
+                      srcSet={`${ImageOpalFirst2_1000w.src} 1000w, ${ImageOpalFirst2_1500w.src} 1500w, ${ImageOpalFirst2_2200w.src} 2200w, ${ImageOpalFirst2_3000w.src} 3000w`}
+                      sizes="100vw"
                       className="absolute left-0 size-full z-20 will-change-[clip-path]"
                       style={{ clipPath }}
                     />
                     <motion.img
-                      src="/actual/opal-first-1.png"
+                      src={ImageOpalFirst1_1500w.src}
+                      srcSet={`${ImageOpalFirst1_1000w.src} 1000w, ${ImageOpalFirst1_1500w.src} 1500w, ${ImageOpalFirst1_2200w.src} 2200w, ${ImageOpalFirst1_3000w.src} 3000w`}
+                      sizes="100vw"
                       className="absolute left-0 size-full z-10"
                       ref={img}
                     />

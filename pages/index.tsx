@@ -413,7 +413,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
 
               <ModernFertilityHero />
 
-              <div className="pb-30 lg:pb-50" />
+              <div className="pb-40 lg:pb-50" />
 
               <section>
                 <ModernFertilityTriplePhone />
@@ -421,7 +421,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
                 {/* <div className="pb-30 lg:pb-60" /> */}
               </section>
 
-              <section className="z-10 relative">
+              <section className="z-20 relative">
                 <div className="mx-auto max-w-site">
                   <Description4x8Grid>
                     <h2 className="copy-heading-2-sm lg:copy-heading-2 max-w-[412px] pb-4">
