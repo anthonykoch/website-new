@@ -60,7 +60,7 @@ export const RouterComposerProvider: FC<{ children?: ReactNode }> = ({
 
   const unsubscribe = useCallback(
     (name: Events, subscriber: () => Promise<any>) => {
-      console.log('unsub', subscribers)
+      // console.log('unsub', subscribers)
       subscribers[name] ??= new Set()
       subscribers[name].delete(subscriber)
     },
@@ -69,7 +69,7 @@ export const RouterComposerProvider: FC<{ children?: ReactNode }> = ({
 
   const subscribe = useCallback(
     (name: Events, subscriber: () => Promise<any>) => {
-      console.log('sub', subscribers)
+      // console.log('sub', subscribers)
       subscribers[name] ??= new Set()
       subscribers[name].add(subscriber)
     },
@@ -77,7 +77,7 @@ export const RouterComposerProvider: FC<{ children?: ReactNode }> = ({
   )
 
   const notify = (name: Events): Promise<void[]> => {
-    console.log(name, subscribers[name])
+    // console.log(name, subscribers[name])
     return Promise.all(
       Array.from(subscribers[name] ?? [() => Promise.resolve()]).map((sub) =>
         sub(),

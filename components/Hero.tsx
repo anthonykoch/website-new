@@ -1,3 +1,7 @@
+import ImagePhoneOpalTadpoleShop600w from '@/public/actual/phone-opal-tadpole-shop_600w.png'
+import ImagePhoneOpalTadpoleShop900w from '@/public/actual/phone-opal-tadpole-shop_900w.png'
+import ImagePhoneOpalTadpoleShop1200w from '@/public/actual/phone-opal-tadpole-shop_1200w.png'
+import ImagePhoneOpalTadpoleShop1600w from '@/public/actual/phone-opal-tadpole-shop_1600w.png'
 import { scrollTo } from '@/utils/dom'
 import { useEffect, useRef } from 'react'
 
@@ -58,12 +62,14 @@ export const Hero = () => {
         <div className="z-10 relative">
           <div className="pb-20" />
           <img
-            src="/actual/hero-bg.jpg"
+            src="/actual/hero-bg.svg"
             // src="/actual/hero-bg.png"
             className="min-w-[1200px] absolute top-[-100px] left-1/2 -translate-x-1/2 -z-10"
           />
           <img
-            src="/actual/phone-opal-tadpole-shop.png"
+            src={ImagePhoneOpalTadpoleShop1200w.src}
+            srcSet={`${ImagePhoneOpalTadpoleShop600w.src} 600w, ${ImagePhoneOpalTadpoleShop900w.src} 900w, ${ImagePhoneOpalTadpoleShop1200w.src} 1200w, ${ImagePhoneOpalTadpoleShop1600w.src} 1600w`}
+            sizes="(max-width: 768px) 300px, 330px"
             className="max-w-[300px] md:max-w-[330px] w-full mx-auto"
             // className="max-w-[300px] md:max-w-[360px] w-full mx-auto"
           />

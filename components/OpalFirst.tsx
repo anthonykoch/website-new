@@ -14,7 +14,7 @@ import { debounce } from 'lodash'
 import ImageOpalFirst1_1000w from '@/public/actual/opal-first-1_1000w.jpg'
 import ImageOpalFirst1_1500w from '@/public/actual/opal-first-1_1500w.jpg'
 import ImageOpalFirst1_2200w from '@/public/actual/opal-first-1_2200w.jpg'
-import ImageOpalFirst1_3000w from '@/public/actual/opal-first-1_3000w.png'
+import ImageOpalFirst1_3000w from '@/public/actual/opal-first-1_3000w.jpg'
 import ImageOpalFirst2_1000w from '@/public/actual/opal-first-2_1000w.jpg'
 import ImageOpalFirst2_1500w from '@/public/actual/opal-first-2_1500w.jpg'
 import ImageOpalFirst2_2200w from '@/public/actual/opal-first-2_2200w.jpg'
@@ -137,7 +137,7 @@ export const OpalFirst = () => {
             The page was a simple teaser, letting everyone know what's coming.
           </p>
         </BillboardGrid>
-        <div className="pb-10 lg:pb-30"></div>
+        <div className="pb-10 lg:pb-10"></div>
       </div>
 
       <div

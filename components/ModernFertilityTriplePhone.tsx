@@ -1,10 +1,13 @@
-import ImagePhoneBg from '@/public/actual/showcase-mf-home-bg.png'
+import ImagePhoneBg from '@/public/actual/showcase-mf-home-bg.svg'
+import ImagePhoneMfHome600w from '@/public/actual/phone-mf-home_600w.png'
 import ImagePhoneMfHome900w from '@/public/actual/phone-mf-home_900w.png'
 import ImagePhoneMfHome1300w from '@/public/actual/phone-mf-home_1300w.png'
 import ImagePhoneMfHome1700w from '@/public/actual/phone-mf-home_1700w.png'
+import ImagePhoneMfDashboardPlan600w from '@/public/actual/phone-mf-dashboard-plan_600w.png'
 import ImagePhoneMfDashboardPlan900w from '@/public/actual/phone-mf-dashboard-plan_900w.png'
 import ImagePhoneMfDashboardPlan1300w from '@/public/actual/phone-mf-dashboard-plan_1300w.png'
 import ImagePhoneMfDashboardPlan1700w from '@/public/actual/phone-mf-dashboard-plan_1700w.png'
+import ImagePhoneMfPrenatalPdp600w from '@/public/actual/phone-mf-prenatal-pdp_600w.png'
 import ImagePhoneMfPrenatalPdp900w from '@/public/actual/phone-mf-prenatal-pdp_900w.png'
 import ImagePhoneMfPrenatalPdp1300w from '@/public/actual/phone-mf-prenatal-pdp_1300w.png'
 import ImagePhoneMfPrenatalPdp1700w from '@/public/actual/phone-mf-prenatal-pdp_1700w.png'
@@ -21,10 +24,7 @@ import { useEffect, useRef, useState } from 'react'
 export const ModernFertilityTriplePhone = () => {
   const target = useRef<HTMLDivElement>(null)
   const scroll = useScroll({ target, offset: ['0.4 end', '0.46 start'] })
-  // const [desktopTranslate, setDesktopTranslate] = useState('-50%')
   const [x, setX] = useState(50)
-
-  console.log(x, `${x}%`, `-${x}%`)
 
   useEffect(() => {
     const update = () => {
@@ -61,9 +61,9 @@ export const ModernFertilityTriplePhone = () => {
     ease: easeInOutCubic,
   })
 
-  useMotionValueEvent(transformRight, 'change', (progress) => {
-    console.log(progress)
-  })
+  // useMotionValueEvent(transformRight, 'change', (progress) => {
+  //   console.log(progress)
+  // })
 
   return (
     <div className="mx-auto max-w-site relative">
@@ -105,20 +105,20 @@ export const ModernFertilityTriplePhone = () => {
             />
             <img
               src={ImagePhoneMfHome1300w.src}
-              srcSet={`${ImagePhoneMfHome900w.src} 900w, ${ImagePhoneMfHome1300w.src} 1300w, ${ImagePhoneMfHome1700w.src} 1700w`}
+              srcSet={`${ImagePhoneMfHome600w.src} 600w, ${ImagePhoneMfHome900w.src} 900w, ${ImagePhoneMfHome1300w.src} 1300w, ${ImagePhoneMfHome1700w.src} 1700w`}
               sizes="(max-width: 1024px) 200px, 298px"
               className="mx-auto w-full relative z-20"
             />
             <motion.img
               src={ImagePhoneMfDashboardPlan1300w.src}
-              srcSet={`${ImagePhoneMfDashboardPlan900w.src} 900w, ${ImagePhoneMfDashboardPlan1300w.src} 1300w, ${ImagePhoneMfDashboardPlan1700w.src} 1700w`}
+              srcSet={`${ImagePhoneMfDashboardPlan600w.src} 600w, ${ImagePhoneMfDashboardPlan900w.src} 900w, ${ImagePhoneMfDashboardPlan1300w.src} 1300w, ${ImagePhoneMfDashboardPlan1700w.src} 1700w`}
               sizes="(max-width: 1024px) 200px, 298px"
               className="absolute top-0 left-0 w-full h-auto will-change-transform"
               style={{ x: transformLeft, scale }}
             />
             <motion.img
               src={ImagePhoneMfPrenatalPdp1300w.src}
-              srcSet={`${ImagePhoneMfPrenatalPdp900w.src} 900w, ${ImagePhoneMfPrenatalPdp1300w.src} 1300w, ${ImagePhoneMfPrenatalPdp1700w.src} 1700w`}
+              srcSet={`${ImagePhoneMfPrenatalPdp600w.src} 600w, ${ImagePhoneMfPrenatalPdp900w.src} 900w, ${ImagePhoneMfPrenatalPdp1300w.src} 1300w, ${ImagePhoneMfPrenatalPdp1700w.src} 1700w`}
               sizes="(max-width: 1024px) 200px, 298px"
               className="absolute top-0 left-0 w-full h-auto will-change-transform"
               style={{ x: transformRight, scale }}

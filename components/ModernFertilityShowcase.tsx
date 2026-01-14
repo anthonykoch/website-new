@@ -7,6 +7,7 @@ import ImageIpadMfPrenatalsPdp2400w from '@/public/actual/ipad-mf-prenatals-pdp_
 import ImagePhoneMfCheckout900w from '@/public/actual/phone-mf-checkout_900w.png'
 import ImagePhoneMfCheckout1300w from '@/public/actual/phone-mf-checkout_1300w.png'
 import ImagePhoneMfCheckout1700w from '@/public/actual/phone-mf-checkout_1700w.png'
+import ImagePhoneMfDashboardPlan600w from '@/public/actual/phone-mf-dashboard-plan_600w.png'
 import ImagePhoneMfDashboardPlan900w from '@/public/actual/phone-mf-dashboard-plan_900w.png'
 import ImagePhoneMfDashboardPlan1300w from '@/public/actual/phone-mf-dashboard-plan_1300w.png'
 import ImagePhoneMfDashboardPlan1700w from '@/public/actual/phone-mf-dashboard-plan_1700w.png'
@@ -42,7 +43,7 @@ export const ModernFertilityShowcase = () => {
                 <div className="bg-[#E7E7E7] py-18 lg:px-4 flex items-center justify-center w-full lg:w-[35%]">
                   <img
                     src={ImagePhoneMfDashboardPlan1300w.src}
-                    srcSet={`${ImagePhoneMfDashboardPlan900w.src} 900w, ${ImagePhoneMfDashboardPlan1300w.src} 1300w, ${ImagePhoneMfDashboardPlan1700w.src} 1700w`}
+                    srcSet={`${ImagePhoneMfDashboardPlan600w.src} 600w, ${ImagePhoneMfDashboardPlan900w.src} 900w, ${ImagePhoneMfDashboardPlan1300w.src} 1300w, ${ImagePhoneMfDashboardPlan1700w.src} 1700w`}
                     sizes="(max-width: 1024px) 100vw, 35vw"
                     className="w-[80%] lg:w-[calc(100%-64px)] max-w-[360px] drop-shadow-phone"
                   />
