@@ -9,7 +9,7 @@ import { TripleChevron } from '@/features/embellishments/TripleChevron'
 import { animate, motion, useScroll, useTransform } from 'motion/react'
 
 import { easeOutExpo } from '@/utils/animation'
-import { FC, RefObject, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { Grid } from '@/components/Grid'
 import { Hero } from '@/components/Hero'
