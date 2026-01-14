@@ -3,6 +3,10 @@ import { useScrollX } from '@/hooks/use-scroll-x'
 import { motion, useScroll, useTransform } from 'motion/react'
 import { FC, useRef } from 'react'
 import { FigCaption, MobileImageScroller } from './MobileImageScroller'
+import ImageGirl from '@/public/actual/girl.jpg'
+import ImageOpalTadpole400w from '@/public/actual/opal-tadpole_400w.jpg'
+import ImageOpalTadpole800w from '@/public/actual/opal-tadpole_800w.jpg'
+import ImageOpalTadpole1200w from '@/public/actual/opal-tadpole_1200w.jpg'
 
 const ArrowRightSvg: FC<{ className?: string }> = ({ className }) => {
   return (
@@ -78,11 +82,13 @@ export const OpalIntroSection = () => {
               containerRef={opalCameraImagesRef}
               images={[
                 <img
-                  src="/final-compressed/girl.png"
+                  src={ImageGirl.src}
                   className="h-[320px] md:h-[420px]"
                 />,
                 <img
-                  src="/final-compressed/opal-tadpole.png"
+                  src={ImageOpalTadpole800w.src}
+                  srcSet={`${ImageOpalTadpole400w.src} 400w, ${ImageOpalTadpole800w.src} 800w, ${ImageOpalTadpole1200w.src} 1200w`}
+                  sizes="(max-width: 768px) 320px, 420px"
                   className="h-[320px] md:h-[420px]"
                 />,
                 // <img src="/final-compressed/card-opal.png" className="h-[320px]" />,
@@ -119,7 +125,7 @@ export const OpalIntroSection = () => {
               <div className="aspect-784/1190 relative">
                 {/* <div className="striped rounded-md size-full"></div> */}
                 <img
-                  src="/final-compressed/girl.png"
+                  src={ImageGirl.src}
                   className="selector-opal-camera-image  absolute size-full left-0 top-0"
                 />
               </div>
@@ -142,7 +148,9 @@ export const OpalIntroSection = () => {
               </p>
               <div className="aspect-920/608 relative">
                 <img
-                  src="/final-compressed/opal-tadpole.png"
+                  src={ImageOpalTadpole800w.src}
+                  srcSet={`${ImageOpalTadpole400w.src} 400w, ${ImageOpalTadpole800w.src} 800w, ${ImageOpalTadpole1200w.src} 1200w`}
+                  sizes="(max-width: 1200px) 100vw, 42.87vw"
                   className="selector-opal-camera-image  absolute size-full top-0 left-0"
                 />
               </div>

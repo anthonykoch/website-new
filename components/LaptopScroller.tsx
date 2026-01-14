@@ -1,11 +1,14 @@
+import ImageOpalcameraHomeFull1000w from '@/public/actual/opalcamera-home-full-1000w.jpg'
+import ImageOpalcameraHomeFull1800w from '@/public/actual/opalcamera-home-full-1800w.jpg'
+import ImageOpalcameraHomeFull750w from '@/public/actual/opalcamera-home-full-750w.jpg'
+import ImageEmptyMacbook from '@/public/final-compressed/empty-macbook.png'
 import {
+  motion,
   useMotionTemplate,
   useScroll,
   useTransform,
-  motion,
 } from 'motion/react'
 import { useEffect, useRef } from 'react'
-import { BillboardGrid } from './Billboard'
 
 export const LaptopScroller = () => {
   const opalcameraHomeImageRef = useRef<HTMLImageElement>(null)
@@ -46,7 +49,7 @@ export const LaptopScroller = () => {
         <div>
           <motion.div className="relative z-10 will-change-transform">
             <img
-              src="/final-compressed/empty-macbook.png"
+              src={ImageEmptyMacbook.src}
               className="w-full max-w-[800px] xl:max-w-[1200px] mx-auto absolute z-20 top-0 left-1/2 -translate-x-1/2"
             />
 
@@ -59,7 +62,9 @@ export const LaptopScroller = () => {
                     </span>
                   </div>
                   <motion.img
-                    src="/final-compressed/opalcamera-home-full.png"
+                    src={ImageOpalcameraHomeFull1000w.src}
+                    srcSet={`${ImageOpalcameraHomeFull750w.src} 750w, ${ImageOpalcameraHomeFull1000w.src} 1000w, ${ImageOpalcameraHomeFull1800w.src} 1800w`}
+                    sizes="(max-width: 400px) 90vw, (max-width: 800px) 800px, 1200px"
                     className="absolute top-0 left-0 w-full h-auto will-change-transform object-top z-20"
                     loading="lazy"
                     ref={opalcameraHomeImageRef}
