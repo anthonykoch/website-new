@@ -37,7 +37,7 @@ export const OpalShowcase = () => {
               <div className="pb-4" />
               <video autoPlay muted loop className="object-cover size-full">
                 <source
-                  src="/final-compressed/mobile-nav.mp4"
+                  src="/actual/mobile-nav-final.mp4"
                   type="video/mp4"
                 />
               </video>

@@ -91,8 +91,8 @@ export const Hero = () => {
                   {'>'}
                 </span> */}
 
-              {/* <span className="hidden lg:block bg-primary-500 size-[4px] rounded-full leading-0 mr-1" /> */}
-              <span className="inline-block align-middle font-body text-[14px] font-500 text-black/80 rounded-[200px] border-2 border-primary-500/30 border-solid px-4 py-2">
+              <span className="hidden lg:block bg-primary-500 size-1 rounded-full leading-0 mr-2" />
+              <span className="inline-block align-middle font-body text-[14px] font-500 text-black/80">
                 Actively looking for new opportunities{' '}
                 <span className="max-[380px]:block">- Jan 2026</span>
               </span>
