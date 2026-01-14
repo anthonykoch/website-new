@@ -4,11 +4,7 @@ import ImagePhoneOpalTadpoleShop600w from '@/public/actual/phone-opal-tadpole-sh
 import ImagePhoneOpalTadpoleShop900w from '@/public/actual/phone-opal-tadpole-shop_900w.png'
 import { easeOutCubic } from '@/utils/animation'
 import { scrollTo } from '@/utils/dom'
-import {
-  motion,
-  useScroll,
-  useTransform
-} from 'motion/react'
+import { motion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 
 export const Hero = () => {
@@ -51,7 +47,10 @@ export const Hero = () => {
 
   return (
     <div>
-      <div className="overflow-hidden max-w-site mx-auto z-20 px-4 relative" ref={target}>
+      <div
+        className="overflow-hidden max-w-site mx-auto z-20 px-4 relative"
+        ref={target}
+      >
         <div
           //
           className="
@@ -82,6 +81,23 @@ export const Hero = () => {
               websites.
             </p>
           </motion.div>
+          <div
+            // ref={containerRef}
+            className="mt-2 px-5 py-3 max-[380px]:flex inline-flex items-center relative"
+          >
+            <p className="relative z-20 flex flex-nowrap items-center">
+              {/*                
+               <span className="top-[-0.03em] relative text-primary-500 text-[18px] inline-block align-middle mr-0.5 font-500 leading-[0.8]">
+                  {'>'}
+                </span> */}
+
+              {/* <span className="hidden lg:block bg-primary-500 size-[4px] rounded-full leading-0 mr-1" /> */}
+              <span className="inline-block align-middle font-body text-[14px] font-500 text-black/80 rounded-[200px] border-2 border-primary-500/30 border-solid px-4 py-2">
+                Actively looking for new opportunities{' '}
+                <span className="max-[380px]:block">- Jan 2026</span>
+              </span>
+            </p>
+          </div>
         </div>
 
         <motion.div

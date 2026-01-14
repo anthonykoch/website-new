@@ -2,7 +2,7 @@ import { Footer } from '@/features/site/footer/Footer'
 import type { GetStaticProps, NextPage } from 'next'
 import superjson from 'superjson'
 
-import { Billboard, BillboardGrid } from '@/components/Billboard'
+import { Billboard } from '@/components/Billboard'
 import { OpalIntroSection } from '@/components/OpalIntroSection'
 import { TripleChevron } from '@/features/embellishments/TripleChevron'
 
@@ -11,49 +11,19 @@ import { animate, motion, useScroll, useTransform } from 'motion/react'
 import { easeOutExpo } from '@/utils/animation'
 import { FC, RefObject, useEffect, useRef } from 'react'
 
-import { ExhibitPages } from '@/components/ExhibitPages'
 import { Grid } from '@/components/Grid'
+import { Hero } from '@/components/Hero'
 import { LaptopScroller } from '@/components/LaptopScroller'
 import { ModernFertilityAbout } from '@/components/ModernFertilityAbout'
 import { ModernFertilityBrand } from '@/components/ModernFertilityBrand'
 import { ModernFertilityHero } from '@/components/ModernFertilityHero'
 import { ModernFertilityShowcase } from '@/components/ModernFertilityShowcase'
+import { ModernFertilityTriplePhone } from '@/components/ModernFertilityTriplePhone'
+import { OpalFirst } from '@/components/OpalFirst'
+import { OpalShowcase } from '@/components/OpalShowcase'
 import { Post } from '@/components/PostList'
 import { Description4x8Grid } from '@/features/grid/Description4x8Grid'
 import { getAllPostMeta } from '@/utils/post'
-import { OpalFirst } from '@/components/OpalFirst'
-import { OpalShowcase } from '@/components/OpalShowcase'
-import { Hero } from '@/components/Hero'
-import { ModernFertilityTriplePhone } from '@/components/ModernFertilityTriplePhone'
-import { ModernFertilityTriplePhonev2 } from '@/components/ModernFertilityTriplePhonev2'
-
-const Looking: FC<{ containerRef: RefObject<HTMLDivElement | null> }> = ({
-  containerRef,
-}) => (
-  <div
-    ref={containerRef}
-    className="mt-2 setup-fade-in px-5 py-3 text-white text-[13px] lg:text-[15px] max-[380px]:flex inline-flex items-center relative"
-  >
-    <div className="size-full absolute bg-black z-10 top-0 left-0" />
-    {/* <div className="absolute top-0 left-0 size-full translate-[20px]">
-                          <motion.div
-                            className="striped bg-primary-500 size-full"
-                            style={{ y, x }}
-                            transition={{ type: 'spring', bounce: 0 }}
-                          />
-                        </div> */}
-    <p className="relative z-20 flex flex-nowrap items-center">
-      {/* <span className="top-[0.03em] relative text-primary-500 text-[19px] inline-block align-middle mr-0.5 font-500 leading-[0.8]">
-        {'>'}
-      </span> */}
-      <span className="hidden lg:block bg-primary-500 size-[4px] rounded-full leading-0 mr-1" />
-      <span className="inline-block align-middle font-body text-[13px] font-500">
-        Actively looking for new opportunities{' '}
-        <span className="max-[380px]:block">- Jan 2026</span>
-      </span>
-    </p>
-  </div>
-)
 
 const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   // const opalLogoRef = useRef(null)

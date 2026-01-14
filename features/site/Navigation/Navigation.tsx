@@ -75,7 +75,7 @@ export const Navigation: React.FC<{
         </li>
         <li className="hidden xl:block">
           <Link
-            href="/#contact"
+            href="#contact"
             onClick={(e) => {
               if (router.pathname === '/') {
                 e.preventDefault()

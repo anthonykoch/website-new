@@ -240,7 +240,7 @@ const Links = () => {
           setVisible(false)
         }}
         className="block will-change-[opacity]"
-        href="/#contact"
+        href="#contact"
       >
         <Appearance>
           <Text>Contact</Text>
