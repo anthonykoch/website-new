@@ -14,7 +14,7 @@ export const OpalShowcase = () => {
         {/* <div className="px-4"> */}
         <Billboard textSize="lg">
           <p className="copy-largest">
-            I've since worked on <br />
+            I've since worked on <br className='hidden lg:block' />
             many parts of Opal.
           </p>
         </Billboard>
