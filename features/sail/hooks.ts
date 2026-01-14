@@ -33,13 +33,11 @@ export const useHandleLinkClicks = () => {
 
       const target = (e.target as HTMLElement).closest('a')
 
-      if (
-        target &&
-        isInternalLink(target.href) &&
-        !isCurrentLink(target.href)
-      ) {
+      if (target == null) return
+
+      if (isInternalLink(target.href) && !isCurrentLink(target.href)) {
+        console.log('handling')
         e.preventDefault()
-        e.stopPropagation()
 
         console.log('before notify')
         await composer.notify('before')

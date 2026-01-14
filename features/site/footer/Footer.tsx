@@ -3,8 +3,11 @@ import React from 'react'
 import { ExternalLink } from '@/components/action/Link'
 import Link from 'next/link'
 import { scrollTo } from '@/utils/dom'
+import { useRouter } from 'next/router'
 
 export const Footer: React.FC = () => {
+  const router = useRouter()
+
   return (
     <footer className="max-w-[1728px] mx-auto px-4">
       <div className="border-b border-black/10 w-[calc(100wh-16px)]"></div>
@@ -89,8 +92,10 @@ export const Footer: React.FC = () => {
                     <Link
                       href="/#work"
                       onClickCapture={(e) => {
-                        e.preventDefault()
-                        scrollTo('#work')
+                        if (router.pathname === '/') {
+                          e.preventDefault()
+                          scrollTo('#work')
+                        }
                       }}
                       className="hover:text-zinc-400 block text-inherit font-display font-600 text-[15px] py-2 px-4 tracking-widest"
                     >

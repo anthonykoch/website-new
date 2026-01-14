@@ -1,11 +1,13 @@
 import { ExternalLink } from '@/components/action/Link'
 import { isMobileMenuVisible } from '@/store'
 import { easeOutCubic, easeOutExpo } from '@/utils/animation'
+import { scrollTo } from '@/utils/dom'
 import { Portal } from '@radix-ui/react-portal'
 import classNames from 'classnames'
-import { useAtom, useSetAtom } from 'jotai'
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { AnimatePresence, motion, useAnimate, usePresence } from 'motion/react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FC, ReactNode, useEffect, useRef } from 'react'
 import FocusLock from 'react-focus-lock'
 
@@ -197,32 +199,48 @@ const Links = () => {
     })()
   }, [isPresent])
 
+  const router = useRouter()
+
+  const isMobileMenuVisibleAtom = useAtomValue(isMobileMenuVisible)
+
   return (
     <div ref={scope}>
       <Link
-        className="block will-change-[opacity]"
-        href="/blog"
-        onClickCapture={() => {
+        onClick={() => {
           setVisible(false)
         }}
+        className="block will-change-[opacity]"
+        href="/blog"
       >
         <Appearance>
           <Text>Blog</Text>
         </Appearance>
       </Link>
       <Link
+        onClick={(e) => {
+          if (router.pathname === '/') {
+            e.preventDefault()
+            scrollTo('#work')
+          }
+
+          setVisible(false)
+        }}
         className="block will-change-[opacity]"
         href="/#work"
-        onClickCapture={() => setVisible(false)}
       >
         <Appearance>
           <Text>Work</Text>
         </Appearance>
       </Link>
+
       <Link
+        onClick={(e) => {
+          e.preventDefault()
+          scrollTo('#contact')
+          setVisible(false)
+        }}
         className="block will-change-[opacity]"
         href="/#contact"
-        onClickCapture={() => setVisible(false)}
       >
         <Appearance>
           <Text>Contact</Text>

@@ -1,16 +1,15 @@
-import ImagePhoneOpalTadpoleShop600w from '@/public/actual/phone-opal-tadpole-shop_600w.png'
-import ImagePhoneOpalTadpoleShop900w from '@/public/actual/phone-opal-tadpole-shop_900w.png'
 import ImagePhoneOpalTadpoleShop1200w from '@/public/actual/phone-opal-tadpole-shop_1200w.png'
 import ImagePhoneOpalTadpoleShop1600w from '@/public/actual/phone-opal-tadpole-shop_1600w.png'
+import ImagePhoneOpalTadpoleShop600w from '@/public/actual/phone-opal-tadpole-shop_600w.png'
+import ImagePhoneOpalTadpoleShop900w from '@/public/actual/phone-opal-tadpole-shop_900w.png'
+import { easeOutCubic } from '@/utils/animation'
 import { scrollTo } from '@/utils/dom'
-import { useEffect, useRef } from 'react'
 import {
   motion,
-  useMotionValueEvent,
   useScroll,
-  useTransform,
+  useTransform
 } from 'motion/react'
-import { easeInOutCubic, easeInQuart, easeOutCubic } from '@/utils/animation'
+import { useRef } from 'react'
 
 export const Hero = () => {
   const target = useRef<HTMLDivElement>(null)
@@ -20,9 +19,9 @@ export const Hero = () => {
     offset: ['start start', 'end start'],
   })
 
-  useMotionValueEvent(scroll.scrollYProgress, 'change', (t) => {
-    console.log(t)
-  })
+  // useMotionValueEvent(scroll.scrollYProgress, 'change', (t) => {
+  //   console.log(t)
+  // })
 
   const easeInTo15 = (t: number): number => {
     const delay = 0.3

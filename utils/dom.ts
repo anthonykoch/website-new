@@ -57,17 +57,5 @@ export const scrollTo = (selector: string | HTMLElement) => {
       ? (document.querySelector(selector)! as HTMLElement)
       : selector
 
-  const offset = getOffset(dom)
-  window.scrollTo({ top: offset.top, behavior: 'smooth' })
-  // const distance = offset.top - window.scrollY
-  // const duration = getScrollDuration(distance)
-
-  // animate(scrollY, offset.top, {
-  //   ease: easeInOutCubic,
-  //   duration,
-  //   // duration: 1,
-  //   onUpdate(progress) {
-  //     window.scrollTo(0, progress)
-  //   },
-  // })
+  dom.scrollIntoView({ behavior: 'smooth' })
 }
