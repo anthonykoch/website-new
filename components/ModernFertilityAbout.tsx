@@ -82,8 +82,8 @@ export const ModernFertilityAbout = () => {
           <div className="gap-y-6 flex flex-col copy-body-4-sm lg:copy-body-4 text-[#888787] max-w-[654px]">
             <p>
               Fast forward a few years later, and not only had the website grown
-              in scale, but Modern Fertility has grown as a wildly successful
-              company.{' '}
+              in scale, but Modern Fertilityd grown to be a wildly successful
+              company.
               <a
                 href="https://techcrunch.com/2021/05/19/ro-acquires-modern-fertility-in-a-reportedly-225-million-deal/"
                 className="underline text-black/60"
