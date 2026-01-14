@@ -29,7 +29,8 @@ export const Sail = () => {
             { clipPath: [`inset(0 0 100% 0)`, `inset(0 0 0% 0)`] },
 
             {
-              duration: 0.3,
+              duration: 0.5,
+              // duration: 0.3,
               // delay: innerWidth < 720 ? 0.1 : 0,
               ease: easeInOutCubic,
             },
@@ -53,7 +54,8 @@ export const Sail = () => {
             {
               delay:
                 innerWidth < parseInt(theme('--breakpoint-lg')) ? 0.6 : 0.1,
-              duration: 0.44,
+              duration: 0.7,
+              // duration: 0.44,
               // dration: 0.5,
               ease: easeInOutCubic,
             },
