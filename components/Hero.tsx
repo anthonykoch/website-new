@@ -15,10 +15,6 @@ export const Hero = () => {
     offset: ['start start', 'end start'],
   })
 
-  // useMotionValueEvent(scroll.scrollYProgress, 'change', (t) => {
-  //   console.log(t)
-  // })
-
   const easeInTo15 = (t: number): number => {
     const delay = 0.3
     if (t >= delay) return 1
@@ -31,10 +27,8 @@ export const Hero = () => {
   })
 
   const y = useTransform(scroll.scrollYProgress, [0, 1], ['0px', '-80px'], {
-    // const y = useTransform(scroll.scrollYProgress, [0, 1], ['0%', '100%'], {
     ease: (t) => {
       const delay = 0.9
-      // const delay = 0.3
       if (t >= delay) return 1
       const scaledT = t / delay
       return 1 - Math.pow(1 - scaledT, 2)
@@ -46,30 +40,19 @@ export const Hero = () => {
   })
 
   return (
-    <div>
+    <>
       <div
         className="overflow-hidden max-w-site mx-auto z-20 px-4 relative"
         ref={target}
       >
-        <div
-          //
-          className="
-          
-          absolute  w-full left-0 pointer-events-none z-999999
-            
-             top-[6vh]
-             "
-          // bg-[tomato]/50
-        />
-        {/* <div className="pb-10 lg:pb-40" /> */}
+        {/* <div className="pb-4 lg:pb-8" /> */}
+        {/* <div className="max-w-[360px] lg:max-w-full"> */}
+        {/* <div className="max-w-[360px] lg:max-w-full lg:text-center">
+          <p className="pt-[19px] text-copy-2 brightness-75 text-[clamp(14px,1.5vw,15px)] font-body font-500">
+            A UI Developer working with companies remote.
+          </p>
+        </div> */}
 
-        {/* <div className="pb-4 lg:pb-8" />
-          <div className="max-w-[360px] lg:max-w-full lg:text-center">
-            <p className="text-copy-2 text-[clamp(15px,1.5vw,16px)] font-body font-500">
-              A UI Developer working with lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Ipsa, iste!
-            </p>
-          </div> */}
         <div className="pt-[14vh] max-w-[1200px] mx-auto lg:text-center w-full relative z-40">
           <motion.div
             className="will-change-[transform,opacity]"
@@ -92,7 +75,9 @@ export const Hero = () => {
                 </span> */}
 
               <span className="hidden lg:block bg-primary-500 size-1 rounded-full leading-0 mr-2" />
-              <span className="inline-block align-middle font-body text-[14px] font-500 text-black/80">
+              {/* <span className="inline-block align-middle font-heading text-[26px] font-600 text-copy-2 brightness-75"> */}
+              <span className="inline-block align-middle font-body text-[15px] font-500 text-copy-2 brightness-75">
+              {/* <span className="inline-block align-middle font-body text-[14px] font-500 text-copy-2 brightness-75"> */}
                 Actively looking for new opportunities{' '}
                 <span className="max-[380px]:block">- Jan 2026</span>
               </span>
@@ -109,7 +94,6 @@ export const Hero = () => {
           <div className="pb-20" />
           <img
             src="/actual/hero-bg.svg"
-            // src="/actual/hero-bg.png"
             className="will-change-transform min-w-[1200px] absolute top-[-100px] left-1/2 -translate-x-1/2 -z-10"
           />
           <img
@@ -117,7 +101,6 @@ export const Hero = () => {
             srcSet={`${ImagePhoneOpalTadpoleShop600w.src} 600w, ${ImagePhoneOpalTadpoleShop900w.src} 900w, ${ImagePhoneOpalTadpoleShop1200w.src} 1200w, ${ImagePhoneOpalTadpoleShop1600w.src} 1600w`}
             sizes="(max-width: 768px) 300px, 330px"
             className="z-50 relative will-change-transform max-w-[300px] md:max-w-[330px] w-full mx-auto"
-            // className="max-w-[300px] md:max-w-[360px] w-full mx-auto"
           />
           <div className="pb-10" />
           <div className="text-center">
@@ -130,11 +113,10 @@ export const Hero = () => {
                 View my latest work
               </span>
             </button>
-            {/* <div className="pb-20 lg:pb-40 " /> */}
             <div className="pb-10 lg:pb-20 " />
           </div>
         </motion.div>
       </div>
-    </div>
+    </>
   )
 }

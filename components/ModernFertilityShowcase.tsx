@@ -14,50 +14,44 @@ import ImagePhoneMfDashboardPlan1700w from '@/public/actual/phone-mf-dashboard-p
 
 export const ModernFertilityShowcase = () => {
   return (
-    <div className="">
-      {/* <div className="h-[390vh] mb-[-200vh]"> */}
-      <div className="">
-        {/* <div className="sticky top-[-70vh]"> */}
-        <div className="lg:grid col-span-4 lg:grid-cols-12 gap-x-4 px-1">
-          <div className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2">
-            <div className="flex flex-col gap-1 w-full">
-              <div className="flex flex-wrap lg:flex-nowrap gap-1 w-full">
-                <div className="bg-[#E7E7E7] py-18 lg:py-10 lg:px-4 flex items-center justify-center w-full lg:w-[65%]">
-                  <img
-                    src={ImageIpadMfPrenatalsPdp1600w.src}
-                    srcSet={`${ImageIpadMfPrenatalsPdp800w.src} 800w, ${ImageIpadMfPrenatalsPdp1600w.src} 1600w, ${ImageIpadMfPrenatalsPdp2400w.src} 2400w`}
-                    sizes="(max-width: 720px) 90vw, 45vw"
-                    className="max-w-[calc(100%-64px)] xl:max-w-[calc(100%-140px)] w-full drop-shadow-phone"
-                  />
-                </div>
-                <div className="bg-[#E7E7E7] py-18 lg:px-4 flex items-center justify-center w-full lg:w-[35%]">
-                  <img
-                    src={ImagePhoneMfCheckout1300w.src}
-                    srcSet={`${ImagePhoneMfCheckout900w.src} 900w, ${ImagePhoneMfCheckout1300w.src} 1300w, ${ImagePhoneMfCheckout1700w.src} 1700w`}
-                    sizes="400px"
-                    className="w-[80%] lg:w-[calc(100%-64px)] max-w-[360px] drop-shadow-phone"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-wrap lg:flex-nowrap gap-1 w-full">
-                <div className="bg-[#E7E7E7] py-18 lg:px-4 flex items-center justify-center w-full lg:w-[35%]">
-                  <img
-                    src={ImagePhoneMfDashboardPlan1300w.src}
-                    srcSet={`${ImagePhoneMfDashboardPlan600w.src} 600w, ${ImagePhoneMfDashboardPlan900w.src} 900w, ${ImagePhoneMfDashboardPlan1300w.src} 1300w, ${ImagePhoneMfDashboardPlan1700w.src} 1700w`}
-                    sizes="400px"
-                    className="w-[80%] lg:w-[calc(100%-64px)] max-w-[360px] drop-shadow-phone"
-                  />
-                </div>
-                <div className="bg-[#E7E7E7] py-18 lg:py-10 lg:px-4 flex items-center justify-center w-full lg:w-[65%]">
-                  <img
-                    src={ImageIpadMfDashboardHome1600w.src}
-                    srcSet={`${ImageIpadMfDashboardHome800w.src} 800w, ${ImageIpadMfDashboardHome1600w.src} 1600w, ${ImageIpadMfDashboardHome2400w.src} 2400w`}
-                    sizes="(max-width: 720px) 90vw, 45vw"
-                    className="max-w-[calc(100%-64px)] xl:max-w-[calc(100%-140px)] w-full drop-shadow-phone"
-                  />
-                </div>
-              </div>
-            </div>
+    <div className="px-1">
+      {/* <div className="lg:grid col-span-4 lg:grid-cols-12 gap-x-4 px-1"> */}
+      {/* <div className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2"> */}
+      <div className="flex flex-col gap-1 w-full">
+        <div className="flex flex-wrap lg:flex-nowrap gap-1 w-full">
+          <div className="bg-[#E7E7E7] py-18 lg:py-10 lg:px-4 flex items-center justify-center w-full lg:w-[65%]">
+            <img
+              src={ImageIpadMfPrenatalsPdp1600w.src}
+              srcSet={`${ImageIpadMfPrenatalsPdp800w.src} 800w, ${ImageIpadMfPrenatalsPdp1600w.src} 1600w, ${ImageIpadMfPrenatalsPdp2400w.src} 2400w`}
+              sizes="(max-width: 720px) 90vw, 45vw"
+              className="max-w-[calc(100%-64px)] xl:max-w-[calc(100%-140px)] w-full drop-shadow-phone"
+            />
+          </div>
+          <div className="bg-[#E7E7E7] py-18 lg:px-4 flex items-center justify-center w-full lg:w-[35%]">
+            <img
+              src={ImagePhoneMfCheckout1300w.src}
+              srcSet={`${ImagePhoneMfCheckout900w.src} 900w, ${ImagePhoneMfCheckout1300w.src} 1300w, ${ImagePhoneMfCheckout1700w.src} 1700w`}
+              sizes="400px"
+              className="w-[80%] lg:w-[calc(100%-64px)] max-w-[360px] drop-shadow-phone"
+            />
+          </div>
+        </div>
+        <div className="flex flex-wrap lg:flex-nowrap gap-1 w-full">
+          <div className="bg-[#E7E7E7] py-18 lg:px-4 flex items-center justify-center w-full lg:w-[35%]">
+            <img
+              src={ImagePhoneMfDashboardPlan1300w.src}
+              srcSet={`${ImagePhoneMfDashboardPlan600w.src} 600w, ${ImagePhoneMfDashboardPlan900w.src} 900w, ${ImagePhoneMfDashboardPlan1300w.src} 1300w, ${ImagePhoneMfDashboardPlan1700w.src} 1700w`}
+              sizes="400px"
+              className="w-[80%] lg:w-[calc(100%-64px)] max-w-[360px] drop-shadow-phone"
+            />
+          </div>
+          <div className="bg-[#E7E7E7] py-18 lg:py-10 lg:px-4 flex items-center justify-center w-full lg:w-[65%]">
+            <img
+              src={ImageIpadMfDashboardHome1600w.src}
+              srcSet={`${ImageIpadMfDashboardHome800w.src} 800w, ${ImageIpadMfDashboardHome1600w.src} 1600w, ${ImageIpadMfDashboardHome2400w.src} 2400w`}
+              sizes="(max-width: 720px) 90vw, 45vw"
+              className="max-w-[calc(100%-64px)] xl:max-w-[calc(100%-140px)] w-full drop-shadow-phone"
+            />
           </div>
         </div>
       </div>

@@ -77,10 +77,8 @@ export const Navigation: React.FC<{
           <Link
             href="#contact"
             onClick={(e) => {
-              if (router.pathname === '/') {
-                e.preventDefault()
-                scrollTo('#contact')
-              }
+              e.preventDefault()
+              scrollTo('#contact')
             }}
           >
             <MenuItemAppearance colorVariant={colorVariant}>
