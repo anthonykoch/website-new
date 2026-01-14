@@ -58,7 +58,7 @@ export const scrollTo = (selector: string | HTMLElement) => {
       : selector
 
   const offset = getOffset(dom)
-  window.scrollTo({top: offset.top, behavior: 'smooth'})
+  window.scrollTo({ top: offset.top, behavior: 'smooth' })
   // const distance = offset.top - window.scrollY
   // const duration = getScrollDuration(distance)
 

@@ -88,7 +88,10 @@ export const Footer: React.FC = () => {
                   <li>
                     <Link
                       href="/#work"
-                      onClickCapture={() => scrollTo('#work')}
+                      onClickCapture={(e) => {
+                        e.preventDefault()
+                        scrollTo('#work')
+                      }}
                       className="hover:text-zinc-400 block text-inherit font-display font-600 text-[15px] py-2 px-4 tracking-widest"
                     >
                       Work
