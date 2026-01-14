@@ -2,6 +2,7 @@ import React from 'react'
 
 import { ExternalLink } from '@/components/action/Link'
 import Link from 'next/link'
+import { scrollTo } from '@/utils/dom'
 
 export const Footer: React.FC = () => {
   return (
@@ -86,7 +87,8 @@ export const Footer: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/"
+                      href="/#work"
+                      onClickCapture={() => scrollTo('#work')}
                       className="hover:text-zinc-400 block text-inherit font-display font-600 text-[15px] py-2 px-4 tracking-widest"
                     >
                       Work
@@ -99,7 +101,6 @@ export const Footer: React.FC = () => {
               <p className="text-black/60  font-display font-600 text-[15px] py-2 px-4 tracking-widest">
                 © {new Date().getFullYear()}
               </p>
-            
             </div>
           </div>
         </div>
@@ -109,27 +110,27 @@ export const Footer: React.FC = () => {
   )
 }
 
-  // <div className="hidden">
-  //               <div className="pt-5 **:[a]:text-black/50">
-  //                 <p>
-  //                   Fonts:{' '}
-  //                   <ExternalLink href="https://fortfoundry.com/fonts/rift">
-  //                     Rift Soft
-  //                   </ExternalLink>
-  //                   ,{' '}
-  //                   <ExternalLink href="https://connary.com/fonts/visby/">
-  //                     Visby CF
-  //                   </ExternalLink>
-  //                   ,{' '}
-  //                   <ExternalLink href="https://fonts.google.com/specimen/DM+Sans">
-  //                     DM Sans
-  //                   </ExternalLink>
-  //                 </p>
-  //               </div>
-  //               <div className="**:[span]:text-black/50">
-  //                 <p>
-  //                   Stack: <span>Next.js</span>, <span>Tailwind</span>,
-  //                   motion.dev
-  //                 </p>
-  //               </div>
-  //             </div>
+// <div className="hidden">
+//               <div className="pt-5 **:[a]:text-black/50">
+//                 <p>
+//                   Fonts:{' '}
+//                   <ExternalLink href="https://fortfoundry.com/fonts/rift">
+//                     Rift Soft
+//                   </ExternalLink>
+//                   ,{' '}
+//                   <ExternalLink href="https://connary.com/fonts/visby/">
+//                     Visby CF
+//                   </ExternalLink>
+//                   ,{' '}
+//                   <ExternalLink href="https://fonts.google.com/specimen/DM+Sans">
+//                     DM Sans
+//                   </ExternalLink>
+//                 </p>
+//               </div>
+//               <div className="**:[span]:text-black/50">
+//                 <p>
+//                   Stack: <span>Next.js</span>, <span>Tailwind</span>,
+//                   motion.dev
+//                 </p>
+//               </div>
+//             </div>
