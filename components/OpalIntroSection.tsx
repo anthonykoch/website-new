@@ -151,7 +151,7 @@ export const OpalIntroSection = () => {
                   src={ImageOpalTadpole800w.src}
                   srcSet={`${ImageOpalTadpole400w.src} 400w, ${ImageOpalTadpole800w.src} 800w, ${ImageOpalTadpole1200w.src} 1200w`}
                   sizes="(max-width: 1200px) 100vw, 42.87vw"
-                  className="selector-opal-camera-image  absolute size-full top-0 left-0"
+                  className="selector-opal-camera-image object-cover absolute size-full top-0 left-0"
                 />
               </div>
             </div>

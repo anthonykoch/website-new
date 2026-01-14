@@ -30,6 +30,7 @@ export const Sail = () => {
 
             {
               duration: 0.3,
+              // delay: innerWidth < 720 ? 0.1 : 0,
               ease: easeInOutCubic,
             },
           ),
