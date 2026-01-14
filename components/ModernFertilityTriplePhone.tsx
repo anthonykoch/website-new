@@ -85,12 +85,12 @@ export const ModernFertilityTriplePhone = () => {
         <div className="relative">
           <div className="  w-full top-0 left-0">
             <div
-              className="absolute h-[240vh] w-full top-[-60vh] left-0 z-10 mx-auto overflow-hidden"
+              className="absolute h-[240vh] w-full top-[-60vh] left-0 z-10 mx-auto overflow-hidden pointer-events-none"
               // className="h-[150vh] w-full bg-no-repeat top-[60%] left-1/2 -translate-1/2 z-10 mx-auto bg-size-[auto_500px] lg:bg-size-[auto_800px] bg-center"
               // className="w-full h-full bg-center bg-contain bg-no-repeat top-0 left-0 z-10 max-w-[1158px] mx-auto"
             >
               <motion.div
-                className="size-full bg-no-repeat bg-size-[auto_500px] lg:bg-size-[auto_800px] bg-position-[center_70vh] md:bg-position-[center_65vh] lg:bg-position-[center_60vh] 2xl:bg-position-[center_60vh]"
+                className="size-full bg-no-repeat bg-size-[auto_500px] lg:bg-size-[auto_800px] bg-position-[center_70vh] md:bg-position-[center_65vh] lg:bg-position-[center_60vh] 2xl:bg-position-[center_60vh] pointer-events-none"
                 style={{
                   backgroundImage: `url(${ImagePhoneBg.src})`,
                   scale: scaleImg,

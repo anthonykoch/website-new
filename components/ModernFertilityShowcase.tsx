@@ -26,7 +26,7 @@ export const ModernFertilityShowcase = () => {
                   <img
                     src={ImageIpadMfPrenatalsPdp1600w.src}
                     srcSet={`${ImageIpadMfPrenatalsPdp800w.src} 800w, ${ImageIpadMfPrenatalsPdp1600w.src} 1600w, ${ImageIpadMfPrenatalsPdp2400w.src} 2400w`}
-                    sizes="(max-width: 1024px) 300px, 65vw"
+                    sizes="(max-width: 720px) 90vw, 45vw"
                     className="max-w-[calc(100%-64px)] xl:max-w-[calc(100%-140px)] w-full drop-shadow-phone"
                   />
                 </div>
@@ -34,7 +34,7 @@ export const ModernFertilityShowcase = () => {
                   <img
                     src={ImagePhoneMfCheckout1300w.src}
                     srcSet={`${ImagePhoneMfCheckout900w.src} 900w, ${ImagePhoneMfCheckout1300w.src} 1300w, ${ImagePhoneMfCheckout1700w.src} 1700w`}
-                    sizes="(max-width: 1024px) 100vw, 35vw"
+                    sizes="400px"
                     className="w-[80%] lg:w-[calc(100%-64px)] max-w-[360px] drop-shadow-phone"
                   />
                 </div>
@@ -44,7 +44,7 @@ export const ModernFertilityShowcase = () => {
                   <img
                     src={ImagePhoneMfDashboardPlan1300w.src}
                     srcSet={`${ImagePhoneMfDashboardPlan600w.src} 600w, ${ImagePhoneMfDashboardPlan900w.src} 900w, ${ImagePhoneMfDashboardPlan1300w.src} 1300w, ${ImagePhoneMfDashboardPlan1700w.src} 1700w`}
-                    sizes="(max-width: 1024px) 100vw, 35vw"
+                    sizes="400px"
                     className="w-[80%] lg:w-[calc(100%-64px)] max-w-[360px] drop-shadow-phone"
                   />
                 </div>
@@ -52,7 +52,7 @@ export const ModernFertilityShowcase = () => {
                   <img
                     src={ImageIpadMfDashboardHome1600w.src}
                     srcSet={`${ImageIpadMfDashboardHome800w.src} 800w, ${ImageIpadMfDashboardHome1600w.src} 1600w, ${ImageIpadMfDashboardHome2400w.src} 2400w`}
-                    sizes="(max-width: 1024px) 100vw, 65vw"
+                    sizes="(max-width: 720px) 90vw, 45vw"
                     className="max-w-[calc(100%-64px)] xl:max-w-[calc(100%-140px)] w-full drop-shadow-phone"
                   />
                 </div>
