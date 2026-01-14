@@ -58,31 +58,31 @@ export const Hero = () => {
             className="will-change-[transform,opacity]"
             style={{ opacity, y: textY }}
           >
-            <p className="text-copy-secondary text-[clamp(36px,6vw,74px)] font-600 leading-[1.15] lg:leading-none tracking-[-0.25px] font-heading">
+            <p className="text-copy-secondary text-[clamp(32px,5.9vw,72px)] font-600 leading-[1.15] lg:leading-none tracking-[-0.25px] font-heading text-center md:text-left">
               {/* <p className="text-[#4f4550] relative mix-blend-difference pt-[15vh] z-40 w-full text-[clamp(36px,6vw,74px)]  font-600 leading-[1.15] lg:leading-none tracking-[-0.25px] font-heading lg:text-center max-w-[1200px] mx-auto"> */}
               I help companies and startups ship pixel-perfect, responsive
               websites.
             </p>
           </motion.div>
-          <div
-            // ref={containerRef}
-            className="mt-2 px-5 py-3 max-[380px]:flex inline-flex items-center relative"
-          >
-            <p className="relative z-20 flex flex-nowrap items-center">
-              {/*                
+          <p className="mt-2 py-3 relative text-center">
+            {/*                
                <span className="top-[-0.03em] relative text-primary-500 text-[18px] inline-block align-middle mr-0.5 font-500 leading-[0.8]">
                   {'>'}
                 </span> */}
 
-              <span className="hidden lg:block bg-primary-500 size-1 rounded-full leading-0 mr-2" />
-              {/* <span className="inline-block align-middle font-heading text-[26px] font-600 text-copy-2 brightness-75"> */}
-              <span className="inline-block align-middle font-body text-[15px] font-500 text-copy-2 brightness-75">
-              {/* <span className="inline-block align-middle font-body text-[14px] font-500 text-copy-2 brightness-75"> */}
+            <span className="font-body text-[15px] font-500 ">
+              <span className="inline-block top-[-0.2em] relative bg-primary-500 size-1 rounded-full leading-none mr-2" />
+              <span className="text-copy-2 brightness-75">
                 Actively looking for new opportunities{' '}
-                <span className="max-[380px]:block">- Jan 2026</span>
               </span>
-            </p>
-          </div>
+
+              <span className="max-[380px]:block text-copy-2 brightness-75">
+                in{' '}
+                {/* <span className="inline-block top-[-0.2em] relative bg-copy-2 size-1 rounded-full leading-none mx-2" /> */}
+                Jan 2026
+              </span>
+            </span>
+          </p>
         </div>
 
         <motion.div
