@@ -129,11 +129,11 @@ export const OpalFirst = () => {
         <BillboardGrid>
           <div ref={left} />
           <p className="copy-largest">
-            My journey at Opal started <br />
+            My journey at Opal started <br className="hidden lg:block" />
             with a simple landing page
           </p>
-          <div className="pb-10"></div>
-          <p className="text-black/60 text-[18px] font-body font-500 tracking-tight">
+          <div className="pb-4 lg:pb-10"></div>
+          <p className="text-black/60 text-[16px] lg:text-[18px] font-body font-500 tracking-tight">
             The page was a simple teaser, letting everyone know what's coming.
           </p>
         </BillboardGrid>

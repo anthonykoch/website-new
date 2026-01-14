@@ -1,16 +1,16 @@
-import {
-  easeInExpo,
-  easeInOutCubic,
-  easeOutCubic,
-  easeOutExpo,
-} from '@/utils/animation'
+import { easeInOutCubic } from '@/utils/animation'
 import { useAnimator } from '@/utils/animator'
-import { animate, useAnimate } from 'motion/react'
+import { theme } from '@/utils/theme'
+import { animate } from 'motion/react'
+import { useEffect, useRef } from 'react'
 import { useRouterListener } from '../router/context/RouterComposerContext'
 import { useHandleLinkClicks } from './hooks'
-import { useEffect, useRef } from 'react'
-import { BlogImages } from '../blog/Hero'
-import { theme } from '@/utils/theme'
+
+import ImageSplash from '@/public/actual/splash.jpg'
+// import ImageSplash800w from '@/public/actual/splash_800w.jpg'
+// import ImageSplash1200w from '@/public/actual/splash_1200w.jpg'
+// import ImageSplash1600w from '@/public/actual/splash_1600w.jpg'
+// import ImageSplash2000w from '@/public/actual/splash_2000w.jpg'
 
 export const Sail = () => {
   const animator = useAnimator<'sail'>()
@@ -19,48 +19,26 @@ export const Sail = () => {
   useHandleLinkClicks()
 
   useRouterListener('before', async () => {
-    // return Promise.resolve()
     if (!sail.current) return
 
     return animator
       .overwrite({
         sail: [
-          // await animate(sail.current, { opacity: 1 }, { duration: 0 }),
           animate(
             '.selector-sail-top',
-            // { clipPath: [`inset(100% 0 0 0)`, `inset(0 0 0 0)`] },
             { clipPath: [`inset(0 0 100% 0)`, `inset(0 0 0% 0)`] },
 
-            // { opacity: [1, 0] },
-            // { scaleY: [0, 1] },
             {
-              // duration: 0.5,
               duration: 0.3,
               ease: easeInOutCubic,
-              // ease: easeOutExpo,
             },
           ),
         ],
       })
       .wait()
-    // return animator
-    //   .overwrite({
-    //     sail: [
-    //       await animate(
-    //         '.selector-sail',
-    //         { opacity: [0, 1] },
-    //         {
-    //           duration: 0.2,
-    //           ease: 'linear',
-    //         },
-    //       ),
-    //     ],
-    //   })
-    //   .wait()
   })
 
   useRouterListener('done', async () => {
-    // return Promise.resolve()
     if (!sail.current) return
 
     return animator
@@ -69,41 +47,19 @@ export const Sail = () => {
           animate(
             sail.current,
 
-            // { clipPath: [`inset(0 0 0 0)`, `inset(100% 0 0 0)`] },
             { clipPath: [`inset(0 0 0% 0)`, `inset(100% 0 0 0)`] },
 
-            // { scaleY: [1, 0] },
-            // { opacity: [1, 0] },
             {
-              // duration: 0.3,
-              // ease: 'linear',
-              // Delay because
               delay:
                 innerWidth < parseInt(theme('--breakpoint-lg')) ? 0.6 : 0.1,
               duration: 0.44,
-              // duration: 0.5,
+              // dration: 0.5,
               ease: easeInOutCubic,
             },
           ),
         ],
       })
       .wait()
-    // return animator
-    //   .overwrite({
-    //     sail: [
-    //       animate(
-    //         '.selector-sail',
-    //         { opacity: [1, 0] },
-    //         {
-    //           duration: 0.2,
-    //           ease: 'linear',
-    //           // duration: 0.3,
-    //           // ease: 'linear',
-    //         },
-    //       ),
-    //     ],
-    //   })
-    //   .wait()
   })
 
   const ref = useRef<HTMLDivElement>(null)
@@ -113,17 +69,11 @@ export const Sail = () => {
       '#splash',
       {
         opacity: [1, 0],
-        // scaleY: [1, 0],
       },
       {
-        // duration: 0.9,
-        // ease: easeOutCubic,
         delay: 0.6,
         duration: 0.6,
         ease: 'linear',
-        // ease: easeInOutCubic,
-        // duration: 12.1,
-        // ease: (t) => easeInOutCubic(easeOutExpo(easeOutCubic(t))),
       },
     )
   }, [])
@@ -155,7 +105,10 @@ export const Sail = () => {
           {/* #bec9bb */}
 
           <img
-            src="/actual/splash.jpg"
+            src={ImageSplash.src}
+            // src={ImageSplash1600w.src}
+            // srcSet={`${ImageSplash800w.src} 800w, ${ImageSplash1200w.src} 1200w, ${ImageSplash1600w.src} 1600w, ${ImageSplash2000w.src} 2000w`}
+            sizes="100vw"
             className="absolute size-full object-cover"
           />
         </div>
