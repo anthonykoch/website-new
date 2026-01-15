@@ -2,17 +2,17 @@ import type { AppProps } from 'next/app'
 
 import '../styles/main.css'
 
-import Head from 'next/head'
-import { Provider } from 'jotai'
+import { RouterComposerProvider } from '@/features/router/context/RouterComposerContext'
+import { Sail } from '@/features/sail/Sail'
+import { Animations } from '@/features/site/Animations'
 import { MobileNavigation } from '@/features/site/MobileNavigation/MobileNavigation'
 import { MobileNavTrigger } from '@/features/site/MobileNavTrigger'
-import { Animations } from '@/features/site/Animations'
-import { SiteNavigation } from '@/features/site/SiteNavigation'
 import { NavigationScrollReveal } from '@/features/site/Navigation/NavigationScrollReveal'
-import { AnimatePresence, motion } from 'motion/react'
+import { SiteNavigation } from '@/features/site/SiteNavigation'
+import { Provider } from 'jotai'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { Sail } from '@/features/sail/Sail'
-import { RouterComposerProvider } from '@/features/router/context/RouterComposerContext'
+import { Analytics } from '@vercel/analytics/next'
 
 const HeadMeta = () => {
   return (
@@ -35,6 +35,7 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <RouterComposerProvider>
+      <Analytics />
       <Provider>
         <HeadMeta />
         <MobileNavigation />

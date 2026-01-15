@@ -9,7 +9,8 @@ export const Billboard: FC<{
     {/* <div className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2 pt-18 xl:pt-36"> */}
     <div
       className={classNames(
-        'pt-18 xl:pt-52 font-heading font-500 text-[46px] md:text-[58px]  leading-[1.1] xl:leading-none z-10',
+        'pt-18 xl:pt-52 font-heading font-500 text-[38px] md:text-[58px]  leading-[1.2] xl:leading-none z-10',
+        // 'pt-18 xl:pt-52 font-heading font-600 text-[46px] md:text-[58px]  leading-[1.1] xl:leading-none z-10',
         {
           'xl:text-[100px]': textSize === 'lg',
           'xl:text-[72px]': textSize == null || textSize === 'md',
@@ -25,7 +26,7 @@ export const Billboard: FC<{
 
 export const BillboardGrid: FC<{ children?: ReactNode }> = ({ children }) => {
   return (
-    <div data-c="BillboardGrid" className="grid grid-cols-12 gap-x-4 px-4">
+    <div className="grid grid-cols-12 gap-x-4 px-4">
       <div className="col-span-12 xl:col-span-10 md:col-start-1 2xl:col-start-2">
         {children}
       </div>
