@@ -235,12 +235,12 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
         <div className="flex flex-col flex-wrap items-center justify-start gap-x-2 gap-y-2 pb-4">
           <div className="hover:shadow-button-2 rounded-[4px] bg-white hover:bg-primary-500 w-full  cursor-pointer h-[50px] flex items-center py-2 min-w-[90px] justify-center">
             <img
-              src="/final/logo-opal-wordmark-b.svg"
+              src="/original/logo-opal-wordmark-b.svg"
               className="w-[calc(55px-20px)]"
             />
           </div>
           <div className="hover:shadow-button-2 rounded-[4px] bg-white hover:bg-primary-500 w-full  cursor-pointer h-[50px] flex items-center py-2 min-w-[90px] justify-center">
-            <img src="/final/logo-mf.svg" className="w-[calc(70px-20px)]" />
+            <img src="/original/logo-mf.svg" className="w-[calc(70px-20px)]" />
           </div>
         </div>
       </div> */}

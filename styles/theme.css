@@ -190,7 +190,7 @@
 .image-text {
   font-size: 9vw;
   font-weight: 900;
-  background: url('/final/exhibit-doctor.png') center/cover;
+  background: url('/original/exhibit-doctor.png') center/cover;
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;

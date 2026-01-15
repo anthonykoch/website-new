@@ -14,11 +14,11 @@
                     </p>
                   </div>
 
-                  <img src="/final/exhibit-mf-plan.png" />
+                  <img src="/original/exhibit-mf-plan.png" />
                 </div>
               </div>
               <div>
-                <img src="/final/exhibit-mf-dash-home.png" />
+                <img src="/original/exhibit-mf-dash-home.png" />
               </div>
             </div>
 
@@ -38,7 +38,7 @@
               />
 
               <img
-                src="/final/mf-logo.svg"
+                src="/original/mf-logo.svg"
                 className="max-w-[250px] w-full mx-auto"
               />
               <div className="pb-[120px]" />
@@ -55,7 +55,7 @@
                 />
 
                 <img
-                  src="/final/mf-logo.svg"
+                  src="/original/mf-logo.svg"
                   className="max-w-[250px] w-full mx-auto"
                 />
               </div>
@@ -117,7 +117,7 @@
                 />
 
                 <img
-                  src="/final/mf-logo.svg"
+                  src="/original/mf-logo.svg"
                   className="max-w-[250px] w-full mx-auto"
                 />
                 <div className="pb-[120px]" />
@@ -256,7 +256,7 @@ const splitLines = (
             {/* 
             <div className="p-20 bg-black z-20 relative">
               <img
-                src="/final/exhibit-tadpole-shop.png"
+                src="/original/exhibit-tadpole-shop.png"
                 className="max-w-full w-full  object-contain top-0 left-0 z-20"
               />
             </div> */}
@@ -295,7 +295,7 @@ const splitLines = (
                   </div>
                 </div>
                 {/* <img
-                  src="/final/logo-opal-wordmark-b.svg"
+                  src="/original/logo-opal-wordmark-b.svg"
                   className="w-[800px] max-w-full"
                 /> */}
 
@@ -475,15 +475,15 @@ const splitLines = (
 
           <div className="hover:shadow-button-2 rounded-[4px] bg-white hover:bg-primary-500 w-full  cursor-pointer h-[50px] flex items-center py-2 w-[90px] justify-center">
             <img
-              src="/final/logo-thinkful.png"
+              src="/original/logo-thinkful.png"
               className="w-[calc(95px-20px)]"
             />
           </div>
           <div className="hover:shadow-button-2 rounded-[4px] bg-white hover:bg-primary-500 w-full  cursor-pointer h-[50px] flex items-center py-2 w-[90px] justify-center">
-            <img src="/final/logo-plaid.svg" className="w-[calc(75px-20px)]" />
+            <img src="/original/logo-plaid.svg" className="w-[calc(75px-20px)]" />
           </div>
           <div className="hover:shadow-button-2 rounded-[4px] bg-white hover:bg-primary-500 w-full  cursor-pointer h-[50px] flex items-center py-2 w-[90px] justify-center">
-            <img src="/final/logo-mf.svg" className="w-[calc(70px-20px)]" />
+            <img src="/original/logo-mf.svg" className="w-[calc(70px-20px)]" />
           </div>
         </div>
       </div> */}
@@ -500,13 +500,13 @@ const splitLines = (
 
             <div className="flex gap-x-10">
               <img
-                src="/final/opal-mobile-menu.png"
+                src="/original/opal-mobile-menu.png"
                 // src="/final/exhibit-tadpole-shop-2.png"
                 className=" w-[300px] mx-auto object-cover top-0 left-0 z-20"
                 // className=" size-full absolute mx-auto object-cover top-0 left-0 z-20"
               />
               <img
-                src="/final/mf-home-mobile.png"
+                src="/original/mf-home-mobile.png"
                 // src="/final/exhibit-tadpole-shop-2.png"
                 className=" w-[300px] mx-auto object-cover top-0 left-0 z-20"
                 // className=" size-full absolute mx-auto object-cover top-0 left-0 z-20"
@@ -517,7 +517,7 @@ const splitLines = (
             {/* <div className="w-full z-30 absolute top-0 left-0"> */}
             {/* <div className="px-20 w-full z-30 absolute bottom-0 left-0"> */}
             {/* <img
-                src="/final/opal-mobile-menu.png"
+                src="/original/opal-mobile-menu.png"
                 // src="/final/exhibit-tadpole-shop-2.png"
                 className=" w-[300px] mx-auto object-cover top-0 left-0 z-20"
                 // className=" size-full absolute mx-auto object-cover top-0 left-0 z-20"
@@ -526,7 +526,7 @@ const splitLines = (
             {/* 
             <div className="p-20 w-full z-20 absolute top-0 left-0 -translate-y-1/2">
               <img
-                src="/final/exhibit-tadpole-shop-sm.png"
+                src="/original/exhibit-tadpole-shop-sm.png"
                 className=" w-full mx-auto object-contain top-0 left-0 z-20"
               />
             </div> */}
