@@ -159,7 +159,7 @@ export const ExhibitPages = () => {
   return (
     <>
       <div className="relative -mt-20 lg:mt-0"></div>
-      <div className="relative h-[540vh]">
+      <div className="relative h-[535vh]">
         <div
           ref={ref}
           className="absolute left-0 top-[100vh] w-full h-[80%]  pointer-events-none"
