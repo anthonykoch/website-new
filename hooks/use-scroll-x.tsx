@@ -2,6 +2,7 @@ import {
   MotionValue,
   resize,
   transform,
+  useMotionValue,
   useMotionValueEvent,
 } from 'motion/react'
 import { RefObject, useEffect, useRef } from 'react'
@@ -13,12 +14,15 @@ export const useScrollX = ({
   container: RefObject<HTMLElement | null>
   scrollYProgress: MotionValue<number>
 }) => {
+  const value = useMotionValue(0)
+
   useMotionValueEvent(scrollYProgress, 'change', (progress) => {
     if (!container.current) return
 
     if (scrollableTransform.current) {
       const left = scrollableTransform.current(progress)
-      container.current.style.transform = `translateX(${-left}px)`
+      value.set(-left)
+      // container.current.style.transform = `translateX(${-left}px)`
     }
   })
 
@@ -45,4 +49,6 @@ export const useScrollX = ({
       stop()
     }
   }, [])
+
+  return value
 }

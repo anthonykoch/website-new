@@ -11,9 +11,6 @@
   --color-overlay-bg: #2b292b;
   --color-body: #333;
   --color-link: rgb(97 150 204);
-  /* --color-link: #25cead; */
-
-  /* --color-copy-secondary: #4f4550; */
 
   --color-copy-2: #428889;
   --color-copy-3: #1d3030;
@@ -53,7 +50,6 @@
   --max-width-post: 720px;
   --max-width-post-wide: 820px;
   --max-width-site: 2100px;
-  /* --max-width-site: 1728px; */
   --max-width-common: 1232px;
 
   /* Breakpoints (for reference in media queries) */
@@ -79,11 +75,6 @@
 
   --spacing-gutter: 20px;
   --spacing-gutter-lg: 24px;
-  --spacing-gutter-xl: 32px;
-  /* --spacing-nav-height: 60px; */
-  --spacing-nav-icon-width: 54px;
-  --spacing-py-nav-link: 16px;
-  /* --spacing-px-nav-link: 48px; */
 
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
@@ -104,12 +95,6 @@
 }
 
 @utility copy-heading-2 {
-  /* font-family: theme(--font-heading);
-  font-size: 36px;
-  font-weight: 600;
-  letter-spacing: -0.9px;
-  line-height: 45px; */
-
   font-family: theme(--font-heading);
   font-size: 27px;
   font-weight: 600;
@@ -126,11 +111,6 @@
 }
 
 @utility copy-body-4 {
-  /* font-size: 18px;
-  font-family: theme(--font-body);
-  font-weight: 500;
-  line-height: 32px;
-  letter-spacing: -0.9px; */
   font-size: 17px;
   font-family: theme(--font-body);
   font-weight: 500;
@@ -146,12 +126,8 @@
   letter-spacing: -0.9px;
 }
 
-@utility debug {
-  @apply bg-[tomato]/40;
-}
-
 @utility copy-largest {
-  @apply text-[clamp(38px,6.5vw,100px)] leading-[1] font-heading font-600 -tracking-wide;
+  @apply text-[clamp(38px,6.5vw,100px)] leading-none font-heading font-600 -tracking-wide;
   color: theme(--color-copy-3);
 }
 
@@ -167,8 +143,6 @@
 }
 
 .gradient-flow {
-  /* font-size: 5rem; */
-  /* font-weight: 900; */
   background: linear-gradient(90deg, #f09, #0ff, #9f0, #f09);
   background-size: 400%;
   -webkit-background-clip: text;

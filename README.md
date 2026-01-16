@@ -1,6 +1,6 @@
 # Anthony Koch Portfolio Website 2026
 
-Don't judge the code too hard. I somewhat designed parts in browser so there's a lot of commented out code everywhere.
+This portfolio is old and is actively being updated.
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

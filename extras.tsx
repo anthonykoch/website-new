@@ -531,3 +531,7 @@ const splitLines = (
               />
             </div> */}
       
+                    {/* <div class="absolute -z-10 top-0 left-0 h-full w-full bg-neutral-200"><div class="absolute inset-0 bg-primary-500 bg-[size:20px_20px] opacity-20 blur-[100px]"></div></div>  */}
+
+            
+            

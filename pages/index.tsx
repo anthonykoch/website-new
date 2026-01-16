@@ -13,7 +13,6 @@ import { useEffect, useRef } from 'react'
 
 import { Grid } from '@/components/Grid'
 import { Hero } from '@/components/Hero'
-import { LaptopScroller } from '@/components/LaptopScroller'
 import { ModernFertilityAbout } from '@/components/ModernFertilityAbout'
 import { ModernFertilityBrand } from '@/components/ModernFertilityBrand'
 import { ModernFertilityHero } from '@/components/ModernFertilityHero'
@@ -176,8 +175,6 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
     }
   }, [])
 
-  const newJobRef = useRef<HTMLParagraphElement>(null)
-
   const lookRef = useRef<HTMLDivElement>(null)
   const arrowsRef = useRef<HTMLDivElement>(null)
   const firstBlockRef = useRef<HTMLDivElement>(null)
@@ -187,7 +184,6 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
   const opalAboutSectionScroller = useScroll({
     target: aboutOpalRef,
     offset: ['-200px start', '400px start'],
-    // offset: ['75vh end', '110vh end'],
   })
 
   const opalAboutSectionScale = useTransform(
@@ -202,29 +198,14 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
     [0, 300],
   )
 
-  // const testRef = useRef(null)
-
-  // useEffect(() => {
-  //   if (!testRef.current) return
-
-  //   // splitText(testRef.current)
-  // }, [])
-
-  // const { x: mouseX, y: mouseY } = usePointerProgress()
-
-  // const y = useTransform(mouseY, [0, 1], [-20, 20], {})
-  // const x = useTransform(mouseX, [0, 1], [-20, 20], {})
-
   const cover = useRef<HTMLDivElement>(null)
 
   const coverScroll = useScroll({
     target: cover,
-    offset: ['-30vw start', '0px start'],
+    offset: ['-20vw start', '0px start'],
   })
 
-  const opacity = useTransform(coverScroll.scrollYProgress, [0, 1], [0, 1])
-
-  useEffect(() => {}, [])
+  const opacity = useTransform(coverScroll.scrollYProgress, [0, 1], [0, 0.9])
 
   return (
     <div>
@@ -286,7 +267,7 @@ const Home: NextPage = ({ posts }: { posts: Post[] }) => {
             <div className="relative"></div>
             <div className="relative z-50">
               <OpalShowcase />
-              <LaptopScroller />
+              {/* <LaptopScroller /> */}
             </div>
           </section>
         </div>

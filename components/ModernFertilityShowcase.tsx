@@ -24,7 +24,7 @@ export const ModernFertilityShowcase = () => {
               src={ImageIpadMfPrenatalsPdp1600w.src}
               srcSet={`${ImageIpadMfPrenatalsPdp800w.src} 800w, ${ImageIpadMfPrenatalsPdp1600w.src} 1600w, ${ImageIpadMfPrenatalsPdp2400w.src} 2400w`}
               sizes="(max-width: 720px) 90vw, 45vw"
-              className="max-w-[calc(100%-64px)] xl:max-w-[calc(100%-140px)] w-full drop-shadow-phone"
+              className="max-w-[calc(100%-48px)] lg:max-w-[88%] lg:max-h-[90%] object-contain w-full h-auto drop-shadow-phone"
             />
           </div>
           <div className="bg-[#E7E7E7] py-18 lg:px-4 flex items-center justify-center w-full lg:w-[35%]">
@@ -50,7 +50,7 @@ export const ModernFertilityShowcase = () => {
               src={ImageIpadMfDashboardHome1600w.src}
               srcSet={`${ImageIpadMfDashboardHome800w.src} 800w, ${ImageIpadMfDashboardHome1600w.src} 1600w, ${ImageIpadMfDashboardHome2400w.src} 2400w`}
               sizes="(max-width: 720px) 90vw, 45vw"
-              className="max-w-[calc(100%-64px)] xl:max-w-[calc(100%-140px)] w-full drop-shadow-phone"
+              className="max-w-[calc(100%-48px)] lg:max-w-[88%] lg:max-h-[90%] object-contain w-full h-auto drop-shadow-phone"
             />
           </div>
         </div>
