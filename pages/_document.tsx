@@ -5,16 +5,11 @@ class AppDocument extends Document {
     return (
       <Html>
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter&display=optional"
-            rel="stylesheet"
-          />
           <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
-          <link rel="stylesheet" href="https://use.typekit.net/nsr0hmh.css" />
-          <link
+          {/* <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css"
-          />
+          /> */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link

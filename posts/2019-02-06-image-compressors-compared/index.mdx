@@ -87,18 +87,23 @@ For the last couple of years, I've relied soley on tinyjpg and compressor.io. Ho
 [Imagemin](https://www.npmjs.com/package/imagemin) works by utilizing plugins such as jpegtran, jpeg-recompress, mozjpeg and pngquant.
 
 <div>
-  <div class="Aside">
-    <div class="Aside-content">
-      <div class="Aside-tag  [ Tag is-absolute ]">Plugin settings</div>
-      <p>
-        Each plugin has its own settings that can be configured. This is a great
-        article on how <code>jpeg-recompress</code> settings work:
-        <a href="https://mika-s.github.io/javascript/jpeg/compression/algorithm/2018/01/10/quality-min-and-max-with-jpeg-recompress.html">
-          Quality, min and max with jpeg-recompress
-        </a>
-      </p>
-    </div>
-  </div>
+  {
+    (0,
+    (
+      <div class="Aside">
+        <div class="Aside-content">
+          <div class="Aside-tag  [ Tag is-absolute ]">Plugin settings</div>
+          <p>
+            Each plugin has its own settings that can be configured. This is a
+            great article on how <code>jpeg-recompress</code> settings work:
+            <a href="https://mika-s.github.io/javascript/jpeg/compression/algorithm/2018/01/10/quality-min-and-max-with-jpeg-recompress.html">
+              Quality, min and max with jpeg-recompress
+            </a>
+          </p>
+        </div>
+      </div>
+    ))
+  }
 </div>
 
 #### tinyjpg
@@ -148,7 +153,8 @@ tinyjpg              |  https://tinyjpg.com
 
 One thing you'll note, is the `mozjpeg` actually outputs larger images than the original. I'm not sure how that happened or if I've done it wrong. The repo for how I compressed the images lives at:
 
-<div class="u-mb4 u-textCenter">
+{0,<div class="u-mb4 u-textCenter">
+
   <a
     href="https://github.com/anthonykoch/compressors-compared"
     class="Resource is-github"
@@ -164,7 +170,7 @@ One thing you'll note, is the `mozjpeg` actually outputs larger images than the 
     </span>
     <span class="Resource-text">anthonykoch/compressors-compared</span>
   </a>
-</div>
+</div>}
 
 #### Image: Leaves
 
@@ -172,7 +178,8 @@ If you look closely, you can see that both `abraia`, `recompress-low` and `tinyj
 
 The rest look fairly close to the original, and have very close SSIM scores. I would say `imageoptim` and `mozjpeg-medium` both take the win here for most smallest file size without changing the quality of the image.
 
-<div>
+{0,<div>
+
   <table class="Table is-condensed">
     <thead>
       <tr>
@@ -239,16 +246,17 @@ The rest look fairly close to the original, and have very close SSIM scores. I w
       </tr>
     </tbody>
   </table>
-</div>
+</div>}
 
-<div class="md-fullWidth md-spacer u-gutter@md">
+{0,<div class="md-fullWidth md-spacer u-gutter@md">
+
   <div className="max-w-[700px] mx-auto">
     <TabbedImageCompare
       name="imageCompareLeavesTabs"
       tabs={images.imageCompareLeavesTabs}
     />
   </div>
-</div>
+</div>}
 
 #### Image: Work Harder
 
@@ -256,7 +264,8 @@ The aggressive compression from `abraia`, `recompress-low`, and `tinyjpg` create
 
 At this point, I would say `recompress-medium` and `mozjpeg-medium` had the best compression while still retaining fairly good quality, although artifacting is still noticeable if you look hard enough. `imageoptim` and `compressorio` did very well, but produced a small amount of pixelated banding, but isn't as noticeable.
 
-<div>
+{0,<div>
+
   <table class="Table is-condensed">
     <thead>
       <tr>
@@ -323,33 +332,35 @@ At this point, I would say `recompress-medium` and `mozjpeg-medium` had the best
       </tr>
     </tbody>
   </table>
-</div>
+</div>}
 
-<div class="md-fullWidth md-spacer">
+{0,<div class="md-fullWidth md-spacer">
+
   <div className="w-full max-w-[900px] mx-auto">
     <TabbedImageCompare
       name="imageCompareWorkHarderTabs"
       tabs={images.imageCompareWorkHarderTabs}
     />
   </div>
-</div>
+</div>}
 
 #### Image: Flowers
 
 While switching back and forth between the `tinyjpg` and the original in different tabs in Firefox, I noticed a difference in color that wasn't noticeable in Chrome. As it turns out, Firefox renders several of the compressed versions with more saturation, but Chrome doesn't.
 
-<div>
+{0,<div>
+
   <img
     src="/images/posts/image-compressors-compared/flower-firefox.png"
     alt="flowers in firefox"
     class="Image has-shadow is-rounded u-mxauto"
     className="w-full max-w-[500px] mx-auto"
   />
-</div>
+</div>}
 
 As far as bytes saved, `recompress-low` took a good chunk out of the file size, and it certainly shows. It made the image look quite pixelated, while `tinyjpg` is looks acceptable. To my eyes, the others look the same as the original.
 
-<div>
+{0,<div>
   <table class="Table is-condensed">
     <thead>
       <tr>
@@ -416,22 +427,22 @@ As far as bytes saved, `recompress-low` took a good chunk out of the file size, 
       </tr>
     </tbody>
   </table>
-</div>
+</div>}
 
-<div class="md-fullWidth md-spacer">
+{0,<div class="md-fullWidth md-spacer">
   <div className="max-w-[700px] mx-auto">
     <TabbedImageCompare
       name="imageCompareFlowersTabs"
       tabs={images.imageCompareFlowersTabs}
     />
   </div>
-</div>
+</div>}
 
 #### Image: Coffee
 
 Once again, if you view this in Firefox, you'll see a more saturated image on the right for several of the compressed versions. I imagine that's a bug with Firefox. In any case, I don't see any noticeable artifacting for any of the compressed images.
 
-<div>
+{0,<div>
   <table class="Table is-condensed">
     <thead>
       <tr>
@@ -498,13 +509,16 @@ Once again, if you view this in Firefox, you'll see a more saturated image on th
       </tr>
     </tbody>
   </table>
-</div>
+</div>}
 
-<div class="md-fullWidth md-spacer">
+{0,<div class="md-fullWidth md-spacer">
   <div className="max-w-[700px] mx-auto">
-    <TabbedImageCompare name="imageCompareCoffeeTabs" tabs={images.imageCompareCoffeeTabs} />
+    <TabbedImageCompare
+      name="imageCompareCoffeeTabs"
+      tabs={images.imageCompareCoffeeTabs}
+    />
   </div>
-</div>
+</div>}
 
 ### Results
 

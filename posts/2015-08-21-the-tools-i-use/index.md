@@ -4,10 +4,11 @@ This is an overview of some of the development tools I've found useful, as well 
 
 Con Emu is a <q>Windows [console emulator](http://askubuntu.com/questions/111144/are-terminal-and-shell-the-same) with tabs</q>. It has a lot of features and settings, and is very customizable. You can change the font, color scheme (the colors of the fonts), key bindings, transparency of the window, and other features.
 
-<figure>
-	<figcaption>A picture of Con Emu running the Git Bash shell</figcaption>
-	<img src="/images/posts/the-tools-i-use/con_emu_panels.png" alt="An image of Git Bash running through Con Emu" />
-</figure>
+{0, <figure>
+<figcaption>A picture of Con Emu running the Git Bash shell</figcaption>
+<img src="/images/posts/the-tools-i-use/con_emu_panels.png" alt="An image of Git Bash running through Con Emu" />
+
+</figure>}
 
 #### Transparency
 

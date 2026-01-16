@@ -10,7 +10,7 @@
  pre[class*="language-"] {
    color: #e3eaf2;
    background: none;
-   font-family: theme('fontFamily.code');
+   font-family: var(--font-code);
    text-align: left;
    white-space: pre;
    word-spacing: normal;
