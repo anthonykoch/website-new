@@ -20,6 +20,8 @@ import { RehypeCode } from '@/rehype-plugins/code'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import { markdownComponents } from '@/components/markdown-components'
+import graymatter from 'gray-matter'
+
 // import remarkFrontmatter from 'remark-frontmatter'
 // import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import path from 'path'
@@ -32,20 +34,19 @@ export default async function BlogPostSlug({
 }) {
   const slug = (await params).slug
   const posts = await getPosts()
-  const post = posts.find((post) => post.slug === slug)
 
-  console.log( post)
+  const post = posts.find((post) => {
+    console.log(post.slug, slug)
+    return post.slug === slug
+  })
 
-  // const content = await fs.readFile(postsDir)
-
-  // console.log(posts)
   if (!post) {
     notFound()
   }
+  // console.log(posts)
 
-  // const { default: Component } = await import('./' + slug + '.mdx')
-
-  // console.log(Component)
+  const file = await fs.readFile(path.join(postsDir, post.folder, 'index.mdx'))
+  const { content } = graymatter(file)
 
   return (
     <BlogPost posts={posts} post={post}>

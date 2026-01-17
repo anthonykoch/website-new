@@ -1,10 +1,10 @@
+import * as datefns from 'date-fns'
+import glob from 'fast-glob'
 import fs from 'fs/promises'
+import matter from 'gray-matter'
 import path from 'path'
 import slugify from 'slugify'
-import * as datefns from 'date-fns'
 import type { Post, PostMeta } from '../types'
-import glob from 'fast-glob'
-import matter from 'gray-matter'
 
 const pattern = path.join(process.cwd(), 'posts/**/*.{md,mdx}')
 // const pattern = path.join(process.cwd(), 'posts/**/*.{md,mdx}')
@@ -20,6 +20,7 @@ export const getPosts = async (): Promise<
     id: string
     title: string
     createdAt: string
+    folder: string
     slug: string
     humanized: {
       createdAt: string
@@ -29,11 +30,9 @@ export const getPosts = async (): Promise<
   const files = await getPostsFilenames()
 
   const metadata = files.map(async (filename) => {
-    const folder = path.dirname(filename)
-    const basename = path.basename(filename, path.extname(filename))
     const contents = await fs.readFile(filename, 'utf-8')
-    // const { default: meta } = await import(folder + '/meta.js')
-    // const { id, title, createdAt } = meta
+    const folder = path.basename(path.dirname(filename))
+
     const {
       data: { id, title, createdAt },
     } = matter(contents)
@@ -41,11 +40,12 @@ export const getPosts = async (): Promise<
     return {
       id,
       title,
+      folder,
       createdAt,
       humanized: {
         createdAt: datefns.format(new Date(createdAt), 'MMMM, d y'),
       },
-      slug: basename,
+      slug: folder.slice(11).toLowerCase(),
     }
   })
 
