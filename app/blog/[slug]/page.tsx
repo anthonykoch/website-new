@@ -22,8 +22,6 @@ import rehypeSlug from 'rehype-slug'
 import { markdownComponents } from '@/components/markdown-components'
 import graymatter from 'gray-matter'
 
-// import remarkFrontmatter from 'remark-frontmatter'
-// import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import path from 'path'
 const postsDir = path.join(process.cwd(), 'posts')
 

@@ -1,5 +1,5 @@
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { useEffect, useRef } from 'react'
 import { useRouterComposer } from '../router/context/RouterComposerContext'
 // import { EventEmitter } from 'eventemitter3'
 
@@ -24,6 +24,15 @@ const isCurrentLink = (href: string) => {
 export const useHandleLinkClicks = () => {
   const router = useRouter()
   const composer = useRouterComposer()
+  const pathname = usePathname()
+  const previousPathname = useRef(pathname)
+
+  useEffect(() => {
+    if (previousPathname.current !== pathname) {
+      previousPathname.current = pathname
+      composer.notify('done')
+    }
+  }, [pathname])
 
   useEffect(() => {
     const handleClick = async (e: MouseEvent) => {
@@ -39,8 +48,7 @@ export const useHandleLinkClicks = () => {
         e.preventDefault()
 
         await composer.notify('before')
-        await router.push(target.href)
-        await composer.notify('done')
+        router.push(target.href)
       }
     }
 
