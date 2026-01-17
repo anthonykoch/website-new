@@ -20,7 +20,7 @@ export const getPosts = async (): Promise<
 > => {
   const files = await getPostsFilenames()
 
-  const metadata = files.map(async (filename) => {
+  const metadata = files.map((filename) => {
     const basename = path.basename(filename, path.extname(filename))
     const contents = fs.readFileSync(filename, 'utf-8')
     const {
@@ -38,7 +38,9 @@ export const getPosts = async (): Promise<
     }
   })
 
-  return Promise.all(metadata)
+  return metadata.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  )
 }
 
 export const getPostsFilenames = async () => {

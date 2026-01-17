@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   title: 'Anthony Koch',
   description:
     'Freelance front-end web developer producing high quality work with an exceptional eye for detail. Mentor. Lover of JavaScript.',
-  // : 'utf-8',
   viewport: 'width=device-width, initial-scale=1',
   robots: 'index,follow',
 }
