@@ -92,7 +92,7 @@ export const ExhibitPages = () => {
     let value = left - last.current.offsetWidth
 
     if (last.current.offsetWidth >= innerWidth) {
-      value += Math.abs(last.current.offsetWidth - innerWidth)
+      value += Math.abs(last.current.offsetWidth - innerWidth) + 16
     } else {
       value =
         left -
@@ -125,7 +125,6 @@ export const ExhibitPages = () => {
   }, [updateScrollableWidth])
 
   const timeout = useRef<any>(null)
-
   const video = useRef<HTMLVideoElement>(null)
   const isInView = useInView(video)
 
@@ -239,7 +238,7 @@ export const ExhibitPages = () => {
               />
               <div className="pb-4" />
 
-              <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#757575] max-w-[500px] pb-4">
+              <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#757575] max-w-[90vw] lg:max-w-[500px] pb-4">
                 Dr. Opal is a web based tool created to help users update their
                 Tadpole firmware. I built out the UI and collaborated with
                 device engineers to interface it with the Tadpole.
