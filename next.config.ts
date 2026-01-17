@@ -1,6 +1,6 @@
 import { withSentryConfig } from '@sentry/nextjs'
 import type { NextConfig } from 'next'
-import createMDX from '@next/mdx'
+// import createMDX from '@next/mdx'
 
 let nextConfig: NextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
@@ -18,11 +18,15 @@ let nextConfig: NextConfig = {
   //   ignoreDuringBuilds: true,
   // },
   turbopack: {
-    rules: {},
+    // disabled: true
     resolveAlias: {
       '@': __dirname,
     },
   },
+
+  // experimental: {
+  //   mdxRs: false,
+  // },
 }
 
 nextConfig = withSentryConfig(nextConfig, {
@@ -88,31 +92,39 @@ nextConfig = withSentryConfig(nextConfig, {
 //   sentryWebpackPluginOptions,
 // )
 
-import rehypePrism from 'rehype-prism-plus'
-import { RehypeCode } from '@/rehype-plugins/code'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeSlug from 'rehype-slug'
-// import { markdownComponents } from '@/components/markdown-components'
+// import rehypePrism from 'rehype-prism-plus'
+// // import { RehypeCode } from './rehype-plugins/code'
+// import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+// import rehypeSlug from 'rehype-slug'
+// // import { markdownComponents } from '@/components/markdown-components'
+// import remarkFrontmatter from 'remark-frontmatter'
+// import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+// import path from 'path'
 
-const withMDX = createMDX({
-  options: {
-    // remarkPlugins: [],
-    rehypePlugins: [
-      // [RehypeCode, {}],
-      // [rehypePrism, { showLineNumbers: true }],
-      // @ts-ignore
-      // rehypeSlug,
-      // [
-      //   // @ts-ignore
-      //   rehypeAutolinkHeadings,
-      //   {
-      //     behavior: ['after'],
-      //   },
-      // ],
-    ],
-  },
-  // Add markdown plugins here, as desired
-})
+// const withMDX = createMDX({
+//   options: {
+//     remarkPlugins: [
+//       // ['remark-frontmatter']
+//       // remarkFrontmatter
+//     ],
+//     rehypePlugins: [
+//       // rehypeSlug,
+//       // path.join(process.cwd(), './rehype-plugins/code.js'),
+//       ['rehype-prism-plus', { showLineNumbers: true }],
+//       // // @ts-ignore
+//       'rehype-slug',
+//       [
+//         // @ts-ignore
+//         'rehype-autolink-headings',
+//         {
+//           behavior: ['after'],
+//         },
+//       ],
+//     ],
+//   },
+//   // Add markdown plugins here, as desired
+// })
 
 // Merge MDX config with Next.js config
-export default withMDX(nextConfig)
+export default nextConfig
+// export default withMDX(nextConfig)

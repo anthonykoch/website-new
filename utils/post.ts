@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs/promises'
 import path from 'path'
 import slugify from 'slugify'
 import * as datefns from 'date-fns'
@@ -6,7 +6,7 @@ import type { Post, PostMeta } from '../types'
 import glob from 'fast-glob'
 import matter from 'gray-matter'
 
-const pattern = path.join(process.cwd(), 'app/blog/**/*.{md,mdx}')
+const pattern = path.join(process.cwd(), 'posts/**/*.{md,mdx}')
 // const pattern = path.join(process.cwd(), 'posts/**/*.{md,mdx}')
 
 interface Path {
@@ -16,13 +16,24 @@ interface Path {
 }
 
 export const getPosts = async (): Promise<
-  Array<{ title: string; createdAt: string; slug: string }>
+  Array<{
+    id: string
+    title: string
+    createdAt: string
+    slug: string
+    humanized: {
+      createdAt: string
+    }
+  }>
 > => {
   const files = await getPostsFilenames()
 
-  const metadata = files.map((filename) => {
+  const metadata = files.map(async (filename) => {
+    const folder = path.dirname(filename)
     const basename = path.basename(filename, path.extname(filename))
-    const contents = fs.readFileSync(filename, 'utf-8')
+    const contents = await fs.readFile(filename, 'utf-8')
+    // const { default: meta } = await import(folder + '/meta.js')
+    // const { id, title, createdAt } = meta
     const {
       data: { id, title, createdAt },
     } = matter(contents)
@@ -38,8 +49,11 @@ export const getPosts = async (): Promise<
     }
   })
 
-  return metadata.sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  return Promise.all(metadata).then((meta) =>
+    meta.sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    ),
   )
 }
 

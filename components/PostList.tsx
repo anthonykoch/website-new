@@ -49,8 +49,6 @@ export const PostList: FC<{
   return (
     <ul>
       {posts.map((listing) => {
-        console.log(listing.id, activeId)
-
         return (
           <li key={listing.slug}>
             <div

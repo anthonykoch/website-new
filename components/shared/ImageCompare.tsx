@@ -1,3 +1,4 @@
+'use client'
 import { applyRefs } from '@/utils/apply-ref'
 import cx from 'classnames'
 import { useMotionValue , motion, useDragControls} from 'motion/react'
