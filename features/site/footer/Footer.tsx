@@ -1,13 +1,13 @@
 'use client'
 
-import React from 'react'
 import { ExternalLink } from '@/components/action/Link'
-import Link from 'next/link'
 import { scrollTo } from '@/utils/dom'
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import React from 'react'
 
 export const Footer: React.FC = () => {
-  const router = useRouter()
+  const pathname = usePathname()
 
   return (
     <footer className="max-w-[1728px] mx-auto px-4">
@@ -93,7 +93,7 @@ export const Footer: React.FC = () => {
                     <Link
                       href="/#work"
                       onClickCapture={(e) => {
-                        if (router.pathname === '/') {
+                        if (pathname === '/') {
                           e.preventDefault()
                           scrollTo('#work')
                         }

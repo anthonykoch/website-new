@@ -1,4 +1,5 @@
 import * as Sentry from "@sentry/nextjs";
+import { NextResponse } from 'next/server'
 
 // Custom error class for Sentry testing
 class SentryExampleAPIError extends Error {
@@ -7,9 +8,10 @@ class SentryExampleAPIError extends Error {
     this.name = "SentryExampleAPIError";
   }
 }
+
 // A faulty API route to test Sentry's error monitoring
-export default function handler(_req, res) {
+export async function GET() {
   Sentry.logger.info("Sentry example API called");
-throw new SentryExampleAPIError("This error is raised on the backend called by the example page.");
-res.status(200).json({ name: "John Doe" });
+  throw new SentryExampleAPIError("This error is raised on the backend called by the example page.");
+  return NextResponse.json({ name: "John Doe" });
 }

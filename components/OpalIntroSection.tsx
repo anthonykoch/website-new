@@ -105,7 +105,7 @@ export const OpalIntroSection = () => {
           </div>
         </div>
         <div className="w-[42.870457%] self-end">
-          <p className="text-[18px] xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[405px] selector-opal-camera-text">
+          <p className="text-[18px] xl:text-[22px] leading-[30px] font-heading font-500 pb-[26px] max-w-[350px] selector-opal-camera-text">
             The Opal Camera website was made to market the capabilities of the
             C1 and Tadpole cameras.
           </p>

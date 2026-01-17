@@ -80,8 +80,8 @@ const MenuItemAppearance: React.FC<{
   children?: React.ReactNode
   colorVariant?: 'white' | 'black'
 }> = ({ children, colorVariant }) => {
-  const router = useRouter()
-  const isNotHome = router.pathname !== '/'
+  const pathname = usePathname()
+  const isNotHome = pathname !== '/'
 
   return (
     <span

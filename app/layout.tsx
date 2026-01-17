@@ -14,16 +14,26 @@ import { NavigationScrollReveal } from '@/features/site/Navigation/NavigationScr
 import { SiteNavigation } from '@/features/site/SiteNavigation'
 
 export const metadata: Metadata = {
-  // title: 'Anthony Koch',
-  // description:
-  //   'Freelance front-end web developer producing high quality work with an exceptional eye for detail. Mentor. Lover of JavaScript.',
-  // viewport: 'width=device-width, initial-scale=1',
-  // robots: 'index,follow',
+  title: 'Anthony Koch',
+  description:
+    'Freelance front-end web developer producing high quality work with an exceptional eye for detail. Mentor. Lover of JavaScript.',
+  robots: 'index,follow',
+  icons: {
+    icon: '/images/favicon.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <RouterComposerProvider>
           <Analytics />
