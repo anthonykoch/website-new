@@ -36,20 +36,11 @@ export const useHandleLinkClicks = () => {
       if (target == null) return
 
       if (isInternalLink(target.href) && !isCurrentLink(target.href)) {
-        console.log('handling')
         e.preventDefault()
 
-        console.log('before notify')
         await composer.notify('before')
-        console.log('after notify')
-
-        console.log('before push')
         await router.push(target.href)
-        console.log('after push')
-
-        console.log('before done')
         await composer.notify('done')
-        console.log('after done')
       }
     }
 

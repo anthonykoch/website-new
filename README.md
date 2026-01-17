@@ -1,7 +1,6 @@
 # Anthony Koch Portfolio Website 2026
 
-Don't judge the code too hard. I somewhat designed parts in browser so there's a lot of commented out code everywhere.
-
+Work in progress - actively developing new features and content. Built with Next.js, React, TypeScript, and Tailwind CSS.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

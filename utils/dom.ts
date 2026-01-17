@@ -21,6 +21,19 @@ export function getOffset(element: HTMLElement): { top: number; left: number } {
   return { top, left }
 }
 
+export function getOffsetWithinContainer(
+  element: HTMLElement,
+  container: HTMLElement,
+): { top: number; left: number } {
+  const elementRect = element.getBoundingClientRect()
+  const containerRect = container.getBoundingClientRect()
+
+  return {
+    left: elementRect.left - containerRect.left + container.scrollLeft,
+    top: elementRect.top - containerRect.top + container.scrollTop,
+  }
+}
+
 /**
  * Calculates scroll duration based on distance, making longer scrolls take proportionally longer.
  *

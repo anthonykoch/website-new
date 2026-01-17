@@ -35,14 +35,11 @@ export const ModernFertilityAbout = () => {
         </div>
       </div>
 
-      {/* <div className="pb-20 lg:pb-40" /> */}
 
       <Grid
         left={
           <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[300px] xl:ml-auto lg:text-right">
             The beginnings
-            {/* A successful startup */}
-            {/* The early days of Modern Fertility */}
           </h2>
         }
         right={
@@ -59,11 +56,6 @@ export const ModernFertilityAbout = () => {
               time, the tech stack has evolved from the basics to React and
               styled-components running inside of a Django application.
             </p>
-            {/* <p>
-              Fast forward several years, and not only has the website grown in
-              scale, but Modern Fertility has grown as a wildly successful
-              company, being acquired by Ro for $225 million.
-            </p> */}
           </div>
         }
       />
@@ -74,8 +66,6 @@ export const ModernFertilityAbout = () => {
         left={
           <h2 className="copy-heading-2-sm lg:copy-heading-2 pb-6 max-w-[300px] xl:ml-auto lg:text-right">
             A successful startup
-            {/* A successful startup */}
-            {/* The early days of Modern Fertility */}
           </h2>
         }
         right={
@@ -83,7 +73,7 @@ export const ModernFertilityAbout = () => {
             <p>
               Fast forward a few years later, and not only had the website grown
               in scale, but Modern Fertilityd grown to be a wildly successful
-              company.
+              company.{' '}
               <a
                 href="https://techcrunch.com/2021/05/19/ro-acquires-modern-fertility-in-a-reportedly-225-million-deal/"
                 className="underline text-black/60"
@@ -97,9 +87,6 @@ export const ModernFertilityAbout = () => {
         }
       />
 
-      {/* <div className="pb-[100px]" /> */}
-
-      {/* <div className="pb-40" /> */}
       <div className="pb-100" />
     </div>
   )

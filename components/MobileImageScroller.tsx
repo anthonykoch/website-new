@@ -1,23 +1,26 @@
+import { motion, MotionValue } from 'motion/react'
 import { FC, ReactNode, Ref } from 'react'
 
 export const MobileImageScroller: FC<{
-  containerRef: Ref<HTMLDivElement>
+  x: MotionValue
   images: ReactNode[]
-}> = ({ containerRef, images }) => {
+  container: Ref<HTMLDivElement>
+}> = ({ images, x, container }) => {
   return (
     <div className="overflow-hidden">
-      <div
-        className="flex items-end gap-x-4 flex-nowrap will-change-transform"
-        ref={containerRef}
+      <motion.div
+        className="flex items-end gap-x-4 flex-nowrap will-change-transform w-full"
+        style={{ x }}
+        ref={container}
       >
         {images.filter(Boolean).map((image, i) => {
           return (
-            <div key={i} className="relative shrink-0">
+            <div key={i} className="relative shrink-0 will-change-transform">
               {image}
             </div>
           )
         })}
-      </div>
+      </motion.div>
     </div>
   )
 }

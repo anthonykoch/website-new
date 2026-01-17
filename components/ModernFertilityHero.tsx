@@ -4,16 +4,15 @@ import { useRef } from 'react'
 import { FigCaption, MobileImageScroller } from './MobileImageScroller'
 
 export const ModernFertilityHero = () => {
+  const scrollerRef = useRef<HTMLDivElement>(null)
   const mfMobileContainer = useRef<HTMLDivElement>(null)
 
   const mfmobilescroll = useScroll({
-    target: mfMobileContainer,
-    // offset: ['0vh end', '160vh end'],
-    offset: ['10vh end', '50vh start'],
-    // offset: ['0 end', '240vh end'],
+    target: scrollerRef,
+    offset: ['start end', 'end start'],
   })
 
-  useScrollX({
+  const x = useScrollX({
     container: mfMobileContainer,
     scrollYProgress: mfmobilescroll.scrollYProgress,
   })
@@ -32,23 +31,35 @@ export const ModernFertilityHero = () => {
             </span>
           }
         />
-        <MobileImageScroller
-          containerRef={mfMobileContainer}
-          images={[
-            <img
-              src="/final-compressed/mf-first-mobile.svg"
-              className="h-[350px] md:h-[440px]  w-auto"
-            />,
-            <img
-              src="/final-compressed/mf-homepage-mobile.png"
-              className="h-[350px] md:h-[440px]  w-auto"
-            />,
-            <img
-              src="/final-compressed/mf-recommended-mobile.png"
-              className="h-[350px] w-auto lg:hidden"
-            />,
-          ]}
-        />
+        <div className="relative">
+          <div
+            className="  z-9999 absolute top-[-20vh] left-0 w-full h-[100vh] pointer-events-none"
+            // className="bg-[tomato]/50  z-9999 absolute top-[-20vh] left-0 w-full h-[100vh]"
+            ref={scrollerRef}
+          />
+          <MobileImageScroller
+            container={mfMobileContainer}
+            x={x}
+            images={[
+              <div className="w-full aspect-472/855 relative">
+                <img
+                  src="/final-compressed/mf-first-mobile.svg"
+                  className="h-[370px] md:h-[440px]  w-auto"
+                />
+              </div>,
+              <div className="w-full aspect-786/598 relative">
+                <img
+                  src="/final-compressed/mf-homepage-mobile.png"
+                  className="h-[370px] md:h-[440px]  w-auto"
+                />
+              </div>,
+              <img
+                src="/final-compressed/mf-recommended-mobile.png"
+                className="h-[350px] w-auto lg:hidden"
+              />,
+            ]}
+          />
+        </div>
       </div>
 
       <div className="hidden xl:grid grid-cols-12 gap-x-4 px-4  ">
