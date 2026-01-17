@@ -1,23 +1,22 @@
-import ImagePhoneBg from '@/public/actual/showcase-mf-home-bg.svg'
-import ImagePhoneMfHome600w from '@/public/actual/phone-mf-home_600w.png'
-import ImagePhoneMfHome900w from '@/public/actual/phone-mf-home_900w.png'
-import ImagePhoneMfHome1300w from '@/public/actual/phone-mf-home_1300w.png'
-import ImagePhoneMfHome1700w from '@/public/actual/phone-mf-home_1700w.png'
-import ImagePhoneMfDashboardPlan600w from '@/public/actual/phone-mf-dashboard-plan_600w.png'
-import ImagePhoneMfDashboardPlan900w from '@/public/actual/phone-mf-dashboard-plan_900w.png'
 import ImagePhoneMfDashboardPlan1300w from '@/public/actual/phone-mf-dashboard-plan_1300w.png'
 import ImagePhoneMfDashboardPlan1700w from '@/public/actual/phone-mf-dashboard-plan_1700w.png'
-import ImagePhoneMfPrenatalPdp600w from '@/public/actual/phone-mf-prenatal-pdp_600w.png'
-import ImagePhoneMfPrenatalPdp900w from '@/public/actual/phone-mf-prenatal-pdp_900w.png'
+import ImagePhoneMfDashboardPlan600w from '@/public/actual/phone-mf-dashboard-plan_600w.png'
+import ImagePhoneMfDashboardPlan900w from '@/public/actual/phone-mf-dashboard-plan_900w.png'
+import ImagePhoneMfHome1300w from '@/public/actual/phone-mf-home_1300w.png'
+import ImagePhoneMfHome1700w from '@/public/actual/phone-mf-home_1700w.png'
+import ImagePhoneMfHome600w from '@/public/actual/phone-mf-home_600w.png'
+import ImagePhoneMfHome900w from '@/public/actual/phone-mf-home_900w.png'
 import ImagePhoneMfPrenatalPdp1300w from '@/public/actual/phone-mf-prenatal-pdp_1300w.png'
 import ImagePhoneMfPrenatalPdp1700w from '@/public/actual/phone-mf-prenatal-pdp_1700w.png'
+import ImagePhoneMfPrenatalPdp600w from '@/public/actual/phone-mf-prenatal-pdp_600w.png'
+import ImagePhoneMfPrenatalPdp900w from '@/public/actual/phone-mf-prenatal-pdp_900w.png'
+import ImagePhoneBg from '@/public/actual/showcase-mf-home-bg.svg'
 import { easeInOutCubic } from '@/utils/animation'
 import { themeValue } from '@/utils/theme'
 import {
   motion,
-  useTransform,
   useScroll,
-  useMotionValueEvent,
+  useTransform
 } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 
@@ -62,16 +61,9 @@ export const ModernFertilityTriplePhone = () => {
 
   return (
     <div className="mx-auto max-w-site relative">
-      {/* <div className="absolute top-0 left-0 h-[1150px] w-full pointer-events-none overflow-hidden">
-        {/* <motion.div
-          className="absolute h-full bg-center bg-contain bg-no-repeat top-0 left-1/2 -translate-x-1/2 z-10 w-[500px] lg:w-[1158px] mx-auto "
-          // className="w-full h-full bg-center bg-contain bg-no-repeat top-0 left-0 z-10 max-w-[1158px] mx-auto"
-          style={{ backgroundImage: `url(${ImagePhoneBg.src})`, scale: scaleImg }}
-        /> 
-      </div>*/}
       <div className="z-20 relative">
         <h2 className="px-4 lg:text-center max-w-[1150px] mx-auto copy-largest font-heading z-20 relative">
-          A responsive website, <br />
+          A responsive website, <br className="hidden lg:block" />
           built from the ground up.
         </h2>
 
@@ -79,11 +71,7 @@ export const ModernFertilityTriplePhone = () => {
 
         <div className="relative">
           <div className="  w-full top-0 left-0">
-            <div
-              className="absolute h-[240vh] w-full top-[-60vh] left-0 z-10 mx-auto overflow-hidden pointer-events-none"
-              // className="h-[150vh] w-full bg-no-repeat top-[60%] left-1/2 -translate-1/2 z-10 mx-auto bg-size-[auto_500px] lg:bg-size-[auto_800px] bg-center"
-              // className="w-full h-full bg-center bg-contain bg-no-repeat top-0 left-0 z-10 max-w-[1158px] mx-auto"
-            >
+            <div className="absolute h-[240vh] w-full top-[-60vh] left-0 z-10 mx-auto overflow-hidden pointer-events-none">
               <motion.div
                 className="size-full bg-no-repeat bg-size-[auto_500px] lg:bg-size-[auto_800px] bg-position-[center_70vh] md:bg-position-[center_65vh] lg:bg-position-[center_60vh] 2xl:bg-position-[center_60vh] pointer-events-none"
                 style={{

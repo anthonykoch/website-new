@@ -105,20 +105,9 @@ export const OpalIntroSection = () => {
           </div>
         </div>
         <div className="w-[42.870457%] self-end">
-          <p className="text-[18px] xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[384px] selector-opal-camera-text">
-            <span className="setup-overflow selector-line">
-              <span className="selector-inner">
-                Opal Camera is a website made to
-              </span>
-            </span>
-            <span className="setup-overflow selector-line">
-              <span className="selector-inner">
-                market the capabilities of the C1
-              </span>
-            </span>
-            <span className="setup-overflow selector-line">
-              <span className="selector-inner">and Tadpole cameras.</span>
-            </span>
+          <p className="text-[18px] xl:text-[24px] leading-[30px] font-heading font-500 pb-[26px] max-w-[405px] selector-opal-camera-text">
+            The Opal Camera website was made to market the capabilities of the
+            C1 and Tadpole cameras.
           </p>
           <div className="aspect-920/608 relative">
             <img
