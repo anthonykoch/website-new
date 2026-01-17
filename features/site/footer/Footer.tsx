@@ -1,9 +1,10 @@
-import React from 'react'
+'use client'
 
+import React from 'react'
 import { ExternalLink } from '@/components/action/Link'
 import Link from 'next/link'
 import { scrollTo } from '@/utils/dom'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 export const Footer: React.FC = () => {
   const router = useRouter()

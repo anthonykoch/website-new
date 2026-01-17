@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { useRouterComposer } from '../router/context/RouterComposerContext'
 // import { EventEmitter } from 'eventemitter3'

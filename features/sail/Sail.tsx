@@ -1,3 +1,5 @@
+'use client'
+
 import { easeInOutCubic } from '@/utils/animation'
 import { useAnimator } from '@/utils/animator'
 import { theme } from '@/utils/theme'
@@ -93,10 +95,9 @@ export const Sail = () => {
       ></div>
 
       <div
-        data-c-sail
+        // data-c-sail
         ref={sail}
         className="selector-sail-top bg-white h-screen origin-top size-full fixed top-0 left-0 z-3000 pointer-events-none"
-        x
         style={{ clipPath: 'inset(0 0 100% 0)' }}
       >
         <div

@@ -1,52 +1,17 @@
+'use client'
+
 import { scrollTo } from '@/utils/dom'
 import { default as classNames, default as cx } from 'classnames'
 import Link from 'next/link'
-import { NextRouter, useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 import * as React from 'react'
-
-// const createLinks = (
-//   router: NextRouter,
-// ): Array<{
-//   href: string
-//   children: React.ReactNode
-//   props?: React.HTMLProps<HTMLAnchorElement>
-// }> => [
-//   {
-//     href: '/blog',
-//     children: 'Blog',
-//   },
-//   {
-//     href: '/#work',
-//     children: 'Work',
-//     props: {
-//       onClick: (e) => {
-//         if (router.pathname === '/') {
-//           e.preventDefault()
-//           scrollTo('#work')
-//         }
-//       },
-//     },
-//   },
-//   {
-//     href: '/#contact',
-//     children: 'Contact',
-//     props: {
-//       onClick: (e) => {
-//         if (router.pathname === '/') {
-//           e.preventDefault()
-//           scrollTo('#contact')
-//         }
-//       },
-//     },
-//   },
-// ]
 
 export const Navigation: React.FC<{
   isBlendModeDifference?: boolean
   colorVariant?: 'white' | 'black'
 }> = ({ colorVariant }) => {
   // }> = ({ colorVariant, isBlendModeDifference = false }) => {
-  const router = useRouter()
+  const pathname = usePathname()
 
   return (
     <nav>
@@ -62,7 +27,7 @@ export const Navigation: React.FC<{
           <Link
             href="/#work"
             onClick={(e) => {
-              if (router.pathname === '/') {
+              if (pathname === '/') {
                 e.preventDefault()
                 scrollTo('#work')
               }
@@ -97,7 +62,7 @@ export const Navigation: React.FC<{
             <svg
               stroke="currentColor"
               fill="currentColor"
-              stroke-width="0"
+              strokeWidth="0"
               viewBox="0 0 512 512"
               className="absolute-center leading-0 w-[26px] fill-[#ddd]"
               xmlns="http://www.w3.org/2000/svg"

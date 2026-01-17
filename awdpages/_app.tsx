@@ -11,7 +11,7 @@ import { NavigationScrollReveal } from '@/features/site/Navigation/NavigationScr
 import { SiteNavigation } from '@/features/site/SiteNavigation'
 import { Provider } from 'jotai'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { Analytics } from '@vercel/analytics/next'
 
 const HeadMeta = () => {

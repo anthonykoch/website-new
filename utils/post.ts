@@ -4,8 +4,10 @@ import slugify from 'slugify'
 import * as datefns from 'date-fns'
 import type { Post, PostMeta } from '../types'
 import glob from 'fast-glob'
+import matter from 'gray-matter'
 
-const pattern = path.join(process.cwd(), 'posts/**/*.{md,mdx}')
+const pattern = path.join(process.cwd(), 'app/blog/**/*.{md,mdx}')
+// const pattern = path.join(process.cwd(), 'posts/**/*.{md,mdx}')
 
 interface Path {
   params: {
@@ -13,30 +15,30 @@ interface Path {
   }
 }
 
-export const getPostsPaths = async (): Promise<Path[]> => {
+export const getPosts = async (): Promise<
+  Array<{ title: string; createdAt: string; slug: string }>
+> => {
   const files = await getPostsFilenames()
 
-  const paths = files.map(async (filename) => {
-    const folder = path.basename(path.dirname(filename))
-
-    const { default: metaImport }: { default: any } = await import(
-      `../posts/${folder}/meta`
-    )
-
-    const meta =
-      typeof metaImport === 'function' ? await metaImport() : metaImport
+  const metadata = files.map(async (filename) => {
+    const basename = path.basename(filename, path.extname(filename))
+    const contents = fs.readFileSync(filename, 'utf-8')
+    const {
+      data: { id, title, createdAt },
+    } = matter(contents)
 
     return {
-      params: {
-        slug:
-          typeof meta.slug === 'string'
-            ? meta.slug.toLowerCase()
-            : slugify(meta.title).toLowerCase(),
+      id,
+      title,
+      createdAt,
+      humanized: {
+        createdAt: datefns.format(new Date(createdAt), 'MMMM, d y'),
       },
+      slug: basename,
     }
   })
 
-  return Promise.all(paths)
+  return Promise.all(metadata)
 }
 
 export const getPostsFilenames = async () => {
