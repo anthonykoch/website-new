@@ -3,6 +3,7 @@
 import BlogPost from '@/features/blog/BlogPost'
 import { getPosts } from '@/utils/post'
 import fs from 'fs/promises'
+import { existsSync } from 'fs'
 import { MDXRemote } from 'next-mdx-remote-client/rsc'
 import { notFound } from 'next/navigation'
 
@@ -25,16 +26,25 @@ export default async function BlogPostSlug({
   const posts = await getPosts()
 
   const post = posts.find((post) => {
-    console.log(post.slug, slug)
     return post.slug === slug
   })
 
   if (!post) {
     notFound()
   }
-  // console.log(posts)
 
   const file = await fs.readFile(path.join(postsDir, post.folder, 'index.mdx'))
+
+  let scope
+
+  const dataFilename = path.join(postsDir, post.folder, 'data.ts')
+  if (existsSync(dataFilename)) {
+    const tsfile = path.join('../../../posts', post.folder, 'data.ts')
+    const { default: fn } = await import(tsfile)
+
+    scope = await fn()
+  }
+
   const { content } = graymatter(file)
 
   return (
@@ -43,6 +53,7 @@ export default async function BlogPostSlug({
         source={content}
         components={markdownComponents}
         options={{
+          scope,
           mdxOptions: {
             remarkPlugins: [
               // remarkSmartpants,

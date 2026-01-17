@@ -14,11 +14,11 @@ import { NavigationScrollReveal } from '@/features/site/Navigation/NavigationScr
 import { SiteNavigation } from '@/features/site/SiteNavigation'
 
 export const metadata: Metadata = {
-  title: 'Anthony Koch',
-  description:
-    'Freelance front-end web developer producing high quality work with an exceptional eye for detail. Mentor. Lover of JavaScript.',
-  viewport: 'width=device-width, initial-scale=1',
-  robots: 'index,follow',
+  // title: 'Anthony Koch',
+  // description:
+  //   'Freelance front-end web developer producing high quality work with an exceptional eye for detail. Mentor. Lover of JavaScript.',
+  // viewport: 'width=device-width, initial-scale=1',
+  // robots: 'index,follow',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

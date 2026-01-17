@@ -1,48 +1,18 @@
 'use server'
 
 import { Footer } from '@/features/site/footer/Footer'
-// import { PostList } from '@/components/PostList'
 import { BlogHero } from '@/features/blog/Hero'
-// import { PostMeta } from '@/types/index'
-// import { easeOutExpo } from '@/utils/animation'
 import { getPosts } from '@/utils/post'
 import { PostList } from '@/components/PostList'
-// import { animate } from 'motion/react'
-// import { useEffect, useState } from 'react'
+import { BlogPageAnimate } from '@/features/blog/Animate'
 
 export default async function Blog() {
-  // const [posts, setPosts] = useState<PostMeta[]>([])
-
   const posts = await getPosts()
-
-  console.log(posts)
-
-  // useEffect(() => {
-  //   // getAllPostMeta().then((data) => {
-  //   //   setPosts(data)
-  //   // })
-  // }, [])
-
-  // useEffect(() => {
-  //   let delay = 0.4
-
-  //   animate(
-  //     '.selector-title',
-  //     { y: ['110%', '0%'], opacity: [0, 1] },
-  //     { delay: delay, duration: 1.2, ease: easeOutExpo },
-  //   )
-
-  //   animate(
-  //     '.selector-lead',
-  //     { y: ['110%', '0%'], opacity: [0, 1] },
-  //     { delay: (delay += 0.0), duration: 1.4, ease: easeOutExpo },
-  //   )
-  // }, [])
 
   return (
     <div>
       <BlogHero />
-      {/* <BlogAnimate /> */}
+      <BlogPageAnimate />
       <main>
         <div className="absolute top-0 left-0 z-10 w-full">
           <div className="max-w-[800px] mx-auto">
