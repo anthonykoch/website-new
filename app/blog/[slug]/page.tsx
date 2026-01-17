@@ -1,28 +1,19 @@
 'use server'
 
-import fs from 'fs/promises'
-import { Footer } from '@/features/site/footer/Footer'
-// import { PostList } from '@/components/PostList'
-import { BlogHero } from '@/features/blog/Hero'
-// import { PostMeta } from '@/types/index'
-// import { easeOutExpo } from '@/utils/animation'
+import BlogPost from '@/features/blog/BlogPost'
 import { getPosts } from '@/utils/post'
-import { PostList } from '@/components/PostList'
-// import { usePathname } from 'next/navigation'
-// import { animate } from 'motion/react'
-// import { useEffect, useState } from 'react'
-import { notFound } from 'next/navigation'
-import BlogPost from '@/features/post/BlogPost'
+import fs from 'fs/promises'
 import { MDXRemote } from 'next-mdx-remote-client/rsc'
+import { notFound } from 'next/navigation'
 
-import rehypePrism from 'rehype-prism-plus'
-import { RehypeCode } from '@/rehype-plugins/code'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeSlug from 'rehype-slug'
 import { markdownComponents } from '@/components/markdown-components'
+import { RehypeCode } from '@/rehype-plugins/code'
 import graymatter from 'gray-matter'
-
 import path from 'path'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypePrism from 'rehype-prism-plus'
+import rehypeSlug from 'rehype-slug'
+
 const postsDir = path.join(process.cwd(), 'posts')
 
 export default async function BlogPostSlug({
@@ -62,13 +53,6 @@ export default async function BlogPostSlug({
               rehypePrism,
               RehypeCode,
               rehypeAutolinkHeadings,
-              // [
-              //   rehypePrettyCode,
-              //   {
-              //     theme: overnight,
-              //     defaultLang: { block: 'text' },
-              //   },
-              // ],
               rehypeSlug,
             ] as any,
           },

@@ -15,18 +15,7 @@ interface Path {
   }
 }
 
-export const getPosts = async (): Promise<
-  Array<{
-    id: string
-    title: string
-    createdAt: string
-    folder: string
-    slug: string
-    humanized: {
-      createdAt: string
-    }
-  }>
-> => {
+export const getPosts = async (): Promise<Array<Post>> => {
   const files = await getPostsFilenames()
 
   const metadata = files.map(async (filename) => {
@@ -59,67 +48,4 @@ export const getPosts = async (): Promise<
 
 export const getPostsFilenames = async () => {
   return glob.sync(pattern)
-}
-
-export const getPostBySlug = async (slug: string): Promise<Post | null> => {
-  for (const filename of await getPostsFilenames()) {
-    const content = fs.readFileSync(filename, 'utf-8')
-    const folder = path.basename(path.dirname(filename))
-
-    const {
-      default: metaImport,
-    }: { default: PostMeta | (() => Promise<PostMeta>) } = await import(
-      `../posts/${folder}/meta`
-    )
-
-    const meta =
-      typeof metaImport === 'function' ? await metaImport() : metaImport
-
-    const post = {
-      content,
-      meta: {
-        ...meta,
-        slug: slugify(meta.title),
-        humanized: {
-          created_at: datefns.format(new Date(meta.created_at), 'MMMM, d y'),
-        },
-      },
-    }
-
-    if (meta.slug === slug.toLowerCase()) return post
-
-    if (slug.toLowerCase() === slugify(meta.title).toLowerCase()) {
-      return post
-    }
-  }
-
-  return null
-}
-
-export const getAllPostMeta = async (): Promise<PostMeta[]> => {
-  const promises = (await getPostsFilenames()).map(async (filename) => {
-    const folder = path.basename(path.dirname(filename))
-
-    const {
-      default: metaImport,
-    }: { default: PostMeta | (() => Promise<PostMeta>) } = await import(
-      `../posts/${folder}/meta`
-    )
-
-    const meta =
-      typeof metaImport === 'function' ? await metaImport() : metaImport
-
-    return {
-      ...meta,
-      slug: slugify(meta.title).toLowerCase(),
-      humanized: {
-        created_at: datefns.format(new Date(meta.created_at), 'MMMM, d y'),
-      },
-    }
-  })
-
-  return (await Promise.all(promises)).sort((a, b) => {
-    // @ts-ignore
-    return new Date(b.created_at) - new Date(a.created_at)
-  })
 }

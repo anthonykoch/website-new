@@ -69,14 +69,14 @@ export default function BlogPost({
               style={{ transform: 'translateY(20px)' }}
             >
               <Link href={pathname} className="text-inherit">
-                {/* {post.title} */}
+                {post.title}
               </Link>
             </h1>
             <p
               className="selector-date setup-fade-in mt-4 text-white/90 font-display tracking-widest font-semibold"
               style={{ transform: 'translateY(12px)' }}
             >
-              {/* {post.humanized.created_at} */}
+              {post.humanized.createdAt}
             </p>
           </div>
         </header>
