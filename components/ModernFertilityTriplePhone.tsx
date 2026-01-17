@@ -57,13 +57,8 @@ export const ModernFertilityTriplePhone = () => {
   })
 
   const scaleImg = useTransform(scroll.scrollYProgress, [0, 1], [1, 1.3], {
-    // const scaleImg = useTransform(scroll.scrollYProgress, [0, 1], [1, 1.6], {
     ease: easeInOutCubic,
   })
-
-  // useMotionValueEvent(transformRight, 'change', (progress) => {
-  //   console.log(progress)
-  // })
 
   return (
     <div className="mx-auto max-w-site relative">

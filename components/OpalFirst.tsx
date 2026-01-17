@@ -33,9 +33,6 @@ export const OpalFirst = () => {
     ease: easeInQuart,
   })
   const clipPath = useMotionTemplate`inset(0 0 0 ${clipPathTransform}%)`
-  // // useMotionValueEvent(clipPath, 'change', (progress) => {
-  // //   console.log(progress)
-  // // })
 
   const scaleRef = useRef<HTMLDivElement>(null)
 
@@ -63,12 +60,9 @@ export const OpalFirst = () => {
 
     if (innerWidth < 760) {
       scale = (innerWidth - 32) / innerWidth
-      // console.log('< 760')
     } else if (innerWidth < 1200) {
-      // console.log('< 1200')
       scale = (innerWidth - 100) / innerWidth
     } else {
-      // console.log('else')
       scale = (innerWidth - getOffset(left.current).left * 2) / innerWidth
     }
 
