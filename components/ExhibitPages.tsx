@@ -133,13 +133,26 @@ export const ExhibitPages = () => {
     setScrollableWidth(-value)
   }, [])
 
+  const timeout = useRef<any>(null)
+
   useEffect(() => {
     updateScrollableWidth()
+
+    const delay = 1000
+
+    const loop = () => {
+      updateScrollableWidth()
+      timeout.current = setTimeout(loop, delay)
+    }
+
+    timeout.current = setTimeout(loop)
 
     const stop = resize(() => updateScrollableWidth())
 
     return () => {
       stop()
+
+      clearTimeout(timeout.current)
     }
   }, [updateScrollableWidth])
 
