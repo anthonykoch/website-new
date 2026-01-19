@@ -1,12 +1,12 @@
 @import 'tailwindcss';
 @import './visby.css';
+@import './dmsans.css';
 @import './rift-soft.css';
 @import './theme.css';
 @import './blog.css';
 @import './post.css';
 @import './syntax.css';
 @import './hljs-github.min.css';
-/* @import './aspekta.css'; */
 
 @keyframes logo-blink {
   /* 0%,
