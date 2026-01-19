@@ -1,8 +1,8 @@
-import { withSentryConfig } from '@sentry/nextjs';
+import { withSentryConfig } from '@sentry/nextjs'
 import type { NextConfig } from 'next'
-import createMDX from '@next/mdx'
 
-const nextConfig: NextConfig = {
+let nextConfig: NextConfig = {
+  output: 'export',
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
@@ -23,13 +23,14 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default withSentryConfig(nextConfig, {
+// Then wrap with Sentry config
+nextConfig = withSentryConfig(nextConfig, {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
-  org: "anthony-koch",
+  org: 'anthony-koch',
 
-  project: "portfolio",
+  project: 'portfolio',
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
@@ -59,29 +60,6 @@ export default withSentryConfig(nextConfig, {
       removeDebugLogging: true,
     },
   },
-});
+})
 
-// // eslint-disable-next-line
-// const { withSentryConfig } = require('@sentry/nextjs')
-// const path = require('path')
-
-// const sentryWebpackPluginOptions = {
-//   // Additional config options for the Sentry Webpack plugin. Keep in mind that
-//   // the following options are set automatically, and overriding them is not
-//   // recommended:
-//   //   release, url, org, project, authToken, configFile, stripPrefix,
-//   //   urlPrefix, include, ignore
-
-//   silent: true, // Suppresses all logs
-//   // For all available options, see:
-//   // https://github.com/getsentry/sentry-webpack-plugin#options.
-// }
-
-// const withBundleAnalyzer = require('@next/bundle-analyzer')({
-//   enabled: process.env.ANALYZE === 'true',
-// })
-
-// module.exports = withSentryConfig(
-//   withBundleAnalyzer(config),
-//   sentryWebpackPluginOptions,
-// )
+export default nextConfig

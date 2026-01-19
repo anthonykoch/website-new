@@ -43,18 +43,18 @@ export const ModernFertilityHero = () => {
             images={[
               <div className="w-full aspect-472/855 relative">
                 <img
-                  src="/final-compressed/mf-first-mobile.svg"
+                  src="/actual/mf-first-mobile.svg"
                   className="h-[370px] md:h-[440px]  w-auto"
                 />
               </div>,
               <div className="w-full aspect-786/598 relative">
                 <img
-                  src="/final-compressed/mf-homepage-mobile.png"
+                  src="/actual/mf-homepage-mobile.webp"
                   className="h-[370px] md:h-[440px]  w-auto"
                 />
               </div>,
               <img
-                src="/final-compressed/mf-recommended-mobile.png"
+                src="/actual/mf-recommended-mobile.webp"
                 className="h-[350px] w-auto lg:hidden"
               />,
             ]}
@@ -70,7 +70,7 @@ export const ModernFertilityHero = () => {
 
           <div className="max-lg:pb-4">
             <img
-              src="/final-compressed/mf-first.svg"
+              src="/actual/mf-first.svg"
               className="max-lg:max-w-[400px]"
             />
           </div>
@@ -81,7 +81,7 @@ export const ModernFertilityHero = () => {
               A business dedicated to supporting and informing women about their
               fertility options.
             </p>
-            <img src="/final-compressed/mf-homepage.png" />
+            <img src="/actual/mf-homepage.webp" />
           </div>
         </div>
         {/* <div className="col-span-12 xl:col-span-2 2xl:col-span-2">

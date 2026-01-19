@@ -27,11 +27,11 @@ export const BlogImages = () => {
   return (
     <>
       <img
-        src="/blog-hero-m.jpg"
+        src="/actual/blog-hero-m.webp"
         className="md:hidden object-cover object-right size-full absolute"
       />
       <img
-        src="/blog-hero-d.jpg"
+        src="/actual/blog-hero-d.webp"
         className="hidden md:block object-cover lg:object-[90%_0%] xl:object-[90%_35%] 2xl:object-[85%_-200px] size-full absolute opacity-50"
       />
     </>

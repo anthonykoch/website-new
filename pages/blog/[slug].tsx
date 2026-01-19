@@ -160,11 +160,10 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
   return {
     props: {
-      posts: superjson.serialize(posts).json as any,
-      post: superjson.serialize(post.meta).json as any,
+      posts: posts as any,
+      post: post.meta as any,
       slug,
       mdx,
-      // mdxSource,
     },
   }
 }

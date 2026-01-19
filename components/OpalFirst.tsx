@@ -1,25 +1,23 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { BillboardGrid } from './Billboard'
+import { useWindowEvent } from '@/hooks/use-window-event'
+import ImageOpalFirst1_1000w from '@/public/actual/opal-first-1_1000w.webp'
+import ImageOpalFirst1_1500w from '@/public/actual/opal-first-1_1500w.webp'
+import ImageOpalFirst1_2200w from '@/public/actual/opal-first-1_2200w.webp'
+import ImageOpalFirst1_3000w from '@/public/actual/opal-first-1_3000w.webp'
+import ImageOpalFirst2_1000w from '@/public/actual/opal-first-2_1000w.webp'
+import ImageOpalFirst2_1500w from '@/public/actual/opal-first-2_1500w.webp'
+import ImageOpalFirst2_2200w from '@/public/actual/opal-first-2_2200w.webp'
+import ImageOpalFirst2_3000w from '@/public/actual/opal-first-2_3000w.webp'
+import { easeInQuart } from '@/utils/animation'
+import { getOffset } from '@/utils/dom'
+import { debounce } from 'lodash-es'
 import {
-  frame,
   motion,
   useMotionTemplate,
-  useMotionValueEvent,
   useScroll,
-  useTransform,
+  useTransform
 } from 'motion/react'
-import { easeInQuart, easeOutExpo } from '@/utils/animation'
-import { useWindowEvent } from '@/hooks/use-window-event'
-import { debounce } from 'lodash'
-import ImageOpalFirst1_1000w from '@/public/actual/opal-first-1_1000w.jpg'
-import ImageOpalFirst1_1500w from '@/public/actual/opal-first-1_1500w.jpg'
-import ImageOpalFirst1_2200w from '@/public/actual/opal-first-1_2200w.jpg'
-import ImageOpalFirst1_3000w from '@/public/actual/opal-first-1_3000w.jpg'
-import ImageOpalFirst2_1000w from '@/public/actual/opal-first-2_1000w.jpg'
-import ImageOpalFirst2_1500w from '@/public/actual/opal-first-2_1500w.jpg'
-import ImageOpalFirst2_2200w from '@/public/actual/opal-first-2_2200w.jpg'
-import ImageOpalFirst2_3000w from '@/public/actual/opal-first-2_3000w.jpg'
-import { getOffset } from '@/utils/dom'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { BillboardGrid } from './Billboard'
 
 export const OpalFirst = () => {
   const target = useRef<HTMLDivElement>(null)

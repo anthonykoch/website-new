@@ -1,9 +1,9 @@
 import { Description4x8Grid } from '@/features/grid/Description4x8Grid'
 import { useScrollX } from '@/hooks/use-scroll-x'
-import ImageGirl from '@/public/actual/girl.jpg'
-import ImageOpalTadpole1200w from '@/public/actual/opal-tadpole_1200w.jpg'
-import ImageOpalTadpole400w from '@/public/actual/opal-tadpole_400w.jpg'
-import ImageOpalTadpole800w from '@/public/actual/opal-tadpole_800w.jpg'
+import ImageGirl from '@/public/actual/girl.webp'
+import ImageOpalTadpole1200w from '@/public/actual/opal-tadpole_1200w.webp'
+import ImageOpalTadpole400w from '@/public/actual/opal-tadpole_400w.webp'
+import ImageOpalTadpole800w from '@/public/actual/opal-tadpole_800w.webp'
 import { motion, useScroll } from 'motion/react'
 import { FC, useRef } from 'react'
 import { FigCaption, MobileImageScroller } from './MobileImageScroller'
@@ -67,7 +67,6 @@ export const OpalIntroSection = () => {
               sizes="(max-width: 768px) 320px, 420px"
               className="h-[320px] md:h-[420px]"
             />,
-            // <img src="/final-compressed/card-opal.png" className="h-[320px]" />,
           ]}
         />
         <div className="pb-4" />

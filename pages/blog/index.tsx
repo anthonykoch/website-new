@@ -1,15 +1,13 @@
-import { Footer } from '@/features/site/footer/Footer'
 import { PostList } from '@/components/PostList'
 import { BlogHero } from '@/features/blog/Hero'
-import { SiteNavigation } from '@/features/site/SiteNavigation'
+import { Footer } from '@/features/site/footer/Footer'
 import { PostMeta } from '@/types/index'
 import { easeOutExpo } from '@/utils/animation'
 import { getAllPostMeta } from '@/utils/post'
-import { animate, stagger } from 'motion/react'
+import { animate } from 'motion/react'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { useEffect } from 'react'
-import superjson from 'superjson'
 
 interface Props {
   posts: PostMeta[]
@@ -185,7 +183,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: {
-      posts: superjson.serialize(posts).json as any,
+      posts: posts as any,
     },
   }
 }
