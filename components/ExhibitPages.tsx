@@ -1,21 +1,3 @@
-// import ImageShowcaseDoctor1200w from '@/public/actual/showcase-doctor_1200w.jpg'
-// import ImageShowcaseDoctor1800w from '@/public/actual/showcase-doctor_1800w.jpg'
-// import ImageShowcaseDoctor2400w from '@/public/actual/showcase-doctor_2400w.jpg'
-// import ImageShowcaseDoctor3000w from '@/public/actual/showcase-doctor_3000w.jpg'
-// import ImageShowcaseDoctor800w from '@/public/actual/showcase-doctor_800w.jpg'
-
-// import ImageShowcaseDownloads1200w from '@/public/actual/showcase-downloads_1200w.jpg'
-// import ImageShowcaseDownloads1800w from '@/public/actual/showcase-downloads_1800w.jpg'
-// import ImageShowcaseDownloads2400w from '@/public/actual/showcase-downloads_2400w.jpg'
-// import ImageShowcaseDownloads3000w from '@/public/actual/showcase-downloads_3000w.jpg'
-// import ImageShowcaseDownloads800w from '@/public/actual/showcase-downloads_800w.jpg'
-
-// import ImageShowcaseShopTadpole1200w from '@/public/actual/showcase-shop-tadpole_1200w.jpg'
-// import ImageShowcaseShopTadpole1800w from '@/public/actual/showcase-shop-tadpole_1800w.jpg'
-// import ImageShowcaseShopTadpole2400w from '@/public/actual/showcase-shop-tadpole_2400w.jpg'
-// import ImageShowcaseShopTadpole3000w from '@/public/actual/showcase-shop-tadpole_3000w.jpg'
-// import ImageShowcaseShopTadpole800w from '@/public/actual/showcase-shop-tadpole_800w.jpg'
-
 import ImageShowcaseDoctor1200w from '@/public/actual/showcase-doctor-inner_1200w.webp'
 import ImageShowcaseDoctor1800w from '@/public/actual/showcase-doctor-inner_1800w.webp'
 import ImageShowcaseDoctor2400w from '@/public/actual/showcase-doctor-inner_2400w.webp'
@@ -34,23 +16,13 @@ import ImageShowcaseShopTadpole2400w from '@/public/actual/showcase-tadpole-chec
 import ImageShowcaseShopTadpole3000w from '@/public/actual/showcase-tadpole-checkout-inner_3000w.webp'
 import ImageShowcaseShopTadpole800w from '@/public/actual/showcase-tadpole-checkout-inner_800w.webp'
 
-// import ImageShowcaseHome1200w from '@/public/actual/showcase-home-bg_1200w.jpg'
-// import ImageShowcaseHome1800w from '@/public/actual/showcase-home-bg_1800w.jpg'
-// import ImageShowcaseHome2400w from '@/public/actual/showcase-home-bg_2400w.jpg'
-// import ImageShowcaseHome3000w from '@/public/actual/showcase-home-bg_3000w.jpg'
-// import ImageShowcaseHome800w from '@/public/actual/showcase-home-bg_800w.jpg'
-
 import ImageShowcaseHome1200w from '@/public/actual/showcase-home-inner_1200w.webp'
 import ImageShowcaseHome1800w from '@/public/actual/showcase-home-inner_1800w.webp'
 import ImageShowcaseHome2400w from '@/public/actual/showcase-home-inner_2400w.webp'
 import ImageShowcaseHome3000w from '@/public/actual/showcase-home-inner_3000w.webp'
 import ImageShowcaseHome800w from '@/public/actual/showcase-home-inner_800w.webp'
+import ImagePoster from '@/public/actual/mobile-menu-animation.webp'
 
-import ImageOpalcameraHomeFull1000w from '@/public/actual/opalcamera-home-full-1000w.webp'
-import ImageOpalcameraHomeFull1800w from '@/public/actual/opalcamera-home-full-1800w.webp'
-import ImageOpalcameraHomeFull750w from '@/public/actual/opalcamera-home-full-750w.webp'
-
-import { getOffsetWithinContainer } from '@/utils/dom'
 import {
   motion,
   resize,
@@ -151,13 +123,25 @@ export const ExhibitPages = () => {
 
     return () => {
       stop()
-
       clearTimeout(timeout.current)
     }
   }, [updateScrollableWidth])
 
   const video = useRef<HTMLVideoElement>(null)
+  const initPoint = useRef<HTMLDivElement>(null)
   const isInView = useInView(video)
+
+  const isComingUp = useInView(initPoint, {
+    once: true,
+  })
+
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    if (isComingUp) {
+      setIsVisible(true)
+    }
+  }, [isComingUp])
 
   useEffect(() => {
     if (!video.current) return
@@ -175,7 +159,12 @@ export const ExhibitPages = () => {
       <div className="relative h-[535vh]">
         <div
           ref={ref}
-          className="absolute left-0 top-[100vh] w-full h-[80%]  pointer-events-none"
+          className="absolute z-9999 left-0 top-[100vh] w-full h-[80%]  pointer-events-none"
+        />
+        <div
+          ref={initPoint}
+          className="absolute top-[-200vh] left-0 pointer-events-none w-full"
+          // className="absolute top-[-200vh] h-[10px] bg-red-500 left-0 pointer-events-none w-full"
         />
         <div className="overflow-hidden sticky top-12">
           <motion.div
@@ -210,19 +199,6 @@ export const ExhibitPages = () => {
                   sizes="(max-width: 1024px) 100vw, 120vw"
                   className="h-[60vh] lg:h-[80vh] w-auto"
                 />
-                {/* <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center overflow-hidden">
-                  <div className="w-[calc(1012/1200*100%)] h-[calc(632/810*100%)] overflow-hidden">
-                    <div className="bg-[blue]/20 aspect-1012/632 relative w-full">
-                      <motion.img
-                        src={ImageOpalcameraHomeFull1000w.src}
-                        srcSet={`${ImageOpalcameraHomeFull750w.src} 750w, ${ImageOpalcameraHomeFull1000w.src} 1000w, ${ImageOpalcameraHomeFull1800w.src} 1800w`}
-                        sizes="(max-width: 400px) 90vw, (max-width: 800px) 800px, 1200px"
-                        className="block w-full"
-                        // style={{ y: homeImageY }}
-                      />
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
             <div className="shrink-0">
@@ -244,18 +220,22 @@ export const ExhibitPages = () => {
                 {/* MOBILE NAVIGATION */}
               </p>
               <div className="pb-4" />
+
               <video
                 ref={video}
                 autoPlay
                 muted
                 loop
+                poster={ImagePoster.src}
                 playsInline
                 className="pointer-events-none w-full"
               >
-                <source src="/actual/mobile-nav-final.mp4" type="video/mp4" />
+                {isVisible && (
+                  <source src="/actual/mobile-nav-final.mp4" type="video/mp4" />
+                )}
               </video>
             </div>
-            <div className="  shrink-0" ref={last}>
+            <div className="shrink-0" ref={last}>
               <p className="text-[14px] uppercase leading-[1.2] font-heading font-700 tracking-wide">
                 {/* FIRMWARE UPDATER */}
               </p>
