@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react'
 import { useRouterListener } from '../router/context/RouterComposerContext'
 import { useHandleLinkClicks } from './hooks'
 
-import ImageSplash from '@/public/actual/splash.jpg'
+import ImageSplash from '@/public/actual/splash.webp'
 // import ImageSplash800w from '@/public/actual/splash_800w.jpg'
 // import ImageSplash1200w from '@/public/actual/splash_1200w.jpg'
 // import ImageSplash1600w from '@/public/actual/splash_1600w.jpg'
