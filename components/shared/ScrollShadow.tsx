@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import cx from 'classnames'
-import _ from 'lodash'
+import { throttle } from 'lodash'
 
 export const ScrollShadow: React.FC = ({ children }) => {
   const scrollerRef = useRef<HTMLDivElement>(null)
@@ -9,7 +9,7 @@ export const ScrollShadow: React.FC = ({ children }) => {
     setShadowShowing(isScrolledToEnd())
   }
 
-  const onScrollThrottled = _.throttle(onScroll, 50, { trailing: true })
+  const onScrollThrottled = throttle(onScroll, 50, { trailing: true })
 
   const isScrolledToEnd = (): boolean => {
     if (scrollerRef.current == null) return false

@@ -11,7 +11,6 @@ import { NavigationScrollReveal } from '@/features/site/Navigation/NavigationScr
 import { SiteNavigation } from '@/features/site/SiteNavigation'
 import { Provider } from 'jotai'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { Analytics } from '@vercel/analytics/next'
 
 const HeadMeta = () => {
@@ -31,8 +30,6 @@ const HeadMeta = () => {
 }
 
 function App({ Component, pageProps }: AppProps) {
-  const router = useRouter()
-
   return (
     <RouterComposerProvider>
       <Analytics />
@@ -49,7 +46,7 @@ function App({ Component, pageProps }: AppProps) {
             </div>
           </NavigationScrollReveal>
         </div>
-        <Component key={router.route} {...pageProps} />
+        <Component {...pageProps} />
       </Provider>
     </RouterComposerProvider>
   )
