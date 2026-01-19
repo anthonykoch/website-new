@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import cx from 'classnames'
-import { throttle } from 'lodash'
+import { throttle } from 'lodash-es'
 
 export const ScrollShadow: React.FC = ({ children }) => {
   const scrollerRef = useRef<HTMLDivElement>(null)

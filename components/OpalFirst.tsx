@@ -1,16 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { BillboardGrid } from './Billboard'
-import {
-  frame,
-  motion,
-  useMotionTemplate,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from 'motion/react'
-import { easeInQuart, easeOutExpo } from '@/utils/animation'
 import { useWindowEvent } from '@/hooks/use-window-event'
-import { debounce } from 'lodash'
 import ImageOpalFirst1_1000w from '@/public/actual/opal-first-1_1000w.webp'
 import ImageOpalFirst1_1500w from '@/public/actual/opal-first-1_1500w.webp'
 import ImageOpalFirst1_2200w from '@/public/actual/opal-first-1_2200w.webp'
@@ -19,7 +7,17 @@ import ImageOpalFirst2_1000w from '@/public/actual/opal-first-2_1000w.webp'
 import ImageOpalFirst2_1500w from '@/public/actual/opal-first-2_1500w.webp'
 import ImageOpalFirst2_2200w from '@/public/actual/opal-first-2_2200w.webp'
 import ImageOpalFirst2_3000w from '@/public/actual/opal-first-2_3000w.webp'
+import { easeInQuart } from '@/utils/animation'
 import { getOffset } from '@/utils/dom'
+import { debounce } from 'lodash-es'
+import {
+  motion,
+  useMotionTemplate,
+  useScroll,
+  useTransform
+} from 'motion/react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { BillboardGrid } from './Billboard'
 
 export const OpalFirst = () => {
   const target = useRef<HTMLDivElement>(null)

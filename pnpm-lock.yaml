@@ -50,6 +50,9 @@ dependencies:
   '@types/lodash':
     specifier: ^4.14.178
     version: 4.14.178
+  '@types/lodash-es':
+    specifier: ^4.17.12
+    version: 4.17.12
   '@types/mdx':
     specifier: ^2.0.13
     version: 2.0.13
@@ -83,9 +86,9 @@ dependencies:
   jotai:
     specifier: ^2.16.1
     version: 2.16.1(@babel/core@7.17.2)(@types/react@19.2.7)(react@19.2.3)
-  lodash:
-    specifier: ^4.17.21
-    version: 4.17.21
+  lodash-es:
+    specifier: ^4.17.22
+    version: 4.17.22
   motion:
     specifier: ^12.23.26
     version: 12.23.26(react-dom@19.2.3)(react@19.2.3)
@@ -4275,6 +4278,12 @@ packages:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
       '@types/node': 20.19.24
+    dev: false
+
+  /@types/lodash-es@4.17.12:
+    resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
+    dependencies:
+      '@types/lodash': 4.14.178
     dev: false
 
   /@types/lodash@4.14.178:
@@ -9392,6 +9401,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-locate: 5.0.0
+
+  /lodash-es@4.17.22:
+    resolution: {integrity: sha512-XEawp1t0gxSi9x01glktRZ5HDy0HXqrM0x5pXQM98EaI0NxO6jVM7omDOxsuEo5UIASAnm2bRp1Jt/e0a2XU8Q==}
+    dev: false
 
   /lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
