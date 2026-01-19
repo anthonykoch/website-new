@@ -74,7 +74,7 @@ export const Sail = () => {
         opacity: [1, 0],
       },
       {
-        delay: 0.6,
+        delay: 0.4,
         duration: 0.6,
         ease: 'linear',
       },
