@@ -1,3 +1,5 @@
+'use client'
+
 import { isMobileMenuVisible } from '@/store'
 import classNames from 'classnames'
 import { useAtom } from 'jotai'

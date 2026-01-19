@@ -1,8 +1,10 @@
-import { withSentryConfig } from '@sentry/nextjs';
+import { withSentryConfig } from '@sentry/nextjs'
 import type { NextConfig } from 'next'
-import createMDX from '@next/mdx'
+// import createMDX from '@next/mdx'
 
-const nextConfig: NextConfig = {
+let nextConfig: NextConfig = {
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
@@ -16,20 +18,24 @@ const nextConfig: NextConfig = {
   //   ignoreDuringBuilds: true,
   // },
   turbopack: {
-    rules: {},
+    // disabled: true
     resolveAlias: {
       '@': __dirname,
     },
   },
+
+  // experimental: {
+  //   mdxRs: false,
+  // },
 }
 
-export default withSentryConfig(nextConfig, {
+nextConfig = withSentryConfig(nextConfig, {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
-  org: "anthony-koch",
+  org: 'anthony-koch',
 
-  project: "portfolio",
+  project: 'portfolio',
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
@@ -59,7 +65,7 @@ export default withSentryConfig(nextConfig, {
       removeDebugLogging: true,
     },
   },
-});
+})
 
 // // eslint-disable-next-line
 // const { withSentryConfig } = require('@sentry/nextjs')
@@ -85,3 +91,40 @@ export default withSentryConfig(nextConfig, {
 //   withBundleAnalyzer(config),
 //   sentryWebpackPluginOptions,
 // )
+
+// import rehypePrism from 'rehype-prism-plus'
+// // import { RehypeCode } from './rehype-plugins/code'
+// import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+// import rehypeSlug from 'rehype-slug'
+// // import { markdownComponents } from '@/components/markdown-components'
+// import remarkFrontmatter from 'remark-frontmatter'
+// import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+// import path from 'path'
+
+// const withMDX = createMDX({
+//   options: {
+//     remarkPlugins: [
+//       // ['remark-frontmatter']
+//       // remarkFrontmatter
+//     ],
+//     rehypePlugins: [
+//       // rehypeSlug,
+//       // path.join(process.cwd(), './rehype-plugins/code.js'),
+//       ['rehype-prism-plus', { showLineNumbers: true }],
+//       // // @ts-ignore
+//       'rehype-slug',
+//       [
+//         // @ts-ignore
+//         'rehype-autolink-headings',
+//         {
+//           behavior: ['after'],
+//         },
+//       ],
+//     ],
+//   },
+//   // Add markdown plugins here, as desired
+// })
+
+// Merge MDX config with Next.js config
+export default nextConfig
+// export default withMDX(nextConfig)

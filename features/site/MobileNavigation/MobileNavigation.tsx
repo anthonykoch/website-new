@@ -1,3 +1,5 @@
+'use client'
+
 import { ExternalLink } from '@/components/action/Link'
 import { isMobileMenuVisible } from '@/store'
 import { easeOutCubic, easeOutExpo } from '@/utils/animation'
@@ -7,7 +9,7 @@ import classNames from 'classnames'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { AnimatePresence, motion, useAnimate, usePresence } from 'motion/react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { FC, ReactNode, useEffect, useRef } from 'react'
 import FocusLock from 'react-focus-lock'
 

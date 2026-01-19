@@ -46,18 +46,11 @@ import ImageShowcaseHome2400w from '@/public/actual/showcase-home-inner_2400w.jp
 import ImageShowcaseHome3000w from '@/public/actual/showcase-home-inner_3000w.jpg'
 import ImageShowcaseHome800w from '@/public/actual/showcase-home-inner_800w.jpg'
 
-import ImageOpalcameraHomeFull1000w from '@/public/actual/opalcamera-home-full-1000w.jpg'
-import ImageOpalcameraHomeFull1800w from '@/public/actual/opalcamera-home-full-1800w.jpg'
-import ImageOpalcameraHomeFull750w from '@/public/actual/opalcamera-home-full-750w.jpg'
-
-import { getOffsetWithinContainer } from '@/utils/dom'
 import {
   motion,
   resize,
   useInView,
-  useMotionTemplate,
   useScroll,
-  useSpring,
   useTransform,
 } from 'motion/react'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -67,32 +60,10 @@ export const ExhibitPages = () => {
 
   const scroll = useScroll({
     target: ref,
-    // offset: ['start -50vh', 'end 0vh'],
     offset: ['start end', 'end end'],
-    // offset: ['start end', 'end start'],
   })
 
   const { scrollYProgress } = scroll
-
-  // const x = useTransform(scrollYProgress, [0, 1], ['0vw', '-45vw'])
-
-  // const ref2 = useRef<HTMLDivElement>(null)
-
-  // const scroll2 = useScroll({
-  //   target: ref2,
-  //   offset: ['-50vh end', 'end 20vh'],
-  // })
-
-  // const x2 = useTransform(scroll2.scrollYProgress, [0, 1], ['-20vw', '0vw'])
-
-  // const ref3 = useRef<HTMLDivElement>(null)
-
-  // const scroll3 = useScroll({
-  //   target: ref3,
-  //   offset: ['-50vh end', 'end 20vh'],
-  // })
-
-  // const x3 = useTransform(scroll3.scrollYProgress, [0, 1], ['0vw', '-20vw'])
 
   const container = useRef<HTMLDivElement>(null)
   const last = useRef<HTMLDivElement>(null)
@@ -121,7 +92,7 @@ export const ExhibitPages = () => {
     let value = left - last.current.offsetWidth
 
     if (last.current.offsetWidth >= innerWidth) {
-      value += Math.abs(last.current.offsetWidth - innerWidth)
+      value += Math.abs(last.current.offsetWidth - innerWidth) + 16
     } else {
       value =
         left -
@@ -150,12 +121,14 @@ export const ExhibitPages = () => {
     const stop = resize(() => updateScrollableWidth())
 
     return () => {
+      clearTimeout(timeout.current)
       stop()
 
       clearTimeout(timeout.current)
     }
   }, [updateScrollableWidth])
 
+  const timeout = useRef<any>(null)
   const video = useRef<HTMLVideoElement>(null)
   const isInView = useInView(video)
 
@@ -269,7 +242,7 @@ export const ExhibitPages = () => {
               />
               <div className="pb-4" />
 
-              <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#757575] max-w-[500px] pb-4">
+              <p className="font-body font-500 text-[16px] leading-[26px] -tracking-[0.4px] text-[#757575] max-w-[90vw] lg:max-w-[500px] pb-4">
                 Dr. Opal is a web based tool created to help users update their
                 Tadpole firmware. I built out the UI and collaborated with
                 device engineers to interface it with the Tadpole.

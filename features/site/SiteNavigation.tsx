@@ -1,9 +1,11 @@
+'use client'
+
 import Link from 'next/link'
 import { Logo } from './Logo'
 import { Navigation } from './Navigation'
 import classNames from 'classnames'
 import { FC } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 export const SiteNavigation: FC<{
   isBlendModeDifference?: boolean

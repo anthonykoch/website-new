@@ -1,3 +1,5 @@
+'use client'
+
 import { useScrollDelta } from '@/hooks/use-scroll-delta'
 import { useEffect } from 'react'
 
