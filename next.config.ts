@@ -2,6 +2,7 @@ import { withSentryConfig } from '@sentry/nextjs'
 import type { NextConfig } from 'next'
 
 let nextConfig: NextConfig = {
+  output: 'export',
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
