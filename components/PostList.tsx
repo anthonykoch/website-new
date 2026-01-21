@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import Link from 'next/link'
 import { FC } from 'react'
 
 export type Post = {
@@ -24,7 +25,7 @@ export const OldPostList: FC<{
             ['is-active']: listing.id === activeId,
           })}
         >
-          <a
+          <Link
             href={`/blog/${listing.slug}`}
             className="PostsList-link"
             onClick={(e) => {
@@ -35,7 +36,7 @@ export const OldPostList: FC<{
               {listing.humanized.created_at}
             </time>
             <span>{listing.title}</span>
-          </a>
+          </Link>
         </li>
       ))}
     </ul>
@@ -60,7 +61,7 @@ export const PostList: FC<{
               },
             )}
           >
-            <a
+            <Link
               href={`/blog/${listing.slug}`}
               className={classNames(
                 'rounded-xs shadow-none flex items-center text-[#111] transition-all duration-100',
@@ -99,7 +100,7 @@ export const PostList: FC<{
                   </span>
                 </span>
               </span>
-            </a>
+            </Link>
           </div>
         </li>
       ))}
