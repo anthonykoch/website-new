@@ -14,3 +14,5 @@
 - [ ] Maybe add what fonts/tech were used
 - [ ] Either change the intro phone to a video or pay someone to make a mockup or scrollable animation renders
 - [ ] ? Maybe make the intro text have an animation out. But you'd have to do this with all headings to make it feel consistent, so idk.
+- [ ] Dark mode for blog
+- [ ] Stop using colors directly in the html
