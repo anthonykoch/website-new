@@ -5,42 +5,9 @@ import * as datefns from 'date-fns'
 import type { Post, PostMeta } from '../types'
 import glob from 'fast-glob'
 
-const pattern = path.join(process.cwd(), 'posts/**/*.{md,mdx}')
+const isDev = process.env.NODE_ENV === 'development'
 
-interface Path {
-  params: {
-    slug: string
-  }
-}
-
-export const getPostsPaths = async (): Promise<Path[]> => {
-  const isDev = process.env.NODE_ENV === 'development'
-
-  const files = await getPostsFilenames()
-
-  const paths = files.map(async (filename) => {
-    const folder = path.basename(path.dirname(filename))
-
-    const { default: metaImport }: { default: any } = await import(
-      `../posts/${folder}/meta`
-    )
-
-    const meta =
-      typeof metaImport === 'function' ? await metaImport() : metaImport
-
-    return {
-      params: {
-        slug: isDev
-          ? null
-          : typeof meta.slug === 'string'
-          ? meta.slug.toLowerCase()
-          : slugify(meta.title).toLowerCase(),
-      },
-    }
-  })
-
-  return (await Promise.all(paths)).filter((data) => data.params.slug)
-}
+const pattern = path.join(process.cwd(), 'public/posts/**/*.{md,mdx}')
 
 export const getPostsFilenames = async () => {
   return glob.sync(pattern)
@@ -49,25 +16,11 @@ export const getPostsFilenames = async () => {
 export const getPostBySlug = async (slug: string): Promise<Post | null> => {
   for (const filename of await getPostsFilenames()) {
     const content = fs.readFileSync(filename, 'utf-8')
-    const folder = path.basename(path.dirname(filename))
-
-    const {
-      default: metaImport,
-    }: { default: PostMeta | (() => Promise<PostMeta>) } = await import(
-      `../posts/${folder}/meta`
-    )
-
-    const meta =
-      typeof metaImport === 'function' ? await metaImport() : metaImport
+    const meta = await getPostMetaByFilename(filename)
 
     const post = {
       content,
-      meta: {
-        ...meta,
-        humanized: {
-          createdAt: datefns.format(new Date(meta.createdAt), 'MMMM, d y'),
-        },
-      },
+      meta,
     }
 
     if (meta.slug === slug.toLowerCase()) return post
@@ -80,32 +33,38 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
   return null
 }
 
+export const getPostMetaByFilename = async (filename: string) => {
+  const folder = path.basename(path.dirname(filename))
+
+  const {
+    default: metaImport,
+  }: { default: PostMeta | (() => Promise<PostMeta>) } = await import(
+    `../public/posts/${folder}/meta`
+  )
+
+  const meta =
+    typeof metaImport === 'function' ? await metaImport() : metaImport
+
+  return {
+    ...meta,
+    slug: slugify(meta.title).toLowerCase(),
+    humanized: {
+      createdAt: datefns.format(new Date(meta.createdAt), 'MMMM, d y'),
+    },
+  }
+}
+
 export const getAllPostMeta = async (): Promise<PostMeta[]> => {
-  const promises = (await getPostsFilenames()).map(async (filename) => {
-    const folder = path.basename(path.dirname(filename))
+  const promises = (await getPostsFilenames()).map(async (filename) =>
+    getPostMetaByFilename(filename),
+  )
 
-    const {
-      default: metaImport,
-    }: { default: PostMeta | (() => Promise<PostMeta>) } = await import(
-      `../posts/${folder}/meta`
-    )
-
-    const meta =
-      typeof metaImport === 'function' ? await metaImport() : metaImport
-
-    return {
-      ...meta,
-      slug: slugify(meta.title).toLowerCase(),
-      humanized: {
-        createdAt: datefns.format(new Date(meta.createdAt), 'MMMM, d y'),
-      },
-    }
-  })
-
-  return (await Promise.all(promises)).sort((a, b) => {
-    // @ts-ignore
-    return new Date(b.createdAt) - new Date(a.createdAt)
-  })
+  return (await Promise.all(promises))
+    .sort((a, b) => {
+      // @ts-ignore
+      return new Date(b.createdAt) - new Date(a.createdAt)
+    })
+    .filter((post) => (isDev ? true : post.isPublished !== false))
 }
 
 export const getPostTitle = (filename: string) => {

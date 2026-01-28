@@ -9,7 +9,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 
 import { Footer } from '@/features/site/footer/Footer'
-import { getAllPostMeta, getPostBySlug, getPostsPaths } from '@/utils/post'
+import { getAllPostMeta, getPostBySlug } from '@/utils/post'
 import { PostMeta } from '@/types'
 import { markdownComponents } from '@/components/markdown-components'
 import { SiteNavigation } from '@/features/site/SiteNavigation'
@@ -123,10 +123,14 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
 }
 
 export const getStaticPaths = async () => {
-  const paths = await getPostsPaths()
+  const meta = await getAllPostMeta()
 
   return {
-    paths,
+    paths: {
+      params: {
+        slug: meta.map((path) => path.slug),
+      },
+    },
     fallback: false,
   }
 }
@@ -143,8 +147,10 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       rehypePlugins: [
         [RehypeCode, {}],
         [rehypePrism, { showLineNumbers: true }],
+        // @ts-ignore
         rehypeSlug,
         [
+          // @ts-ignore
           rehypeAutolinkHeadings,
           {
             behavior: ['after'],
