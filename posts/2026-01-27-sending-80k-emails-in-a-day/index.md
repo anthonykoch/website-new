@@ -1,7 +1,7 @@
 
 It's very commonly said that sending tens of thousands of emails in a day from a new domain is a bad thing to do. The general advice is to "warm up" a new sender account by sending 100 and pretty much doubling it every day. 
 
-![alt text](/chatgpt-emails.png)
+![chatgpt on sending mass emails](/chatgpt-emails.png)
 
 Well, at one company, I was asked to send out around 80k emails in a single day. I had told the business owners that sending that many emails in a day from an unwarmed account was considered to be a bad idea. I had no choice, however, so I prepared to send out the 80k emails. 
 

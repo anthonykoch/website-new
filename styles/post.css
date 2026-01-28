@@ -216,7 +216,7 @@
   transition: opacity 300ms;
 
   svg {
-    fill: $app-color-link;
+    fill: theme(--color-link);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -225,43 +225,27 @@
     width: 20px;
   }
 }
-/* 
-.md > h3,
-.md-h3 {
-  font-weight: 600;
-} */
 
 .md > h3,
 .md-h3 {
   font-family: theme(--font-heading);
-  font-weight: 600;
-  /* font-weight: 900; */
+  font-weight: 700;
   font-size: 36px;
   letter-spacing: -0.4px;
   line-height: 1.2;
-  margin-top: calc(theme(--spacing) * 20);
-  margin-bottom: calc(theme(--spacing) * 12);
   max-width: 100%;
   padding-bottom: 16px;
   position: relative;
   z-index: 1;
-  background-color: black;
   padding: 50px;
-  color: white;
-  padding-left: max(16px, calc((((100% - theme(--max-width-post))) / 2) + 16px));
-  padding-top: 120px;
+  padding-left: max(16px, calc((((100% - theme(--max-width-post))) / 2) - 24px));
+  padding-top: 100px;
 
   @media (min-width: theme(--breakpoint-lg)) {
     font-size: 36px;
-    font-weight: 600;
-    /* font-size: 50px; */
+    font-weight: 700;
     letter-spacing: -0.45px;
     line-height: 1;
-    /* max-width: theme(--max-width-post-wide) !important; */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    /* margin-top: calc(theme(--spacing) * 20); */
-    /* margin-bottom: calc(theme(--spacing) * 5); */
   }
 }
 
@@ -270,7 +254,6 @@
   font-family: var(--font-heading);
   font-size: 23px;
   font-weight: 700;
-  /* font-weight: 800; */
   position: relative;
   margin-left: auto;
   margin-right: auto;

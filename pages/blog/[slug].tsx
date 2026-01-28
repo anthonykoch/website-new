@@ -77,7 +77,7 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
       <BlogPlaceholder className="relative z-10">
         <div className="">
           <header className="px-gutter pt-48 relative">
-            <div className="max-w-post xl:max-w-post-wide  mx-auto">
+            <div className="max-w-post xl:max-w-post-wide mx-auto">
               <h1
                 className="selector-title setup-fade-in text-left text-[42px] lg:text-[52px] 2xl:text-[64px] leading-[1.1] text-primary-500 font-heading font-800"
                 style={{ transform: 'translateY(20px)' }}
@@ -90,7 +90,7 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
                 className="selector-date setup-fade-in mt-4 text-white/90 font-display tracking-widest font-semibold"
                 style={{ transform: 'translateY(12px)' }}
               >
-                {post.humanized.created_at}
+                {post.humanized.createdAt}
               </p>
             </div>
           </header>
@@ -109,14 +109,10 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
         </article>
 
         <div className="bg-white">
-          {/* <div className="bg-[#f3f3f3]"> */}
           <div className="py-20 px-gutter max-w-3xl mx-auto">
             <h2 className="text-[14px] tracking-wider pb-5 font-display font-600">
               More from the blog
             </h2>
-            {/* <h2 className="text-[18px] pb-5 font-heading font-900">
-              More from the blog
-            </h2> */}
             <PostList posts={posts} activeId={post.id} />
           </div>
         </div>

@@ -1,6 +1,11 @@
+import { getPostDate } from '@/utils/post'
+import slugify from 'slugify'
+
+const title = `Why you shouldn't loop arrays with for-in`
+
 export default {
+  title: title,
+  slug: slugify(title),
+  createdAt: getPostDate(__filename),
   id: 4,
-  title: `Why you shouldn't loop arrays with for-in`,
-  tags: ['JavaScript', 'arrays'],
-  created_at: '2015-12-03',
 }

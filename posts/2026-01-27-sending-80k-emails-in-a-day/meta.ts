@@ -1,8 +1,14 @@
+import { getPostDate } from '@/utils/post'
+import slugify from 'slugify'
+
 export default async () => {
+  const title = `Sending 80k emails in a day`
+  
   return {
-    title: 'Sending 80k emails in a day',
+    title: title,
+    slug: slugify(title),
+    createdAt: getPostDate(__filename),
     id: 13,
-    created_at: '2026-01-27',
     data: {},
   }
 }

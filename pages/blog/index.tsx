@@ -107,24 +107,6 @@ const Blog: NextPage<Props> = ({ posts }) => {
           <div className="max-w-site mx-auto">
             <section>
               <div className="max-w-[800px] mx-auto">
-                {/* <a
-                  href={posts[0].slug}
-                  className="flex transition-colors duration-100 text-black hover:bg-primary-500 hover:*:first:border-white hover:shadow-button "
-                >
-                  <div className="min-w-[151px] transition-colors duration-100 border-r border-black/10 pt-10">
-                    <time
-                      dateTime={posts[0].created_at}
-                      className="text-[13px] italic pl-[11px]"
-                    >
-                      {posts[0].humanized.created_at}
-                    </time>
-                  </div>
-                  <div className="pl-[11px]">
-                    <div className="text-[22px] lg:text-[32px] leading-[1.2] font-heading font-600 py-8">
-                      {posts[0].title}
-                    </div>
-                  </div>
-                </a> */}
                 <div className="relative pt-10 lg:pt-20 pb-20 lg:pb-30 min-h-[max(50lvh,800px)]">
                   <div>
                     <p className="ml-[141px] lg:ml-[170px] text-[14px] font-600 pl-4 font-display tracking-wider pb-2">
@@ -135,41 +117,7 @@ const Blog: NextPage<Props> = ({ posts }) => {
                   <PostList posts={posts} />
                 </div>
               </div>
-
-              {/* <div className="pb-30" /> */}
             </section>
-            {/* <ul
-              className={cx('flex flex-wrap', {
-                ['by2Remainder1']: posts.length % 2 === 1,
-                ['by3Remainder1']: posts.length % 3 === 1,
-                ['by3Remainder2']: posts.length % 3 === 2,
-              })}
-            >
-              {posts.map((post, index) => {
-                return (
-                  <li
-                    key={post.id}
-                    className={cx(
-                      'hover:bg-primary-500',
-                      'BlogPostListing__Item',
-                    )}
-                  >
-                    <a
-                      href={`/blog/${post.slug}`}
-                      className="py-12 xl:py-20 px-gutter-lg xl:px-16 block relative"
-                    >
-                      <div className="font-body pb-2 uppercase tracking-widest font-700 text-[13px] text-black/50">
-                        {post.humanized.created_at} - #{posts.length - index}
-                      </div>
-                      <div className="text-black/90 text-[24px] leading-[1.2] xl:leading-[1.4] font-heading font-800">
-                        <span className="max-w-[200px] ">{post.title}</span>
-                      </div>
-                    </a>
-                  </li>
-                )
-              })}
-            </ul>
-            */}
           </div>
         </div>
       </main>

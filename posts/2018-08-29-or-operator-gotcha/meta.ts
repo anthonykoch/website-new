@@ -1,9 +1,11 @@
+import { getPostDate } from '@/utils/post'
+import slugify from 'slugify'
+
+const title = 'OR operator gotcha'
+
 export default {
-  title: 'OR operator gotcha',
-  tags: ['javascript', 'anti-patterns', 'operators'],
+  title: title,
+  slug: slugify(title),
+  createdAt: getPostDate(__filename),
   id: 9,
-  skip: {
-    section: '#the-gotcha',
-  },
-  created_at: '2018-08-29',
 }

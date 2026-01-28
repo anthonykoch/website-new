@@ -1,6 +1,11 @@
+import { getPostDate } from '@/utils/post'
+import slugify from 'slugify'
+
+const title = `Medium style image loading`
+
 export default {
-  title: 'Medium style image loading',
-  tags: ['stackblur', 'medium', 'lazy loading'],
+  title: title,
+  slug: slugify(title),
+  createdAt: getPostDate(__filename),
   id: 5,
-  created_at: '2016-01-07',
 }

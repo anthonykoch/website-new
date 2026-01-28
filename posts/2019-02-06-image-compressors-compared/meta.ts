@@ -1,4 +1,9 @@
+import { getPostDate } from '@/utils/post'
+import slugify from 'slugify'
+
 export default async () => {
+  const title = `Image compressors compared`
+
   const images = {
     imageCompareLeavesTabs: createTabs({
       width: 2623,
@@ -23,11 +28,10 @@ export default async () => {
   }
 
   return {
-    author: 'Anthony Koch',
-    title: 'Image compressors compared',
-    tags: ['nextjs', 'review'],
+    title: title,
+    slug: slugify(title),
+    createdAt: getPostDate(__filename),
     id: 11,
-    created_at: '2019-02-06',
     data: {
       images,
     },

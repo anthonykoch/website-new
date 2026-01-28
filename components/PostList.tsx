@@ -1,50 +1,10 @@
+import { PostMeta } from '@/types'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { FC } from 'react'
 
-export type Post = {
-  id: string
-  created_at: string
-  humanized: {
-    created_at: string
-  }
-  title: string
-  slug: string
-}
-
-export const OldPostList: FC<{
-  posts: Array<Post>
-  activeId?: string
-}> = ({ posts, activeId }) => {
-  return (
-    <ul className={styles.PostList}>
-      {posts.map((listing, i) => (
-        <li
-          key={listing.slug}
-          className={classNames({
-            ['is-active']: listing.id === activeId,
-          })}
-        >
-          <Link
-            href={`/blog/${listing.slug}`}
-            className="PostsList-link"
-            onClick={(e) => {
-              activeId === listing.id && e.preventDefault()
-            }}
-          >
-            <time dateTime={listing.created_at}>
-              {listing.humanized.created_at}
-            </time>
-            <span>{listing.title}</span>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  )
-}
-
 export const PostList: FC<{
-  posts: Array<Post>
+  posts: Array<PostMeta>
   activeId?: string
 }> = ({ posts, activeId }) => {
   return (
@@ -75,12 +35,12 @@ export const PostList: FC<{
               <div className="min-w-[140px] lg:min-w-[170px] h-full">
                 <time
                   className="px-3 lg:px-4 transition-all duration-200 block "
-                  dateTime={listing.created_at}
+                  dateTime={listing.createdAt}
                 >
                   <span className="block overflow-clip">
                     {/* setup-line-down */}
                     <span className="selector-text will-change-transform text-[12.5px] xl:text-[13px] italic text-[#222] font-heading font-500 leading-[1.3]">
-                      {listing.humanized.created_at}
+                      {listing.humanized.createdAt}
                     </span>
                   </span>
                 </time>

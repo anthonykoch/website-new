@@ -4,18 +4,23 @@ export interface Post {
 }
 
 export interface PostMetaRaw {
-  author: string
-  tags: string[]
   id: any
   title: string
-  created_at: string
-  published_at: string
   slug: string
+  createdAt: string
+  isPublished?: boolean
   data: any
 }
 
-export interface PostMeta extends PostMetaRaw {
+export interface PostMeta {
+  id: any
+  title: string
+  createdAt: string
+  isPublished?: boolean
+  slug: string
+  data: any
   humanized: {
-    created_at: string
+    createdAt: string
   }
 }
+

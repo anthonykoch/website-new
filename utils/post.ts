@@ -14,6 +14,8 @@ interface Path {
 }
 
 export const getPostsPaths = async (): Promise<Path[]> => {
+  const isDev = process.env.NODE_ENV === 'development'
+
   const files = await getPostsFilenames()
 
   const paths = files.map(async (filename) => {
@@ -28,15 +30,16 @@ export const getPostsPaths = async (): Promise<Path[]> => {
 
     return {
       params: {
-        slug:
-          typeof meta.slug === 'string'
-            ? meta.slug.toLowerCase()
-            : slugify(meta.title).toLowerCase(),
+        slug: isDev
+          ? null
+          : typeof meta.slug === 'string'
+          ? meta.slug.toLowerCase()
+          : slugify(meta.title).toLowerCase(),
       },
     }
   })
 
-  return Promise.all(paths)
+  return (await Promise.all(paths)).filter((data) => data.params.slug)
 }
 
 export const getPostsFilenames = async () => {
@@ -61,9 +64,8 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
       content,
       meta: {
         ...meta,
-        slug: slugify(meta.title),
         humanized: {
-          created_at: datefns.format(new Date(meta.created_at), 'MMMM, d y'),
+          createdAt: datefns.format(new Date(meta.createdAt), 'MMMM, d y'),
         },
       },
     }
@@ -95,13 +97,21 @@ export const getAllPostMeta = async (): Promise<PostMeta[]> => {
       ...meta,
       slug: slugify(meta.title).toLowerCase(),
       humanized: {
-        created_at: datefns.format(new Date(meta.created_at), 'MMMM, d y'),
+        createdAt: datefns.format(new Date(meta.createdAt), 'MMMM, d y'),
       },
     }
   })
 
   return (await Promise.all(promises)).sort((a, b) => {
     // @ts-ignore
-    return new Date(b.created_at) - new Date(a.created_at)
+    return new Date(b.createdAt) - new Date(a.createdAt)
   })
+}
+
+export const getPostTitle = (filename: string) => {
+  return path.basename(path.dirname(filename)).slice(11)
+}
+
+export const getPostDate = (filename: string) => {
+  return path.basename(path.dirname(filename)).slice(0, 10)
 }

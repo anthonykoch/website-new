@@ -1,6 +1,11 @@
+import { getPostDate } from '@/utils/post'
+import slugify from 'slugify'
+
+const title = `My favorite features of ES2015`
+
 export default {
+  title: title,
+  slug: slugify(title),
+  createdAt: getPostDate(__filename),
   id: 1,
-  title: 'My favorite features of ES2015',
-  tags: ['JavaScript', 'ES2015'],
-  created_at: '2015-08-17',
 }

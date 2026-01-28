@@ -1,6 +1,11 @@
+import { getPostDate } from '@/utils/post'
+import slugify from 'slugify'
+
+const title = 'NextJS Impressions'
+
 export default {
-  title: 'NextJS Impressions',
-  tags: ['nextjs', 'review'],
+  title: title,
+  slug: slugify(title),
+  createdAt: getPostDate(__filename),
   id: 10,
-  created_at: '2018-10-09',
 }
