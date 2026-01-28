@@ -11,7 +11,8 @@
   background-color: #faf9fa;
   background-color: #f3f1f3;
   background-color: hsl(300deg 8% 97%);
-  color: #333;
+  /* font-weight: 500; */
+  color: #222;
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.8;
@@ -138,7 +139,7 @@
   > table,
   > pre,
   .md-spacer {
-    margin-bottom: calc(theme(--spacing) * 12);
+    margin-bottom: calc(theme(--spacing) * 10);
   }
 
   > blockquote {

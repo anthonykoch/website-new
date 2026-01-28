@@ -47,7 +47,7 @@
   --font-code: 'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', monospace;
 
   /* Max widths */
-  --max-width-post: 720px;
+  --max-width-post: 800px;
   --max-width-post-wide: 820px;
   --max-width-site: 2100px;
   --max-width-common: 1232px;

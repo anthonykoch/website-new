@@ -143,6 +143,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
       format: 'mdx',
       rehypePlugins: [
         [RehypeCode, {}],
+        // @ts-ignore
         [rehypePrism, { showLineNumbers: true }],
         // @ts-ignore
         rehypeSlug,

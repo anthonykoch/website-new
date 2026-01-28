@@ -1,5 +1,3 @@
-import { animate } from 'motion/react'
-import { easeInOutCubic } from './animation'
 
 /**
  * Gets the absolute offset (top and left position) of an element relative to the document.
