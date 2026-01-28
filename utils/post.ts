@@ -55,7 +55,7 @@ export const getPostMetaByFilename = async (filename: string) => {
 }
 
 export const getAllPostMeta = async (): Promise<PostMeta[]> => {
-  const promises = (await getPostsFilenames()).map(async (filename) =>
+  const promises = (await getPostsFilenames()).map((filename) =>
     getPostMetaByFilename(filename),
   )
 

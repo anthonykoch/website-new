@@ -123,14 +123,15 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
 }
 
 export const getStaticPaths = async () => {
-  const meta = await getAllPostMeta()
+  const metas = await getAllPostMeta()
 
   return {
-    paths: {
+    paths: metas.map((path) => ({
       params: {
-        slug: meta.map((path) => path.slug),
+        slug: path.slug,
       },
-    },
+    })),
+
     fallback: false,
   }
 }
