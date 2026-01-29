@@ -134,7 +134,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const { slug } = params as { slug: string }
-  const posts = (await getAllPostMeta()).slice(0)
+  const posts = await getAllPostMeta()
   const post = (await getPostBySlug(slug))!
 
   const mdx = await serialize(post.content, {

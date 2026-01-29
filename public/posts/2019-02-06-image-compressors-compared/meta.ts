@@ -1,6 +1,3 @@
-import { getPostDate } from '@/utils/post'
-import slugify from 'slugify'
-
 export default async () => {
   const title = `Image compressors compared`
 
@@ -29,8 +26,7 @@ export default async () => {
 
   return {
     title: title,
-    slug: slugify(title),
-    createdAt: getPostDate(__filename),
+    createdAt: '2019-02-06T00:00:00.000Z',
     id: 11,
     data: {
       images,

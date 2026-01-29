@@ -1,13 +1,10 @@
 import { PostMetaRaw } from '@/types'
-import { getPostDate, getPostSlug } from '@/utils/post'
-import slugify from 'slugify'
 
 export default async (): Promise<PostMetaRaw> => {
   const title = `My favorite react talk`
   return {
     title: title,
-    slug: slugify(title),
-    createdAt: getPostDate(__filename),
+    createdAt: '2026-02-26T00:00:00.000Z',
     id: 15,
     isPublished: false,
     data: {},

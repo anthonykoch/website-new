@@ -6,13 +6,12 @@ export interface Post {
 export interface PostMetaRaw {
   id: any
   title: string
-  slug: string
   createdAt: string
   isPublished?: boolean
   data: any
 }
 
-export interface PostMeta {
+export interface PostMetaBase {
   id: any
   title: string
   createdAt: string
@@ -24,3 +23,10 @@ export interface PostMeta {
   }
 }
 
+export interface PostMeta extends PostMetaBase {
+  filename?: never
+}
+
+export interface PostMetaWithFile extends PostMetaBase {
+  filename: string
+}

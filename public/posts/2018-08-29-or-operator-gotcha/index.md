@@ -118,7 +118,7 @@ function stringify(data, options) {
 
 Along with destructuring, we can default our `indent` variable with a value of `2` using default value assignment. Destructuring default assignment takes on the following syntax `{ propertyName: variableName = defaultValue }`, where `defaultValue` can be a number, a string, `NaN`, `undefined`, an array, a function call — well, you get the point. I would highly recommend keeping the default values simple for readabilities sake, though.
 
-<div>
+{0,<div>
   <div class="Aside">
     <div class="Aside-content">
       <div class="Aside-tag  [ Tag is-absolute ]">A note on destructuring</div>
@@ -127,7 +127,7 @@ Along with destructuring, we can default our `indent` variable with a value of `
         <code>const {'{'} indent: indent {'}'} = options;</code>
     </div>
   </div>
-</div>
+</div>}
 
 In the original example, I also used what are called "parameter defaults" (another newish ES2015 feature) in order to default the second parameter to an object. This allows the complete omission of the second argument when calling `stringify(data)`, and is done to avoid the destructuring from throwing a `Cannot read property 'indent' of undefined` error.
 

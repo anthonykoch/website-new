@@ -3,7 +3,7 @@ import { BlogHero } from '@/features/blog/Hero'
 import { Footer } from '@/features/site/footer/Footer'
 import { PostMeta } from '@/types/index'
 import { easeOutExpo } from '@/utils/animation'
-import { getAllPostMeta } from '@/utils/post'
+import { getAllPostMetaInternal } from '@/utils/post'
 import { animate } from 'motion/react'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
@@ -127,7 +127,7 @@ const Blog: NextPage<Props> = ({ posts }) => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const posts = await getAllPostMeta()
+  const posts = await getAllPostMetaInternal()
 
   return {
     props: {

@@ -1,11 +1,7 @@
-import { getPostDate } from '@/utils/post'
-import slugify from 'slugify'
-
 const title = `Understanding JavaScript Prototypes`
 
 export default {
   title: title,
-  slug: slugify(title),
-  createdAt: getPostDate(__filename),
+  createdAt: '2016-01-21T00:00:00.000Z',
   id: 6,
 }

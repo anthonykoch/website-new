@@ -1,29 +1,39 @@
-import fs from 'fs'
+import { readFile } from 'fs/promises'
 import path from 'path'
 import slugify from 'slugify'
 import * as datefns from 'date-fns'
-import type { Post, PostMeta } from '../types'
+import type { Post, PostMeta, PostMetaRaw, PostMetaWithFile } from '../types'
 import glob from 'fast-glob'
+import { UTCDate } from '@date-fns/utc'
 
 const isDev = process.env.NODE_ENV === 'development'
 
-export const getPostsFilenames = async () => {
-  return glob.sync(path.join(process.cwd(), 'public/posts/**/*.{md,mdx}'))
+export const getMetaFiles = () => {
+  return glob(path.join(process.cwd(), 'public/posts/**/meta.(t|j)s'))
 }
 
 export const getPostBySlug = async (slug: string): Promise<Post | null> => {
-  for (const filename of await getPostsFilenames()) {
-    const content = fs.readFileSync(filename, 'utf-8')
-    const meta = await getPostMetaByFilename(filename)
+  for (const meta of await getAllPostMetaInternal()) {
+    const { filename, ...rest } = meta
 
-    const post = {
+    const postDir = path.join(filename, '..')
+    const [contentPath] = await glob(path.join(postDir, 'index.{md,mdx}'))
+
+    if (contentPath == null)
+      throw new Error(`Markdown file does not exist: "${contentPath}"`)
+
+    const content = await readFile(contentPath, 'utf-8')
+
+    const post: Post = {
       content,
-      meta,
+      meta: rest,
     }
 
     if (meta.slug === slug.toLowerCase()) return post
 
-    if (slug.toLowerCase() === slugify(meta.title).toLowerCase()) {
+    if (
+      slug.toLowerCase() === slugify(meta.title, { lower: true, strict: true })
+    ) {
       return post
     }
   }
@@ -31,33 +41,55 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
   return null
 }
 
-export const getPostMetaByFilename = async (filename: string) => {
-  const folder = path.basename(path.dirname(filename))
+export const enrichPostMeta = (
+  meta: PostMetaRaw,
+  { filename }: { filename: string },
+): PostMetaWithFile => {
+  // console.log(meta.createdAt)
+  return {
+    filename,
+    ...meta,
+    slug: slugify(meta.title, { lower: true, strict: true }),
+    humanized: {
+      createdAt: datefns.format(new UTCDate(meta.createdAt), 'MMMM, d y'),
+    },
+  }
+}
 
-  if (folder == null) throw new Error('Folder slug is empty')
+export const getPostMetaByFilename = async (filename: string) => {
+  // This purely exists because of the stupidity of import() in wepback
+  const folder = extractFolderFromFilename(filename)
 
   const {
     default: metaImport,
   }: { default: PostMeta | (() => Promise<PostMeta>) } = await import(
-    `../public/posts/${folder}/meta`
+    // This can't be too dynamic because it won't work with webpack
+    `../public/posts/${folder}/meta.ts`
   )
 
   const meta =
     typeof metaImport === 'function' ? await metaImport() : metaImport
 
-  return {
-    ...meta,
-    slug: slugify(meta.title).toLowerCase(),
-    humanized: {
-      createdAt: datefns.format(new Date(meta.createdAt), 'MMMM, d y'),
-    },
-  }
+  return enrichPostMeta(meta, { filename })
 }
 
-export const getAllPostMeta = async (): Promise<PostMeta[]> => {
-  const promises = (await getPostsFilenames()).map((filename) =>
-    getPostMetaByFilename(filename),
-  )
+export const extractFolderFromFilename = (filename: string) => {
+  if (!path.isAbsolute(filename)) throw new Error('path is not absolute')
+
+  if (path.extname(filename).trim() === '')
+    throw new Error('Filename should lead to file with ext')
+
+  const folder = path.basename(path.dirname(filename))
+
+  if (!filename.trim() || folder == null)
+    throw new Error('Folder slug is empty')
+
+  return folder
+}
+
+export const getAllPostMetaInternal = async (): Promise<PostMetaWithFile[]> => {
+  const filenames = await getMetaFiles()
+  const promises = filenames.map((filename) => getPostMetaByFilename(filename))
 
   return (await Promise.all(promises))
     .sort((a, b) => {
@@ -65,6 +97,10 @@ export const getAllPostMeta = async (): Promise<PostMeta[]> => {
       return new Date(b.createdAt) - new Date(a.createdAt)
     })
     .filter((post) => (isDev ? true : post.isPublished !== false))
+}
+
+export const getAllPostMeta = async (): Promise<PostMeta[]> => {
+  return (await getAllPostMetaInternal()).map(({ filename, ...meta }) => meta)
 }
 
 export const getPostSlug = (filename: string) => {
