@@ -1,5 +1,5 @@
 import { PostMetaRaw } from '@/types'
-import { getPostDate, getPostTitle } from '@/utils/post'
+import { getPostDate, getPostSlug } from '@/utils/post'
 import slugify from 'slugify'
 
 export default async (): Promise<PostMetaRaw> => {

@@ -7,10 +7,8 @@ import glob from 'fast-glob'
 
 const isDev = process.env.NODE_ENV === 'development'
 
-const pattern = path.join(process.cwd(), 'public/posts/**/*.{md,mdx}')
-
 export const getPostsFilenames = async () => {
-  return glob.sync(pattern)
+  return glob.sync(path.join(process.cwd(), 'public/posts/**/*.{md,mdx}'))
 }
 
 export const getPostBySlug = async (slug: string): Promise<Post | null> => {
@@ -35,6 +33,8 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
 
 export const getPostMetaByFilename = async (filename: string) => {
   const folder = path.basename(path.dirname(filename))
+
+  if (folder == null) throw new Error('Folder slug is empty')
 
   const {
     default: metaImport,
@@ -67,7 +67,7 @@ export const getAllPostMeta = async (): Promise<PostMeta[]> => {
     .filter((post) => (isDev ? true : post.isPublished !== false))
 }
 
-export const getPostTitle = (filename: string) => {
+export const getPostSlug = (filename: string) => {
   return path.basename(path.dirname(filename)).slice(11)
 }
 

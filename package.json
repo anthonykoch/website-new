@@ -7,7 +7,9 @@
     "export": "next export",
     "lint": "next lint",
     "start": "next start",
-    "test": "jest",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
     "watch:theme": "ts-node ./scripts/watch.ts"
   },
   "dependencies": {
@@ -35,7 +37,6 @@
     "eventemitter3": "^5.0.1",
     "fast-glob": "^3.2.11",
     "gray-matter": "^4.0.3",
-    "jest": "^30.2.0",
     "jotai": "^2.16.1",
     "lodash-es": "^4.17.22",
     "motion": "^12.23.26",
@@ -60,18 +61,18 @@
     "use-resize-observer": "^8.0.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.9.1",
-    "@types/jest": "^29.5.14",
     "@types/node": "^20",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.46.3",
     "@typescript-eslint/parser": "^8.46.3",
+    "@vitest/ui": "^4.0.18",
     "baseline-browser-mapping": "^2.9.15",
     "eslint": "^9.39.1",
     "eslint-config-next": "16.0.1",
-    "jest-environment-jsdom": "^30.2.0",
+    "happy-dom": "^20.4.0",
     "typescript": "5.9.3",
-    "typescript-plugin-css-modules": "^3.4.0"
+    "typescript-plugin-css-modules": "^3.4.0",
+    "vitest": "^4.0.18"
   }
 }
