@@ -8,15 +8,16 @@ import rehypeSlug from 'rehype-slug'
 
 import { markdownComponents } from '@/components/markdown-components'
 import { PostList } from '@/components/PostList'
+import { BlogHero, BlogPlaceholder } from '@/features/blog/Hero'
 import { Footer } from '@/features/site/footer/Footer'
 import { PostMeta } from '@/types'
-import { getAllPostMeta, getPostBySlug } from '@/utils/post'
-import { BlogHero, BlogPlaceholder } from '@/features/blog/Hero'
 import { easeOutExpo } from '@/utils/animation'
+import { getAllPostMeta, getPostBySlug } from '@/utils/post'
 import { animate } from 'motion/react'
 import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import Link from 'next/link'
+import remarkSmartypants from 'remark-smartypants'
 
 type MDXSource = Awaited<ReturnType<typeof serialize>>
 
@@ -141,6 +142,9 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     scope: post.meta.data,
     mdxOptions: {
       format: 'mdx',
+      remarkPlugins: [
+        [remarkSmartypants, {}]
+      ],
       rehypePlugins: [
         [RehypeCode, {}],
         // @ts-ignore
