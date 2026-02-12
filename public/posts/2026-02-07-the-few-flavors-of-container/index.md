@@ -14,7 +14,7 @@ If you look real close, you kind for some interesting ways people are doing cont
   <iframe width="100%" height="100%" src="https://www.youtube.com/embed/c13gpBrnGEw?si=sXaTVwr7x-uLxt7d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-After working at Opal Camera, Aristide Benoist had introduced to me another flavor of container. This one is pretty interesting. Not only is this restricting the width, it's also adding padding --- all in one calc! 
+After working at Opal Camera, Aristide Benoist had introduced to me another flavor of container. This one is pretty interesting. Not only is this restricting the width, it's also adding padding -- all in one calc! 
 
 ```css
 .wrap-ml {
