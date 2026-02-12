@@ -259,7 +259,6 @@ const Home: NextPage = () => {
         </div>
 
         <div className="bg-white z-10 relative">
-
           <section>
             <div className="max-w-site mx-auto">
               <div className="lg:grid grid-cols-12 gap-x-4 px-4 ">
