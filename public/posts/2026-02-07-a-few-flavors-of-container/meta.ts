@@ -1,5 +1,5 @@
 export default async () => {
-  const title = `The few flavors of container`
+  const title = `A few flavors of container`
 
   return {
     title: title,

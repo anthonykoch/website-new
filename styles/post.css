@@ -140,7 +140,7 @@
   > table,
   > pre,
   .md-spacer {
-    margin-bottom: calc(theme(--spacing) * 10);
+    margin-bottom: calc(theme(--spacing) * 14);
   }
 
   > blockquote {

@@ -14,15 +14,17 @@ import { PostMeta } from '@/types'
 import { easeOutExpo } from '@/utils/animation'
 import { getAllPostMeta, getPostBySlug } from '@/utils/post'
 import { animate } from 'motion/react'
-import { MDXRemote } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
+import { MDXClient } from 'next-mdx-remote-client'
+import {
+  serialize,
+  type SerializeOptions,
+  type SerializeResult,
+} from 'next-mdx-remote-client/serialize'
 import Link from 'next/link'
 import remarkSmartypants from 'remark-smartypants'
 
-type MDXSource = Awaited<ReturnType<typeof serialize>>
-
 interface Props {
-  mdx: MDXSource
+  mdx: SerializeResult<any, any>
   post: PostMeta
   slug: string
   posts: PostMeta[]
@@ -100,7 +102,13 @@ const BlogPost: NextPage<Props> = ({ post, posts, mdx }) => {
         <article id="post">
           <div className="setup-fade-in selector-post">
             <div className="md pt-20 pb-24">
-              <MDXRemote {...mdx} components={markdownComponents as any} />
+              <MDXClient
+                {...mdx}
+                components={markdownComponents as any}
+                // onError={ErrorComponent}
+              />
+
+              {/* <MDXRemote {...mdx} components={markdownComponents as any} /> */}
             </div>
           </div>
         </article>
@@ -138,27 +146,31 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const posts = await getAllPostMeta()
   const post = (await getPostBySlug(slug))!
 
-  const mdx = await serialize(post.content, {
-    scope: post.meta.data,
-    mdxOptions: {
-      format: 'mdx',
-      remarkPlugins: [
-        [remarkSmartypants, {}]
-      ],
-      rehypePlugins: [
-        [RehypeCode, {}],
-        // @ts-ignore
-        [rehypePrism, { showLineNumbers: true }],
-        // @ts-ignore
-        rehypeSlug,
-        [
+  const mdx = await serialize({
+    source: post.content,
+    options: {
+      scope: post.meta.data,
+      disableImports: true, // import statements in MDX don't work in pages router
+      parseFrontmatter: true,
+      mdxOptions: {
+        remarkPlugins: [[remarkSmartypants, {}]],
+        rehypePlugins: [
+          [
+            // [RehypeCode, {}],
+            // @ts-ignore
+            (rehypePrism, { showLineNumbers: true }),
+          ],
           // @ts-ignore
-          rehypeAutolinkHeadings,
-          {
-            behavior: ['after'],
-          },
+          rehypeSlug,
+          [
+            // @ts-ignore
+            rehypeAutolinkHeadings,
+            {
+              behavior: ['after'],
+            },
+          ],
         ],
-      ],
+      },
     },
   })
 
