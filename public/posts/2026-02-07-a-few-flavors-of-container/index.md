@@ -26,7 +26,7 @@ After working at Opal Camera, Aristide Benoist introduced to me another flavor o
 }
 ```
 
-This took me a bit to wrap my head around -- but the magic is all in the --wrap-width variable. The first value you pass to `min()` is the desired container size. The desired padding can also be changed in the `calc()` from 16px to whatever you'd like. 
+This took me a bit to wrap my head around -- but the magic is all in the `--wrap-width` variable. The first value you pass to `min()` is the desired container size. The desired padding can also be changed in the `calc()` from 16px to whatever you'd like. 
 
 Here's what happens at different viewport widths:
 
@@ -35,14 +35,14 @@ Here's what happens at different viewport widths:
 
 **Below 1632px:** The `min()` returns `calc(100% - 32px)` because the viewport is now narrower than the desired container width. This automatically maintains 16px gutters on both sides while the container shrinks proportionally with the viewport.
 
-### Breakout
+### Simulate a Breakout
 
 ```css
 .breakout-container {
   --wrap-width: min(1600px, calc(100% - 16px * 2));
   width: var(--wrap-width);
-  margin: 0 auto;
-  padding-left: calc((100% - var(--wrap-width)) * .5);
+  margin: 0 auto; // [!code --]
+  padding-left: calc((100% - var(--wrap-width)) * .5); // [!code ++]
 }
 ```
 

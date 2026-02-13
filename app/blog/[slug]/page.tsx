@@ -10,6 +10,7 @@ import path from 'path'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
 import theme from 'shiki/themes/material-theme-ocean.mjs' // Example theme
+import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/transformers'
 
 // import rehypePrism from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
@@ -46,7 +47,16 @@ export default async function BlogPostSlug({
             ] as any,
             rehypePlugins: [
               // rehypePrism,
-              [rehypePrettyCode, { theme }],
+              [
+                rehypePrettyCode,
+                {
+                  theme,
+                  transformers: [
+                    transformerNotationDiff(),
+                    transformerNotationHighlight(),
+                  ],
+                },
+              ],
               rehypeAutolinkHeadings,
               rehypeSlug,
             ] as any,
