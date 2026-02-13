@@ -131,17 +131,16 @@ code > [data-line].diff.remove > span:first-child::before {
     padding-right: var(--spacing-gutter);
   }
 
+
   & > pre > code {
     padding-left: 0;
     padding-right: 0;
   }
 
-  & > pre:not([data-lang]) {
-    border: 2px solid #c4c1b0;
+  & pre:not([data-lang]) {
     background-color: #ebebeb;
-  }
-
-  & > [data-language] {
+    font-size: 13px;
+    padding: 12px 20px;
   }
 
   > figure,
@@ -149,7 +148,6 @@ code > [data-line].diff.remove > span:first-child::before {
   > ol,
   > li,
   > dl,
-  /* > div:not(.md-fullWidth), */
   > div,
   > table,
   > pre,
