@@ -1,3 +1,5 @@
+'use client'
+
 import { ExternalLink } from '@/components/action/Link'
 import { isMobileMenuVisible } from '@/store'
 import { easeOutCubic, easeOutExpo } from '@/utils/animation'
@@ -7,6 +9,7 @@ import classNames from 'classnames'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { AnimatePresence, motion, useAnimate, usePresence } from 'motion/react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { FC, ReactNode, useEffect, useRef } from 'react'
 import FocusLock from 'react-focus-lock'
@@ -199,7 +202,7 @@ const Links = () => {
     })()
   }, [isPresent])
 
-  const router = useRouter()
+  const pathname = usePathname()
 
   const isMobileMenuVisibleAtom = useAtomValue(isMobileMenuVisible)
 
@@ -218,7 +221,7 @@ const Links = () => {
       </Link>
       <Link
         onClick={(e) => {
-          if (router.pathname === '/') {
+          if (pathname === '/') {
             e.preventDefault()
             scrollTo('#work')
           }

@@ -1,16 +1,19 @@
+'use client'
+
 import Link from 'next/link'
 import { Logo } from './Logo'
 import { Navigation } from './Navigation'
 import classNames from 'classnames'
 import { FC } from 'react'
 import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 
 export const SiteNavigation: FC<{
   isBlendModeDifference?: boolean
   colorVariant?: 'black' | 'white'
 }> = ({ colorVariant = 'black', isBlendModeDifference }) => {
-  const router = useRouter()
-  const isNotHome = router.pathname !== '/'
+  const pathname = usePathname()
+  const isNotHome = pathname !== '/'
 
   return (
     <div

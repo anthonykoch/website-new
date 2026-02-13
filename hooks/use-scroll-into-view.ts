@@ -1,3 +1,4 @@
+import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect } from 'react'
 
@@ -34,7 +35,7 @@ export const scrollTo = (
 }
 
 export const useScrollIntoView = () => {
-  const router = useRouter()
+  const pathname = usePathname()
 
   const scrollToHref = useCallback(
     (pathname: string): void => {
@@ -42,7 +43,7 @@ export const useScrollIntoView = () => {
 
       const [path, id] = pathname.split('#')
 
-      if (router.pathname === path) {
+      if (pathname === path) {
         const el = document.getElementById(id)
 
         if (el) {

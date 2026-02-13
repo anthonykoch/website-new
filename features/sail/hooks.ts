@@ -1,4 +1,6 @@
-import { useRouter } from 'next/router'
+'use client'
+
+import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { useRouterComposer } from '../router/context/RouterComposerContext'
 // import { EventEmitter } from 'eventemitter3'
@@ -27,7 +29,7 @@ export const useHandleLinkClicks = () => {
 
   useEffect(() => {
     const handleClick = async (e: MouseEvent) => {
-      if (e.button !== 0) {
+      if (e.button !== 0 || e.metaKey || e.ctrlKey) {
         return
       }
 

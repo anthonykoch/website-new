@@ -28,9 +28,6 @@ export const PostList: FC<{
                 'group',
                 {},
               )}
-              onClick={(e) => {
-                activeId === listing.id && e.preventDefault()
-              }}
             >
               <div className="min-w-[140px] lg:min-w-[170px] h-full">
                 <time

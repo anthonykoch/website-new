@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { ImageCompare } from './ImageCompare'
 import { TabItem, Tabs } from './Tabs'
