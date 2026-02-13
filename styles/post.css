@@ -280,6 +280,7 @@ code > [data-line].diff.remove > span:first-child::before {
   margin-right: auto;
   margin-top: calc(theme(--spacing) * 10);
   margin-bottom: calc(theme(--spacing) * 5);
+  padding: 0;
 
   @media (min-width: theme(--breakpoint-lg)) {
     max-width: calc(theme(--max-width-post-wide) - 50px);
