@@ -15,6 +15,7 @@ import { transformerNotationDiff, transformerNotationHighlight } from '@shikijs/
 // import rehypePrism from 'rehype-prism-plus'
 import rehypeSlug from 'rehype-slug'
 import remarkSmartypants from 'remark-smartypants'
+import remarkGfm from 'remark-gfm'
 
 export default async function BlogPostSlug({
   params,
@@ -42,7 +43,7 @@ export default async function BlogPostSlug({
           mdxOptions: {
             remarkPlugins: [
               remarkSmartypants,
-              // remarkGfm,
+              remarkGfm,
               // [remarkMdxEvalCodeBlock, filename],
             ] as any,
             rehypePlugins: [

@@ -1,0 +1,77 @@
+Container classes have barely changed since Bootstrap popularized them over a decade ago: set a max-width, add auto margins, maybe some padding. It works, so why mess with it?
+
+```css
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+```
+
+### Flavor 1: CSS Grid
+
+Kevin Powell is one of a few people who I've seen show any kind of innovation for container styles. His implementation uses css grid. While maybe a little complex, it does allow for a few flavors of containing elements.
+
+<div className="relative aspect-video">
+  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/c13gpBrnGEw?si=sXaTVwr7x-uLxt7d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+### Flavor 2: Using min()
+
+After working at Opal Camera, Aristide Benoist introduced me to another flavor of container. This one is pretty interesting. Not only is this restricting the width, it's also adding padding -- all in one calc!
+
+```css
+.wrap-ml {
+  --wrap-width: min(1600px, calc(100% - 16px * 2));
+  width: var(--wrap-width);
+  margin: 0 auto;
+}
+```
+
+<div className="md-fullWidth">
+  <div className="bg-[tomato] text-white py-20 px-4 bl-wrap-ml">This container is 900px with 16px gutters on both sides, using the min() trick just mentioned</div>
+</div>
+
+<style>
+ {` .bl-wrap-ml {
+  --wrap-width: min(900px, calc(100% - 16px * 2));
+  width: var(--wrap-width);
+  margin: 0 auto;
+}`}
+</style>
+
+This took me a bit to wrap my head around -- but the magic is all in the `--wrap-width` variable. The first value you pass to `min()` is the desired container size. The desired padding can also be changed in the `calc()` from 16px to whatever you'd like.
+
+Here's what happens at different viewport widths:
+
+**Above 1632px:** The `min()` returns `1600px` because `1600px < calc(100% - 32px)`. Since we're at `1632px` and using `margin: auto`, there's going to be 16px of padding distributed on both sides.
+
+**Below 1632px:** The `min()` returns `calc(100% - 32px)` because the viewport is now narrower than the desired container width plus gutters. This automatically maintains 16px gutters on both sides while the container shrinks proportionally with the viewport.
+
+### Flavor 3: padding-left and max()
+
+If we want a full width background, we do achieve it using padding-left with a calc() and max(). The max() will make sure we always have at least 16px of padding on the left. The calc() will calculate the amount of "margin" we will need to push over the content to the desired container size.
+
+```css
+.full-width-bg {
+  padding-left: max(16px, calc(((100% - 800px) / 2) + 16px));
+  padding-right: 16px;
+}
+```
+
+<div className="md-fullWidth">
+  <div className="bg-[tomato] text-white py-20 bl-full-width-bg">This background is full width but the text is constrained to 800px</div>
+</div>
+
+<style>
+ {` .bl-full-width-bg {
+  padding-left: max(16px, calc(((100% - 800px) / 2) + 16px));
+  padding-right: 16px;
+}`}
+</style>
+
+There are so many ways to do containers in css. As I'm researching for this post, I'm seeing yet another flavor using container units (which I didn't even know existed):
+
+https://piccalil.li/blog/building-a-breakout-element-with-container-units/ 
+
+Hope this was helpful. Bye, yall.

@@ -142,7 +142,6 @@ code > [data-line].diff.remove > span:first-child::before {
   }
 
   & > [data-language] {
-
   }
 
   > figure,
@@ -150,6 +149,7 @@ code > [data-line].diff.remove > span:first-child::before {
   > ol,
   > li,
   > dl,
+  /* > div:not(.md-fullWidth), */
   > div,
   > table,
   > pre,
@@ -160,7 +160,6 @@ code > [data-line].diff.remove > span:first-child::before {
   > p {
     margin-bottom: calc(theme(--spacing) * 10);
   }
-
 
   > blockquote {
     background-color: #efe9e9;
