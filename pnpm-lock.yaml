@@ -41,6 +41,9 @@ dependencies:
   '@sentry/nextjs':
     specifier: ^10.34.0
     version: 10.34.0(@opentelemetry/context-async-hooks@2.4.0)(@opentelemetry/core@2.4.0)(@opentelemetry/sdk-trace-base@2.4.0)(next@16.1.1)(react@19.2.3)(webpack@5.104.1)
+  '@shikijs/transformers':
+    specifier: ^3.22.0
+    version: 3.22.0
   '@svgr/webpack':
     specifier: ^6.2.1
     version: 6.2.1
@@ -3839,6 +3842,13 @@ packages:
   /@shikijs/themes@3.22.0:
     resolution: {integrity: sha512-o+tlOKqsr6FE4+mYJG08tfCFDS+3CG20HbldXeVoyP+cYSUxDhrFf3GPjE60U55iOkkjbpY2uC3It/eeja35/g==}
     dependencies:
+      '@shikijs/types': 3.22.0
+    dev: false
+
+  /@shikijs/transformers@3.22.0:
+    resolution: {integrity: sha512-E7eRV7mwDBjueLF6852n2oYeJYxBq3NSsDk+uyruYAXONv4U8holGmIrT+mPRJQ1J1SNOH6L8G19KRzmBawrFw==}
+    dependencies:
+      '@shikijs/core': 3.22.0
       '@shikijs/types': 3.22.0
     dev: false
 

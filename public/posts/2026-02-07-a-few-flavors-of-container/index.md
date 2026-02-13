@@ -41,8 +41,8 @@ Here's what happens at different viewport widths:
 .breakout-container {
   --wrap-width: min(1600px, calc(100% - 16px * 2));
   width: var(--wrap-width);
--  margin: 0 auto;
-+  padding-left: calc((100% - var(--wrap-width)) * .5);
+  margin: 0 auto;
+  padding-left: calc((100% - var(--wrap-width)) * .5);
 }
 ```
 

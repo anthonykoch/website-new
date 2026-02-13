@@ -2,7 +2,13 @@ import { readFile } from 'fs/promises'
 import path from 'path'
 import slugify from 'slugify'
 import * as datefns from 'date-fns'
-import type { Post, PostMeta, PostMetaRaw, PostMetaWithFile } from '../types'
+import type {
+  Post,
+  PostMeta,
+  PostMetaRaw,
+  PostMetaWithFile,
+  PostWithFile,
+} from '../types'
 import glob from 'fast-glob'
 import { UTCDate } from '@date-fns/utc'
 
@@ -12,11 +18,9 @@ export const getMetaFiles = () => {
   return glob(path.join(process.cwd(), 'public/posts/**/meta.(t|j)s'))
 }
 
-export const getPostBySlug = async (slug: string): Promise<Post | null> => {
+export const getPostBySlug = async (slug: string): Promise<PostWithFile | null> => {
   for (const meta of await getAllPostMetaInternal()) {
-    const { filename, ...rest } = meta
-
-    const postDir = path.join(filename, '..')
+    const postDir = path.join(meta.filename, '..')
     const [contentPath] = await glob(path.join(postDir, 'index.{md,mdx}'))
 
     if (contentPath == null)
@@ -24,9 +28,9 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
 
     const content = await readFile(contentPath, 'utf-8')
 
-    const post: Post = {
+    const post: PostWithFile = {
       content,
-      meta: rest,
+      meta,
     }
 
     if (meta.slug === slug.toLowerCase()) return post

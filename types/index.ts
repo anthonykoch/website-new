@@ -3,6 +3,11 @@ export interface Post {
   content: string
 }
 
+export interface PostWithFile {
+  meta: PostMetaWithFile
+  content: string
+}
+
 export interface PostMetaRaw {
   id: any
   title: string
