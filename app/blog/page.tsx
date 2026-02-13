@@ -1,5 +1,3 @@
-'use server'
-
 import { Footer } from '@/features/site/footer/Footer'
 import { BlogHero } from '@/features/blog/Hero'
 import { getAllPostMeta } from '@/utils/post'

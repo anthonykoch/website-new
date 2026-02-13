@@ -1,5 +1,3 @@
-'use server'
-
 import BlogPost from '@/features/blog/BlogPost'
 import { getAllPostMeta, getPostBySlug } from '@/utils/post'
 import { MDXRemote } from 'next-mdx-remote-client/rsc'
@@ -39,7 +37,7 @@ export default async function BlogPostSlug({
         source={content}
         components={markdownComponents}
         options={{
-          scope: meta,
+          scope: meta.data,
           mdxOptions: {
             remarkPlugins: [
               remarkSmartypants,
